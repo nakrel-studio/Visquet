@@ -1,5 +1,5 @@
 // --- 設定値（直接書き込みで確実に動かします！） ---
-const API_KEY = "AIzaSyBKPJ-TZmXY4kfPJlwxQRUy9fk0cEzVJyk"; 
+const API_KEY = ""; 
 const PLAYLIST_ID = "PL_TmP_mR9eFus9W7vW-6y0P_L0fVqIuW6"; 
 
 // 2. YouTube IFrame API 読み込み
