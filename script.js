@@ -1,4 +1,4 @@
-// --- 設定値（ビルド時にVercelで置換） ---
+// --- 設定値（ビルド時にVercelで置換されます） ---
 const API_KEY = "REPLACE_ME_WITH_API_KEY";
 const UPD_KEY = "REPLACE_ME_WITH_UPD";
 const PLAYLIST_ID = "TmP_mR9eFus";
@@ -8,7 +8,7 @@ const CACHE_KEY = 'visquet_video_cache';
 const CACHE_TIME_KEY = 'visquet_last_fetch';
 const TWENTY_HOURS = 20 * 60 * 60 * 1000;
 
-// --- 1. 秘密の更新チェック ---
+// 1. 秘密の更新機能
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('upd') === UPD_KEY) {
     localStorage.clear();
@@ -16,7 +16,7 @@ if (urlParams.get('upd') === UPD_KEY) {
     window.location.href = window.location.origin + window.location.pathname;
 }
 
-// --- 2. YouTube IFrame API 読み込み ---
+// 2. YouTube IFrame API 読み込み
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -33,18 +33,16 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// --- 3. プラットフォームの初期化ロジック ---
+// 3. 初期化（キャッシュがあれば使い、なければAPIを叩く）
 async function initPlatform() {
     const now = new Date().getTime();
     const lastFetch = localStorage.getItem(CACHE_TIME_KEY);
     const savedData = localStorage.getItem(CACHE_KEY);
 
-    // 20時間以内のキャッシュがあればそれを使う
     if (lastFetch && (now - lastFetch < TWENTY_HOURS) && savedData) {
         console.log("Using cached data");
         renderPlaylist(JSON.parse(savedData));
     } else {
-        // キャッシュがない、または古い場合はAPIを叩く
         fetchFromYouTube();
     }
 }
@@ -62,43 +60,38 @@ async function fetchFromYouTube() {
             localStorage.setItem(CACHE_TIME_KEY, new Date().getTime().toString());
             renderPlaylist(data.items);
         } else {
+            console.error("API Error Response:", data);
             document.getElementById('video-title').innerText = "動画が見つかりませんでした (API Error)";
         }
     } catch (e) {
-        console.error("API Fetch Error:", e);
+        console.error("Fetch Error:", e);
     }
 }
 
-// --- 4. 画面への描画処理 ---
+// 4. 画面に表示
 function renderPlaylist(items) {
     const listContainer = document.getElementById('playlist-items');
-    listContainer.innerHTML = ''; // クリア
+    listContainer.innerHTML = '';
 
     items.forEach((item, index) => {
         const snippet = item.snippet;
         const videoId = snippet.resourceId.videoId;
         
-        // リスト項目を作成
         const div = document.createElement('div');
-        div.className = 'playlist-item'; // CSSでデザインしたクラス
-        div.style.display = "flex";
-        div.style.gap = "10px";
-        div.style.marginBottom = "15px";
-        div.style.cursor = "pointer";
+        div.className = 'playlist-item';
+        div.style.cssText = "display:flex; gap:10px; margin-bottom:12px; cursor:pointer; padding:5px;";
 
         div.innerHTML = `
-            <img src="${snippet.thumbnails.default.url}" style="width:120px; border-radius:8px;">
-            <p style="font-size:14px; margin:0;">${snippet.title}</p>
+            <img src="${snippet.thumbnails.default.url}" style="width:100px; border-radius:4px;">
+            <p style="font-size:12px; margin:0;">${snippet.title}</p>
         `;
 
         div.onclick = () => {
             player.loadVideoById(videoId);
             document.getElementById('video-title').innerText = snippet.title;
         };
-
         listContainer.appendChild(div);
 
-        // 最初の動画を自動セット
         if (index === 0) {
             player.cueVideoById(videoId);
             document.getElementById('video-title').innerText = snippet.title;
