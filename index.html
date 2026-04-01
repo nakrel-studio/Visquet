@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visquet - NAKREL Archive</title>
+    
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
+        body { background-color: #0d0d0f; color: #e1e1e6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; color: #fff; }
+        .sidebar { border-right: 1px solid #222225; background-color: #0a0a0c; z-index: 40; }
+        .nav-item { transition: 0.2s; cursor: pointer; color: #94a3b8; }
+        .nav-item:hover { color: #fff; background-color: rgba(255, 255, 255, 0.05); }
+        .nav-item.active { color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; font-weight: 600; }
+        .video-card { background: #141417; border: 1px solid transparent; transition: all 0.25s ease; }
+        .video-card:hover { border-color: #333336; transform: translateY(-3px); }
+        .info-card { background: #111114; border: 1px solid #222; }
+        .icon-nakrel-n { width: 40px; height: 40px; flex-shrink: 0; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-once { animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <aside class="w-72 sidebar hidden md:flex flex-col p-8 sticky top-0 h-screen">
+        <div class="brand-logo text-3xl mb-12 tracking-tight">Visquet</div>
+        
+        <nav id="category-menu" class="space-y-1 flex-grow text-sm">
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Archives</div>
+            <div class="nav-item active p-3 rounded-r-lg" onclick="switchCategory('all', this)">All</div>
+            <div class="nav-item p-3 rounded-r-lg" onclick="switchCategory('music', this)">Music</div>
+            <div class="nav-item p-3 rounded-r-lg" onclick="switchCategory('games', this)">Game</div>
+            <div class="nav-item p-3 rounded-r-lg" onclick="switchCategory('popular', this)">Popular</div>
+            
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">Official Channels</div>
+            <div class="nav-item p-3 rounded-r-lg flex items-center justify-between group" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
+                <span>NAKREL Studio</span>
+                <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
+            </div>
+            <div class="nav-item p-3 rounded-r-lg flex items-center justify-between group" onclick="window.open('https://www.youtube.com/channel/UCCUXJLya69B7qZ0gQ3oh62Q')">
+                <span>YUKOV Circle Music</span>
+                <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
+            </div>
+
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">System</div>
+            <div class="nav-item p-3 rounded-r-lg" onclick="showInfo(this)">Info</div>
+        </nav>
+
+        <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
+            <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
+                SYS: VISQUET_ENGINE_v4.3 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">LIVE</span>
+            </div>
+            <button onclick="adminRefresh()" title="Admin Sync" class="text-gray-800 hover:text-blue-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="refresh-icon"><path d="M21 2v6h-6"></path><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M3 22v-6h6"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path></svg>
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-grow p-6 md:p-12">
+        <header id="main-header" class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+            <div>
+                <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All</h2>
+                <p class="text-xs text-gray-500 font-mono mt-1" id="video-count">SYNCING...</p>
+            </div>
+            <div class="relative w-full md:w-80">
+                <input type="text" id="search-input" placeholder="Search videos..." 
+                    class="w-full bg-gray-900 border border-gray-800 rounded-full py-2.5 px-10 text-sm focus:outline-none focus:border-blue-500 transition">
+            </div>
+        </header>
+
+        <div id="content-area">
+            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>
+        </div>
+    </main>
+
+    <script>
+        const _p = ["AIzaSyDJp4ScPw5", "IdxN_fXHM_9-HTdk", "IQqIaGYA"];
+        const CHANNELS = {
+            all: "PLFwaKLYOusMH0hzaCSrFlQqWi0slWAk68",
+            music: "PLFwaKLYOusMHXH9-xDJGaugVQwUG8UEyc",
+            games: "PLFwaKLYOusME67qhyw4mGzt_QN-868NR0",
+            popular: "PLFwaKLYOusMFeZgiAOrZzxztXm_pCR0E5"
+        };
+        const CACHE_TIME = 86400 * 1000;
+        let currentVideos = [];
+        let currentKey = 'all';
+
+        async function switchCategory(key, element) {
+            currentKey = key;
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('main-header').style.display = 'flex';
+            document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
+            loadVideos(CHANNELS[key], key);
+        }
+
+        // 管理者用：認証コード付き強制更新
+        async function adminRefresh() {
+            const code = prompt("Enter Admin Authorization Code:");
+            if (code === "20062006") {
+                const icon = document.getElementById('refresh-icon');
+                icon.classList.add('animate-spin-once');
+                
+                console.log(`Authorization Success. Purging cache for: ${currentKey}`);
+                localStorage.removeItem(`visquet_cache_${currentKey}`);
+                
+                setTimeout(() => {
+                    loadVideos(CHANNELS[currentKey], currentKey);
+                    icon.classList.remove('animate-spin-once');
+                }, 800);
+            } else if (code !== null) {
+                alert("Authorization Failed: Invalid Code.");
+            }
+        }
+
+        async function loadVideos(playlistId, cacheKey) {
+            const grid = document.getElementById('grid');
+            const now = Date.now();
+            
+            const cachedData = localStorage.getItem(`visquet_cache_${cacheKey}`);
+            if (cachedData) {
+                const { timestamp, items } = JSON.parse(cachedData);
+                if (now - timestamp < CACHE_TIME) {
+                    currentVideos = items;
+                    renderVideos(currentVideos);
+                    document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (CACHED)`;
+                    return;
+                }
+            }
+
+            grid.innerHTML = '<div class="col-span-full text-center py-24 font-mono text-gray-800 tracking-[0.5em] text-xs">INITIALIZING_SYNC...</div>';
+            try {
+                const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}&key=${_p.join('')}`);
+                const data = await res.json();
+                
+                if (data.items) {
+                    currentVideos = data.items;
+                    localStorage.setItem(`visquet_cache_${cacheKey}`, JSON.stringify({
+                        timestamp: now,
+                        items: currentVideos
+                    }));
+                    renderVideos(currentVideos);
+                    document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (LIVE)`;
+                }
+            } catch (err) {
+                grid.innerHTML = `<p class="text-red-900 font-mono text-center col-span-full uppercase tracking-widest text-xs py-20">Sync Error: ${err.message}</p>`;
+            }
+        }
+
+        function renderVideos(videos) {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = videos.map(v => `
+                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl" onclick="window.open('https://youtu.be/${v.snippet.resourceId.videoId}')">
+                    <div class="relative group">
+                        <img src="${v.snippet.thumbnails.high.url}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
+                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-300 leading-relaxed tracking-wide">${v.snippet.title}</h3>
+                        <div class="mt-4 flex justify-between items-center text-[8px] text-gray-600 font-mono uppercase tracking-tighter">
+                             <span>${new Date(v.snippet.publishedAt).toLocaleDateString()}</span>
+                             <span>ID: ${v.contentDetails.videoId}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showInfo(element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('main-header').style.display = 'none';
+            document.getElementById('content-area').innerHTML = `
+                <div class="max-w-2xl mx-auto space-y-10 py-10 animate-fade-in">
+                    <section class="info-card p-8 rounded-2xl">
+                        <h3 class="text-sm text-gray-500 uppercase tracking-widest mb-6 font-mono">/ Info</h3>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Version Info</h4>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.3 (Secure Sync) // Build 2026.04</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
+                                <ul class="text-sm text-gray-400 space-y-2 font-medium">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Richard</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> YUKOV Circle Music</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> 藤村拓真 / フジタク</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Riz</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="info-card p-8 rounded-2xl flex items-center gap-6 border-l-4 border-l-blue-600">
+                        <svg viewBox="0 0 24 24" class="icon-nakrel-n" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 19L6 5M18 19L18 5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M8.5 7.5L15.5 16.5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        <div>
+                            <h4 class="text-[10px] text-gray-500 uppercase tracking-[0.3em] mb-1 font-mono">Operated Label</h4>
+                            <div class="text-2xl font-bold text-white tracking-tighter">NAKREL Studio</div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            renderVideos(currentVideos.filter(v => v.snippet.title.toLowerCase().includes(query)));
+        });
+
+        loadVideos(CHANNELS.all, 'all');
+    </script>
+</body>
+</html>
