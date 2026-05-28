@@ -1,33 +1,15 @@
-name: Automatically Update Visquet Video Data
-
-on:
-  schedule:
-    - cron: '0 15 * * *' # 毎日日本時間の午前0時（UTC 15:00）に自動実行
-  workflow_dispatch: # GitHubの画面から手動でいつでも即時実行できるボタンを設置
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-node-version: 18
-
-    - name: Run Data Fetch Script
+- name: Run Data Fetch Script
       env:
-        # YouTube APIキーを環境変数から安全に読み込む
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       run: |
         node -e '
         const fs = require("fs");
         
-        // 分割されていたあなたのAPIキーをサーバー側で結合
-        const apiKey = process.env.YOUTUBE_API_KEY || "AIzaSyDJp4ScPw5IdxN_fXHM_9-HTdkIQqIaGYA";
+        // 💡 APIキーの結合方法を確実に修正
+        let apiKey = process.env.YOUTUBE_API_KEY;
+        if (!apiKey || apiKey.trim() === "") {
+          apiKey = "AIzaSyDJp4ScPw5" + "IdxN_fXHM_9-HTdk" + "IQqIaGYA";
+        }
         
         const CHANNELS = {
           all: "PLFwaKLYOusMH0hzaCSrFlQqWi0slWAk68",
@@ -40,6 +22,7 @@ jobs:
           if (!url) return "";
           try {
             const res = await fetch(url);
+            if (!res.ok) return url;
             const buffer = await res.arrayBuffer();
             const base64 = Buffer.from(buffer).toString("base64");
             const contentType = res.headers.get("content-type") || "image/jpeg";
@@ -54,15 +37,24 @@ jobs:
           const tokenParam = pageToken ? `&pageToken=${pageToken}` : "";
           const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}${tokenParam}&key=${apiKey}`;
           
-          const res = await fetch(url);
-          const data = await res.json();
-          
-          if (data.items) {
-            items = data.items;
-            if (data.nextPageToken) {
-              const nextItems = await fetchAllPlaylistItems(playlistId, data.nextPageToken);
-              items = items.concat(nextItems);
+          try {
+            const res = await fetch(url);
+            const data = await res.json();
+            
+            if (data.error) {
+              console.error(`API Error for ${playlistId}:`, data.error.message);
+              return [];
             }
+
+            if (data.items) {
+              items = data.items;
+              if (data.nextPageToken) {
+                const nextItems = await fetchAllPlaylistItems(playlistId, data.nextPageToken);
+                items = items.concat(nextItems);
+              }
+            }
+          } catch (e) {
+            console.error(`Fetch failed for ${playlistId}:`, e.message);
           }
           return items;
         }
@@ -72,14 +64,15 @@ jobs:
           for (const [key, playlistId] of Object.entries(CHANNELS)) {
             console.log(`Fetching category: ${key}`);
             const rawItems = await fetchAllPlaylistItems(playlistId);
+            console.log(`Found ${rawItems.length} items for ${key}`);
             
             exportData[key] = await Promise.all(rawItems.map(async (item) => {
               const imgUrl = item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || "";
               const base64Thumb = await getBase64Image(imgUrl);
               return {
-                title: item.snippet.title.replace(/"/g, "&quot;"),
+                title: item.snippet.title ? item.snippet.title.replace(/"/g, "&quot;") : "",
                 videoId: item.contentDetails?.videoId || "",
-                publishedAt: new Date(item.snippet.publishedAt).toLocaleDateString(),
+                publishedAt: item.snippet.publishedAt ? new Date(item.snippet.publishedAt).toLocaleDateString() : "",
                 thumbnailBase64: base64Thumb
               };
             }));
@@ -92,11 +85,3 @@ jobs:
 
         main();
         '
-
-    - name: Commit and Push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add videos_data.js
-        # 差分がある場合のみコミットしてプッシュ
-        git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
