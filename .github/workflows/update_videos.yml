@@ -1,0 +1,102 @@
+name: Automatically Update Visquet Video Data
+
+on:
+  schedule:
+    - cron: '0 15 * * *' # 毎日日本時間の午前0時（UTC 15:00）に自動実行
+  workflow_dispatch: # GitHubの画面から手動でいつでも即時実行できるボタンを設置
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-node-version: 18
+
+    - name: Run Data Fetch Script
+      env:
+        # YouTube APIキーを環境変数から安全に読み込む
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      run: |
+        node -e '
+        const fs = require("fs");
+        
+        // 分割されていたあなたのAPIキーをサーバー側で結合
+        const apiKey = process.env.YOUTUBE_API_KEY || "AIzaSyDJp4ScPw5IdxN_fXHM_9-HTdkIQqIaGYA";
+        
+        const CHANNELS = {
+          all: "PLFwaKLYOusMH0hzaCSrFlQqWi0slWAk68",
+          music: "PLFwaKLYOusMHXH9-xDJGaugVQwUG8UEyc",
+          games: "PLFwaKLYOusME67qhyw4mGzt_QN-868NR0",
+          popular: "PLFwaKLYOusMFeZgiAOrZzxztXm_pCR0E5"
+        };
+
+        async function getBase64Image(url) {
+          if (!url) return "";
+          try {
+            const res = await fetch(url);
+            const buffer = await res.arrayBuffer();
+            const base64 = Buffer.from(buffer).toString("base64");
+            const contentType = res.headers.get("content-type") || "image/jpeg";
+            return `data:${contentType};base64,${base64}`;
+          } catch (e) {
+            return url;
+          }
+        }
+
+        async function fetchAllPlaylistItems(playlistId, pageToken = "") {
+          let items = [];
+          const tokenParam = pageToken ? `&pageToken=${pageToken}` : "";
+          const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}${tokenParam}&key=${apiKey}`;
+          
+          const res = await fetch(url);
+          const data = await res.json();
+          
+          if (data.items) {
+            items = data.items;
+            if (data.nextPageToken) {
+              const nextItems = await fetchAllPlaylistItems(playlistId, data.nextPageToken);
+              items = items.concat(nextItems);
+            }
+          }
+          return items;
+        }
+
+        async function main() {
+          const exportData = {};
+          for (const [key, playlistId] of Object.entries(CHANNELS)) {
+            console.log(`Fetching category: ${key}`);
+            const rawItems = await fetchAllPlaylistItems(playlistId);
+            
+            exportData[key] = await Promise.all(rawItems.map(async (item) => {
+              const imgUrl = item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || "";
+              const base64Thumb = await getBase64Image(imgUrl);
+              return {
+                title: item.snippet.title.replace(/"/g, "&quot;"),
+                videoId: item.contentDetails?.videoId || "",
+                publishedAt: new Date(item.snippet.publishedAt).toLocaleDateString(),
+                thumbnailBase64: base64Thumb
+              };
+            }));
+          }
+
+          const fileContent = `/**\n * Visquet Static Archive Data Source\n * Generated: ${new Date().toLocaleString()}\n */\nconst VISQUET_ARCHIVE_DATA = ${JSON.stringify(exportData, null, 2)};`;
+          fs.writeFileSync("videos_data.js", fileContent);
+          console.log("videos_data.js has been successfully built!");
+        }
+
+        main();
+        '
+
+    - name: Commit and Push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add videos_data.js
+        # 差分がある場合のみコミットしてプッシュ
+        git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
