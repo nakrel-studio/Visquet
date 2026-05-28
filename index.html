@@ -8,7 +8,9 @@
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="videos_data.js"></script>
+    <script>
+        document.write('<script src="videos_data.js?v=' + new Date().getTime() + '"><\/script>');
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
         body { background-color: #0d0d0f; color: #e1e1e6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
