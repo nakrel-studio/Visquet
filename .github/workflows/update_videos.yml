@@ -1,11 +1,30 @@
-- name: Run Data Fetch Script
+name: Automatically Update Visquet Video Data
+
+on:
+  schedule:
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Run Data Fetch Script
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       run: |
         node -e '
         const fs = require("fs");
         
-        // 💡 APIキーの結合方法を確実に修正
         let apiKey = process.env.YOUTUBE_API_KEY;
         if (!apiKey || apiKey.trim() === "") {
           apiKey = "AIzaSyDJp4ScPw5" + "IdxN_fXHM_9-HTdk" + "IQqIaGYA";
@@ -85,3 +104,10 @@
 
         main();
         '
+
+    - name: Commit and Push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add videos_data.js
+        git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
