@@ -40,14 +40,19 @@ jobs:
         async function getBase64Image(url) {
           if (!url) return "";
           try {
-            const res = await fetch(url);
+            // 💡 Googleのブロックを回避するためにブラウザを偽装するヘッダーを追加
+            const res = await fetch(url, {
+              headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+              }
+            });
             if (!res.ok) return url;
             const buffer = await res.arrayBuffer();
             const base64 = Buffer.from(buffer).toString("base64");
             const contentType = res.headers.get("content-type") || "image/jpeg";
             return `data:${contentType};base64,${base64}`;
           } catch (e) {
-            return url;
+            return url; // 💡 万が一画像変換に失敗しても、URLを生かして処理を続行させる
           }
         }
 
@@ -86,12 +91,19 @@ jobs:
             console.log(`Found ${rawItems.length} items for ${key}`);
             
             exportData[key] = await Promise.all(rawItems.map(async (item) => {
-              const imgUrl = item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || "";
-              const base64Thumb = await getBase64Image(imgUrl);
+              const snippet = item.snippet || {};
+              const contentDetails = item.contentDetails || {};
+              
+              // サムネイルURLの安全な抽出
+              const imgUrl = snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
+              
+              // 画像のダウンロード処理
+              const base64Thumb = imgUrl ? await getBase64Image(imgUrl) : "";
+              
               return {
-                title: item.snippet.title ? item.snippet.title.replace(/"/g, "&quot;") : "",
-                videoId: item.contentDetails?.videoId || "",
-                publishedAt: item.snippet.publishedAt ? new Date(item.snippet.publishedAt).toLocaleDateString() : "",
+                title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
+                videoId: contentDetails.videoId || snippet.resourceId?.videoId || "",
+                publishedAt: snippet.publishedAt ? new Date(snippet.publishedAt).toLocaleDateString() : "",
                 thumbnailBase64: base64Thumb
               };
             }));
