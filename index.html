@@ -61,7 +61,7 @@
     <main class="flex-grow p-6 md:p-12">
         <header id="main-header" class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
             <div>
-                <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All</h2>
+                <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All Works</h2>
                 <p class="text-xs text-gray-500 font-mono mt-1" id="video-count">LOADING...</p>
             </div>
             <div class="relative w-full md:w-80">
@@ -76,8 +76,19 @@
     </main>
 
     <script>
-        let currentVideos = [];
+        // --- 状態管理変数 ---
+        let currentRawVideos = []; // 選択中のカテゴリの生データ（検索のベース）
+        let filteredVideos = [];   // 検索フィルタ適用後の動画リスト
+        let displayedCount = 0;    // 現在画面に描画済みの本数
+        const ITEMS_PER_PAGE = 50; // 1ページあたりに小出しにする件数
         let currentKey = 'all';
+
+        // 初期ロード設定
+        document.addEventListener("DOMContentLoaded", () => {
+            loadVideosFromStaticFile('all');
+            window.addEventListener('scroll', handleScroll);
+            setupSearchEngine();
+        });
 
         // 1. カテゴリ切り替え
         function switchCategory(key, element) {
@@ -86,17 +97,18 @@
             element.classList.add('active');
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
-            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
+            
+            // 検索入力をリセット
             document.getElementById('search-input').value = '';
             
             loadVideosFromStaticFile(key);
         }
 
-        // 2. 自動生成されたJSデータファイルから動画を瞬時にロード（API通信は一切なし）
+        // 2. ローカルJSファイルからデータを読み込み
         function loadVideosFromStaticFile(key) {
             const grid = document.getElementById('grid');
             
-            // データファイルが存在しない、またはカテゴリが空の場合の安全弁
+            // データ未定義または空の場合の安全弁
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-700 text-xs uppercase tracking-widest">
@@ -107,20 +119,42 @@
                 return;
             }
 
-            currentVideos = VISQUET_ARCHIVE_DATA[key];
-            renderVideos(currentVideos);
-            document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (ARCHIVED)`;
+            // データをセット
+            currentRawVideos = VISQUET_ARCHIVE_DATA[key];
+            filteredVideos = [...currentRawVideos]; // 初期状態は全件
+            
+            // 表示リセットして最初のチャンクを描画
+            resetAndRender();
         }
 
-        // 3. 動画カードレンダリング（Base64形式のローカル画像を使用）
-        function renderVideos(videos) {
+        // 3. 画面描画状態のリセットと初期描画
+        function resetAndRender() {
+            displayedCount = 0;
             const grid = document.getElementById('grid');
-            if (videos.length === 0) {
+            if (grid) grid.innerHTML = '';
+            
+            if (filteredVideos.length === 0) {
                 grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-xs uppercase">NO_ITEMS_FOUND</div>`;
+                document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
                 return;
             }
-            grid.innerHTML = videos.map(v => `
-                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl" onclick="window.open('https://youtu.be/${v.videoId}')">
+
+            // 最初の12本を投入
+            loadNextChunk();
+            updateItemCountMessage();
+        }
+
+        // 4. 動画カードを小出し（12本ずつ）に生成する核心関数
+        function loadNextChunk() {
+            const grid = document.getElementById('grid');
+            if (!grid || displayedCount >= filteredVideos.length) return;
+
+            // 次に描画する分を切り出し
+            const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
+            
+            // HTMLを組み立てて追加
+            const htmlString = chunk.map(v => `
+                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="window.open('https://youtu.be/${v.videoId}')">
                     <div class="relative group">
                         <img src="${v.thumbnailBase64}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
@@ -134,17 +168,59 @@
                     </div>
                 </div>
             `).join('');
+
+            grid.insertAdjacentHTML('beforeend', htmlString);
+            displayedCount += chunk.length;
         }
 
-        // リアルタイム検索
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = currentVideos.filter(v => v.title.toLowerCase().includes(query));
-            renderVideos(filtered);
-            document.getElementById('video-count').innerText = `FOUND: ${filtered.length} / TOTAL: ${currentVideos.length}`;
-        });
+        // 5. 無限スクロールのセンサー（画面最下部を検知）
+        function handleScroll() {
+            // Info画面などの時は動作をスキップ
+            const grid = document.getElementById('grid');
+            if (!grid) return;
 
-        // インフォメーション表示
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            // 画面底から150px手前に来たら次のチャンクをロード
+            if (scrollTop + clientHeight >= scrollHeight - 150) {
+                loadNextChunk();
+            }
+        }
+
+        // 6. 超高速・超精密なリアルタイム検索エンジン
+        function setupSearchEngine() {
+            const searchInput = document.getElementById('search-input');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query === '') {
+                    filteredVideos = [...currentRawVideos];
+                } else {
+                    // まだ見えていない動画（インデックス外のデータ）もここですべてスキャン
+                    filteredVideos = currentRawVideos.filter(v => 
+                        v.title.toLowerCase().includes(query) || 
+                        v.videoId.toLowerCase().includes(query)
+                    );
+                }
+                
+                resetAndRender();
+            });
+        }
+
+        // 7. アイテム件数の表示メッセージを最適化
+        function updateItemCountMessage() {
+            const countEl = document.getElementById('video-count');
+            if (!countEl) return;
+
+            if (currentRawVideos.length === filteredVideos.length) {
+                countEl.innerText = `ITEMS: ${currentRawVideos.length} (ARCHIVED)`;
+            } else {
+                countEl.innerText = `FOUND: ${filteredVideos.length} / TOTAL: ${currentRawVideos.length}`;
+            }
+        }
+
+        // インフォメーション表示（既存デザイン完全維持）
         function showInfo(element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
@@ -156,7 +232,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 (Static Engine) // Build 2026.05</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 </p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
@@ -182,11 +258,6 @@
                 </div>
             `;
         }
-
-        // 初期実行
-        document.addEventListener("DOMContentLoaded", () => {
-            loadVideosFromStaticFile('all');
-        });
     </script>
 </body>
 </html>
