@@ -76,39 +76,41 @@
     </main>
 
     <script>
-        // --- 状態管理変数 ---
-        let currentRawVideos = []; // 選択中のカテゴリの生データ（検索のベース）
-        let filteredVideos = [];   // 検索フィルタ適用後の動画リスト
-        let displayedCount = 0;    // 現在画面に描画済みの本数
-        const ITEMS_PER_PAGE = 12; // 1ページあたりに小出しにする件数
+        // 状態管理
+        let currentRawVideos = []; // 選択中のカテゴリの生データ全件（検索スキャン用）
+        let filteredVideos = [];   // 検索条件適用後のデータリスト
+        let displayedCount = 0;    // 現在画面にレンダリング済みの本数
+        const ITEMS_PER_PAGE = 12; // 1ページ（1スクロール）あたりに出す動画カード数
         let currentKey = 'all';
 
-        // 初期ロード設定
+        // ページ読み込み完了時のエントリーポイント
         document.addEventListener("DOMContentLoaded", () => {
             loadVideosFromStaticFile('all');
             window.addEventListener('scroll', handleScroll);
             setupSearchEngine();
         });
 
-        // 1. カテゴリ切り替え
+        // 1. カテゴリ切り替え（Infoの残骸を完全に破壊して初期化するよう修正）
         function switchCategory(key, element) {
             currentKey = key;
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
+            
+            // ヘッダーエリアを確実に表示状態に戻す
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
             
-            // 検索入力をリセット
+            // 💡 Info画面を完全に消滅させ、更地から新しく動画用のgridコンテナを注入
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
             document.getElementById('search-input').value = '';
             
             loadVideosFromStaticFile(key);
         }
 
-        // 2. ローカルJSファイルからデータを読み込み
+        // 2. staticデータファイルからデータを高速ロード
         function loadVideosFromStaticFile(key) {
             const grid = document.getElementById('grid');
             
-            // データ未定義または空の場合の安全弁
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-700 text-xs uppercase tracking-widest">
@@ -119,40 +121,36 @@
                 return;
             }
 
-            // データをセット
             currentRawVideos = VISQUET_ARCHIVE_DATA[key];
-            filteredVideos = [...currentRawVideos]; // 初期状態は全件
+            filteredVideos = [...currentRawVideos]; // 初期ロード時は全件をターゲットにする
             
-            // 表示リセットして最初のチャンクを描画
             resetAndRender();
         }
 
-        // 3. 画面描画状態のリセットと初期描画
+        // 3. レんだリング状態の初期化
         function resetAndRender() {
             displayedCount = 0;
             const grid = document.getElementById('grid');
             if (grid) grid.innerHTML = '';
             
             if (filteredVideos.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-xs uppercase">NO_ITEMS_FOUND</div>`;
+                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-xs uppercase">NO_ITEMS_FOUND</div>`;
                 document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
                 return;
             }
 
-            // 最初の12本を投入
+            // 最初の12本を表示
             loadNextChunk();
             updateItemCountMessage();
         }
 
-        // 4. 動画カードを小出し（12本ずつ）に生成する核心関数
+        // 4. 動画を12本ずつ小出しにレンダリングする関数（無限スクロール・検索共通）
         function loadNextChunk() {
             const grid = document.getElementById('grid');
             if (!grid || displayedCount >= filteredVideos.length) return;
 
-            // 次に描画する分を切り出し
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             
-            // HTMLを組み立てて追加
             const htmlString = chunk.map(v => `
                 <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="window.open('https://youtu.be/${v.videoId}')">
                     <div class="relative group">
@@ -173,20 +171,18 @@
             displayedCount += chunk.length;
         }
 
-        // 5. 無限スクロールのセンサー（画面最下部を検知）
+        // 5. 無限スクロールのトリガーセンサー
         function handleScroll() {
-            // Info画面などの時は動作をスキップ
             const grid = document.getElementById('grid');
-            if (!grid) return;
+            if (!grid) return; // Info画面の時はスクロール処理をバイパスする
 
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-            // 画面底から150px手前に来たら次のチャンクをロード
             if (scrollTop + clientHeight >= scrollHeight - 150) {
                 loadNextChunk();
             }
         }
 
-        // 6. 超高速・超精密なリアルタイム検索エンジン
+        // 6. ローカル検索エンジン（非表示の動画データも一瞬で全検索）
         function setupSearchEngine() {
             const searchInput = document.getElementById('search-input');
             if (!searchInput) return;
@@ -197,7 +193,6 @@
                 if (query === '') {
                     filteredVideos = [...currentRawVideos];
                 } else {
-                    // まだ見えていない動画（インデックス外のデータ）もここですべてスキャン
                     filteredVideos = currentRawVideos.filter(v => 
                         v.title.toLowerCase().includes(query) || 
                         v.videoId.toLowerCase().includes(query)
@@ -208,7 +203,7 @@
             });
         }
 
-        // 7. アイテム件数の表示メッセージを最適化
+        // 7. アイテム件数ヘッダー表示の最適化
         function updateItemCountMessage() {
             const countEl = document.getElementById('video-count');
             if (!countEl) return;
@@ -220,11 +215,12 @@
             }
         }
 
-        // インフォメーション表示（既存デザイン完全維持）
+        // 8. インフォメーション表示（確実にcontent-areaそのものを書き換える仕様に統一）
         function showInfo(element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             document.getElementById('main-header').style.display = 'none';
+            
             document.getElementById('content-area').innerHTML = `
                 <div class="max-w-2xl mx-auto space-y-10 py-10 animate-fade-in">
                     <section class="info-card p-8 rounded-2xl">
