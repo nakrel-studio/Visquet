@@ -8,6 +8,7 @@
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="videos_data.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
         body { background-color: #0d0d0f; color: #e1e1e6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -22,8 +23,6 @@
         .icon-nakrel-n { width: 40px; height: 40px; flex-shrink: 0; }
         .animate-fade-in { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .animate-spin-once { animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="flex min-h-screen">
@@ -54,11 +53,8 @@
 
         <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
             <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_ENGINE_v4.3 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">LIVE</span>
+                SYS: VISQUET_ENGINE_v4.4 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
             </div>
-            <button onclick="adminRefresh()" title="Admin Sync" class="text-gray-800 hover:text-blue-500 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="refresh-icon"><path d="M21 2v6h-6"></path><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M3 22v-6h6"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path></svg>
-            </button>
         </div>
     </aside>
 
@@ -66,7 +62,7 @@
         <header id="main-header" class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
             <div>
                 <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All</h2>
-                <p class="text-xs text-gray-500 font-mono mt-1" id="video-count">SYNCING...</p>
+                <p class="text-xs text-gray-500 font-mono mt-1" id="video-count">LOADING...</p>
             </div>
             <div class="relative w-full md:w-80">
                 <input type="text" id="search-input" placeholder="Search videos..." 
@@ -80,99 +76,75 @@
     </main>
 
     <script>
-        const _p = ["AIzaSyDJp4ScPw5", "IdxN_fXHM_9-HTdk", "IQqIaGYA"];
-        const CHANNELS = {
-            all: "PLFwaKLYOusMH0hzaCSrFlQqWi0slWAk68",
-            music: "PLFwaKLYOusMHXH9-xDJGaugVQwUG8UEyc",
-            games: "PLFwaKLYOusME67qhyw4mGzt_QN-868NR0",
-            popular: "PLFwaKLYOusMFeZgiAOrZzxztXm_pCR0E5"
-        };
-        const CACHE_TIME = 86400 * 1000;
         let currentVideos = [];
         let currentKey = 'all';
 
-        async function switchCategory(key, element) {
+        // 1. カテゴリ切り替え
+        function switchCategory(key, element) {
             currentKey = key;
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
             document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
-            loadVideos(CHANNELS[key], key);
-        }
-
-        // 管理者用：認証コード付き強制更新
-        async function adminRefresh() {
-            const code = prompt("Enter Admin Authorization Code:");
-            if (code === "20062006") {
-                const icon = document.getElementById('refresh-icon');
-                icon.classList.add('animate-spin-once');
-                
-                console.log(`Authorization Success. Purging cache for: ${currentKey}`);
-                localStorage.removeItem(`visquet_cache_${currentKey}`);
-                
-                setTimeout(() => {
-                    loadVideos(CHANNELS[currentKey], currentKey);
-                    icon.classList.remove('animate-spin-once');
-                }, 800);
-            } else if (code !== null) {
-                alert("Authorization Failed: Invalid Code.");
-            }
-        }
-
-        async function loadVideos(playlistId, cacheKey) {
-            const grid = document.getElementById('grid');
-            const now = Date.now();
+            document.getElementById('search-input').value = '';
             
-            const cachedData = localStorage.getItem(`visquet_cache_${cacheKey}`);
-            if (cachedData) {
-                const { timestamp, items } = JSON.parse(cachedData);
-                if (now - timestamp < CACHE_TIME) {
-                    currentVideos = items;
-                    renderVideos(currentVideos);
-                    document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (CACHED)`;
-                    return;
-                }
-            }
-
-            grid.innerHTML = '<div class="col-span-full text-center py-24 font-mono text-gray-800 tracking-[0.5em] text-xs">INITIALIZING_SYNC...</div>';
-            try {
-                const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}&key=${_p.join('')}`);
-                const data = await res.json();
-                
-                if (data.items) {
-                    currentVideos = data.items;
-                    localStorage.setItem(`visquet_cache_${cacheKey}`, JSON.stringify({
-                        timestamp: now,
-                        items: currentVideos
-                    }));
-                    renderVideos(currentVideos);
-                    document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (LIVE)`;
-                }
-            } catch (err) {
-                grid.innerHTML = `<p class="text-red-900 font-mono text-center col-span-full uppercase tracking-widest text-xs py-20">Sync Error: ${err.message}</p>`;
-            }
+            loadVideosFromStaticFile(key);
         }
 
+        // 2. 自動生成されたJSデータファイルから動画を瞬時にロード（API通信は一切なし）
+        function loadVideosFromStaticFile(key) {
+            const grid = document.getElementById('grid');
+            
+            // データファイルが存在しない、またはカテゴリが空の場合の安全弁
+            if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-24 font-mono text-gray-700 text-xs uppercase tracking-widest">
+                        [ ARCHIVE_OFFLINE ]<br><br>
+                        <span class="text-gray-500 text-[10px]">現在メンテナンス中か、データ同期の準備中です。</span>
+                    </div>`;
+                document.getElementById('video-count').innerText = `ITEMS: 0`;
+                return;
+            }
+
+            currentVideos = VISQUET_ARCHIVE_DATA[key];
+            renderVideos(currentVideos);
+            document.getElementById('video-count').innerText = `ITEMS: ${currentVideos.length} (ARCHIVED)`;
+        }
+
+        // 3. 動画カードレンダリング（Base64形式のローカル画像を使用）
         function renderVideos(videos) {
             const grid = document.getElementById('grid');
+            if (videos.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-xs uppercase">NO_ITEMS_FOUND</div>`;
+                return;
+            }
             grid.innerHTML = videos.map(v => `
-                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl" onclick="window.open('https://youtu.be/${v.snippet.resourceId.videoId}')">
+                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl" onclick="window.open('https://youtu.be/${v.videoId}')">
                     <div class="relative group">
-                        <img src="${v.snippet.thumbnails.high.url}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
+                        <img src="${v.thumbnailBase64}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-300 leading-relaxed tracking-wide">${v.snippet.title}</h3>
+                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
                         <div class="mt-4 flex justify-between items-center text-[8px] text-gray-600 font-mono uppercase tracking-tighter">
-                             <span>${new Date(v.snippet.publishedAt).toLocaleDateString()}</span>
-                             <span>ID: ${v.contentDetails.videoId}</span>
+                             <span>${v.publishedAt}</span>
+                             <span>ID: ${v.videoId}</span>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
+        // リアルタイム検索
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = currentVideos.filter(v => v.title.toLowerCase().includes(query));
+            renderVideos(filtered);
+            document.getElementById('video-count').innerText = `FOUND: ${filtered.length} / TOTAL: ${currentVideos.length}`;
+        });
+
+        // インフォメーション表示
         function showInfo(element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
@@ -184,7 +156,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.3 (Secure Sync) // Build 2026.04</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 (Static Engine) // Build 2026.05</p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
@@ -211,12 +183,10 @@
             `;
         }
 
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            renderVideos(currentVideos.filter(v => v.snippet.title.toLowerCase().includes(query)));
+        // 初期実行
+        document.addEventListener("DOMContentLoaded", () => {
+            loadVideosFromStaticFile('all');
         });
-
-        loadVideos(CHANNELS.all, 'all');
     </script>
 </body>
 </html>
