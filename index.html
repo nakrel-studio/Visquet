@@ -153,10 +153,11 @@
 
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             
+            // 💡 【修正ポイント】srcを Base64データ から thumbnails フォルダ内の jpg へのパスに変更
             const htmlString = chunk.map(v => `
                 <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="window.open('https://youtu.be/${v.videoId}')">
                     <div class="relative group">
-                        <img src="${v.thumbnailBase64}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
+                        <img src="./thumbnails/${v.videoId}.jpg" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                     <div class="p-5">
@@ -230,7 +231,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 (Static Engine) // Build 2026.05</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 </p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
