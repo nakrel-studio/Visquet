@@ -24,6 +24,7 @@ jobs:
       run: |
         node -e '
         const fs = require("fs");
+        const path = require("path");
         
         let apiKey = process.env.YOUTUBE_API_KEY;
         if (!apiKey || apiKey.trim() === "") {
@@ -37,22 +38,36 @@ jobs:
           popular: "PLFwaKLYOusMFeZgiAOrZzxztXm_pCR0E5"
         };
 
-        async function getBase64Image(url) {
-          if (!url) return "";
+        // 💡 画像を保存するフォルダを自動作成
+        const IMAGE_DIR = "thumbnails";
+        if (!fs.existsSync(IMAGE_DIR)){
+          fs.mkdirSync(IMAGE_DIR);
+        }
+
+        // 💡 解決策B：手元にない画像だけを個別にダウンロードする関数
+        async function downloadThumbnailIfNeeded(videoId, url) {
+          if (!url || !videoId) return;
+          const imagePath = path.join(IMAGE_DIR, `${videoId}.jpg`);
+          
+          // すでに手元に画像があるならダウンロードを完全にスキップ（通信ゼロ＝安全）
+          if (fs.existsSync(imagePath)) {
+            console.log(`[SKIPPED] Already exists: ${videoId}`);
+            return;
+          }
+
           try {
-            // 💡 Googleのブロックを回避するためにブラウザを偽装するヘッダーを追加
+            // 新曲の画像だけを、ブラウザを偽装して1回だけ取得
             const res = await fetch(url, {
               headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
               }
             });
-            if (!res.ok) return url;
+            if (!res.ok) return;
             const buffer = await res.arrayBuffer();
-            const base64 = Buffer.from(buffer).toString("base64");
-            const contentType = res.headers.get("content-type") || "image/jpeg";
-            return `data:${contentType};base64,${base64}`;
+            fs.writeFileSync(imagePath, Buffer.from(buffer));
+            console.log(`[DOWNLOADED] Thumbnail for: ${videoId}`);
           } catch (e) {
-            return url; // 💡 万が一画像変換に失敗しても、URLを生かして処理を続行させる
+            console.error(`[ERROR] Failed to download thumbnail ${videoId}:`, e.message);
           }
         }
 
@@ -90,23 +105,26 @@ jobs:
             const rawItems = await fetchAllPlaylistItems(playlistId);
             console.log(`Found ${rawItems.length} items for ${key}`);
             
-            exportData[key] = await Promise.all(rawItems.map(async (item) => {
+            exportData[key] = [];
+            for (const item of rawItems) {
               const snippet = item.snippet || {};
               const contentDetails = item.contentDetails || {};
+              const videoId = contentDetails.videoId || snippet.resourceId?.videoId || "";
               
-              // サムネイルURLの安全な抽出
-              const imgUrl = snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
-              
-              // 画像のダウンロード処理
-              const base64Thumb = imgUrl ? await getBase64Image(imgUrl) : "";
-              
-              return {
-                title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
-                videoId: contentDetails.videoId || snippet.resourceId?.videoId || "",
-                publishedAt: snippet.publishedAt ? new Date(snippet.publishedAt).toLocaleDateString() : "",
-                thumbnailBase64: base64Thumb
-              };
-            }));
+              if (videoId) {
+                const imgUrl = snippet.thumbnails?.maxres?.url || snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
+                
+                // 💡 ここで新しい画像だけを thumbnails/ フォルダへ自動保存
+                await downloadThumbnailIfNeeded(videoId, imgUrl);
+                
+                // 💡 ファイルには画像文字を入れず、純粋なテキスト情報のみを詰め込む（超軽量化）
+                exportData[key].push({
+                  title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
+                  videoId: videoId,
+                  publishedAt: snippet.publishedAt ? snippet.publishedAt.substring(0, 10) : ""
+                });
+              }
+            }
           }
 
           const fileContent = `/**\n * Visquet Static Archive Data Source\n * Generated: ${new Date().toLocaleString()}\n */\nconst VISQUET_ARCHIVE_DATA = ${JSON.stringify(exportData, null, 2)};`;
@@ -121,5 +139,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add videos_data.js
+        # 💡 修正ポイント：新しく生成された thumbnails フォルダ内の .jpg 画像もすべて自動保存の対象に加える
+        git add videos_data.js thumbnails/*.jpg
         git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
