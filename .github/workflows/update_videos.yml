@@ -23,6 +23,7 @@ jobs:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       run: |
         node -e '
+        const fs = require("js");
         const fs = require("fs");
         const path = require("path");
         
@@ -117,11 +118,12 @@ jobs:
                 // 💡 ここで新しい画像だけを thumbnails/ フォルダへ自動保存
                 await downloadThumbnailIfNeeded(videoId, imgUrl);
                 
-                // 💡 ファイルには画像文字を入れず、純粋なテキスト情報のみを詰め込む（超軽量化）
+                // 💡 変更ポイント：タイトル、日付に加えて「概要欄のテキスト（description）」を回収オブジェクトに追記
                 exportData[key].push({
                   title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
                   videoId: videoId,
-                  publishedAt: snippet.publishedAt ? snippet.publishedAt.substring(0, 10) : ""
+                  publishedAt: snippet.publishedAt ? snippet.publishedAt.substring(0, 10) : "",
+                  description: snippet.description ? snippet.description : ""
                 });
               }
             }
@@ -139,6 +141,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        # 💡 修正ポイント：新しく生成された thumbnails フォルダ内の .jpg 画像もすべて自動保存の対象に加える
+        # 💡 新しく生成された thumbnails フォルダ内の .jpg 画像もすべて自動保存の対象に加える
         git add videos_data.js thumbnails/*.jpg
         git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
