@@ -26,10 +26,7 @@ jobs:
         const fs = require("fs");
         const path = require("path");
         
-        let apiKey = process.env.YOUTUBE_API_KEY;
-        if (!apiKey || apiKey.trim() === "") {
-          apiKey = "AIzaSyDJp4ScPw5" + "IdxN_fXHM_9-HTdk" + "IQqIaGYA";
-        }
+      　const apiKey = process.env.YOUTUBE_API_KEY;
         
         const CHANNELS = {
           all: "PLFwaKLYOusMH0hzaCSrFlQqWi0slWAk68",
