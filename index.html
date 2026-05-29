@@ -55,7 +55,7 @@
 
         <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
             <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_ENGINE_v4.5 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
+                SYS: VISQUET_ENGINE_v4.6 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
             </div>
         </div>
     </aside>
@@ -150,12 +150,12 @@
 
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             
-            // 💡 修正＆解決ポイント：画像キャッシュを破壊するためのタイムスタンプを生成
+            // 画像キャッシュを破壊するためのタイムスタンプを生成
             const timestamp = new Date().getTime();
             
-            // 💡 画像パスの末尾に「?v=タイムスタンプ」を付与。これにより通常モードでも絶対に一発で画像が表示されます。
+            // 💡 変更ポイント：onclickイベントの飛び先を YouTube公式から、自身の専用再生ページ「./watch.html?id=動画ID」へ変更
             const htmlString = chunk.map(v => `
-                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="window.open('https://youtu.be/${v.videoId}')">
+                <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
                         <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
@@ -231,7 +231,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.5</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.6 (Static Engine) // Build 2026.05</p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
