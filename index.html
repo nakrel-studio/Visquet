@@ -55,7 +55,7 @@
 
         <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
             <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_ENGINE_v4.4 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
+                SYS: VISQUET_ENGINE_v4.5 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
             </div>
         </div>
     </aside>
@@ -79,10 +79,10 @@
 
     <script>
         // 状態管理
-        let currentRawVideos = []; // 選択中のカテゴリの生データ全件（検索スキャン用）
-        let filteredVideos = [];   // 検索条件適用後のデータリスト
-        let displayedCount = 0;    // 現在画面にレンダリング済みの本数
-        const ITEMS_PER_PAGE = 12; // 1ページ（1スクロール）あたりに出す動画カード数
+        let currentRawVideos = []; 
+        let filteredVideos = [];   
+        let displayedCount = 0;    
+        const ITEMS_PER_PAGE = 12; 
         let currentKey = 'all';
 
         // ページ読み込み完了時のエントリーポイント
@@ -92,17 +92,15 @@
             setupSearchEngine();
         });
 
-        // 1. カテゴリ切り替え（Infoの残骸を完全に破壊して初期化するよう修正）
+        // 1. カテゴリ切り替え
         function switchCategory(key, element) {
             currentKey = key;
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             
-            // ヘッダーエリアを確実に表示状態に戻す
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
             
-            // 💡 Info画面を完全に消滅させ、更地から新しく動画用のgridコンテナを注入
             document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
             document.getElementById('search-input').value = '';
             
@@ -124,12 +122,12 @@
             }
 
             currentRawVideos = VISQUET_ARCHIVE_DATA[key];
-            filteredVideos = [...currentRawVideos]; // 初期ロード時は全件をターゲットにする
+            filteredVideos = [...currentRawVideos]; 
             
             resetAndRender();
         }
 
-        // 3. レんだリング状態の初期化
+        // 3. レンダリング状態の初期化
         function resetAndRender() {
             displayedCount = 0;
             const grid = document.getElementById('grid');
@@ -141,23 +139,25 @@
                 return;
             }
 
-            // 最初の12本を表示
             loadNextChunk();
             updateItemCountMessage();
         }
 
-        // 4. 動画を12本ずつ小出しにレンダリングする関数（無限スクロール・検索共通）
+        // 4. 動画を12本ずつ小出しにレンダリングする関数
         function loadNextChunk() {
             const grid = document.getElementById('grid');
             if (!grid || displayedCount >= filteredVideos.length) return;
 
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             
-            // 💡 【修正ポイント】srcを Base64データ から thumbnails フォルダ内の jpg へのパスに変更
+            // 💡 修正＆解決ポイント：画像キャッシュを破壊するためのタイムスタンプを生成
+            const timestamp = new Date().getTime();
+            
+            // 💡 画像パスの末尾に「?v=タイムスタンプ」を付与。これにより通常モードでも絶対に一発で画像が表示されます。
             const htmlString = chunk.map(v => `
                 <div class="video-card rounded-xl overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="window.open('https://youtu.be/${v.videoId}')">
                     <div class="relative group">
-                        <img src="./thumbnails/${v.videoId}.jpg" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
+                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                     <div class="p-5">
@@ -177,7 +177,7 @@
         // 5. 無限スクロールのトリガーセンサー
         function handleScroll() {
             const grid = document.getElementById('grid');
-            if (!grid) return; // Info画面の時はスクロール処理をバイパスする
+            if (!grid) return; 
 
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
             if (scrollTop + clientHeight >= scrollHeight - 150) {
@@ -185,7 +185,7 @@
             }
         }
 
-        // 6. ローカル検索エンジン（非表示の動画データも一瞬で全検索）
+        // 6. ローカル検索エンジン
         function setupSearchEngine() {
             const searchInput = document.getElementById('search-input');
             if (!searchInput) return;
@@ -218,7 +218,7 @@
             }
         }
 
-        // 8. インフォメーション表示（確実にcontent-areaそのものを書き換える仕様に統一）
+        // 8. インフォメーション表示
         function showInfo(element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
@@ -231,7 +231,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.4 (Static Engine) // Build 2026.05</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.5 (Physical-Asset Engine) // Build 2026.05</p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
