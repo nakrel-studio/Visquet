@@ -63,7 +63,7 @@
     <main class="flex-grow p-6 md:p-12">
         <header id="main-header" class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
             <div>
-                <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All</h2>
+                <h2 id="current-category-name" class="text-2xl font-semibold tracking-tight text-white capitalize">All Works</h2>
                 <p class="text-xs text-gray-500 font-mono mt-1" id="video-count">LOADING...</p>
             </div>
             <div class="relative w-full md:w-80">
@@ -95,11 +95,11 @@
         // 1. カテゴリ切り替え
         function switchCategory(key, element) {
             currentKey = key;
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('Home'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             
             document.getElementById('main-header').style.display = 'flex';
-            document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
+            document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
             
             document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
             document.getElementById('search-input').value = '';
