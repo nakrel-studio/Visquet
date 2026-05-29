@@ -99,7 +99,7 @@
             element.classList.add('active');
             
             document.getElementById('main-header').style.display = 'flex';
-            document.getElementById('current-category-name').innerText = key === 'all' ? 'All Works' : key.replace(/([A-Z])/g, ' $1').trim();
+            document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
             
             document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>';
             document.getElementById('search-input').value = '';
