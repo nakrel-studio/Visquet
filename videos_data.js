@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 5/29/2026, 1:16:36 PM
+ * Generated: 5/29/2026, 1:31:45 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -227,6 +227,12 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：【総集編】魔女の家実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
+      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
+      "videoId": "6Okmqo-KD4Y",
+      "publishedAt": "2026-02-10",
+      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
       "title": "赤ずきんDS 実況　Richard 【乱入実況】",
       "videoId": "pHvqACVL9Jo",
       "publishedAt": "2026-02-10",
@@ -291,12 +297,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "UEMyATKWISg",
       "publishedAt": "2026-02-10",
       "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
-    },
-    {
-      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
-      "videoId": "6Okmqo-KD4Y",
-      "publishedAt": "2026-02-10",
-      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "ひとつよがりの逃避行歌ってみた",
