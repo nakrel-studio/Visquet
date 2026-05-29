@@ -23,7 +23,6 @@ jobs:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       run: |
         node -e '
-        const fs = require("js");
         const fs = require("fs");
         const path = require("path");
         
@@ -39,18 +38,18 @@ jobs:
           popular: "PLFwaKLYOusMFeZgiAOrZzxztXm_pCR0E5"
         };
 
-        // 💡 画像を保存するフォルダを自動作成
+        // 画像を保存するフォルダを自動作成
         const IMAGE_DIR = "thumbnails";
         if (!fs.existsSync(IMAGE_DIR)){
           fs.mkdirSync(IMAGE_DIR);
         }
 
-        // 💡 解決策B：手元にない画像だけを個別にダウンロードする関数
+        // 手元にない画像だけを個別にダウンロードする関数
         async function downloadThumbnailIfNeeded(videoId, url) {
           if (!url || !videoId) return;
           const imagePath = path.join(IMAGE_DIR, `${videoId}.jpg`);
           
-          // すでに手元に画像があるならダウンロードを完全にスキップ（通信ゼロ＝安全）
+          // すでに手元に画像があるならダウンロードを完全にスキップ
           if (fs.existsSync(imagePath)) {
             console.log(`[SKIPPED] Already exists: ${videoId}`);
             return;
@@ -115,10 +114,10 @@ jobs:
               if (videoId) {
                 const imgUrl = snippet.thumbnails?.maxres?.url || snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
                 
-                // 💡 ここで新しい画像だけを thumbnails/ フォルダへ自動保存
+                // ここで新しい画像だけを thumbnails/ フォルダへ自動保存
                 await downloadThumbnailIfNeeded(videoId, imgUrl);
                 
-                // 💡 変更ポイント：タイトル、日付に加えて「概要欄のテキスト（description）」を回収オブジェクトに追記
+                // タイトル、日付に加えて「概要欄のテキスト（description）」を回収
                 exportData[key].push({
                   title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
                   videoId: videoId,
@@ -141,6 +140,5 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        # 💡 新しく生成された thumbnails フォルダ内の .jpg 画像もすべて自動保存の対象に加える
         git add videos_data.js thumbnails/*.jpg
         git diff --cached --quiet || (git commit -m "chore: Automatically updated video data source [skip ci]" && git push)
