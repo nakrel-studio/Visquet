@@ -114,8 +114,8 @@
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-700 text-xs uppercase tracking-widest">
-                        [ ARCHIVE_OFFLINE ]<br><br>
-                        <span class="text-gray-500 text-[10px]">現在メンテナンス中か、データ同期の準備中です。</span>
+                        [ X_X ]<br><br>
+                        <span class="text-gray-500 text-[10px]">|エラー!|現在サーバーに接続できません。デバイスの接続設定を確認するか、復旧までしばらくお待ちください。</span>
                     </div>`;
                 document.getElementById('video-count').innerText = `ITEMS: 0`;
                 return;
@@ -231,7 +231,7 @@
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-white font-semibold mb-2">Version Info</h4>
-                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.6 (Static Engine) // Build 2026.05</p>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.6 // Build 2026.05</p>
                             </div>
                             <div>
                                 <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
