@@ -115,7 +115,7 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-700 text-4xl uppercase tracking-widest">
                         [ X_X ]<br><br>
-                        <span class="text-gray-500 text-[16px]">|エラー!|現在サーバーに接続できません。デバイスの接続設定を確認するか、復旧までしばらくお待ちください。</span>
+                        <span class="text-gray-500 text-[18px]">（エラー101）現在インターネットに接続されておりません</span>
                     </div>`;
                 document.getElementById('video-count').innerText = `ITEMS: 0`;
                 return;
@@ -134,7 +134,7 @@
             if (grid) grid.innerHTML = '';
             
             if (filteredVideos.length === 0) {
-                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-xs uppercase">NO_ITEMS_FOUND</div>`;
+                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-lg uppercase">（エラー500）申し訳ございません！技術的な問題が発生していますのでデータを取得できませんでした。復旧までしばらくお待ちください。</div>`;
                 document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
                 return;
             }
@@ -212,7 +212,7 @@
             if (!countEl) return;
 
             if (currentRawVideos.length === filteredVideos.length) {
-                countEl.innerText = `ITEMS: ${currentRawVideos.length} (ARCHIVED)`;
+                countEl.innerText = `ITEMS: ${currentRawVideos.length} (Online)`;
             } else {
                 countEl.innerText = `FOUND: ${filteredVideos.length} / TOTAL: ${currentRawVideos.length}`;
             }
