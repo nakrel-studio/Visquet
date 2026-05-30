@@ -55,7 +55,7 @@
 
         <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
             <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_ENGINE_v4.6 // STATUS: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
+                VISQUET_v4.6: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
             </div>
         </div>
     </aside>
@@ -113,9 +113,9 @@
             
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
-                    <div class="col-span-full text-center py-24 font-mono text-gray-700 text-xs uppercase tracking-widest">
+                    <div class="col-span-full text-center py-24 font-mono text-gray-700 text-lg uppercase tracking-widest">
                         [ X_X ]<br><br>
-                        <span class="text-gray-500 text-[10px]">|エラー!|現在サーバーに接続できません。デバイスの接続設定を確認するか、復旧までしばらくお待ちください。</span>
+                        <span class="text-gray-500 text-[24px]">|エラー!|現在サーバーに接続できません。デバイスの接続設定を確認するか、復旧までしばらくお待ちください。</span>
                     </div>`;
                 document.getElementById('video-count').innerText = `ITEMS: 0`;
                 return;
