@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 5/29/2026, 6:08:46 PM
+ * Generated: 5/30/2026, 4:00:18 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -77,9 +77,33 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
+      "videoId": "jOzfxpV15gg",
+      "publishedAt": "2026-02-10",
+      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
+    },
+    {
       "title": "0419006スペアビート配 ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
+      "description": ""
+    },
+    {
+      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
+      "videoId": "lM0B3R-wsaU",
+      "publishedAt": "2026-02-10",
+      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
+    },
+    {
+      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
+      "videoId": "5zaB7-XsjVc",
+      "publishedAt": "2026-02-10",
+      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "0414006スペアビート配信　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
+      "videoId": "BKv-LUmXoF8",
+      "publishedAt": "2026-04-14",
       "description": ""
     },
     {
@@ -95,10 +119,16 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
     },
     {
-      "title": "0414006スペアビート配信　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
-      "videoId": "BKv-LUmXoF8",
-      "publishedAt": "2026-04-14",
-      "description": ""
+      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
+      "videoId": "8v1tFPGE4pY",
+      "publishedAt": "2026-02-15",
+      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
+      "videoId": "tPCH6p9lemQ",
+      "publishedAt": "2026-03-23",
+      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
     },
     {
       "title": "るーぷるーぷるーぷ",
@@ -107,46 +137,22 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     },
     {
-      "title": "むず過ぎてまじ頭おかしくなる。#2オイクメネ実況プレイ　藤村拓真/フジタク",
-      "videoId": "WPbgnCGnrJ4",
-      "publishedAt": "2026-04-18",
-      "description": ""
-    },
-    {
-      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
-      "videoId": "lM0B3R-wsaU",
-      "publishedAt": "2026-02-10",
-      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
-    },
-    {
-      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
-      "videoId": "jOzfxpV15gg",
-      "publishedAt": "2026-02-10",
-      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
-    },
-    {
-      "title": "#5 オイクメネ実況プレイ/Richard",
-      "videoId": "ofwE8DKeqMM",
-      "publishedAt": "2026-04-04",
-      "description": ""
-    },
-    {
-      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
-      "videoId": "5zaB7-XsjVc",
-      "publishedAt": "2026-02-10",
-      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
-    },
-    {
       "title": "【東方vocal】【cover】幽閉サテライト－紅に染まる恋の花/Vo.Riseca /YUKOV Circle Music",
       "videoId": "TmP_mR9eFus",
       "publishedAt": "2026-03-29",
       "description": "楽曲名：https://youtu.be/PWacpxkQQJg?si=otAL6ksq6DosQ38d\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL"
     },
     {
-      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
-      "videoId": "tPCH6p9lemQ",
-      "publishedAt": "2026-03-23",
-      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
+      "title": "むず過ぎてまじ頭おかしくなる。#2オイクメネ実況プレイ　藤村拓真/フジタク",
+      "videoId": "WPbgnCGnrJ4",
+      "publishedAt": "2026-04-18",
+      "description": ""
+    },
+    {
+      "title": "#5 オイクメネ実況プレイ/Richard",
+      "videoId": "ofwE8DKeqMM",
+      "publishedAt": "2026-04-04",
+      "description": ""
     },
     {
       "title": "#4 オイクメネ実況プレイ/Richard",
@@ -195,12 +201,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKRELStudio"
-    },
-    {
-      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
-      "videoId": "8v1tFPGE4pY",
-      "publishedAt": "2026-02-15",
-      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
