@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 5/30/2026, 4:00:18 PM
+ * Generated: 5/31/2026, 4:01:16 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "videoId": "MECh_yesvoY",
+      "publishedAt": "2026-05-31",
+      "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
+    },
     {
       "title": "デリバリーキッドという配達が暴走するゲームがやばすぎるw  / Richard実況プレイ　",
       "videoId": "pmunDkD3gfQ",
@@ -422,6 +428,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "videoId": "MECh_yesvoY",
+      "publishedAt": "2026-05-31",
+      "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
+    },
     {
       "title": "デリバリーキッドという配達が暴走するゲームがやばすぎるw  / Richard実況プレイ　",
       "videoId": "pmunDkD3gfQ",
@@ -909,6 +921,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "-f5VCNll3a8",
       "publishedAt": "2026-05-16",
       "description": "高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
+    },
+    {
+      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "videoId": "MECh_yesvoY",
+      "publishedAt": "2026-05-31",
+      "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
     }
   ]
 };
