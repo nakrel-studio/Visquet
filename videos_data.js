@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/1/2026, 7:53:40 PM
+ * Generated: 6/2/2026, 6:35:23 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "紅に染まる恋の花 - Cover.Manya 【幽閉サテライト】　※2024年4月3日",
+      "videoId": "vGXHwupgHLU",
+      "publishedAt": "2026-06-02",
+      "description": "東方風神録一面ボステーマアレンジ曲【幽閉サテライト】\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL\n\nvocal (cover)：Manya"
+    },
     {
       "title": "#2狂い月 Richard実況プレイ　#ホラーゲーム　※乱入実況あり",
       "videoId": "ip6H6fJNPW0",
@@ -318,6 +324,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "紅に染まる恋の花 - Cover.Manya 【幽閉サテライト】　※2024年4月3日",
+      "videoId": "vGXHwupgHLU",
+      "publishedAt": "2026-06-02",
+      "description": "東方風神録一面ボステーマアレンジ曲【幽閉サテライト】\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL\n\nvocal (cover)：Manya"
+    },
     {
       "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
       "videoId": "q2NnozX8XlM",
@@ -945,6 +957,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "ip6H6fJNPW0",
       "publishedAt": "2026-06-01",
       "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
+    },
+    {
+      "title": "紅に染まる恋の花 - Cover.Manya 【幽閉サテライト】　※2024年4月3日",
+      "videoId": "vGXHwupgHLU",
+      "publishedAt": "2026-06-02",
+      "description": "東方風神録一面ボステーマアレンジ曲【幽閉サテライト】\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL\n\nvocal (cover)：Manya"
     }
   ]
 };
