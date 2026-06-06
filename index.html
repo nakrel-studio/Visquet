@@ -134,7 +134,7 @@
             if (grid) grid.innerHTML = '';
             
             if (filteredVideos.length === 0) {
-                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-lg uppercase">（エラー204＆500）サーバーが一時的に断絶状態または入力されたデータが存在しません。</div>`;
+                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-lg uppercase">（ToT）入力されたデータが見つからない又はデータの取得に失敗しました（エラー200 OK）</div>`;
                 document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
                 return;
             }
