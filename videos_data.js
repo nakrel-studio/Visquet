@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/8/2026, 5:46:36 PM
+ * Generated: 6/9/2026, 2:27:42 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
+      "videoId": "KA_ibRBpNWE",
+      "publishedAt": "2026-06-09",
+      "description": "だいぶビビるシーンがあるから閲覧注意。あとなかなかエグい内容で他のホラーゲームよりだいぶ怖い。\n\n前回　https://youtu.be/ip6H6fJNPW0?si=G08IK1OVvIPMp2Jt"
+    },
     {
       "title": "紅に染まる恋の花 - Cover.Manya 【幽閉サテライト】　※2024年4月3日",
       "videoId": "vGXHwupgHLU",
@@ -446,6 +452,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
+      "videoId": "KA_ibRBpNWE",
+      "publishedAt": "2026-06-09",
+      "description": "だいぶビビるシーンがあるから閲覧注意。あとなかなかエグい内容で他のホラーゲームよりだいぶ怖い。\n\n前回　https://youtu.be/ip6H6fJNPW0?si=G08IK1OVvIPMp2Jt"
+    },
     {
       "title": "#2狂い月 Richard実況プレイ　#ホラーゲーム　※乱入実況あり",
       "videoId": "ip6H6fJNPW0",
@@ -963,6 +975,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "vGXHwupgHLU",
       "publishedAt": "2026-06-02",
       "description": "東方風神録一面ボステーマアレンジ曲【幽閉サテライト】\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL\n\nvocal (cover)：Manya"
+    },
+    {
+      "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
+      "videoId": "KA_ibRBpNWE",
+      "publishedAt": "2026-06-09",
+      "description": "だいぶビビるシーンがあるから閲覧注意。あとなかなかエグい内容で他のホラーゲームよりだいぶ怖い。\n\n前回　https://youtu.be/ip6H6fJNPW0?si=G08IK1OVvIPMp2Jt"
     }
   ]
 };
