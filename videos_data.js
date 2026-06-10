@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/9/2026, 5:20:04 PM
+ * Generated: 6/10/2026, 5:53:25 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "夜桜に君を隠して - Cover.Manya 【幽閉サテライト】　※2024年4月29日",
+      "videoId": "32r-Vq6sQZE",
+      "publishedAt": "2026-06-10",
+      "description": "東方紅魔郷2面道中　ルーエイトエルフアレンジ曲"
+    },
     {
       "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
       "videoId": "KA_ibRBpNWE",
@@ -330,6 +336,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "夜桜に君を隠して - Cover.Manya 【幽閉サテライト】　※2024年4月29日",
+      "videoId": "32r-Vq6sQZE",
+      "publishedAt": "2026-06-10",
+      "description": "東方紅魔郷2面道中　ルーエイトエルフアレンジ曲"
+    },
     {
       "title": "紅に染まる恋の花 - Cover.Manya 【幽閉サテライト】　※2024年4月3日",
       "videoId": "vGXHwupgHLU",
@@ -981,6 +993,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "KA_ibRBpNWE",
       "publishedAt": "2026-06-09",
       "description": "だいぶビビるシーンがあるから閲覧注意。あとなかなかエグい内容で他のホラーゲームよりだいぶ怖い。\n\n前回　https://youtu.be/ip6H6fJNPW0?si=G08IK1OVvIPMp2Jt"
+    },
+    {
+      "title": "夜桜に君を隠して - Cover.Manya 【幽閉サテライト】　※2024年4月29日",
+      "videoId": "32r-Vq6sQZE",
+      "publishedAt": "2026-06-10",
+      "description": "東方紅魔郷2面道中　ルーエイトエルフアレンジ曲"
     }
   ]
 };
