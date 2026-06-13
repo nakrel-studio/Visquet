@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/12/2026, 5:33:47 PM
+ * Generated: 6/13/2026, 4:09:44 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
+      "videoId": "qS5lq7sDQaI",
+      "publishedAt": "2026-06-13",
+      "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
+    },
     {
       "title": "夜桜に君を隠して - Cover.Manya 【幽閉サテライト】　※2024年4月29日",
       "videoId": "32r-Vq6sQZE",
@@ -464,6 +470,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
+      "videoId": "qS5lq7sDQaI",
+      "publishedAt": "2026-06-13",
+      "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
+    },
     {
       "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
       "videoId": "KA_ibRBpNWE",
@@ -999,6 +1011,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "32r-Vq6sQZE",
       "publishedAt": "2026-06-10",
       "description": "東方紅魔郷2面道中　ルーエイトエルフアレンジ曲"
+    },
+    {
+      "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
+      "videoId": "qS5lq7sDQaI",
+      "publishedAt": "2026-06-13",
+      "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
     }
   ]
 };
