@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visquet - Player</title>
+    <title>Visquet</title>
     
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link class="rounded-none" rel="icon" href="logo.jpg" type="image/jpeg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,113 +14,281 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
         body { background-color: #0d0d0f; color: #e1e1e6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; color: #fff; }
+        /* ロゴテキスト用の共通スタイル：カーソルを指マークにし、テキスト選択を無効化 */
+        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; color: #fff; cursor: pointer; user-select: none; }
         .sidebar { border-right: 1px solid #222225; background-color: #0a0a0c; z-index: 40; }
-        .player-container { background: #000; border: 1px solid #222225; }
-        /* 💡 YouTube概要欄の改行規則、空白、長いURLの自動折り返しを維持するスタイル */
-        .description-text { white-space: pre-wrap; word-break: break-word; }
+        .nav-item { transition: 0.2s; cursor: pointer; color: #94a3b8; }
+        .nav-item:hover { color: #fff; background-color: rgba(255, 255, 255, 0.05); }
+        .nav-item.active { color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; font-weight: 600; }
+        
+        @media (max-width: 767px) {
+            .nav-item.active { border-left: none; border-bottom: 2px solid #3b82f6; font-weight: 600; }
+        }
+
+        .video-card { background: #141417; border: 1px solid transparent; transition: all 0.25s ease; border-radius: 0px !important; }
+        .video-card:hover { border-color: #333336; transform: translateY(-3px); }
+        .info-card { background: #111114; border: 1px solid #222; border-radius: 0px !important; }
+        .icon-nakrel-n { width: 40px; height: 40px; flex-shrink: 0; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="flex min-h-screen">
+<body class="flex flex-col md:flex-row min-h-screen pb-20 md:pb-0">
 
-    <aside class="w-48 sidebar hidden md:flex flex-col p-8 sticky top-0 h-screen">
-        <div class="brand-logo text-3xl mb-12 tracking-tight cursor-pointer" onclick="location.href='./index.html'">Visquet</div>
+    <aside class="w-72 sidebar hidden md:flex flex-col p-8 sticky top-0 h-screen">
+        <div class="brand-logo text-3xl mb-12 tracking-tight" onclick="scrollToTop()">Visquet</div>
         
-        <nav class="space-y-1 flex-grow text-sm">
-            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Navigation</div>
-            <div class="text-gray-400 hover:text-white p-3 rounded-lg transition cursor-pointer flex items-center gap-2" onclick="location.href='./index.html'">
-                <span>←</span> Back 
+        <nav id="category-menu" class="space-y-1 flex-grow text-sm">
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Home</div>
+            <div class="nav-item active p-3" onclick="switchCategory('all', this)">All</div>
+            <div class="nav-item p-3" onclick="switchCategory('music', this)">Music</div>
+            <div class="nav-item p-3" onclick="switchCategory('games', this)">Game</div>
+            <div class="nav-item p-3" onclick="switchCategory('popular', this)">Popular</div>
+            
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">Official Channels</div>
+            <div class="nav-item p-3 flex items-center justify-between group" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
+                <span>NAKREL Studio</span>
+                <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
             </div>
+            <div class="nav-item p-3 flex items-center justify-between group" onclick="window.open('https://www.youtube.com/channel/UCCUXJLya69B7qZ0gQ3oh62Q')">
+                <span>YUKOV Circle Music</span>
+                <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
+            </div>
+
+            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">System</div>
+            <div class="nav-item p-3" onclick="showInfo(this)">Info</div>
         </nav>
 
-        <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between">
+        <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between group">
             <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_PLAYER_v1.1 <span class="text-blue-500">STAGE_READY</span>
+                VISQUET_v4.6: <span class="text-green-900 group-hover:text-blue-600 transition">STATIC_SYNCED</span>
             </div>
         </div>
     </aside>
 
-    <main class="flex-grow p-6 md:p-12 max-w-5xl mx-auto w-full">
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#0a0a0c]/95 backdrop-blur-md border-t border-[#222225] p-2 flex justify-around items-center z-50 text-xs">
+        <button class="mobile-nav-item nav-item active py-2 px-3 text-center flex-1" onclick="switchCategory('all', this)">All</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1" onclick="switchCategory('music', this)">Music</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1" onclick="switchCategory('games', this)">Game</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1" onclick="switchCategory('popular', this)">Popular</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 font-semibold" onclick="showInfo(this)">Info</button>
+    </div>
+
+    <main class="flex-grow flex flex-col min-w-0">
         
-        <div class="md:hidden mb-6">
-            <button onclick="location.href='./index.html'" class="text-xs text-gray-400 font-mono uppercase bg-gray-900 border border-gray-800 px-4 py-2 rounded-full">
-                ← Back
-            </button>
+        <div class="sticky top-0 z-30 bg-[#0d0d0f]/90 backdrop-blur-md p-5 md:p-12 pb-4 md:pb-6 border-b border-transparent">
+            <div class="md:hidden text-center mb-4">
+                <h1 class="brand-logo text-2xl tracking-tight" onclick="scrollToTop()">Visquet</h1>
+            </div>
+
+            <header id="main-header" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex justify-between items-end w-full md:w-auto">
+                    <div>
+                        <h2 id="current-category-name" class="text-xl md:text-2xl font-semibold tracking-tight text-white capitalize">All</h2>
+                        <p class="text-[10px] md:text-xs text-gray-500 font-mono mt-0.5 md:mt-1" id="video-count">LOADING...</p>
+                    </div>
+                </div>
+                <div class="relative w-full md:w-80">
+                    <input type="text" id="search-input" placeholder="Search videos..." 
+                        class="w-full bg-gray-900 border border-gray-800 rounded-none py-2 px-10 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+            </header>
         </div>
 
-        <div class="player-container w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
-            <iframe id="youtube-player" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="mb-6">
-            <h1 id="video-title" class="text-xl md:text-2xl font-bold tracking-tight text-white leading-snug">LOADING ARCHIVE...</h1>
-            <div class="mt-3 flex flex-wrap items-center gap-4 text-xs font-mono text-gray-400 uppercase">
-                <span id="video-date" class="font-semibold text-white">---</span>
-                <span id="video-id" class="text-gray-600 text-[10px]">ID: ---</span>
-            </div>
-        </div>
-        
-        <div class="bg-[#141417] border border-[#222225] p-6 rounded-xl">
-            <h3 class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">/ Description</h3>
-            <div id="video-description" class="description-text text-sm text-gray-300 leading-relaxed font-medium">
-                データを展開しています...
-            </div>
+        <div id="content-area" class="p-5 md:p-12 pt-2 md:pt-4 flex-grow">
+            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8"></div>
         </div>
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. URLパラメータから「?id=動画ID」を取得
-            const urlParams = new URLSearchParams(window.location.search);
-            const videoId = urlParams.get('id');
+        let currentRawVideos = []; 
+        let filteredVideos = [];   
+        let displayedCount = 0;    
+        const ITEMS_PER_PAGE = 12; 
+        let currentKey = 'all';
 
-            if (!videoId) {
-                // IDが見当たらないか不正な場合は安全のためトップへ戻す
-                location.href = './index.html';
+        document.addEventListener("DOMContentLoaded", () => {
+            loadVideosFromStaticFile('all');
+            window.addEventListener('scroll', handleScroll);
+            setupSearchEngine();
+        });
+
+        // 🚀 最上部へスムーズにスクロールさせる共通関数
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function switchCategory(key, element) {
+            currentKey = key;
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            
+            document.querySelectorAll('.nav-item').forEach(el => {
+                if (el.getAttribute('onclick') && el.getAttribute('onclick').includes(`'${key}'`)) {
+                    el.classList.add('active');
+                }
+            });
+            
+            const mainHeader = document.getElementById('main-header');
+            if (mainHeader) {
+                mainHeader.style = '';
+                mainHeader.classList.remove('hidden');
+                mainHeader.classList.add('flex');
+            }
+            
+            document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8"></div>';
+            document.getElementById('search-input').value = '';
+            
+            loadVideosFromStaticFile(key);
+            // カテゴリを切り替えた際にも自動的に天面へ戻す
+            scrollToTop();
+        }
+
+        function loadVideosFromStaticFile(key) {
+            const grid = document.getElementById('grid');
+            
+            if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-24 font-mono text-gray-700 text-2xl md:text-4xl uppercase tracking-widest">
+                        [ X_X ]<br><br>
+                        <span class="text-gray-500 text-sm md:text-[18px]">（エラー101）現在 internet に接続されておりません</span>
+                    </div>`;
+                document.getElementById('video-count').innerText = `ITEMS: 0`;
                 return;
             }
 
-            // 2. プレイヤーを即座に生成（autoplay=1 で自動再生、rel=0 で終了後の他人の関連動画を抑制）
-            const player = document.getElementById('youtube-player');
-            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            currentRawVideos = VISQUET_ARCHIVE_DATA[key];
+            filteredVideos = [...currentRawVideos]; 
+            resetAndRender();
+        }
 
-            // 3. 読み込まれている videos_data.js 内の全カテゴリから対象の動画データを検索
-            let targetVideo = null;
-            if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
-                for (const key in VISQUET_ARCHIVE_DATA) {
-                    const found = VISQUET_ARCHIVE_DATA[key].find(v => v.videoId === videoId);
-                    if (found) {
-                        targetVideo = found;
-                        break;
-                    }
-                }
+        function resetAndRender() {
+            displayedCount = 0;
+            const grid = document.getElementById('grid');
+            if (grid) grid.innerHTML = '';
+            
+            if (filteredVideos.length === 0) {
+                if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-700 text-sm uppercase">データが見つかりませんでした:(</div>`;
+                document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
+                return;
             }
 
-            // 4. 取得した静的データを各要素に流し込む
-            if (targetVideo) {
-                document.getElementById('video-title').innerHTML = targetVideo.title;
-                document.getElementById('video-date').innerText = `${targetVideo.publishedAt} に投稿`;
-                document.getElementById('video-id').innerText = `ID: ${targetVideo.videoId}`;
-                
-                // ブラウザのタブ名も動画タイトルに自動変更（クォーテーションの文字化け対策込み）
-                document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
+            loadNextChunk();
+            updateItemCountMessage();
+        }
 
-                // 概要欄の挿入処理
-                const descContainer = document.getElementById('video-description');
-                if (targetVideo.description && targetVideo.description.trim() !== "") {
-                    // textContent または innerText を使うことで、HTMLタグとしての誤動作を防ぎ安全にプレーンテキストとして展開
-                    descContainer.innerText = targetVideo.description;
+        function loadNextChunk() {
+            const grid = document.getElementById('grid');
+            if (!grid || displayedCount >= filteredVideos.length) return;
+
+            const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
+            const timestamp = new Date().getTime();
+            
+            const htmlString = chunk.map(v => `
+                <div class="video-card overflow-hidden cursor-pointer shadow-2xl animate-fade-in" onclick="location.href='./watch.html?id=${v.videoId}'">
+                    <div class="relative group">
+                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-900" loading="lazy">
+                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                    <div class="p-4 md:p-5">
+                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
+                        <div class="mt-3 md:mt-4 flex justify-between items-center text-[8px] text-gray-600 font-mono uppercase tracking-tighter">
+                             <span>${v.publishedAt}</span>
+                             <span>ID: ${v.videoId}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            grid.insertAdjacentHTML('beforeend', htmlString);
+            displayedCount += chunk.length;
+        }
+
+        function handleScroll() {
+            const grid = document.getElementById('grid');
+            if (!grid) return; 
+
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight - 350) {
+                loadNextChunk();
+            }
+        }
+
+        function setupSearchEngine() {
+            const searchInput = document.getElementById('search-input');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                if (query === '') {
+                    filteredVideos = [...currentRawVideos];
                 } else {
-                    descContainer.innerHTML = `<span class="text-gray-600 font-mono text-xs">[ NO_DESCRIPTION_AVAILABLE ]</span>`;
+                    filteredVideos = currentRawVideos.filter(v => 
+                        v.title.toLowerCase().includes(query) || 
+                        v.videoId.toLowerCase().includes(query)
+                    );
                 }
+                resetAndRender();
+            });
+        }
+
+        function updateItemCountMessage() {
+            const countEl = document.getElementById('video-count');
+            if (!countEl) return;
+
+            if (currentRawVideos.length === filteredVideos.length) {
+                countEl.innerText = `ITEMS: ${currentRawVideos.length} (Online)`;
             } else {
-                // 自動更新（Actions）が回る前など、一時的にJS側にデータがなくても最低限IDから動作維持
-                document.getElementById('video-title').innerText = "Archived Video Stream";
-                document.getElementById('video-date').innerText = "UNKNOWN DATE";
-                document.getElementById('video-id').innerText = `ID: ${videoId}`;
-                document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
+                countEl.innerText = `FOUND: ${filteredVideos.length} / TOTAL: ${currentRawVideos.length}`;
             }
-        });
+        }
+
+        function showInfo(element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            if(element) element.classList.add('active');
+            
+            const mainHeader = document.getElementById('main-header');
+            if (mainHeader) {
+                mainHeader.classList.remove('flex');
+                mainHeader.classList.add('hidden');
+            }
+            
+            document.getElementById('content-area').innerHTML = `
+                <div class="max-w-2xl mx-auto space-y-6 md:space-y-10 py-4 md:py-10 animate-fade-in pb-16">
+                    <section class="info-card p-6 md:p-8">
+                        <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-6 font-mono">/ Info</h3>
+                        <div class="space-y-6 md:space-y-8">
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Version Info</h4>
+                                <p class="text-sm text-gray-400 font-mono text-blue-500">Visquet v4.6 // Build 2026.05</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-3">Members & Organizations</h4>
+                                <ul class="text-sm text-gray-400 space-y-2 font-medium">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500"></span> Richard</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500"></span> YUKOV Circle Music</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500"></span> 藤村拓真 / フジタク</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-500"></span> Riz</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="info-card p-6 md:p-8 flex items-center gap-6 border-l-4 border-l-blue-600">
+                        <svg viewBox="0 0 24 24" class="icon-nakrel-n" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 19L6 5M18 19L18 5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M8.5 7.5L15.5 16.5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        <div>
+                            <h4 class="text-[10px] text-gray-500 uppercase tracking-[0.3em] mb-1 font-mono">Operated Label</h4>
+                            <div class="text-xl md:text-2xl font-bold text-white tracking-tighter">NAKREL Studio</div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
     </script>
 </body>
 </html>
