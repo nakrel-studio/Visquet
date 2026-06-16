@@ -9,33 +9,44 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Tailwindのダークモードをクラス制御に設定
+        tailwind.config = {
+            darkMode: 'class'
+        }
         document.write('<script src="videos_data.js?v=' + new Date().getTime() + '"><\/script>');
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
-        body { background-color: #0d0d0f; color: #e1e1e6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; color: #fff; user-select: none; }
-        /* 📐 プレイヤーの枠線と背景（角丸を一切作らないソリッド仕様） */
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; user-select: none; }
+        
+        /* 📐 プレイヤーの枠線と背景（完全に直角仕様） */
         .player-container { background: #000; border: 1px solid #222225; border-radius: 0px !important; }
+        
         /* 💡 YouTube概要欄の改行規則、空白、長いURLの自動折り返しを維持するスタイル */
         .description-text { white-space: pre-wrap; word-break: break-word; }
     </style>
 </head>
-<body class="flex min-h-screen">
+<body class="flex min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
 
-    <aside class="w-48 sidebar hidden md:flex flex-col p-8 sticky top-0 h-screen">
-        <div class="brand-logo text-3xl mb-12 tracking-tight cursor-pointer" onclick="location.href='./index.html'">Visquet</div>
+    <aside class="w-48 sidebar hidden md:flex flex-col p-8 sticky top-0 h-screen bg-[#f0f2f5] border-r border-[#e2e8f0] dark:bg-[#0a0a0c] dark:border-r dark:border-[#222225]">
+        <div class="brand-logo text-3xl mb-12 tracking-tight text-[#000] dark:text-[#fff]" onclick="location.href='./index.html'">Visquet</div>
         
         <nav class="space-y-1 flex-grow text-sm">
-            <div class="text-[10px] text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Navigation</div>
-            <div class="text-gray-400 hover:text-white p-3 rounded-none transition cursor-pointer flex items-center gap-2" onclick="location.href='./index.html'">
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Navigation</div>
+            <div class="text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 p-3 rounded-none transition cursor-pointer flex items-center gap-2" onclick="location.href='./index.html'">
                 <span>←</span> Back 
             </div>
         </nav>
 
-        <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between">
-            <div class="text-[9px] text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_PLAYER_v1.1 <span class="text-blue-500">STAGE_READY</span>
+        <div class="mt-auto pt-6 border-t border-gray-300 dark:border-gray-800 flex items-center justify-between">
+            <div class="text-[9px] text-gray-400 dark:text-gray-700 font-mono tracking-tighter">
+                SYS: VISQUET_PLAYER_v1.1 <span class="text-blue-600 dark:text-blue-500">STAGE_READY</span>
             </div>
         </div>
     </aside>
@@ -43,7 +54,7 @@
     <main class="flex-grow p-6 md:p-12 max-w-5xl mx-auto w-full">
         
         <div class="md:hidden mb-6">
-            <button onclick="location.href='./index.html'" class="text-xs text-gray-400 font-mono uppercase bg-gray-900 border border-gray-800 px-4 py-2 rounded-none">
+            <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none">
                 ← Back
             </button>
         </div>
@@ -53,38 +64,58 @@
         </div>
 
         <div class="mb-6">
-            <h1 id="video-title" class="text-xl md:text-2xl font-bold tracking-tight text-white leading-snug">LOADING ARCHIVE...</h1>
-            <div class="mt-3 flex flex-wrap items-center gap-4 text-xs font-mono text-gray-400 uppercase">
-                <span id="video-date" class="font-semibold text-white">---</span>
-                <span id="video-id" class="text-gray-600 text-[10px]">ID: ---</span>
+            <h1 id="video-title" class="text-xl md:text-2xl font-bold tracking-tight text-[#000] dark:text-white leading-snug">LOADING ARCHIVE...</h1>
+            <div class="mt-3 flex flex-wrap items-center gap-4 text-xs font-mono text-gray-400 dark:text-gray-500 uppercase">
+                <span id="video-date" class="font-semibold text-gray-700 dark:text-white">---</span>
+                <span id="video-id" class="text-gray-400 dark:text-gray-600 text-[10px]">ID: ---</span>
             </div>
         </div>
         
-        <div class="bg-[#141417] border border-[#222225] p-6 rounded-none">
-            <h3 class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">/ Description</h3>
-            <div id="video-description" class="description-text text-sm text-gray-300 leading-relaxed font-medium">
+        <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225]">
+            <h3 class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">/ Description</h3>
+            <div id="video-description" class="description-text text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
                 データを展開しています...
             </div>
         </div>
     </main>
 
     <script>
+        // 🌗 インデックス側で保存されたテーマ設定を読み込んで即時適用する関数
+        function syncTheme() {
+            const theme = localStorage.getItem('visquet-theme') || 'light';
+            const htmlEl = document.documentElement;
+
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+            } else if (theme === 'light') {
+                htmlEl.classList.remove('dark');
+            } else if (theme === 'system') {
+                const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (isSystemDark) {
+                    htmlEl.classList.add('dark');
+                } else {
+                    htmlEl.classList.remove('dark');
+                }
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            syncTheme(); // 最初にテーマ同期を実行
+
             // 1. URLパラメータから「?id=動画ID」を取得
             const urlParams = new URLSearchParams(window.location.search);
             const videoId = urlParams.get('id');
 
             if (!videoId) {
-                // IDが見当たらないか不正な場合は安全のためトップへ戻す
                 location.href = './index.html';
                 return;
             }
 
-            // 2. プレイヤーを即座に生成（autoplay=1 で自動再生、rel=0 で終了後の他人の関連動画を抑制）
+            // 2. プレイヤーを即座に生成
             const player = document.getElementById('youtube-player');
             player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
 
-            // 3. 読み込まれている videos_data.js 内の全カテゴリから対象の動画データを検索
+            // 3. videos_data.js 内の全カテゴリから対象の動画データを検索
             let targetVideo = null;
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
                 for (const key in VISQUET_ARCHIVE_DATA) {
@@ -102,23 +133,26 @@
                 document.getElementById('video-date').innerText = `${targetVideo.publishedAt} に投稿`;
                 document.getElementById('video-id').innerText = `ID: ${targetVideo.videoId}`;
                 
-                // ブラウザのタブ名も動画タイトルに自動変更（クォーテーションの文字化け対策込み）
                 document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
 
-                // 概要欄の挿入処理
                 const descContainer = document.getElementById('video-description');
                 if (targetVideo.description && targetVideo.description.trim() !== "") {
-                    // textContent または innerText を使うことで、HTMLタグとしての誤動作を防ぎ安全にプレーンテキストとして展開
                     descContainer.innerText = targetVideo.description;
                 } else {
-                    descContainer.innerHTML = `<span class="text-gray-600 font-mono text-xs">[ NO_DESCRIPTION_AVAILABLE ]</span>`;
+                    descContainer.innerHTML = `<span class="text-gray-400 dark:text-gray-600 font-mono text-xs">[ NO_DESCRIPTION_AVAILABLE ]</span>`;
                 }
             } else {
-                // 自動更新（Actions）が回る前など、一時的にJS側にデータがなくても最低限IDから動作維持
                 document.getElementById('video-title').innerText = "Archived Video Stream";
                 document.getElementById('video-date').innerText = "UNKNOWN DATE";
                 document.getElementById('video-id').innerText = `ID: ${videoId}`;
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
+            }
+        });
+
+        // 閲覧中にOSのシステムテーマが変わった場合にもリアルタイムで追随
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem('visquet-theme') === 'system') {
+                syncTheme();
             }
         });
     </script>
