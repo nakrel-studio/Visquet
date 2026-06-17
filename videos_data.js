@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/16/2026, 6:52:54 PM
+ * Generated: 6/17/2026, 5:47:14 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "videoId": "17YNLbUsgY4",
+      "publishedAt": "2026-06-17",
+      "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
+    },
     {
       "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
       "videoId": "qS5lq7sDQaI",
@@ -470,6 +476,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "videoId": "17YNLbUsgY4",
+      "publishedAt": "2026-06-17",
+      "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
+    },
     {
       "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
       "videoId": "qS5lq7sDQaI",
@@ -1017,6 +1029,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "qS5lq7sDQaI",
       "publishedAt": "2026-06-13",
       "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
+    },
+    {
+      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "videoId": "17YNLbUsgY4",
+      "publishedAt": "2026-06-17",
+      "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
     }
   ]
 };
