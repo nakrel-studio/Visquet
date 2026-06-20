@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/19/2026, 5:12:44 PM
+ * Generated: 6/20/2026, 11:06:04 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "One Ray of Light /demo",
+      "videoId": "3R_OY6pjtI8",
+      "publishedAt": "2026-06-20",
+      "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
+    },
     {
       "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
@@ -348,6 +354,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "One Ray of Light /demo",
+      "videoId": "3R_OY6pjtI8",
+      "publishedAt": "2026-06-20",
+      "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
+    },
     {
       "title": "夜桜に君を隠して - Cover.Manya 【幽閉サテライト】　※2024年4月29日",
       "videoId": "32r-Vq6sQZE",
@@ -1035,6 +1047,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
+    },
+    {
+      "title": "One Ray of Light /demo",
+      "videoId": "3R_OY6pjtI8",
+      "publishedAt": "2026-06-20",
+      "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
     }
   ]
 };
