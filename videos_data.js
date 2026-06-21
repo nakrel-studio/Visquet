@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/20/2026, 4:13:19 PM
+ * Generated: 6/21/2026, 4:26:25 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "デリバリーキッド-TOKYO KOMACHI",
+      "videoId": "90laaPs__Dg",
+      "publishedAt": "2026-06-21",
+      "description": "デリバリーキッド　9ステージテーマ曲"
+    },
     {
       "title": "One Ray of Light /demo",
       "videoId": "3R_OY6pjtI8",
@@ -354,6 +360,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "デリバリーキッド-TOKYO KOMACHI",
+      "videoId": "90laaPs__Dg",
+      "publishedAt": "2026-06-21",
+      "description": "デリバリーキッド　9ステージテーマ曲"
+    },
     {
       "title": "One Ray of Light /demo",
       "videoId": "3R_OY6pjtI8",
@@ -1053,6 +1065,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "3R_OY6pjtI8",
       "publishedAt": "2026-06-20",
       "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
+    },
+    {
+      "title": "デリバリーキッド-TOKYO KOMACHI",
+      "videoId": "90laaPs__Dg",
+      "publishedAt": "2026-06-21",
+      "description": "デリバリーキッド　9ステージテーマ曲"
     }
   ]
 };
