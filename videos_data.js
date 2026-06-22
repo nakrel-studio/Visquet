@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/21/2026, 4:26:25 PM
+ * Generated: 6/22/2026, 6:42:54 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "野山北公園　Richard",
+      "videoId": "nvnbrpiPSsg",
+      "publishedAt": "2026-06-22",
+      "description": ""
+    },
     {
       "title": "デリバリーキッド-TOKYO KOMACHI",
       "videoId": "90laaPs__Dg",
@@ -1071,6 +1077,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "90laaPs__Dg",
       "publishedAt": "2026-06-21",
       "description": "デリバリーキッド　9ステージテーマ曲"
+    },
+    {
+      "title": "野山北公園　Richard",
+      "videoId": "nvnbrpiPSsg",
+      "publishedAt": "2026-06-22",
+      "description": ""
     }
   ]
 };
