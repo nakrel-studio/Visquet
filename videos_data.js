@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/23/2026, 5:12:03 PM
+ * Generated: 6/23/2026, 11:29:52 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -9,12 +9,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "VZwUbnp0Vvg",
       "publishedAt": "2026-06-23",
       "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
-    },
-    {
-      "title": "Deleted video",
-      "videoId": "WYSgE5O4_Jw",
-      "publishedAt": "2026-06-23",
-      "description": "This video is unavailable."
     },
     {
       "title": "野山北公園　Richard",
@@ -383,12 +377,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "VZwUbnp0Vvg",
       "publishedAt": "2026-06-23",
       "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
-    },
-    {
-      "title": "Deleted video",
-      "videoId": "WYSgE5O4_Jw",
-      "publishedAt": "2026-06-23",
-      "description": "This video is unavailable."
     },
     {
       "title": "デリバリーキッド-TOKYO KOMACHI",
@@ -767,10 +755,22 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
     },
     {
+      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
+      "videoId": "q2NnozX8XlM",
+      "publishedAt": "2026-05-21",
+      "description": "YUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+    },
+    {
       "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
       "videoId": "5zaB7-XsjVc",
       "publishedAt": "2026-02-14",
       "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
+      "videoId": "VZwUbnp0Vvg",
+      "publishedAt": "2026-06-23",
+      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
     },
     {
       "title": "奥多摩湖/Richard",
@@ -779,10 +779,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
-      "videoId": "q2NnozX8XlM",
-      "publishedAt": "2026-05-21",
-      "description": "YUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+      "title": "野山北公園　Richard",
+      "videoId": "nvnbrpiPSsg",
+      "publishedAt": "2026-06-22",
+      "description": ""
     },
     {
       "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
@@ -795,6 +795,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "TmP_mR9eFus",
       "publishedAt": "2026-04-04",
       "description": "楽曲名：https://youtu.be/PWacpxkQQJg?si=otAL6ksq6DosQ38d\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL"
+    },
+    {
+      "title": "デリバリーキッドという配達が暴走するゲームがやばすぎるw  / Richard実況プレイ　",
+      "videoId": "pmunDkD3gfQ",
+      "publishedAt": "2026-05-29",
+      "description": "実況：Richard\n発信：NAKREL studio"
     },
     {
       "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
@@ -815,6 +821,12 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "デリバリーキッド-TOKYO KOMACHI",
+      "videoId": "90laaPs__Dg",
+      "publishedAt": "2026-06-21",
+      "description": "デリバリーキッド　9ステージテーマ曲"
+    },
+    {
       "title": "零れずの願いゴト/幽閉サテライトCovered by Yukov",
       "videoId": "0jLzONG8KzE",
       "publishedAt": "2026-03-24",
@@ -833,10 +845,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
     },
     {
-      "title": "デリバリーキッドという配達が暴走するゲームがやばすぎるw  / Richard実況プレイ　",
-      "videoId": "pmunDkD3gfQ",
-      "publishedAt": "2026-05-29",
-      "description": "実況：Richard\n発信：NAKREL studio"
+      "title": "0508007　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "videoId": "MTsGzmu2uXw",
+      "publishedAt": "2026-05-07",
+      "description": "配信：RIZ"
     },
     {
       "title": "#3 オイクメネ実況プレイ/Richard",
@@ -869,12 +881,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "東方輝針城 〜 Double Dealing Character.\n6面ボステーマ曲 少名針妙丸\n\n作曲：ZUN(上海アリス幻樂団)\n\nアレンジ：YUKOV BAND(YUKOV circle music)"
     },
     {
-      "title": "0508007　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
-      "videoId": "MTsGzmu2uXw",
-      "publishedAt": "2026-05-07",
-      "description": "配信：RIZ"
-    },
-    {
       "title": "#2 オイクメネ実況プレイ/Richard【乱入実況】",
       "videoId": "VtgyALVZdH8",
       "publishedAt": "2026-03-23",
@@ -885,18 +891,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "ow7iu75y3f4",
       "publishedAt": "2026-03-24",
       "description": ""
-    },
-    {
-      "title": "メンヘラフレシア実況プレイ/藤村拓真",
-      "videoId": "RRg5shb4JJY",
-      "publishedAt": "2026-03-24",
-      "description": "配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
-      "videoId": "6Okmqo-KD4Y",
-      "publishedAt": "2026-03-24",
-      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "#1 オイクメネ実況プレイ/Richard",
@@ -935,22 +929,16 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
-      "videoId": "lMdYV7iRDN8",
+      "title": "メンヘラフレシア実況プレイ/藤村拓真",
+      "videoId": "RRg5shb4JJY",
       "publishedAt": "2026-03-24",
-      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+      "description": "配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "#1 魔女の家 実況プレイ/Richard",
       "videoId": "DplehyYcy1c",
       "publishedAt": "2026-03-24",
       "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "キーボード壊れた",
-      "videoId": "1P_2I6Iuf6E",
-      "publishedAt": "2026-03-24",
-      "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "赤ずきんDS 実況　Richard 【乱入実況】",
@@ -983,10 +971,22 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "歌詞\n\nかの国にかかる　闇波が全てを包む\n暗闇の中の霧裂いて　遥か彼方へ\n戦え　武器が有るなら    悴んだ手で握りしめて\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light \n\nかの民にかかる　闇波が心を包む\n暗闇の中の霧裂いて　今とき放つ\n戦え！意志があるなら　一筋の光駆け巡る\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り開け\n止まらず加速するこの光が\n\n戦え　武器が有るなら　悴んだ手で握りしめて\n\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light\n\n鳴り響く音波　秘めた力で\n今すぐdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り裂いて\n掴み取れ己の力で\n\nKa no kuni ni kakaru 　yami nami ga subete wo tsutsumu\nkurayami no naka no     kirisaite haruka kanata e\ntatakae  Buki ga aru nara 　Kajikanda te de nigirishimete\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka 　kakenukete\ntomarazu kasoku suru One ray of Light\n\nka no tami ni kakaru 　yami nami ga kokoro wo tsutsumu\nkurayami no naka no 　kirisaite ima toki hanatsu\ntatakae  Ishi ga aru nara 　hitosuji no hikari kakemeguru\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka      kirihirake\ntomarazu kasoku suru kono hikari ga\n\ntatakae  Buki ga aru nara     kajikanda te de nigirishimete\n\nnarihibiku otonami     homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka     kakenukete\ntomarazu kasoku suru One ray of Light\n\nnarihibiku otonami      himeta chikara de\nima sugu ”don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka     kirisaite\ntsukamitore onore no chikara de"
     },
     {
+      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
+      "videoId": "lMdYV7iRDN8",
+      "publishedAt": "2026-03-24",
+      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
       "title": "【東方】紅に染まる恋の花歌ってみた （原曲：稲田姫様に叱られるから）",
       "videoId": "xJ9dW-vO9FU",
       "publishedAt": "2026-03-24",
       "description": "少し古いマイクを使ったので少しノイズが入ってるかもしれません。🙇\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=4X9dw9hdExbIT2UC\n\n本家様：https://youtu.be/PWacpxkQQJg?si=QwOBt0Wv5jbJUG3_\n\n楽曲名：紅に染まる恋の花/幽閉サテライト\n原曲：稲田姫様に叱られるから\n編曲：Iceon\nギター：neiro\n作詞：Marcia\n\ncover：Yukov"
+    },
+    {
+      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
+      "videoId": "6Okmqo-KD4Y",
+      "publishedAt": "2026-03-24",
+      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "神っぽいな歌ってみた",
@@ -1097,28 +1097,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
     },
     {
-      "title": "デリバリーキッド-TOKYO KOMACHI",
-      "videoId": "90laaPs__Dg",
-      "publishedAt": "2026-06-21",
-      "description": "デリバリーキッド　9ステージテーマ曲"
-    },
-    {
-      "title": "野山北公園　Richard",
-      "videoId": "nvnbrpiPSsg",
-      "publishedAt": "2026-06-22",
-      "description": ""
-    },
-    {
-      "title": "Deleted video",
-      "videoId": "WYSgE5O4_Jw",
-      "publishedAt": "2026-06-23",
-      "description": "This video is unavailable."
-    },
-    {
-      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
-      "videoId": "VZwUbnp0Vvg",
-      "publishedAt": "2026-06-23",
-      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
+      "title": "キーボード壊れた",
+      "videoId": "1P_2I6Iuf6E",
+      "publishedAt": "2026-03-24",
+      "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
     }
   ]
 };
