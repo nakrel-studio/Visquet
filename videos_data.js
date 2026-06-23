@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/22/2026, 6:42:54 PM
+ * Generated: 6/23/2026, 5:12:03 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
+      "videoId": "VZwUbnp0Vvg",
+      "publishedAt": "2026-06-23",
+      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "WYSgE5O4_Jw",
+      "publishedAt": "2026-06-23",
+      "description": "This video is unavailable."
+    },
     {
       "title": "野山北公園　Richard",
       "videoId": "nvnbrpiPSsg",
@@ -366,6 +378,18 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
+      "videoId": "VZwUbnp0Vvg",
+      "publishedAt": "2026-06-23",
+      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "WYSgE5O4_Jw",
+      "publishedAt": "2026-06-23",
+      "description": "This video is unavailable."
+    },
     {
       "title": "デリバリーキッド-TOKYO KOMACHI",
       "videoId": "90laaPs__Dg",
@@ -1083,6 +1107,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "nvnbrpiPSsg",
       "publishedAt": "2026-06-22",
       "description": ""
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "WYSgE5O4_Jw",
+      "publishedAt": "2026-06-23",
+      "description": "This video is unavailable."
+    },
+    {
+      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
+      "videoId": "VZwUbnp0Vvg",
+      "publishedAt": "2026-06-23",
+      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
     }
   ]
 };
