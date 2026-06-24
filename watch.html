@@ -32,6 +32,18 @@
         
         /* 💡 YouTube概要欄の改行規則、空白、長いURLの自動折り返しを維持するスタイル */
         .description-text { white-space: pre-wrap; word-break: break-word; }
+
+        /* 💥 画面を飛び交う炎の火の粉（パーティクル）用スタイル */
+        @keyframes fireFly {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+        .fire-particle {
+            position: absolute; pointer-events: none;
+            background: linear-gradient(to bottom, #ff7e15, #ff3c00);
+            border-radius: 50%; z-index: 50;
+            animation: fireFly 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
     </style>
 </head>
 <body class="flex min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
@@ -73,6 +85,24 @@
                 <span id="video-date" class="font-semibold text-gray-700 dark:text-white">---</span>
                 <span id="video-id" class="text-gray-400 dark:text-gray-600 text-[10px]">ID: ---</span>
             </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-wider">
+                <div class="border border-gray-200 dark:border-[#222225] px-4 py-2 bg-[#f0f2f5] dark:bg-[#0a0a0c] text-gray-500 dark:text-gray-400 font-bold">
+                    VIEWS: <span id="view-count" class="text-gray-950 dark:text-white">0</span>
+                </div>
+
+                <button id="like-btn" onclick="handleLike()" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-blue-50/50 dark:hover:bg-blue-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
+                    <span id="like-icon" class="transition-transform duration-200 group-hover:scale-110 inline-block">👍</span>
+                    <span class="font-semibold">LIKE</span>
+                    <span id="like-count" class="text-blue-600 dark:text-blue-400 font-extrabold ml-1 transition-transform duration-200">0</span>
+                </button>
+
+                <button id="fire-btn" onclick="handleFire(event)" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-orange-50/50 dark:hover:bg-orange-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-75 active:scale-95 flex items-center gap-2 rounded-none relative select-none overflow-visible">
+                    <span id="fire-icon" class="inline-block transition-transform duration-75">🔥</span>
+                    <span class="font-semibold tracking-widest">FIRE</span>
+                    <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
+                </button>
+            </div>
         </div>
         
         <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] mb-12">
@@ -82,17 +112,20 @@
             </div>
         </div>
 
-<section class="border-t border-gray-300 dark:border-gray-800 pt-8 pb-16">
+        <section class="border-t border-gray-300 dark:border-gray-800 pt-8 pb-16">
             <div class="flex justify-end mb-6">
                 <p id="rec-count" class="text-[10px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">SUGGEST: 0</p>
             </div>
             
             <div id="rec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                </div>
+            </div>
         </section>
     </main>
 
     <script>
+        const namespace = "nakrel-visquet-v4"; // 独自の識別識別ID
+        let currentVideoId = null;
+
         function syncTheme() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
             const htmlEl = document.documentElement;
@@ -115,20 +148,20 @@
             syncTheme(); 
 
             const urlParams = new URLSearchParams(window.location.search);
-            const videoId = urlParams.get('id');
+            currentVideoId = urlParams.get('id');
 
-            if (!videoId) {
+            if (!currentVideoId) {
                 location.href = './index.html';
                 return;
             }
 
             const player = document.getElementById('youtube-player');
-            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0`;
 
             let targetVideo = null;
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
                 for (const key in VISQUET_ARCHIVE_DATA) {
-                    const found = VISQUET_ARCHIVE_DATA[key].find(v => v.videoId === videoId);
+                    const found = VISQUET_ARCHIVE_DATA[key].find(v => v.videoId === currentVideoId);
                     if (found) {
                         targetVideo = found;
                         break;
@@ -152,23 +185,151 @@
             } else {
                 document.getElementById('video-title').innerText = "Archived Video Stream";
                 document.getElementById('video-date').innerText = "UNKNOWN DATE";
-                document.getElementById('video-id').innerText = `ID: ${videoId}`;
+                document.getElementById('video-id').innerText = `ID: ${currentVideoId}`;
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
             }
 
-            // 📑 関連動画（All）を最大30件レンダリングする処理
-            renderRecommendations(videoId);
+            // 📊 データのカウント初期化および同期呼び出し
+            initViews();
+            fetchCurrentCounts();
+            
+            if (localStorage.getItem(`like_${currentVideoId}`)) {
+                disableLikeButtonUI();
+            }
+            updateFireButtonUI();
+
+            // 📑 関連動画のレンダリング
+            renderRecommendations(currentVideoId);
         });
+
+        // 📊 再生回数（VIEWS）：1セッション1回制限＋3桁カンマ区切り変換
+        function initViews() {
+            const hasViewed = sessionStorage.getItem(`viewed_${currentVideoId}`);
+            const mode = hasViewed ? "get" : "hit"; 
+            
+            fetch(`https://api.countapi.xyz/${mode}/${namespace}/view_${currentVideoId}`)
+                .then(res => res.json())
+                .then(data => {
+                    const num = data.value || 0;
+                    document.getElementById('view-count').innerText = num.toLocaleString();
+                    if (!hasViewed) sessionStorage.setItem(`viewed_${currentVideoId}`, "true");
+                })
+                .catch(() => {
+                    document.getElementById('view-count').innerText = "0";
+                });
+        }
+
+        // 📦 初回ロード時に現在の数値をAPIから取得して同期
+        function fetchCurrentCounts() {
+            fetch(`https://api.countapi.xyz/get/${namespace}/like_${currentVideoId}`)
+                .then(res => res.json()).then(data => { 
+                    const num = data.value || 0;
+                    document.getElementById('like-count').innerText = num.toLocaleString(); 
+                });
+            fetch(`https://api.countapi.xyz/get/${namespace}/fire_${currentVideoId}`)
+                .then(res => res.json()).then(data => { 
+                    const num = data.value || 0;
+                    document.getElementById('fire-count').innerText = num.toLocaleString(); 
+                });
+        }
+
+        // 👍 LIKEボタン（1人永久1回限定）
+        function handleLike() {
+            if (localStorage.getItem(`like_${currentVideoId}`)) return;
+
+            const iconEl = document.getElementById('like-icon');
+            const countEl = document.getElementById('like-count');
+            
+            iconEl.style.transform = 'scale(1.4)';
+            countEl.style.transform = 'scale(1.3)';
+            
+            fetch(`https://api.countapi.xyz/hit/${namespace}/like_${currentVideoId}`)
+                .then(res => res.json())
+                .then(data => {
+                    const num = data.value || 0;
+                    countEl.innerText = num.toLocaleString();
+                    localStorage.setItem(`like_${currentVideoId}`, "true");
+                    disableLikeButtonUI();
+                    
+                    iconEl.style.transform = 'scale(1)';
+                    countEl.style.transform = 'scale(1)';
+                });
+        }
+
+        function disableLikeButtonUI() {
+            const btn = document.getElementById('like-btn');
+            btn.classList.add('bg-blue-50', 'dark:bg-blue-950/20', 'border-blue-400', 'text-blue-600', 'cursor-not-allowed', 'opacity-90');
+            document.getElementById('like-icon').innerText = '👍';
+        }
+
+        // 🔥 FIREボタン（1人最大50回まで連打、火の粉エフェクト発生）
+        function handleFire(event) {
+            let fireCountLocal = parseInt(localStorage.getItem(`fire_click_${currentVideoId}`)) || 0;
+            if (fireCountLocal >= 50) return; 
+
+            createFireParticles(event);
+
+            const iconEl = document.getElementById('fire-icon');
+            const countEl = document.getElementById('fire-count');
+            
+            iconEl.style.transform = 'scale(1.3) rotate(-10deg)';
+            countEl.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => { 
+                iconEl.style.transform = 'scale(1) rotate(0deg)'; 
+                countEl.style.transform = 'scale(1)'; 
+            }, 75);
+
+            fetch(`https://api.countapi.xyz/hit/${namespace}/fire_${currentVideoId}`)
+                .then(res => res.json())
+                .then(data => {
+                    const num = data.value || 0;
+                    countEl.innerText = num.toLocaleString();
+                    fireCountLocal++;
+                    localStorage.setItem(`fire_click_${currentVideoId}`, fireCountLocal);
+                    updateFireButtonUI();
+                });
+        }
+
+        // 💥 マウスクリック位置から火の粉を散らす処理
+        function createFireParticles(e) {
+            const btn = document.getElementById('fire-btn');
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            for (let i = 0; i < 5; i++) {
+                const p = document.createElement('div');
+                p.classList.add('fire-particle');
+                p.style.left = `${x}px`;
+                p.style.top = `${y}px`;
+                
+                const size = Math.random() * 5 + 3;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.setProperty('--x', `${(Math.random() - 0.5) * 60}px`);
+                p.style.setProperty('--y', `${-Math.random() * 50 - 15}px`);
+
+                btn.appendChild(p);
+                setTimeout(() => p.remove(), 500);
+            }
+        }
+
+        function updateFireButtonUI() {
+            const fireCountLocal = parseInt(localStorage.getItem(`fire_click_${currentVideoId}`)) || 0;
+            if (fireCountLocal >= 50) {
+                const btn = document.getElementById('fire-btn');
+                btn.classList.add('bg-orange-50', 'dark:bg-orange-950/10', 'border-orange-400', 'text-orange-600', 'cursor-not-allowed', 'opacity-90');
+            }
+        }
 
         function renderRecommendations(currentId) {
             const recGrid = document.getElementById('rec-grid');
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
-            // 現在再生中の動画を除外した「All」のリストを生成
             const allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
             
-            // 最大30件を切り出す
             const limit = 30;
             const chunk = allVideos.slice(0, limit);
             const timestamp = new Date().getTime();
@@ -179,7 +340,6 @@
                 return;
             }
 
-            // インデックスの共通設計に基づいた直角ソリッドなカードUIを生成
             const htmlString = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
