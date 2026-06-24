@@ -9,7 +9,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwindのダークモードをクラス制御に設定
         tailwind.config = {
             darkMode: 'class'
         }
@@ -24,16 +23,11 @@
             transition: background-color 0.25s ease, color 0.25s ease;
         }
         .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; user-select: none; }
-        
-        /* 📐 プレイヤー・カードの枠線と背景（完全に直角仕様） */
         .player-container { background: #000; border: 1px solid #222225; border-radius: 0px !important; }
         .video-card { border: 1px solid transparent; transition: all 0.25s ease; border-radius: 0px !important; }
         .video-card:hover { transform: translateY(-3px); }
-        
-        /* 💡 YouTube概要欄の改行規則、空白、長いURLの自動折り返しを維持するスタイル */
         .description-text { white-space: pre-wrap; word-break: break-word; }
 
-        /* 💥 画面を飛び交う炎の火の粉（パーティクル）用スタイル */
         @keyframes fireFly {
             0% { transform: translate(0, 0) scale(1); opacity: 1; }
             100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
@@ -116,9 +110,7 @@
             <div class="flex justify-end mb-6">
                 <p id="rec-count" class="text-[10px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">SUGGEST: 0</p>
             </div>
-            
-            <div id="rec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            </div>
+            <div id="rec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"></div>
         </section>
     </main>
 
@@ -143,19 +135,8 @@
         function syncTheme() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
             const htmlEl = document.documentElement;
-
-            if (theme === 'dark') {
-                htmlEl.classList.add('dark');
-            } else if (theme === 'light') {
-                htmlEl.classList.remove('dark');
-            } else if (theme === 'system') {
-                const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (isSystemDark) {
-                    htmlEl.classList.add('dark');
-                } else {
-                    htmlEl.classList.remove('dark');
-                }
-            }
+            if (theme === 'dark') htmlEl.classList.add('dark');
+            else if (theme === 'light') htmlEl.classList.remove('dark');
         }
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -176,10 +157,7 @@
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
                 for (const key in VISQUET_ARCHIVE_DATA) {
                     const found = VISQUET_ARCHIVE_DATA[key].find(v => v.videoId === currentVideoId);
-                    if (found) {
-                        targetVideo = found;
-                        break;
-                    }
+                    if (found) { targetVideo = found; break; }
                 }
             }
 
@@ -187,9 +165,7 @@
                 document.getElementById('video-title').innerHTML = targetVideo.title;
                 document.getElementById('video-date').innerText = `${targetVideo.publishedAt} に投稿`;
                 document.getElementById('video-id').innerText = `ID: ${targetVideo.videoId}`;
-                
                 document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
-
                 const descContainer = document.getElementById('video-description');
                 if (targetVideo.description && targetVideo.description.trim() !== "") {
                     descContainer.innerText = targetVideo.description;
@@ -200,19 +176,15 @@
                 document.getElementById('video-title').innerText = "Archived Video Stream";
                 document.getElementById('video-date').innerText = "UNKNOWN DATE";
                 document.getElementById('video-id').innerText = `ID: ${currentVideoId}`;
-                document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
+                document.getElementById('video-description').innerText = "動画情報をロードできませんでした。";
             }
 
-            // イベントリスナーの確実な紐付け
             const likeBtn = document.getElementById('like-btn');
             const fireBtn = document.getElementById('fire-btn');
             if (likeBtn) likeBtn.addEventListener('click', handleLike);
             if (fireBtn) fireBtn.addEventListener('click', handleFire);
 
-            // ⚡ データベース同期を開始
             initLocalCounters();
-
-            // 📑 関連動画のレンダリング
             renderRecommendations(currentVideoId);
         });
 
@@ -220,28 +192,32 @@
             if (!currentVideoId) return;
             const docRef = doc(db, "video_metrics", currentVideoId);
 
+            // 🟢 閲覧セッションチェック＆加算（データが無い場合は自動で新規作成）
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             if (!hasViewed) {
                 try {
                     await setDoc(docRef, { views: increment(1) }, { merge: true });
                     sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
                 } catch (e) {
-                    console.error("Firebase Sync Error:", e);
+                    console.error("Firebase Views Sync Error:", e);
                 }
             }
 
+            // 🟢 リアルタイムデータ同期の監視
             onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
                     document.getElementById('like-count').innerText = (data.likes || 0).toLocaleString();
                     document.getElementById('fire-count').innerText = (data.fires || 0).toLocaleString();
+                } else {
+                    document.getElementById('view-count').innerText = "0";
+                    document.getElementById('like-count').innerText = "0";
+                    document.getElementById('fire-count').innerText = "0";
                 }
             });
 
-            if (localStorage.getItem(`l_user_${currentVideoId}`)) {
-                disableLikeButtonUI();
-            }
+            if (localStorage.getItem(`l_user_${currentVideoId}`)) disableLikeButtonUI();
             updateFireButtonUI();
         }
 
@@ -250,15 +226,17 @@
 
             const iconEl = document.getElementById('like-icon');
             const countEl = document.getElementById('like-count');
-            
             iconEl.style.transform = 'scale(1.4)';
             countEl.style.transform = 'scale(1.3)';
             
             const docRef = doc(db, "video_metrics", currentVideoId);
-            await setDoc(docRef, { likes: increment(1) }, { merge: true });
-
-            localStorage.setItem(`l_user_${currentVideoId}`, "true");
-            disableLikeButtonUI();
+            try {
+                await setDoc(docRef, { likes: increment(1) }, { merge: true });
+                localStorage.setItem(`l_user_${currentVideoId}`, "true");
+                disableLikeButtonUI();
+            } catch (e) {
+                console.error("Like Error:", e);
+            }
             
             setTimeout(() => {
                 iconEl.style.transform = 'scale(1)';
@@ -279,7 +257,6 @@
 
             const iconEl = document.getElementById('fire-icon');
             const countEl = document.getElementById('fire-count');
-            
             iconEl.style.transform = 'scale(1.3) rotate(-10deg)';
             countEl.style.transform = 'scale(1.2)';
             
@@ -289,12 +266,14 @@
             }, 75);
 
             const docRef = doc(db, "video_metrics", currentVideoId);
-            await setDoc(docRef, { fires: increment(1) }, { merge: true });
-
-            userFireClicks++;
-            localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
-            
-            updateFireButtonUI();
+            try {
+                await setDoc(docRef, { fires: increment(1) }, { merge: true });
+                userFireClicks++;
+                localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
+                updateFireButtonUI();
+            } catch (e) {
+                console.error("Fire Error:", e);
+            }
         }
 
         function createFireParticles(e) {
@@ -309,13 +288,11 @@
                 p.classList.add('fire-particle');
                 p.style.left = `${x}px`;
                 p.style.top = `${y}px`;
-                
                 const size = Math.random() * 5 + 3;
                 p.style.width = `${size}px`;
                 p.style.height = `${size}px`;
                 p.style.setProperty('--x', `${(Math.random() - 0.5) * 60}px`);
                 p.style.setProperty('--y', `${-Math.random() * 50 - 15}px`);
-
                 btn.appendChild(p);
                 setTimeout(() => p.remove(), 500);
             }
@@ -335,8 +312,7 @@
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
             const allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
-            const limit = 30;
-            const chunk = allVideos.slice(0, limit);
+            const chunk = allVideos.slice(0, 30);
             const timestamp = new Date().getTime();
 
             if (chunk.length === 0) {
@@ -345,11 +321,10 @@
                 return;
             }
 
-            const htmlString = chunk.map(v => `
+            recGrid.innerHTML = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
                         <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
-                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                     <div class="p-4 md:p-5">
                         <h3 class="text-[11px] font-bold line-clamp-2 text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
@@ -360,16 +335,8 @@
                     </div>
                 </div>
             `).join('');
-
-            recGrid.innerHTML = htmlString;
             recCountEl.innerText = `SUGGEST: ${chunk.length}`;
         }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (localStorage.getItem('visquet-theme') === 'system') {
-                syncTheme();
-            }
-        });
     </script>
 </body>
 </html>
