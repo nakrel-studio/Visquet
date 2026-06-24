@@ -122,8 +122,28 @@
         </section>
     </main>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Firebase構成設定
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlH-GMToPdCL_b-k2n1bETAiNevkqcM5A",
+            authDomain: "visquet-view.firebaseapp.com",
+            projectId: "visquet-view",
+            storageBucket: "visquet-view.firebasestorage.app",
+            messagingSenderId: "110822314078",
+            appId: "1:110822314078:web:0c4ca72bec50a0168324cf"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         let currentVideoId = null;
+
+        // ボタンのHTML要素（onclick）から読み出すためのグローバル展開
+        window.handleLike = handleLike;
+        window.handleFire = handleFire;
 
         function syncTheme() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
@@ -188,45 +208,48 @@
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
             }
 
-            // ⚡ 混じり気なしの完全0スタート計測エンジンを始動
+            // ⚡ データベース同期を開始
             initLocalCounters();
 
             // 📑 関連動画のレンダリング
             renderRecommendations(currentVideoId);
         });
 
-        // 📊 完全実数カウント処理
-        function initLocalCounters() {
-            // 1. 再生回数（VIEWS）：記録がなければ0から
-            let views = parseInt(localStorage.getItem(`v_count_${currentVideoId}`)) || 0;
+        // 🌍 リアルタイム同期計測コアエンジン
+        async function initLocalCounters() {
+            if (!currentVideoId) return;
+            const docRef = doc(db, "video_metrics", currentVideoId);
+
+            // セッション中に1回だけVIEWSをインクリメント
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
-            
             if (!hasViewed) {
-                views++;
-                localStorage.setItem(`v_count_${currentVideoId}`, views);
-                sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
+                try {
+                    await setDoc(docRef, { views: increment(1) }, { merge: true });
+                    sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
+                } catch (e) {
+                    console.error("Firebase Sync Error:", e);
+                }
             }
-            document.getElementById('view-count').innerText = views.toLocaleString();
 
-            // 2. 高評価数（LIKE）：記録がなければ0から
-            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || 0;
-            localStorage.setItem(`l_count_${currentVideoId}`, likes);
-            document.getElementById('like-count').innerText = likes.toLocaleString();
+            // データの変更をリアルタイム監視して画面に即座に反映
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
+                    document.getElementById('like-count').innerText = (data.likes || 0).toLocaleString();
+                    document.getElementById('fire-count').innerText = (data.fires || 0).toLocaleString();
+                }
+            });
 
+            // ローカル保存に基づくUI制御（押下済みの判定など）
             if (localStorage.getItem(`l_user_${currentVideoId}`)) {
                 disableLikeButtonUI();
             }
-
-            // 3. FIRE数：記録がなければ0から
-            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || 0;
-            localStorage.setItem(`f_count_${currentVideoId}`, fires);
-            document.getElementById('fire-count').innerText = fires.toLocaleString();
-
             updateFireButtonUI();
         }
 
-        // 👍 LIKEボタン（1人永久1回）
-        function handleLike() {
+        // 👍 LIKE処理
+        async function handleLike() {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
             const iconEl = document.getElementById('like-icon');
@@ -235,13 +258,10 @@
             iconEl.style.transform = 'scale(1.4)';
             countEl.style.transform = 'scale(1.3)';
             
-            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || 0;
-            likes++;
-            
-            localStorage.setItem(`l_count_${currentVideoId}`, likes);
+            const docRef = doc(db, "video_metrics", currentVideoId);
+            await setDoc(docRef, { likes: increment(1) }, { merge: true });
+
             localStorage.setItem(`l_user_${currentVideoId}`, "true");
-            
-            countEl.innerText = likes.toLocaleString();
             disableLikeButtonUI();
             
             setTimeout(() => {
@@ -252,12 +272,11 @@
 
         function disableLikeButtonUI() {
             const btn = document.getElementById('like-btn');
-            btn.classList.add('bg-blue-50', 'dark:bg-blue-950/20', 'border-blue-400', 'text-blue-600', 'cursor-not-allowed', 'opacity-90');
-            document.getElementById('like-icon').innerText = '👍';
+            if (btn) btn.classList.add('bg-blue-50', 'dark:bg-blue-950/20', 'border-blue-400', 'text-blue-600', 'cursor-not-allowed', 'opacity-90');
         }
 
-        // 🔥 FIREボタン（50回連打・火の粉エフェクト）
-        function handleFire(event) {
+        // 🔥 FIRE処理
+        async function handleFire(event) {
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
 
@@ -274,18 +293,15 @@
                 countEl.style.transform = 'scale(1)'; 
             }, 75);
 
-            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || 0;
-            fires++;
+            const docRef = doc(db, "video_metrics", currentVideoId);
+            await setDoc(docRef, { fires: increment(1) }, { merge: true });
+
             userFireClicks++;
-            
-            localStorage.setItem(`f_count_${currentVideoId}`, fires);
             localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
             
-            countEl.innerText = fires.toLocaleString();
             updateFireButtonUI();
         }
 
-        // 💥 火の粉パーティクル生成
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
             const rect = btn.getBoundingClientRect();
@@ -313,7 +329,7 @@
             const userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) {
                 const btn = document.getElementById('fire-btn');
-                btn.classList.add('bg-orange-50', 'dark:bg-orange-950/10', 'border-orange-400', 'text-orange-600', 'cursor-not-allowed', 'opacity-90');
+                if (btn) btn.classList.add('bg-orange-50', 'dark:bg-orange-950/10', 'border-orange-400', 'text-orange-600', 'cursor-not-allowed', 'opacity-90');
             }
         }
 
@@ -323,7 +339,6 @@
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
             const allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
-            
             const limit = 30;
             const chunk = allVideos.slice(0, limit);
             const timestamp = new Date().getTime();
