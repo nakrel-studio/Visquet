@@ -62,7 +62,7 @@
 
         <div class="mt-auto pt-6 border-t border-gray-300 dark:border-gray-800 flex items-center justify-between">
             <div class="text-[9px] text-gray-400 dark:text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_PLAYER_v1.3 <span class="text-blue-600 dark:text-blue-500">STABLE_LOCAL_ENGINE</span>
+                SYS: VISQUET_PLAYER_v1.4 <span class="text-blue-600 dark:text-blue-500">REAL_METRICS_ENGAGED</span>
             </div>
         </div>
     </aside>
@@ -188,17 +188,17 @@
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
             }
 
-            // ⚡ 100%確実に動くローカルエンジンの駆動
+            // ⚡ 混じり気なしの完全0スタート計測エンジンを始動
             initLocalCounters();
 
             // 📑 関連動画のレンダリング
             renderRecommendations(currentVideoId);
         });
 
-        // 📊 ローカルストレージベースの独立カウンタ処理
+        // 📊 完全実数カウント処理
         function initLocalCounters() {
-            // 1. 再生回数（セッション制限付き）
-            let views = parseInt(localStorage.getItem(`v_count_${currentVideoId}`)) || Math.floor(Math.random() * 200) + 50; // 初期値がない場合はリアルな初期値を生成
+            // 1. 再生回数（VIEWS）：記録がなければ0から
+            let views = parseInt(localStorage.getItem(`v_count_${currentVideoId}`)) || 0;
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             
             if (!hasViewed) {
@@ -208,8 +208,8 @@
             }
             document.getElementById('view-count').innerText = views.toLocaleString();
 
-            // 2. 高評価数（LIKE）の読み込み
-            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || Math.floor(views * 0.1) + 5;
+            // 2. 高評価数（LIKE）：記録がなければ0から
+            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || 0;
             localStorage.setItem(`l_count_${currentVideoId}`, likes);
             document.getElementById('like-count').innerText = likes.toLocaleString();
 
@@ -217,15 +217,15 @@
                 disableLikeButtonUI();
             }
 
-            // 3. FIRE数の読み込み
-            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || Math.floor(views * 2.5) + 12;
+            // 3. FIRE数：記録がなければ0から
+            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || 0;
             localStorage.setItem(`f_count_${currentVideoId}`, fires);
             document.getElementById('fire-count').innerText = fires.toLocaleString();
 
             updateFireButtonUI();
         }
 
-        // 👍 LIKEボタンをクリック（1人1回だけ確実に弾む）
+        // 👍 LIKEボタン（1人永久1回）
         function handleLike() {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
@@ -239,7 +239,7 @@
             likes++;
             
             localStorage.setItem(`l_count_${currentVideoId}`, likes);
-            localStorage.setItem(`l_user_${currentVideoId}`, "true"); // ユーザーが押したフラグ
+            localStorage.setItem(`l_user_${currentVideoId}`, "true");
             
             countEl.innerText = likes.toLocaleString();
             disableLikeButtonUI();
@@ -256,7 +256,7 @@
             document.getElementById('like-icon').innerText = '👍';
         }
 
-        // 🔥 FIREボタン（50回連打・火の粉エフェクトが即座に発動）
+        // 🔥 FIREボタン（50回連打・火の粉エフェクト）
         function handleFire(event) {
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
@@ -285,7 +285,7 @@
             updateFireButtonUI();
         }
 
-        // 💥 火の粉パーティクル
+        // 💥 火の粉パーティクル生成
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
             const rect = btn.getBoundingClientRect();
