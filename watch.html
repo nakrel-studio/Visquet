@@ -91,13 +91,13 @@
                     VIEWS: <span id="view-count" class="text-gray-950 dark:text-white">0</span>
                 </div>
 
-                <button id="like-btn" onclick="handleLike()" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-blue-50/50 dark:hover:bg-blue-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
+                <button id="like-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-blue-50/50 dark:hover:bg-blue-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
                     <span id="like-icon" class="transition-transform duration-200 group-hover:scale-110 inline-block">👍</span>
                     <span class="font-semibold">LIKE</span>
                     <span id="like-count" class="text-blue-600 dark:text-blue-400 font-extrabold ml-1 transition-transform duration-200">0</span>
                 </button>
 
-                <button id="fire-btn" onclick="handleFire(event)" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-orange-50/50 dark:hover:bg-orange-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-75 active:scale-95 flex items-center gap-2 rounded-none relative select-none overflow-visible">
+                <button id="fire-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-orange-50/50 dark:hover:bg-orange-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-75 active:scale-95 flex items-center gap-2 rounded-none relative select-none overflow-visible">
                     <span id="fire-icon" class="inline-block transition-transform duration-75">🔥</span>
                     <span class="font-semibold tracking-widest">FIRE</span>
                     <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
@@ -126,7 +126,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, setDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Firebase構成設定
         const firebaseConfig = {
             apiKey: "AIzaSyAlH-GMToPdCL_b-k2n1bETAiNevkqcM5A",
             authDomain: "visquet-view.firebaseapp.com",
@@ -140,10 +139,6 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
-
-        // ボタンのHTML要素（onclick）から読み出すためのグローバル展開
-        window.handleLike = handleLike;
-        window.handleFire = handleFire;
 
         function syncTheme() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
@@ -208,6 +203,12 @@
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
             }
 
+            // イベントリスナーの確実な紐付け
+            const likeBtn = document.getElementById('like-btn');
+            const fireBtn = document.getElementById('fire-btn');
+            if (likeBtn) likeBtn.addEventListener('click', handleLike);
+            if (fireBtn) fireBtn.addEventListener('click', handleFire);
+
             // ⚡ データベース同期を開始
             initLocalCounters();
 
@@ -215,12 +216,10 @@
             renderRecommendations(currentVideoId);
         });
 
-        // 🌍 リアルタイム同期計測コアエンジン
         async function initLocalCounters() {
             if (!currentVideoId) return;
             const docRef = doc(db, "video_metrics", currentVideoId);
 
-            // セッション中に1回だけVIEWSをインクリメント
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             if (!hasViewed) {
                 try {
@@ -231,7 +230,6 @@
                 }
             }
 
-            // データの変更をリアルタイム監視して画面に即座に反映
             onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
@@ -241,14 +239,12 @@
                 }
             });
 
-            // ローカル保存に基づくUI制御（押下済みの判定など）
             if (localStorage.getItem(`l_user_${currentVideoId}`)) {
                 disableLikeButtonUI();
             }
             updateFireButtonUI();
         }
 
-        // 👍 LIKE処理
         async function handleLike() {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
@@ -275,7 +271,6 @@
             if (btn) btn.classList.add('bg-blue-50', 'dark:bg-blue-950/20', 'border-blue-400', 'text-blue-600', 'cursor-not-allowed', 'opacity-90');
         }
 
-        // 🔥 FIRE処理
         async function handleFire(event) {
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
@@ -304,6 +299,7 @@
 
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
+            if (!btn) return;
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
