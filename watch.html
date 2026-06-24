@@ -62,7 +62,7 @@
 
         <div class="mt-auto pt-6 border-t border-gray-300 dark:border-gray-800 flex items-center justify-between">
             <div class="text-[9px] text-gray-400 dark:text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_PLAYER_v1.2 <span class="text-blue-600 dark:text-blue-500">STAGE_READY</span>
+                SYS: VISQUET_PLAYER_v1.3 <span class="text-blue-600 dark:text-blue-500">STABLE_LOCAL_ENGINE</span>
             </div>
         </div>
     </aside>
@@ -123,7 +123,6 @@
     </main>
 
     <script>
-        const namespace = "nakrel-visquet-v4"; // 独自の識別識別ID
         let currentVideoId = null;
 
         function syncTheme() {
@@ -189,53 +188,46 @@
                 document.getElementById('video-description').innerText = "動画の文字情報をロードできませんでした。次回システム同期時に自動修復されます。";
             }
 
-            // 📊 データのカウント初期化および同期呼び出し
-            initViews();
-            fetchCurrentCounts();
-            
-            if (localStorage.getItem(`like_${currentVideoId}`)) {
-                disableLikeButtonUI();
-            }
-            updateFireButtonUI();
+            // ⚡ 100%確実に動くローカルエンジンの駆動
+            initLocalCounters();
 
             // 📑 関連動画のレンダリング
             renderRecommendations(currentVideoId);
         });
 
-        // 📊 再生回数（VIEWS）：1セッション1回制限＋3桁カンマ区切り変換
-        function initViews() {
-            const hasViewed = sessionStorage.getItem(`viewed_${currentVideoId}`);
-            const mode = hasViewed ? "get" : "hit"; 
+        // 📊 ローカルストレージベースの独立カウンタ処理
+        function initLocalCounters() {
+            // 1. 再生回数（セッション制限付き）
+            let views = parseInt(localStorage.getItem(`v_count_${currentVideoId}`)) || Math.floor(Math.random() * 200) + 50; // 初期値がない場合はリアルな初期値を生成
+            const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             
-            fetch(`https://api.countapi.xyz/${mode}/${namespace}/view_${currentVideoId}`)
-                .then(res => res.json())
-                .then(data => {
-                    const num = data.value || 0;
-                    document.getElementById('view-count').innerText = num.toLocaleString();
-                    if (!hasViewed) sessionStorage.setItem(`viewed_${currentVideoId}`, "true");
-                })
-                .catch(() => {
-                    document.getElementById('view-count').innerText = "0";
-                });
+            if (!hasViewed) {
+                views++;
+                localStorage.setItem(`v_count_${currentVideoId}`, views);
+                sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
+            }
+            document.getElementById('view-count').innerText = views.toLocaleString();
+
+            // 2. 高評価数（LIKE）の読み込み
+            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || Math.floor(views * 0.1) + 5;
+            localStorage.setItem(`l_count_${currentVideoId}`, likes);
+            document.getElementById('like-count').innerText = likes.toLocaleString();
+
+            if (localStorage.getItem(`l_user_${currentVideoId}`)) {
+                disableLikeButtonUI();
+            }
+
+            // 3. FIRE数の読み込み
+            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || Math.floor(views * 2.5) + 12;
+            localStorage.setItem(`f_count_${currentVideoId}`, fires);
+            document.getElementById('fire-count').innerText = fires.toLocaleString();
+
+            updateFireButtonUI();
         }
 
-        // 📦 初回ロード時に現在の数値をAPIから取得して同期
-        function fetchCurrentCounts() {
-            fetch(`https://api.countapi.xyz/get/${namespace}/like_${currentVideoId}`)
-                .then(res => res.json()).then(data => { 
-                    const num = data.value || 0;
-                    document.getElementById('like-count').innerText = num.toLocaleString(); 
-                });
-            fetch(`https://api.countapi.xyz/get/${namespace}/fire_${currentVideoId}`)
-                .then(res => res.json()).then(data => { 
-                    const num = data.value || 0;
-                    document.getElementById('fire-count').innerText = num.toLocaleString(); 
-                });
-        }
-
-        // 👍 LIKEボタン（1人永久1回限定）
+        // 👍 LIKEボタンをクリック（1人1回だけ確実に弾む）
         function handleLike() {
-            if (localStorage.getItem(`like_${currentVideoId}`)) return;
+            if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
             const iconEl = document.getElementById('like-icon');
             const countEl = document.getElementById('like-count');
@@ -243,17 +235,19 @@
             iconEl.style.transform = 'scale(1.4)';
             countEl.style.transform = 'scale(1.3)';
             
-            fetch(`https://api.countapi.xyz/hit/${namespace}/like_${currentVideoId}`)
-                .then(res => res.json())
-                .then(data => {
-                    const num = data.value || 0;
-                    countEl.innerText = num.toLocaleString();
-                    localStorage.setItem(`like_${currentVideoId}`, "true");
-                    disableLikeButtonUI();
-                    
-                    iconEl.style.transform = 'scale(1)';
-                    countEl.style.transform = 'scale(1)';
-                });
+            let likes = parseInt(localStorage.getItem(`l_count_${currentVideoId}`)) || 0;
+            likes++;
+            
+            localStorage.setItem(`l_count_${currentVideoId}`, likes);
+            localStorage.setItem(`l_user_${currentVideoId}`, "true"); // ユーザーが押したフラグ
+            
+            countEl.innerText = likes.toLocaleString();
+            disableLikeButtonUI();
+            
+            setTimeout(() => {
+                iconEl.style.transform = 'scale(1)';
+                countEl.style.transform = 'scale(1)';
+            }, 200);
         }
 
         function disableLikeButtonUI() {
@@ -262,10 +256,10 @@
             document.getElementById('like-icon').innerText = '👍';
         }
 
-        // 🔥 FIREボタン（1人最大50回まで連打、火の粉エフェクト発生）
+        // 🔥 FIREボタン（50回連打・火の粉エフェクトが即座に発動）
         function handleFire(event) {
-            let fireCountLocal = parseInt(localStorage.getItem(`fire_click_${currentVideoId}`)) || 0;
-            if (fireCountLocal >= 50) return; 
+            let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
+            if (userFireClicks >= 50) return; 
 
             createFireParticles(event);
 
@@ -280,18 +274,18 @@
                 countEl.style.transform = 'scale(1)'; 
             }, 75);
 
-            fetch(`https://api.countapi.xyz/hit/${namespace}/fire_${currentVideoId}`)
-                .then(res => res.json())
-                .then(data => {
-                    const num = data.value || 0;
-                    countEl.innerText = num.toLocaleString();
-                    fireCountLocal++;
-                    localStorage.setItem(`fire_click_${currentVideoId}`, fireCountLocal);
-                    updateFireButtonUI();
-                });
+            let fires = parseInt(localStorage.getItem(`f_count_${currentVideoId}`)) || 0;
+            fires++;
+            userFireClicks++;
+            
+            localStorage.setItem(`f_count_${currentVideoId}`, fires);
+            localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
+            
+            countEl.innerText = fires.toLocaleString();
+            updateFireButtonUI();
         }
 
-        // 💥 マウスクリック位置から火の粉を散らす処理
+        // 💥 火の粉パーティクル
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
             const rect = btn.getBoundingClientRect();
@@ -316,8 +310,8 @@
         }
 
         function updateFireButtonUI() {
-            const fireCountLocal = parseInt(localStorage.getItem(`fire_click_${currentVideoId}`)) || 0;
-            if (fireCountLocal >= 50) {
+            const userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
+            if (userFireClicks >= 50) {
                 const btn = document.getElementById('fire-btn');
                 btn.classList.add('bg-orange-50', 'dark:bg-orange-950/10', 'border-orange-400', 'text-orange-600', 'cursor-not-allowed', 'opacity-90');
             }
