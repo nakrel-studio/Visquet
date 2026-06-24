@@ -86,13 +86,13 @@
                 </div>
 
                 <button id="like-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-blue-50/50 dark:hover:bg-blue-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
-                    <span id="like-icon" class="transition-transform duration-200 group-hover:scale-110 inline-block">👍</span>
+                    <span id="like-icon" class="text-2xl transition-transform duration-200 group-hover:scale-110 inline-block">👍</span>
                     <span class="font-semibold">LIKE</span>
                     <span id="like-count" class="text-blue-600 dark:text-blue-400 font-extrabold ml-1 transition-transform duration-200">0</span>
                 </button>
 
                 <button id="fire-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-orange-50/50 dark:hover:bg-orange-950/20 px-4 py-2 text-gray-600 dark:text-gray-300 transition-all duration-75 active:scale-95 flex items-center gap-2 rounded-none relative select-none overflow-visible">
-                    <span id="fire-icon" class="inline-block transition-transform duration-75">🔥</span>
+                    <span id="fire-icon" class="text-2xl inline-block transition-transform duration-75">🔥</span>
                     <span class="font-semibold tracking-widest">FIRE</span>
                     <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
                 </button>
@@ -192,7 +192,6 @@
             if (!currentVideoId) return;
             const docRef = doc(db, "video_metrics", currentVideoId);
 
-            // 🟢 閲覧セッションチェック＆加算（データが無い場合は自動で新規作成）
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             if (!hasViewed) {
                 try {
@@ -203,7 +202,6 @@
                 }
             }
 
-            // 🟢 リアルタイムデータ同期の監視
             onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
@@ -244,9 +242,13 @@
             }, 200);
         }
 
+        // 🎨 ロック時のスタイル変更（濃いグレー、ホバー無効）
         function disableLikeButtonUI() {
             const btn = document.getElementById('like-btn');
-            if (btn) btn.classList.add('bg-blue-50', 'dark:bg-blue-950/20', 'border-blue-400', 'text-blue-600', 'cursor-not-allowed', 'opacity-90');
+            if (btn) {
+                btn.classList.add('bg-gray-300', 'text-gray-600', 'border-gray-400', 'dark:bg-gray-800', 'dark:text-gray-400', 'dark:border-gray-700', 'cursor-not-allowed', 'pointer-events-none');
+                btn.classList.remove('hover:bg-blue-50/50', 'dark:hover:bg-blue-950/20');
+            }
         }
 
         async function handleFire(event) {
@@ -298,11 +300,15 @@
             }
         }
 
+        // 🎨 ロック時のスタイル変更（濃いグレー、ホバー無効）
         function updateFireButtonUI() {
             const userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) {
                 const btn = document.getElementById('fire-btn');
-                if (btn) btn.classList.add('bg-orange-50', 'dark:bg-orange-950/10', 'border-orange-400', 'text-orange-600', 'cursor-not-allowed', 'opacity-90');
+                if (btn) {
+                    btn.classList.add('bg-gray-300', 'text-gray-600', 'border-gray-400', 'dark:bg-gray-800', 'dark:text-gray-400', 'dark:border-gray-700', 'cursor-not-allowed', 'pointer-events-none');
+                    btn.classList.remove('hover:bg-orange-50/50', 'dark:hover:bg-orange-950/20');
+                }
             }
         }
 
