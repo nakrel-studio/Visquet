@@ -23,7 +23,24 @@
             transition: background-color 0.25s ease, color 0.25s ease;
         }
         .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; user-select: none; }
-        .player-container { background: #000; border: 1px solid #222225; border-radius: 0px !important; }
+        
+        /* 🟢 プレイヤーを絶対的な4:3に固定し、中の黒帯の発生を防止する設定 */
+        .player-container { 
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3比率 (3 ÷ 4 = 0.75) を強制維持 */
+            background: #000; 
+            border: 1px solid #222225; 
+            border-radius: 0px !important; 
+        }
+        .player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .video-card { border: 1px solid transparent; transition: all 0.25s ease; border-radius: 0px !important; }
         .video-card:hover { transform: translateY(-2px); }
         .description-text { white-space: pre-wrap; word-break: break-word; }
@@ -39,17 +56,9 @@
             animation: fireFly 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
 
-        /* 🟢 スクロールバーをスタイリッシュに隠す、または細くする設定 */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 2px;
-        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
     </style>
 </head>
 <body class="flex min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
@@ -68,22 +77,22 @@
 
         <div class="mt-auto pt-6 border-t border-gray-300 dark:border-gray-800 flex items-center justify-between">
             <div class="text-[9px] text-gray-400 dark:text-gray-700 font-mono tracking-tighter">
-                SYS: VISQUET_PLAYER_v1.7 <span class="text-blue-600 dark:text-blue-500">FIXED_SCROLL_ENGAGED</span>
+                SYS: VISQUET_PLAYER_v1.8 <span class="text-blue-600 dark:text-blue-500">RESPONSIVE_43_FIX</span>
             </div>
         </div>
     </aside>
 
-    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full flex flex-col lg:flex-row gap-6 h-screen overflow-hidden">
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full flex flex-col lg:flex-row gap-6 h-auto lg:h-screen lg:overflow-hidden">
         
-        <div class="flex-grow lg:w-2/3 flex flex-col h-full overflow-y-auto pr-1 custom-scrollbar">
+        <div class="flex-grow lg:w-2/3 flex flex-col h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 custom-scrollbar">
             <div class="md:hidden mb-4">
                 <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none">
                     ← Back
                 </button>
             </div>
 
-            <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-4">
-                <iframe id="youtube-player" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="player-container shadow-2xl mb-4">
+                <iframe id="youtube-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
             <div class="mb-4">
@@ -120,12 +129,12 @@
             </div>
         </div>
         
-        <div class="w-full lg:w-1/3 flex flex-col border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-[#222225] pt-4 lg:pt-0 lg:pl-6 h-full">
+        <div class="w-full lg:w-1/3 flex flex-col border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-[#222225] pt-4 lg:pt-0 lg:pl-6 h-auto lg:h-full flex-shrink-0">
             <div class="flex justify-between items-center mb-4 flex-shrink-0">
                 <h2 class="text-xs font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">/ Suggested Archive</h2>
                 <p id="rec-count" class="text-[10px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">SUGGEST: 0</p>
             </div>
-            <div id="rec-grid" class="flex flex-col gap-4 overflow-y-auto h-full pb-16 pr-1 custom-scrollbar"></div>
+            <div id="rec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-4 overflow-y-visible lg:overflow-y-auto h-auto lg:h-full pb-16 pr-0 lg:pr-1 custom-scrollbar"></div>
         </div>
 
     </main>
@@ -367,23 +376,22 @@
             }
         }
 
-        // 🟢 【右側1列＆サムネイルアスペクト比完全固定版】
+        // 🟢 スマホ版のレスポンシブにも対応したおすすめ動画レンダラー
         function renderRecommendations(currentId) {
             const recGrid = document.getElementById('rec-grid');
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
             const allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
-            const chunk = allVideos.slice(0, 20); // 独立スクロールできるため、件数を多めの20件に調整
+            const chunk = allVideos.slice(0, 20); 
             const timestamp = new Date().getTime();
 
             if (chunk.length === 0) {
-                recGrid.innerHTML = `<div class="text-center py-6 font-mono text-gray-400 dark:text-gray-700 text-xs uppercase">他に関連するデータがありません</div>`;
+                recGrid.innerHTML = `<div class="text-center py-6 font-mono text-gray-400 dark:text-gray-700 text-xs uppercase col-span-full">他に関連するデータがありません</div>`;
                 recCountEl.innerText = `SUGGEST: 0`;
                 return;
             }
 
-            // 🟢 画像の親枠を「w-full aspect-video overflow-hidden」で包み、中のimgを「w-full h-full object-cover」にすることで大画面でも絶対に潰れないようにガード
             recGrid.innerHTML = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-md bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336] w-full flex flex-col flex-shrink-0" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="w-full aspect-video overflow-hidden bg-gray-200 dark:bg-gray-900">
