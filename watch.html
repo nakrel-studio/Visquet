@@ -219,8 +219,11 @@
             updateFireButtonUI();
         }
 
-        async function handleLike() {
+        async function handleLike(event) {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
+
+            // ➕ 吹き出しポップアップ生成
+            createPopupText(event, "+1", "text-blue-500");
 
             const iconEl = document.getElementById('like-icon');
             const countEl = document.getElementById('like-count');
@@ -242,7 +245,6 @@
             }, 200);
         }
 
-        // 🎨 ロック時のスタイル変更（濃いグレー、ホバー無効）
         function disableLikeButtonUI() {
             const btn = document.getElementById('like-btn');
             if (btn) {
@@ -255,7 +257,9 @@
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
 
+            // 💥 火の粉(大型化版) ＋ ➕ 吹き出しポップアップ生成
             createFireParticles(event);
+            createPopupText(event, "+1", "text-orange-500");
 
             const iconEl = document.getElementById('fire-icon');
             const countEl = document.getElementById('fire-count');
@@ -278,6 +282,7 @@
             }
         }
 
+        // 🔥 大型化・広範囲化した火の粉エフェクト
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
             if (!btn) return;
@@ -285,22 +290,55 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 7; i++) {
                 const p = document.createElement('div');
                 p.classList.add('fire-particle');
                 p.style.left = `${x}px`;
                 p.style.top = `${y}px`;
-                const size = Math.random() * 5 + 3;
+                
+                // 粒のサイズを拡大 (6px 〜 14px)
+                const size = Math.random() * 8 + 6;
                 p.style.width = `${size}px`;
                 p.style.height = `${size}px`;
-                p.style.setProperty('--x', `${(Math.random() - 0.5) * 60}px`);
-                p.style.setProperty('--y', `${-Math.random() * 50 - 15}px`);
+                
+                // 吹き飛ぶ勢いと範囲を拡張
+                p.style.setProperty('--x', `${(Math.random() - 0.5) * 100}px`);
+                p.style.setProperty('--y', `${-Math.random() * 80 - 30}px`);
+                
                 btn.appendChild(p);
                 setTimeout(() => p.remove(), 500);
             }
         }
 
-        // 🎨 ロック時のスタイル変更（濃いグレー、ホバー無効）
+        // 💬 フワッと浮き上がって消える直角デザインの吹き出し生成
+        function createPopupText(e, text, colorClass) {
+            const btn = e.currentTarget;
+            if (!btn) return;
+
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const popup = document.createElement('div');
+            popup.innerText = text;
+            
+            popup.className = `absolute pointer-events-none font-mono font-black text-xs px-1.5 py-0.5 bg-white dark:bg-[#141417] border border-gray-300 dark:border-[#222225] shadow-md z-50 ${colorClass} rounded-none`;
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+            popup.style.transform = 'translate(-50%, -100%)';
+            popup.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+
+            btn.appendChild(popup);
+
+            requestAnimationFrame(() => {
+                popup.style.top = `${y - 40}px`;
+                popup.style.opacity = '0';
+                popup.style.transform = 'translate(-50%, -100%) scale(0.8)';
+            });
+
+            setTimeout(() => popup.remove(), 600);
+        }
+
         function updateFireButtonUI() {
             const userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) {
