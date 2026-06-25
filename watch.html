@@ -222,8 +222,8 @@
         async function handleLike(event) {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
-            // ➕ 吹き出しポップアップ生成
-            createPopupText(event, "+1", "text-blue-500");
+            // 🟢 LIKEは1回限定なので「+1 MAX」と表示
+            createPopupText(event, "+1 MAX", "text-blue-500 font-black");
 
             const iconEl = document.getElementById('like-icon');
             const countEl = document.getElementById('like-count');
@@ -257,9 +257,17 @@
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
 
-            // 💥 火の粉(大型化版) ＋ ➕ 吹き出しポップアップ生成
             createFireParticles(event);
-            createPopupText(event, "+1", "text-orange-500");
+            
+            // 🟢 自分の合計打数を1進める
+            userFireClicks++;
+
+            // 🟢 現在の累積カウント（+1〜+50）に応じて吹き出しのテキストを動的生成
+            if (userFireClicks >= 50) {
+                createPopupText(event, `+${userFireClicks} LIMIT !`, "text-red-500 font-black");
+            } else {
+                createPopupText(event, `+${userFireClicks}`, "text-orange-500 font-bold");
+            }
 
             const iconEl = document.getElementById('fire-icon');
             const countEl = document.getElementById('fire-count');
@@ -274,7 +282,6 @@
             const docRef = doc(db, "video_metrics", currentVideoId);
             try {
                 await setDoc(docRef, { fires: increment(1) }, { merge: true });
-                userFireClicks++;
                 localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
                 updateFireButtonUI();
             } catch (e) {
@@ -282,7 +289,7 @@
             }
         }
 
-        // 🔥 大型化・広範囲化した火の粉エフェクト
+        // 🔥 大型化・大火力化した火の粉エフェクト
         function createFireParticles(e) {
             const btn = document.getElementById('fire-btn');
             if (!btn) return;
@@ -296,12 +303,10 @@
                 p.style.left = `${x}px`;
                 p.style.top = `${y}px`;
                 
-                // 粒のサイズを拡大 (6px 〜 14px)
-                const size = Math.random() * 8 + 6;
+                const size = Math.random() * 8 + 6; // 6px 〜 14px
                 p.style.width = `${size}px`;
                 p.style.height = `${size}px`;
                 
-                // 吹き飛ぶ勢いと範囲を拡張
                 p.style.setProperty('--x', `${(Math.random() - 0.5) * 100}px`);
                 p.style.setProperty('--y', `${-Math.random() * 80 - 30}px`);
                 
@@ -310,7 +315,7 @@
             }
         }
 
-        // 💬 フワッと浮き上がって消える直角デザインの吹き出し生成
+        // 💬 自分の合計打数が累積カウントされていく四角いポップアップ吹き出し
         function createPopupText(e, text, colorClass) {
             const btn = e.currentTarget;
             if (!btn) return;
