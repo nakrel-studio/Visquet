@@ -222,7 +222,7 @@
         async function handleLike(event) {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
-            // 🟢 LIKEは1回限定なので「+1 MAX」と表示
+            // ➕ LIKE限定の1.8秒ロング吹き出し表示
             createPopupText(event, "+1 MAX", "text-blue-500 font-black");
 
             const iconEl = document.getElementById('like-icon');
@@ -259,10 +259,10 @@
 
             createFireParticles(event);
             
-            // 🟢 自分の合計打数を1進める
+            // 自分の打数をカウントアップ
             userFireClicks++;
 
-            // 🟢 現在の累積カウント（+1〜+50）に応じて吹き出しのテキストを動的生成
+            // 累積カウント（1〜50）に応じてテキストを切り替え
             if (userFireClicks >= 50) {
                 createPopupText(event, `+${userFireClicks} LIMIT !`, "text-red-500 font-black");
             } else {
@@ -315,7 +315,7 @@
             }
         }
 
-        // 💬 自分の合計打数が累積カウントされていく四角いポップアップ吹き出し
+        // 💬 【超余韻・ランダム拡散版】自分の合計打数が累積カウントされる直角ポップアップ
         function createPopupText(e, text, colorClass) {
             const btn = e.currentTarget;
             if (!btn) return;
@@ -324,6 +324,9 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
+            // 連打したときに重なりすぎないよう、左右に少し散らすオフセット（-15px 〜 +15px）
+            const randomXOffset = (Math.random() - 0.5) * 30;
+
             const popup = document.createElement('div');
             popup.innerText = text;
             
@@ -331,17 +334,22 @@
             popup.style.left = `${x}px`;
             popup.style.top = `${y}px`;
             popup.style.transform = 'translate(-50%, -100%)';
-            popup.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            
+            // アニメーション表示時間を「1.8秒」に大幅延長。最初は速く、後半は極めて静かに消える。
+            popup.style.transition = 'all 1.8s cubic-bezier(0.1, 0.8, 0.1, 1)';
 
             btn.appendChild(popup);
 
             requestAnimationFrame(() => {
-                popup.style.top = `${y - 40}px`;
+                // 上方向に高くゆっくり浮き上がらせる (75px)
+                popup.style.top = `${y - 75}px`;
+                popup.style.left = `${x + randomXOffset}px`;
                 popup.style.opacity = '0';
-                popup.style.transform = 'translate(-50%, -100%) scale(0.8)';
+                popup.style.transform = 'translate(-50%, -100%) scale(0.9)';
             });
 
-            setTimeout(() => popup.remove(), 3000);
+            // 1800ms（1.8秒）後に要素を完全に消去
+            setTimeout(() => popup.remove(), 1800);
         }
 
         function updateFireButtonUI() {
