@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/25/2026, 5:05:55 PM
+ * Generated: 6/26/2026, 4:56:30 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "videoId": "czN41bET-Z0",
+      "publishedAt": "2026-06-26",
+      "description": "ホラゲじゃないから安心してね"
+    },
     {
       "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
       "videoId": "VZwUbnp0Vvg",
@@ -518,6 +524,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "videoId": "czN41bET-Z0",
+      "publishedAt": "2026-06-26",
+      "description": "ホラゲじゃないから安心してね"
+    },
     {
       "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
@@ -1101,6 +1113,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "1P_2I6Iuf6E",
       "publishedAt": "2026-03-24",
       "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "videoId": "czN41bET-Z0",
+      "publishedAt": "2026-06-26",
+      "description": "ホラゲじゃないから安心してね"
     }
   ]
 };
