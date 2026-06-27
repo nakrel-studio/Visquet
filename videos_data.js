@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/26/2026, 4:56:30 PM
+ * Generated: 6/27/2026, 3:59:55 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "デリバリーキッド-West coast Twilight",
+      "videoId": "9RqwcBR7ZH8",
+      "publishedAt": "2026-06-27",
+      "description": ""
+    },
     {
       "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
       "videoId": "czN41bET-Z0",
@@ -378,6 +384,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "デリバリーキッド-West coast Twilight",
+      "videoId": "9RqwcBR7ZH8",
+      "publishedAt": "2026-06-27",
+      "description": ""
+    },
     {
       "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
       "videoId": "VZwUbnp0Vvg",
@@ -1119,6 +1131,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "czN41bET-Z0",
       "publishedAt": "2026-06-26",
       "description": "ホラゲじゃないから安心してね"
+    },
+    {
+      "title": "デリバリーキッド-West coast Twilight",
+      "videoId": "9RqwcBR7ZH8",
+      "publishedAt": "2026-06-27",
+      "description": ""
     }
   ]
 };
