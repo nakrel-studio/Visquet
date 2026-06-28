@@ -107,8 +107,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, doc, setDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+        import { getFirestore, doc, setDoc, increment, onSnapshot, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        
         const firebaseConfig = {
             apiKey: "AIzaSyAlH-GMToPdCL_b-k2n1bETAiNevkqcM5A",
             authDomain: "visquet-view.firebaseapp.com",
@@ -193,7 +193,8 @@
                 }
             }
 
-            onSnapshot(docRef, (docSnap) => {
+           try {
+                const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
@@ -204,7 +205,9 @@
                     document.getElementById('like-count').innerText = "0";
                     document.getElementById('fire-count').innerText = "0";
                 }
-            });
+            } catch (e) {
+                console.error("Firebase Read Error:", e);
+            }
 
             if (localStorage.getItem(`l_user_${currentVideoId}`)) disableLikeButtonUI();
             updateFireButtonUI();
