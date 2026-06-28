@@ -348,7 +348,8 @@ async function initLocalCounters() {
             popup.style.top = `${y}px`;
             popup.style.transform = 'translate(-50%, -100%)';
             
-            popup.style.transition = 'all 1.8s cubic-bezier(0.1, 0.8, 0.1, 1)';
+            // 1.8s から 3.5s に変更（アニメーションのスピードをゆっくりに）
+            popup.style.transition = 'all 5.0s cubic-bezier(0.1, 0.8, 0.1, 1)';
 
             btn.appendChild(popup);
 
@@ -359,7 +360,9 @@ async function initLocalCounters() {
                 popup.style.transform = 'translate(-50%, -100%) scale(0.9)';
             });
 
-            setTimeout(() => popup.remove(), 1800);
+            // 1800 から 3500（ミリ秒）に変更（DOMから消去されるタイミングを遅らせる）
+            setTimeout(() => popup.remove(), 5000);
+            });
         }
 
         function updateFireButtonUI() {
