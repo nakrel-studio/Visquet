@@ -107,7 +107,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, doc, setDoc, increment, onSnapshot, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         
         const firebaseConfig = {
             apiKey: "AIzaSyAlH-GMToPdCL_b-k2n1bETAiNevkqcM5A",
@@ -179,10 +179,11 @@
             renderRecommendations(currentVideoId);
         });
 
-        async function initLocalCounters() {
+async function initLocalCounters() {
             if (!currentVideoId) return;
             const docRef = doc(db, "video_metrics", currentVideoId);
 
+            // 閲覧数（VIEWS）のセッション制限ロジック（既存のまま維持）
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             if (!hasViewed) {
                 try {
@@ -193,26 +194,49 @@
                 }
             }
 
-           try {
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
-                    document.getElementById('like-count').innerText = (data.likes || 0).toLocaleString();
-                    document.getElementById('fire-count').innerText = (data.fires || 0).toLocaleString();
-                } else {
-                    document.getElementById('view-count').innerText = "0";
-                    document.getElementById('like-count').innerText = "0";
-                    document.getElementById('fire-count').innerText = "0";
+            // --- ここからF5連打対策（10秒キャッシュ） ---
+            const cacheKey = `vm_cache_${currentVideoId}`;
+            const timeKey = `vm_time_${currentVideoId}`;
+            const now = Date.now();
+
+            const cachedData = localStorage.getItem(cacheKey);
+            const lastFetchTime = localStorage.getItem(timeKey);
+
+            let data = null;
+
+            // 最後の取得から10秒（10000ミリ秒）未満なら、キャッシュを利用して通信しない
+            if (cachedData && lastFetchTime && (now - parseInt(lastFetchTime) < 10000)) {
+                data = JSON.parse(cachedData);
+            } else {
+                // 10秒以上経っている場合、またはキャッシュがない場合のみFirebaseへ通信
+                try {
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        data = docSnap.data();
+                        // 取得したデータをブラウザに10秒間保存
+                        localStorage.setItem(cacheKey, JSON.stringify(data));
+                        localStorage.setItem(timeKey, now.toString());
+                    }
+                } catch (e) {
+                    console.error("Firebase Read Error:", e);
                 }
-            } catch (e) {
-                console.error("Firebase Read Error:", e);
             }
+
+            // 画面への数値反映
+            if (data) {
+                document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
+                document.getElementById('like-count').innerText = (data.likes || 0).toLocaleString();
+                document.getElementById('fire-count').innerText = (data.fires || 0).toLocaleString();
+            } else {
+                document.getElementById('view-count').innerText = "0";
+                document.getElementById('like-count').innerText = "0";
+                document.getElementById('fire-count').innerText = "0";
+            }
+            // --- ここまで ---
 
             if (localStorage.getItem(`l_user_${currentVideoId}`)) disableLikeButtonUI();
             updateFireButtonUI();
         }
-
         async function handleLike(event) {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
@@ -227,11 +251,11 @@
             try {
                 await setDoc(docRef, { likes: increment(1) }, { merge: true });
                 localStorage.setItem(`l_user_${currentVideoId}`, "true");
+                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュの時間を破棄して次の一回を強制最新化
                 disableLikeButtonUI();
             } catch (e) {
                 console.error("Like Error:", e);
-            }
-            
+            }            
             setTimeout(() => {
                 iconEl.style.transform = 'scale(1)';
                 countEl.style.transform = 'scale(1)';
@@ -274,6 +298,7 @@
             try {
                 await setDoc(docRef, { fires: increment(1) }, { merge: true });
                 localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
+                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュの時間を破棄して次の一回を強制最新化
                 updateFireButtonUI();
             } catch (e) {
                 console.error("Fire Error:", e);
