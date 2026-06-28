@@ -119,80 +119,79 @@
         };
 
         const app = initializeApp(firebaseConfig);
+     // const app = initializeApp(firebaseConfig); の下あたり
         const db = getFirestore(app);
 
         let currentVideoId = null;
+        // （削除：let isProcessing = false; はもう使いません！）
 
-        function syncTheme() {
-            const theme = localStorage.getItem('visquet-theme') || 'light';
-            const htmlEl = document.documentElement;
-            if (theme === 'dark') htmlEl.classList.add('dark');
-            else if (theme === 'light') htmlEl.classList.remove('dark');
+        // --- 中略 ---
+
+        async function handleLike(event) {
+            if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
+
+            // 押された瞬間に即演出
+            createPopupText(event, "+1 MAX", "text-blue-500 font-black");
+
+            const iconEl = document.getElementById('like-icon');
+            const countEl = document.getElementById('like-count');
+            
+            const docRef = doc(db, "video_metrics", currentVideoId);
+            try {
+                localStorage.removeItem(`vm_time_${currentVideoId}`); 
+                localStorage.removeItem(`vm_cache_${currentVideoId}`);
+
+                // 画面の数値を即座に+1
+                const currentLikes = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
+                countEl.innerText = (currentLikes + 1).toLocaleString();
+
+                disableLikeButtonUI();
+
+                // Firebaseへ送信
+                await setDoc(docRef, { likes: increment(1), lastUpdatedAt: serverTimestamp() }, { merge: true });
+                localStorage.setItem(`l_user_${currentVideoId}`, "true");
+            } catch (e) {
+                console.error("Like Error:", e);
+            }         
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            syncTheme(); 
+        async function handleFire(event) {
+            let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
+            if (userFireClicks >= 50) return; // 累計50回の上限制限は維持
 
-            const urlParams = new URLSearchParams(window.location.search);
-            currentVideoId = urlParams.get('id');
+            // ロックを挟まないため、指で叩いた瞬間にリアルタイムにカウントアップが走る
+            userFireClicks++;
+            
+            // ローカルストレージに即保存（これにより同じ数字の重複を防ぎ、+1, +2, +3 と綺麗に追従させます）
+            localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
 
-            if (!currentVideoId) {
-                location.href = './index.html';
-                return;
-            }
-
-            const player = document.getElementById('youtube-player');
-            player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0`;
-
-            let targetVideo = null;
-            if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
-                for (const key in VISQUET_ARCHIVE_DATA) {
-                    const found = VISQUET_ARCHIVE_DATA[key].find(v => v.videoId === currentVideoId);
-                    if (found) { targetVideo = found; break; }
-                }
-            }
-
-            if (targetVideo) {
-                document.getElementById('video-title').innerHTML = targetVideo.title;
-                document.getElementById('video-date').innerText = `${targetVideo.publishedAt} に投稿`;
-                document.getElementById('video-id').innerText = `ID: ${targetVideo.videoId}`;
-                document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
-                const descContainer = document.getElementById('video-description');
-                if (targetVideo.description && targetVideo.description.trim() !== "") {
-                    descContainer.innerText = targetVideo.description;
-                } else {
-                    descContainer.innerHTML = `<span class="text-gray-400 dark:text-gray-600 font-mono text-xs">[ NO_DESCRIPTION_AVAILABLE ]</span>`;
-                }
+            // 炎の粒子とポップアップを即座に生成
+            createFireParticles(event);
+            if (userFireClicks >= 50) {
+                createPopupText(event, `+${userFireClicks} LIMIT !`, "text-red-500 font-black");
             } else {
-                document.getElementById('video-title').innerText = "Archived Video Stream";
-                document.getElementById('video-date').innerText = "UNKNOWN DATE";
-                document.getElementById('video-id').innerText = `ID: ${currentVideoId}`;
-                document.getElementById('video-description').innerText = "動画情報をロードできませんでした。";
+                createPopupText(event, `+${userFireClicks}`, "text-orange-500 font-bold");
             }
 
-            const likeBtn = document.getElementById('like-btn');
-            const fireBtn = document.getElementById('fire-btn');
-            if (likeBtn) likeBtn.addEventListener('click', handleLike);
-            if (fireBtn) fireBtn.addEventListener('click', handleFire);
+            const countEl = document.getElementById('fire-count');
+            
+            // 画面の数字をタイムラグなしで即座に+1
+            const currentFires = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
+            countEl.innerText = (currentFires + 1).toLocaleString();
 
-            initLocalCounters();
-            renderRecommendations(currentVideoId);
-        });
+            updateFireButtonUI();
 
-        async function initLocalCounters() {
-            if (!currentVideoId) return;
+            // Firebaseへの通信はバックグラウンド（非同期）で順番に処理させる
             const docRef = doc(db, "video_metrics", currentVideoId);
+            try {
+                localStorage.removeItem(`vm_time_${currentVideoId}`);
+                localStorage.removeItem(`vm_cache_${currentVideoId}`);
 
-            // 閲覧数（VIEWS）のセッション制限ロジック
-            const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
-            if (!hasViewed) {
-                try {
-                    await setDoc(docRef, { views: increment(1) }, { merge: true });
-                    sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
-                } catch (e) {
-                    console.error("Firebase Views Sync Error:", e);
-                }
+                await setDoc(docRef, { fires: increment(1), lastUpdatedAt: serverTimestamp() }, { merge: true });
+            } catch (e) {
+                console.error("Fire Error:", e);
             }
+        }
 
             // F5連打対策（10秒キャッシュ）
             const cacheKey = `vm_cache_${currentVideoId}`;
