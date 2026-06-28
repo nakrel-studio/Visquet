@@ -122,6 +122,10 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
+        
+        // まとめ送り（バッファリング）用の管理変数
+        let pendingFires = 0;
+        let fireTimeoutTimer = null;
 
         function syncTheme() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
@@ -236,7 +240,6 @@
 
             createPopupText(event, "+1 MAX", "text-blue-500 font-black");
 
-            const iconEl = document.getElementById('like-icon');
             const countEl = document.getElementById('like-count');
             
             const docRef = doc(db, "video_metrics", currentVideoId);
@@ -264,6 +267,7 @@
             }
         }
 
+        // 最適化：まとめ送り（バッファリング）処理
         async function handleFire(event) {
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
@@ -271,6 +275,10 @@
             userFireClicks++;
             localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
 
+            // 送信用のバッファに加算
+            pendingFires++;
+
+            // 演出と手元の数字は「叩いた瞬間に1対1で超高速リアルタイム反映」
             createFireParticles(event);
             if (userFireClicks >= 50) {
                 createPopupText(event, `+${userFireClicks} LIMIT !`, "text-red-500 font-black");
@@ -279,21 +287,30 @@
             }
 
             const countEl = document.getElementById('fire-count');
-            
             const currentFires = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
             countEl.innerText = (currentFires + 1).toLocaleString();
 
             updateFireButtonUI();
 
-            const docRef = doc(db, "video_metrics", currentVideoId);
-            try {
-                localStorage.removeItem(`vm_time_${currentVideoId}`);
-                localStorage.removeItem(`vm_cache_${currentVideoId}`);
+            // 連打している間はタイマーを何度もリセット（通信を発生させない）
+            if (fireTimeoutTimer) clearTimeout(fireTimeoutTimer);
 
-                await setDoc(docRef, { fires: increment(1), lastUpdatedAt: serverTimestamp() }, { merge: true });
-            } catch (e) {
-                console.error("Fire Error:", e);
-            }
+            // 連打の手が止まってから「0.4秒後」に、溜まった分をまとめて一発送信
+            fireTimeoutTimer = setTimeout(async () => {
+                const fireIncrementAmount = pendingFires;
+                pendingFires = 0; // 送信開始したらバッファは即ゼロに戻す
+
+                const docRef = doc(db, "video_metrics", currentVideoId);
+                try {
+                    localStorage.removeItem(`vm_time_${currentVideoId}`);
+                    localStorage.removeItem(`vm_cache_${currentVideoId}`);
+
+                    // まとめてドカンと加算（1通信で完結）
+                    await setDoc(docRef, { fires: increment(fireIncrementAmount), lastUpdatedAt: serverTimestamp() }, { merge: true });
+                } catch (e) {
+                    console.error("Fire Debounce Sync Error:", e);
+                }
+            }, 400); 
         }
 
         function createFireParticles(e) {
