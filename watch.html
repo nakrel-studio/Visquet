@@ -105,7 +105,7 @@
         </section>
     </main>
 
-    <script type="module">
+<script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, setDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         
@@ -179,11 +179,11 @@
             renderRecommendations(currentVideoId);
         });
 
-async function initLocalCounters() {
+        async function initLocalCounters() {
             if (!currentVideoId) return;
             const docRef = doc(db, "video_metrics", currentVideoId);
 
-            // 閲覧数（VIEWS）のセッション制限ロジック（既存のまま維持）
+            // 閲覧数（VIEWS）のセッション制限ロジック
             const hasViewed = sessionStorage.getItem(`v_session_${currentVideoId}`);
             if (!hasViewed) {
                 try {
@@ -194,7 +194,7 @@ async function initLocalCounters() {
                 }
             }
 
-            // --- ここからF5連打対策（10秒キャッシュ） ---
+            // F5連打対策（10秒キャッシュ）
             const cacheKey = `vm_cache_${currentVideoId}`;
             const timeKey = `vm_time_${currentVideoId}`;
             const now = Date.now();
@@ -204,16 +204,13 @@ async function initLocalCounters() {
 
             let data = null;
 
-            // 最後の取得から10秒（10000ミリ秒）未満なら、キャッシュを利用して通信しない
             if (cachedData && lastFetchTime && (now - parseInt(lastFetchTime) < 10000)) {
                 data = JSON.parse(cachedData);
             } else {
-                // 10秒以上経っている場合、またはキャッシュがない場合のみFirebaseへ通信
                 try {
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         data = docSnap.data();
-                        // 取得したデータをブラウザに10秒間保存
                         localStorage.setItem(cacheKey, JSON.stringify(data));
                         localStorage.setItem(timeKey, now.toString());
                     }
@@ -232,11 +229,11 @@ async function initLocalCounters() {
                 document.getElementById('like-count').innerText = "0";
                 document.getElementById('fire-count').innerText = "0";
             }
-            // --- ここまで ---
 
             if (localStorage.getItem(`l_user_${currentVideoId}`)) disableLikeButtonUI();
             updateFireButtonUI();
         }
+
         async function handleLike(event) {
             if (localStorage.getItem(`l_user_${currentVideoId}`)) return;
 
@@ -249,9 +246,15 @@ async function initLocalCounters() {
             
             const docRef = doc(db, "video_metrics", currentVideoId);
             try {
+                // セキュリティルール（完成版）に適合させるため、独立してincrementだけを送る
                 await setDoc(docRef, { likes: increment(1) }, { merge: true });
                 localStorage.setItem(`l_user_${currentVideoId}`, "true");
-                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュの時間を破棄して次の一回を強制最新化
+                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュを破棄して即時反映可能にする
+                
+                // 画面上の数値をリアルタイムで仮+1する
+                const currentLikes = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
+                countEl.innerText = (currentLikes + 1).toLocaleString();
+
                 disableLikeButtonUI();
             } catch (e) {
                 console.error("Like Error:", e);
@@ -275,7 +278,6 @@ async function initLocalCounters() {
             if (userFireClicks >= 50) return; 
 
             createFireParticles(event);
-            
             userFireClicks++;
 
             if (userFireClicks >= 50) {
@@ -296,9 +298,15 @@ async function initLocalCounters() {
 
             const docRef = doc(db, "video_metrics", currentVideoId);
             try {
+                // セキュリティルール（完成版）に適合させるため、独立してincrementだけを送る
                 await setDoc(docRef, { fires: increment(1) }, { merge: true });
                 localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
-                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュの時間を破棄して次の一回を強制最新化
+                localStorage.removeItem(`vm_time_${currentVideoId}`); // キャッシュを破棄して即時反映可能にする
+                
+                // 画面上の数値をリアルタイムで仮+1する
+                const currentFires = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
+                countEl.innerText = (currentFires + 1).toLocaleString();
+
                 updateFireButtonUI();
             } catch (e) {
                 console.error("Fire Error:", e);
@@ -348,7 +356,6 @@ async function initLocalCounters() {
             popup.style.top = `${y}px`;
             popup.style.transform = 'translate(-50%, -100%)';
             
-            // 1.8s から 3.5s に変更（アニメーションのスピードをゆっくりに）
             popup.style.transition = 'all 5.0s cubic-bezier(0.1, 0.8, 0.1, 1)';
 
             btn.appendChild(popup);
@@ -360,7 +367,6 @@ async function initLocalCounters() {
                 popup.style.transform = 'translate(-50%, -100%) scale(0.9)';
             });
 
-            // 1800 から 3500（ミリ秒）に変更（DOMから消去されるタイミングを遅らせる）
             setTimeout(() => popup.remove(), 5000);
         }
 
