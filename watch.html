@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visquet - Player</title>
+    
     <link rel="icon" href="logo.jpg" type="image/jpeg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
@@ -13,8 +15,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background-color 0.25s ease, color 0.25s ease; }
-        .player-container { background: #000; border: 1px solid #222225; }
-        .video-card { border: 1px solid transparent; transition: all 0.25s ease; }
+        .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; user-select: none; }
+        .player-container { background: #000; border: 1px solid #222225; border-radius: 0px !important; }
+        .video-card { border: 1px solid transparent; transition: all 0.25s ease; border-radius: 0px !important; }
         .video-card:hover { transform: translateY(-3px); }
         .description-text { white-space: pre-wrap; word-break: break-word; }
         @keyframes fireFly { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; } }
@@ -23,29 +26,48 @@
 </head>
 <body class="min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
 
-    <header class="w-full h-20 bg-[#f0f2f5] dark:bg-[#0a0a0c] border-b border-[#e2e8f0] dark:border-[#222225] flex items-center justify-between px-8 md:px-12 sticky top-0 z-50">
+    <header class="w-full h-12 bg-[#f0f2f5] dark:bg-[#0a0a0c] border-b border-[#e2e8f0] dark:border-[#222225] flex items-center justify-between px-8 md:px-12 sticky top-0 z-50">
         <div class="flex items-center gap-8">
-            <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 cursor-pointer dark:brightness-110" onclick="location.href='./index.html'">
-            <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition">← Back</button>
+            <div class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+                <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 w-auto object-contain dark:brightness-110">
+            </div>
+            <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition">← Back</button>
+        </div>
+        <div class="text-[9px] text-gray-400 dark:text-gray-700 font-mono tracking-tighter hidden md:block">
+            SYS: VISQUET_PLAYER_v1.4 <span class="text-blue-600 dark:text-blue-500">OPTIMIZED_METRICS_ENGAGED</span>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-8">
+    <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-8">
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
                 <iframe id="youtube-player" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="mb-6">
-                <h1 id="video-title" class="text-xl md:text-2xl font-bold tracking-tight text-[#000] dark:text-white">LOADING...</h1>
-                <div class="mt-4 flex flex-wrap items-center gap-3 font-mono text-xs uppercase">
-                    <div class="border border-gray-200 dark:border-[#222225] px-4 py-2 bg-[#f0f2f5] dark:bg-[#0a0a0c] text-gray-500">VIEWS: <span id="view-count" class="text-gray-950 dark:text-white">0</span></div>
-                    <button id="like-btn" class="border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] px-4 py-2 flex items-center gap-2">👍 LIKE <span id="like-count" class="text-blue-500">0</span></button>
-                    <button id="fire-btn" class="border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] px-4 py-2 flex items-center gap-2">🔥 FIRE <span id="fire-count" class="text-orange-500">0</span></button>
+                <h1 id="video-title" class="text-xl md:text-2xl font-bold tracking-tight text-[#000] dark:text-white leading-snug">LOADING ARCHIVE...</h1>
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-xs font-mono text-gray-400 dark:text-gray-500 uppercase">
+                    <span id="video-date" class="font-semibold text-gray-700 dark:text-white">---</span>
+                    <span id="video-id" class="text-gray-400 dark:text-gray-600 text-[10px]">ID: ---</span>
+                </div>
+                <div class="mt-4 flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-wider">
+                    <div class="border border-gray-200 dark:border-[#222225] px-4 py-2 bg-[#f0f2f5] dark:bg-[#0a0a0c] text-gray-500 dark:text-gray-400 font-bold">VIEWS: <span id="view-count" class="text-gray-950 dark:text-white">0</span></div>
+                    <button id="like-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] px-2 py-1 flex items-center gap-2 rounded-none relative">
+                        <span id="like-icon" class="text-xl">👍</span> <span class="font-semibold">LIKE</span> <span id="like-count" class="text-blue-600 dark:text-blue-400 font-extrabold ml-1">0</span>
+                    </button>
+                    <button id="fire-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] px-2 py-1 flex items-center gap-2 rounded-none relative">
+                        <span id="fire-icon" class="text-xl">🔥</span> <span class="font-semibold">FIRE</span> <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold">0</span>
+                    </button>
                 </div>
             </div>
-            <div class="p-6 bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225]"><div id="video-description"></div></div>
+            <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] mb-12">
+                <h3 class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">/ Description</h3>
+                <div id="video-description" class="description-text text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">データを展開しています...</div>
+            </div>
         </div>
-        <section class="w-full"><div id="rec-grid" class="grid grid-cols-1 gap-4"></div></section>
+        <section class="w-full">
+            <div class="flex justify-end mb-6"><p id="rec-count" class="text-[10px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">SUGGEST: 0</p></div>
+            <div id="rec-grid" class="grid grid-cols-1 gap-4"></div>
+        </section>
     </main>
 
     <script type="module">
@@ -55,23 +77,25 @@
         const db = getFirestore(initializeApp({ apiKey: "AIzaSyAlH-GMToPdCL_b-k2n1bETAiNevkqcM5A", authDomain: "visquet-view.firebaseapp.com", projectId: "visquet-view", storageBucket: "visquet-view.firebasestorage.app", messagingSenderId: "110822314078", appId: "1:110822314078:web:0c4ca72bec50a0168324cf" }));
         let currentVideoId = new URLSearchParams(window.location.search).get('id');
 
-        // キャッシュ付き取得関数（60秒間は通信しない）
-        async function getMetricsWithCache(docRef, id) {
-            const cacheKey = `cache_${id}`;
+        async function updateMetricsUI(forceFetch = false) {
+            const cacheKey = `cache_${currentVideoId}`;
+            const timeKey = `time_${currentVideoId}`;
+            const now = Date.now();
             const cached = localStorage.getItem(cacheKey);
-            const time = localStorage.getItem(`time_${id}`);
-            if (cached && time && (Date.now() - parseInt(time) < 60000)) return JSON.parse(cached);
-            
-            const snap = await getDoc(docRef);
-            if (!snap.exists()) return null;
-            const data = snap.data();
-            localStorage.setItem(cacheKey, JSON.stringify(data));
-            localStorage.setItem(`time_${id}`, Date.now().toString());
-            return data;
-        }
+            const lastFetch = localStorage.getItem(timeKey);
 
-        async function updateUI() {
-            const data = await getMetricsWithCache(doc(db, "video_metrics", currentVideoId), currentVideoId);
+            let data = null;
+            if (!forceFetch && cached && lastFetch && (now - parseInt(lastFetch) < 60000)) {
+                data = JSON.parse(cached);
+            } else {
+                const snap = await getDoc(doc(db, "video_metrics", currentVideoId));
+                if (snap.exists()) {
+                    data = snap.data();
+                    localStorage.setItem(cacheKey, JSON.stringify(data));
+                    localStorage.setItem(timeKey, now.toString());
+                }
+            }
+
             if (data) {
                 document.getElementById('view-count').innerText = (data.views || 0).toLocaleString();
                 document.getElementById('like-count').innerText = (data.likes || 0).toLocaleString();
@@ -80,18 +104,23 @@
         }
 
         document.addEventListener("DOMContentLoaded", async () => {
-            document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1`;
-            await updateUI();
+            document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0`;
             
-            document.getElementById('like-btn').onclick = async (e) => {
-                await setDoc(doc(db, "video_metrics", currentVideoId), { likes: increment(1) }, { merge: true });
-                localStorage.removeItem(`time_${currentVideoId}`); // キャッシュ強制更新
-                updateUI();
+            // ビューカウントアップ処理
+            const docRef = doc(db, "video_metrics", currentVideoId);
+            if (!sessionStorage.getItem(`v_session_${currentVideoId}`)) {
+                await setDoc(docRef, { views: increment(1) }, { merge: true });
+                sessionStorage.setItem(`v_session_${currentVideoId}`, "true");
+            }
+
+            updateMetricsUI();
+            document.getElementById('like-btn').onclick = async () => {
+                await setDoc(docRef, { likes: increment(1) }, { merge: true });
+                updateMetricsUI(true);
             };
-            document.getElementById('fire-btn').onclick = async (e) => {
-                await setDoc(doc(db, "video_metrics", currentVideoId), { fires: increment(1) }, { merge: true });
-                localStorage.removeItem(`time_${currentVideoId}`); // キャッシュ強制更新
-                updateUI();
+            document.getElementById('fire-btn').onclick = async () => {
+                await setDoc(docRef, { fires: increment(1) }, { merge: true });
+                updateMetricsUI(true);
             };
         });
     </script>
