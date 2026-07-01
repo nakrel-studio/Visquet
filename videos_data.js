@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 6/30/2026, 5:01:04 PM
+ * Generated: 7/1/2026, 5:08:58 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
+      "videoId": "LnPuByVPfE0",
+      "publishedAt": "2026-07-01",
+      "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
+    },
     {
       "title": "デリバリーキッド-West coast Twilight",
       "videoId": "9RqwcBR7ZH8",
@@ -384,6 +390,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
+      "videoId": "LnPuByVPfE0",
+      "publishedAt": "2026-07-01",
+      "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
+    },
     {
       "title": "デリバリーキッド-West coast Twilight",
       "videoId": "9RqwcBR7ZH8",
@@ -1137,6 +1149,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "9RqwcBR7ZH8",
       "publishedAt": "2026-06-27",
       "description": ""
+    },
+    {
+      "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
+      "videoId": "LnPuByVPfE0",
+      "publishedAt": "2026-07-01",
+      "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
     }
   ]
 };
