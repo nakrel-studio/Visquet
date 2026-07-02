@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/1/2026, 5:08:58 PM
+ * Generated: 7/2/2026, 4:45:59 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "高尾山 Richard",
+      "videoId": "e2ogHZ06pVw",
+      "publishedAt": "2026-07-02",
+      "description": "歩きはマジで地獄"
+    },
     {
       "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
       "videoId": "LnPuByVPfE0",
@@ -1155,6 +1161,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "LnPuByVPfE0",
       "publishedAt": "2026-07-01",
       "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
+    },
+    {
+      "title": "高尾山 Richard",
+      "videoId": "e2ogHZ06pVw",
+      "publishedAt": "2026-07-02",
+      "description": "歩きはマジで地獄"
     }
   ]
 };
