@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/2/2026, 4:45:59 PM
+ * Generated: 7/3/2026, 4:20:20 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -35,10 +35,40 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
     },
     {
+      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
+      "videoId": "q2NnozX8XlM",
+      "publishedAt": "2026-05-16",
+      "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+    },
+    {
+      "title": "どんなときも　藤村拓真/フジタクcover",
+      "videoId": "TQcL9rSwIp4",
+      "publishedAt": "2026-02-26",
+      "description": "お借りした楽曲：https://youtu.be/b88pxLpMZKk?si=iNp0fW6egV8eHmXx\n音源：https://youtu.be/nwi7sPwdPyU?si=Y-TOtafGWt97nvfP\nボーカル：藤村拓真/フジタク\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
+      "videoId": "jOzfxpV15gg",
+      "publishedAt": "2026-02-10",
+      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
+    },
+    {
       "title": "野山北公園　Richard",
       "videoId": "nvnbrpiPSsg",
       "publishedAt": "2026-06-22",
       "description": ""
+    },
+    {
+      "title": "奥多摩湖/Richard",
+      "videoId": "6hLFdNz1k6Y",
+      "publishedAt": "2026-03-09",
+      "description": ""
+    },
+    {
+      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
+      "videoId": "lM0B3R-wsaU",
+      "publishedAt": "2026-02-10",
+      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
     },
     {
       "title": "デリバリーキッド-TOKYO KOMACHI",
@@ -107,12 +137,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
-      "videoId": "q2NnozX8XlM",
-      "publishedAt": "2026-05-16",
-      "description": "YUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
-    },
-    {
       "title": "0511007 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
@@ -149,40 +173,16 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "どんなときも　藤村拓真/フジタクcover",
-      "videoId": "TQcL9rSwIp4",
-      "publishedAt": "2026-02-26",
-      "description": "お借りした楽曲：https://youtu.be/b88pxLpMZKk?si=iNp0fW6egV8eHmXx\n音源：https://youtu.be/nwi7sPwdPyU?si=Y-TOtafGWt97nvfP\nボーカル：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "奥多摩湖/Richard",
-      "videoId": "6hLFdNz1k6Y",
-      "publishedAt": "2026-03-09",
-      "description": ""
-    },
-    {
       "title": "【史上最難関ゲーム】#1 オイクメネ実況プレイ-藤村拓真/フジタク　＊乱入実況あり",
       "videoId": "mogmkmRorEs",
       "publishedAt": "2026-04-08",
       "description": ""
     },
     {
-      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
-      "videoId": "jOzfxpV15gg",
-      "publishedAt": "2026-02-10",
-      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
-    },
-    {
       "title": "0419006スペアビート配 ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
       "description": ""
-    },
-    {
-      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
-      "videoId": "lM0B3R-wsaU",
-      "publishedAt": "2026-02-10",
-      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
     },
     {
       "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
@@ -392,7 +392,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷるーぷるーぷ",
       "videoId": "-f5VCNll3a8",
       "publishedAt": "2026-05-16",
-      "description": "高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
+      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     }
   ],
   "music": [
@@ -442,13 +442,13 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-16",
-      "description": "YUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+      "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
     },
     {
       "title": "るーぷるーぷるーぷ",
       "videoId": "-f5VCNll3a8",
       "publishedAt": "2026-05-16",
-      "description": "高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
+      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     },
     {
       "title": "輝く針の小人族 ～ Little Princess - YUKOV BAND cover 【東方アレンジ】",
@@ -800,7 +800,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-21",
-      "description": "YUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+      "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
     },
     {
       "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
@@ -1088,7 +1088,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷるーぷるーぷ",
       "videoId": "-f5VCNll3a8",
       "publishedAt": "2026-05-16",
-      "description": "高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
+      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     },
     {
       "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
