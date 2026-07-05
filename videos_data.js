@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/4/2026, 3:56:18 PM
+ * Generated: 7/5/2026, 4:01:33 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "videoId": "iwQSzf0pGQU",
+      "publishedAt": "2026-07-05",
+      "description": "絶対おかしい"
+    },
     {
       "title": "高尾山 Richard",
       "videoId": "e2ogHZ06pVw",
@@ -83,7 +89,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
     },
     {
-      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -119,7 +125,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
     },
     {
-      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -137,13 +143,13 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "0511007 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
     },
     {
-      "title": "0508007　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ"
@@ -555,13 +561,19 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "games": [
     {
+      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "videoId": "iwQSzf0pGQU",
+      "publishedAt": "2026-07-05",
+      "description": "絶対おかしい"
+    },
+    {
       "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
       "videoId": "czN41bET-Z0",
       "publishedAt": "2026-06-26",
       "description": "ホラゲじゃないから安心してね"
     },
     {
-      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -585,7 +597,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
     },
     {
-      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -603,13 +615,13 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "0511007 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
     },
     {
-      "title": "0508007　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ"
@@ -851,7 +863,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "0511007 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
@@ -887,7 +899,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
     },
     {
-      "title": "0508007　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ"
@@ -1091,7 +1103,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     },
     {
-      "title": "0529007チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -1127,7 +1139,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
     },
     {
-      "title": "616008マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -1167,6 +1179,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "e2ogHZ06pVw",
       "publishedAt": "2026-07-02",
       "description": "歩きはマジで地獄"
+    },
+    {
+      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "videoId": "iwQSzf0pGQU",
+      "publishedAt": "2026-07-05",
+      "description": "絶対おかしい"
     }
   ]
 };
