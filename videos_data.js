@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/5/2026, 4:01:33 PM
+ * Generated: 7/6/2026, 5:36:56 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "※超閲覧注意　食欲失せそう【#１ すーぱーうるとらうさぎらっしゅ！】/Riseca(Riz)",
+      "videoId": "eCofkVZCAes",
+      "publishedAt": "2026-07-06",
+      "description": "冗談抜きで怖いから閲覧注意で\n\n実況：Riseca(Riz)"
+    },
     {
       "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
       "videoId": "iwQSzf0pGQU",
@@ -29,7 +35,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "title": "オオカミと赤ずきん実況プレイ/Riseca(Riz) #ノベルゲーム#童話",
       "videoId": "czN41bET-Z0",
       "publishedAt": "2026-06-26",
       "description": "ホラゲじゃないから安心してね"
@@ -293,10 +299,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "#2 狂い月実況プレイ/Riz",
+      "title": "#2 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
-      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKRELStudio"
+      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
       "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
@@ -305,10 +311,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
     },
     {
-      "title": "#1 狂い月実況プレイ/Riz",
+      "title": "#1 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-10",
-      "description": "タイトル：#1 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKREL Studio"
+      "description": "配信者：Riseca\n発信元：NAKREL Studio"
     },
     {
       "title": "キーボード壊れた",
@@ -561,13 +567,19 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "games": [
     {
+      "title": "※超閲覧注意　食欲失せそう【#１ すーぱーうるとらうさぎらっしゅ！】/Riseca(Riz)",
+      "videoId": "eCofkVZCAes",
+      "publishedAt": "2026-07-06",
+      "description": "冗談抜きで怖いから閲覧注意で\n\n実況：Riseca(Riz)"
+    },
+    {
       "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
       "videoId": "iwQSzf0pGQU",
       "publishedAt": "2026-07-05",
       "description": "絶対おかしい"
     },
     {
-      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "title": "オオカミと赤ずきん実況プレイ/Riseca(Riz) #ノベルゲーム#童話",
       "videoId": "czN41bET-Z0",
       "publishedAt": "2026-06-26",
       "description": "ホラゲじゃないから安心してね"
@@ -717,10 +729,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "#2 狂い月実況プレイ/Riz",
+      "title": "#2 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
-      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKRELStudio"
+      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
       "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
@@ -729,10 +741,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "#1 狂い月実況プレイ/Riz",
+      "title": "#1 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-10",
-      "description": "タイトル：#1 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKREL Studio"
+      "description": "配信者：Riseca\n発信元：NAKREL Studio"
     },
     {
       "title": "【総集編】魔女の家実況プレイ　Richard",
@@ -923,10 +935,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：#3魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "#1 狂い月実況プレイ/Riz",
+      "title": "#1 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-03-23",
-      "description": "タイトル：#1 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKREL Studio"
+      "description": "配信者：Riseca\n発信元：NAKREL Studio"
     },
     {
       "title": "輝く針の小人族 ～ Little Princess - YUKOV BAND cover 【東方アレンジ】",
@@ -965,10 +977,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：【総集編】魔女の家実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "#2 狂い月実況プレイ/Riz",
+      "title": "#2 狂い月実況プレイ/Riseca(Riz)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-03-24",
-      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riz\n発信元：NAKRELStudio"
+      "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
       "title": "ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard",
@@ -1157,7 +1169,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "オオカミと赤ずきん実況プレイ/Riz #ノベルゲーム#童話",
+      "title": "オオカミと赤ずきん実況プレイ/Riseca(Riz) #ノベルゲーム#童話",
       "videoId": "czN41bET-Z0",
       "publishedAt": "2026-06-26",
       "description": "ホラゲじゃないから安心してね"
@@ -1185,6 +1197,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "iwQSzf0pGQU",
       "publishedAt": "2026-07-05",
       "description": "絶対おかしい"
+    },
+    {
+      "title": "※超閲覧注意　食欲失せそう【#１ すーぱーうるとらうさぎらっしゅ！】/Riseca(Riz)",
+      "videoId": "eCofkVZCAes",
+      "publishedAt": "2026-07-06",
+      "description": "冗談抜きで怖いから閲覧注意で\n\n実況：Riseca(Riz)"
     }
   ]
 };
