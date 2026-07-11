@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/10/2026, 4:50:59 PM
+ * Generated: 7/11/2026, 3:47:07 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "デリバリーキッド–Snowfront drive",
+      "videoId": "gqePBbQEczc",
+      "publishedAt": "2026-07-11",
+      "description": ""
+    },
     {
       "title": "【ホラーゲーム】※超閲覧注意　食欲失せそう　#１ すーぱーうるとらうさぎらっしゅ！実況プレイ/Riz(Riseca)",
       "videoId": "eCofkVZCAes",
@@ -408,6 +414,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "デリバリーキッド–Snowfront drive",
+      "videoId": "gqePBbQEczc",
+      "publishedAt": "2026-07-11",
+      "description": ""
+    },
     {
       "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
       "videoId": "LnPuByVPfE0",
@@ -1203,6 +1215,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "eCofkVZCAes",
       "publishedAt": "2026-07-06",
       "description": "冗談抜きで怖いから閲覧注意で"
+    },
+    {
+      "title": "デリバリーキッド–Snowfront drive",
+      "videoId": "gqePBbQEczc",
+      "publishedAt": "2026-07-11",
+      "description": ""
     }
   ]
 };
