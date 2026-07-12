@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/11/2026, 3:47:07 PM
+ * Generated: 7/12/2026, 3:52:40 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
+      "videoId": "MHB0yZ5Joi8",
+      "publishedAt": "2026-07-12",
+      "description": "操作むずい"
+    },
     {
       "title": "デリバリーキッド–Snowfront drive",
       "videoId": "gqePBbQEczc",
@@ -578,6 +584,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
+      "videoId": "MHB0yZ5Joi8",
+      "publishedAt": "2026-07-12",
+      "description": "操作むずい"
+    },
     {
       "title": "【ホラーゲーム】※超閲覧注意　食欲失せそう　#１ すーぱーうるとらうさぎらっしゅ！実況プレイ/Riz(Riseca)",
       "videoId": "eCofkVZCAes",
@@ -1221,6 +1233,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "gqePBbQEczc",
       "publishedAt": "2026-07-11",
       "description": ""
+    },
+    {
+      "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
+      "videoId": "MHB0yZ5Joi8",
+      "publishedAt": "2026-07-12",
+      "description": "操作むずい"
     }
   ]
 };
