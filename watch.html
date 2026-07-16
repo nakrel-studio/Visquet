@@ -134,8 +134,16 @@
             else if (theme === 'light') htmlEl.classList.remove('dark');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
+            // ページ読み込み時にテーマを適用
             syncTheme(); 
+
+            // 【追加】システム設定変更時のリアルタイム追従リスナー
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (localStorage.getItem('visquet-theme') === 'system') {
+                    syncTheme();
+                }
+            });
 
             const urlParams = new URLSearchParams(window.location.search);
             currentVideoId = urlParams.get('id');
