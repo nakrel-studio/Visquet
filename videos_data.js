@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/15/2026, 4:14:41 PM
+ * Generated: 7/16/2026, 4:11:34 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "9711スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "videoId": "5MatyznDydE",
+      "publishedAt": "2026-07-15",
+      "description": "ブチギレ注意"
+    },
     {
       "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
       "videoId": "MHB0yZ5Joi8",
@@ -584,6 +590,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "9711スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "videoId": "5MatyznDydE",
+      "publishedAt": "2026-07-15",
+      "description": "ブチギレ注意"
+    },
     {
       "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
       "videoId": "MHB0yZ5Joi8",
@@ -1239,6 +1251,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "MHB0yZ5Joi8",
       "publishedAt": "2026-07-12",
       "description": "操作むずい"
+    },
+    {
+      "title": "9711スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "videoId": "5MatyznDydE",
+      "publishedAt": "2026-07-15",
+      "description": "ブチギレ注意"
     }
   ]
 };
