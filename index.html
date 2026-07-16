@@ -57,7 +57,7 @@
 </div>
         
         <nav id="category-menu" class="space-y-1 flex-grow text-sm">
-            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">Home</div>
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">　</div>
             <div class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold" onclick="switchCategory('all', this)">All</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('music', this)">Music</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('games', this)">Game</div>
@@ -73,12 +73,12 @@
                 <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
             </div>
 
-            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">System</div>
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">　</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="showInfo(this)">Info</div>
         </nav>
 
         <div class="mb-6 pt-4 border-t border-gray-300 dark:border-gray-800">
-            <label class="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest block mb-2 font-mono">/ Interface Theme</label>
+            <label class="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest block mb-2 font-mono">Theme</label>
             <select id="theme-select-pc" onchange="applyTheme(this.value)" class="theme-select w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-3 text-xs text-gray-600 dark:text-gray-400 focus:outline-none focus:border-blue-500 transition font-mono uppercase">
                 <option value="light">Light (Default)</option>
                 <option value="dark">Dark</option>
@@ -331,7 +331,7 @@
             document.getElementById('content-area').innerHTML = `
                 <div class="max-w-2xl mx-auto space-y-6 md:space-y-10 py-4 md:py-10 animate-fade-in pb-16">
                     <section class="info-card p-6 md:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
-                        <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">/ Info</h3>
+                        <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">Info</h3>
                         <div class="space-y-6 md:space-y-8">
                             <div>
                                 <h4 class="text-gray-900 dark:text-white font-semibold mb-2">Version Info</h4>
