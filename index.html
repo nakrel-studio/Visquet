@@ -57,13 +57,13 @@
 </div>
         
         <nav id="category-menu" class="space-y-1 flex-grow text-sm">
-            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">HOME</div>
-            <div class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold" onclick="switchCategory('all', this)">All</div>
-            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('music', this)">Music</div>
-            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('games', this)">Game</div>
-            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('popular', this)">Popular</div>
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">ホーム</div>
+            <div class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold" onclick="switchCategory('all', this)">全て</div>
+            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('music', this)">音楽</div>
+            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('games', this)">ゲーム</div>
+            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('popular', this)">人気コンテンツ</div>
             
-            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">Official Channels</div>
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">公式チャンネル</div>
             <div class="nav-item p-3 flex items-center justify-between group text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
                 <span>NAKREL Studio</span>
                 <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
@@ -74,15 +74,15 @@
             </div>
 
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">　</div>
-            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="showInfo(this)">Info</div>
+            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="showInfo(this)">情報</div>
         </nav>
 
         <div class="mb-6 pt-4 border-t border-gray-300 dark:border-gray-800">
-            <label class="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest block mb-2 font-mono">Theme</label>
+            <label class="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest block mb-2 font-mono">テーマ</label>
             <select id="theme-select-pc" onchange="applyTheme(this.value)" class="theme-select w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-3 text-xs text-gray-600 dark:text-gray-400 focus:outline-none focus:border-blue-500 transition font-mono uppercase">
-                <option value="light">Light (Default)</option>
-                <option value="dark">Dark</option>
-                <option value="system">Device System</option>
+                <option value="light">ライト</option>
+                <option value="dark">ダーク</option>
+                <option value="system">システムに従う</option>
             </select>
         </div>
 
@@ -94,11 +94,11 @@
     </aside>
 
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-t border-gray-300 dark:border-[#222225] p-2 flex justify-around items-center z-50 text-xs">
-        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-blue-600 dark:text-blue-500 font-semibold" onclick="switchCategory('all', this)">All</button>
-        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('music', this)">Music</button>
-        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('games', this)">Game</button>
-        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('popular', this)">Popular</button>
-        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-400 dark:text-gray-500 font-semibold" onclick="showInfo(this)">Info</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-blue-600 dark:text-blue-500 font-semibold" onclick="switchCategory('all', this)">全て</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('music', this)">音楽</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('games', this)">ゲーム</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('popular', this)">人気コンテンツ</button>
+        <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-400 dark:text-gray-500 font-semibold" onclick="showInfo(this)">情報</button>
     </div>
 
     <main class="flex-grow flex flex-col min-w-0">
@@ -116,13 +116,13 @@
                     </div>
                 </div>
                 <div class="relative w-full md:w-80 flex gap-2">
-                    <input type="text" id="search-input" placeholder="Search videos..." 
+                    <input type="text" id="search-input" placeholder="検索" 
                         class="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-4 text-sm focus:outline-none focus:border-blue-500 transition text-[#000] dark:text-[#fff]">
                     
                     <select id="theme-select-mobile" onchange="applyTheme(this.value)" class="theme-select md:hidden bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-3 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none">
-                        <option value="light">LT</option>
-                        <option value="dark">DK</option>
-                        <option value="system">SYS</option>
+                        <option value="light">ライト</option>
+                        <option value="dark">ダーク</option>
+                        <option value="system">システムに従う</option>
                     </select>
                 </div>
             </header>
@@ -224,7 +224,7 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-400 dark:text-gray-700 text-2xl md:text-4xl uppercase tracking-widest">
                         [ X_X ]<br><br>
-                        <span class="text-gray-500 text-sm md:text-[18px]">（エラー101）現在 internet に接続されておりません</span>
+                        <span class="text-gray-500 text-sm md:text-[18px]">（エラー101）現在インターネットに接続されておりません</span>
                     </div>`;
                 document.getElementById('video-count').innerText = `ITEMS: 0`;
                 return;
@@ -310,9 +310,9 @@
             if (!countEl) return;
 
             if (currentRawVideos.length === filteredVideos.length) {
-                countEl.innerText = `ITEMS: ${currentRawVideos.length} (Online)`;
+                countEl.innerText = `動画: ${currentRawVideos.length} (Online)`;
             } else {
-                countEl.innerText = `FOUND: ${filteredVideos.length} / TOTAL: ${currentRawVideos.length}`;
+                countEl.innerText = `FOUND: ${filteredVideos.length} / 検索結果: ${currentRawVideos.length}`;
             }
         }
 
@@ -331,10 +331,10 @@
             document.getElementById('content-area').innerHTML = `
                 <div class="max-w-2xl mx-auto space-y-6 md:space-y-10 py-4 md:py-10 animate-fade-in pb-16">
                     <section class="info-card p-6 md:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
-                        <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">Info</h3>
+                        <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">情報</h3>
                         <div class="space-y-6 md:space-y-8">                  
                         　<div>
-                                <h4 class="text-gray-900 dark:text-white font-semibold mb-3">Members & Organizations</h4>
+                                <h4 class="text-gray-900 dark:text-white font-semibold mb-3">メンバー & 団体</h4>
                                 <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 font-medium">
                                     <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-600 dark:bg-blue-500"></span> Richard</li>
                                     <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-600 dark:bg-blue-500"></span> YUKOV Circle Music</li>
@@ -350,7 +350,7 @@
                             <path d="M8.5 7.5L15.5 16.5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                         <div>
-                            <h4 class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] mb-1 font-mono">Operated Label</h4>
+                            <h4 class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] mb-1 font-mono">運営</h4>
                             <div class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white tracking-tighter">NAKREL Studio</div>
                         </div>
                     </section>
