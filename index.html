@@ -226,7 +226,7 @@
                         [ X_X ]<br><br>
                         <span class="text-gray-500 text-sm md:text-[18px]">（エラー101）現在インターネットに接続されておりません</span>
                     </div>`;
-                document.getElementById('video-count').innerText = `ITEMS: 0`;
+                document.getElementById('video-count').innerText = `未接続`;
                 return;
             }
 
@@ -242,7 +242,7 @@
             
             if (filteredVideos.length === 0) {
                 if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-400 dark:text-gray-700 text-sm uppercase">データが見つかりませんでした:(</div>`;
-                document.getElementById('video-count').innerText = `FOUND: 0 / TOTAL: ${currentRawVideos.length}`;
+                document.getElementById('video-count').innerText = `検索結果: 0 / 動画: ${currentRawVideos.length}`;
                 return;
             }
 
@@ -312,7 +312,7 @@
             if (currentRawVideos.length === filteredVideos.length) {
                 countEl.innerText = `動画: ${currentRawVideos.length} (Online)`;
             } else {
-                countEl.innerText = `FOUND: ${filteredVideos.length} / 検索結果: ${currentRawVideos.length}`;
+                countEl.innerText = `検索結果: ${filteredVideos.length} / 動画: ${currentRawVideos.length}`;
             }
         }
 
