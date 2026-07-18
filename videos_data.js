@@ -1,14 +1,14 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/17/2026, 4:08:39 PM
+ * Generated: 7/18/2026, 12:01:34 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
     {
-      "title": "Deleted video",
-      "videoId": "E3OqwhsVmbE",
-      "publishedAt": "2026-07-16",
-      "description": "This video is unavailable."
+      "title": "藤村拓真/フジタクの作業現場を覗いてみた！",
+      "videoId": "sKHK5lk-Tro",
+      "publishedAt": "2026-07-17",
+      "description": "Richardが訪問"
     },
     {
       "title": "9715　スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
@@ -1265,10 +1265,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "ブチギレ注意"
     },
     {
-      "title": "Deleted video",
-      "videoId": "E3OqwhsVmbE",
-      "publishedAt": "2026-07-16",
-      "description": "This video is unavailable."
+      "title": "藤村拓真/フジタクの作業現場を覗いてみた！",
+      "videoId": "sKHK5lk-Tro",
+      "publishedAt": "2026-07-17",
+      "description": "Richardが訪問"
     }
   ]
 };
