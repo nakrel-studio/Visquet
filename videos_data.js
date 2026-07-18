@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/18/2026, 12:01:34 AM
+ * Generated: 7/18/2026, 3:47:45 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
+      "videoId": "CincZOLlzyg",
+      "publishedAt": "2026-07-18",
+      "description": "ソフトとのバグで鍵盤の光り方がおかしいですが許してください"
+    },
+    {
+      "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
+      "videoId": "Njcoa1X3R2E",
+      "publishedAt": "2026-07-18",
+      "description": "あまり進展ないですがとんでもない目に遭ってしまいました。\n前回の動画→ https://nakrel-visquet.com/watch.html?id=eCofkVZCAes"
+    },
     {
       "title": "藤村拓真/フジタクの作業現場を覗いてみた！",
       "videoId": "sKHK5lk-Tro",
@@ -433,6 +445,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
+      "videoId": "CincZOLlzyg",
+      "publishedAt": "2026-07-18",
+      "description": "ソフトとのバグで鍵盤の光り方がおかしいですが許してください"
+    },
+    {
       "title": "デリバリーキッド–Snowfront drive",
       "videoId": "gqePBbQEczc",
       "publishedAt": "2026-07-11",
@@ -596,6 +614,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
+      "videoId": "Njcoa1X3R2E",
+      "publishedAt": "2026-07-18",
+      "description": "あまり進展ないですがとんでもない目に遭ってしまいました。\n前回の動画→ https://nakrel-visquet.com/watch.html?id=eCofkVZCAes"
+    },
     {
       "title": "9715　スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
       "videoId": "5MatyznDydE",
@@ -1269,6 +1293,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "sKHK5lk-Tro",
       "publishedAt": "2026-07-17",
       "description": "Richardが訪問"
+    },
+    {
+      "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
+      "videoId": "Njcoa1X3R2E",
+      "publishedAt": "2026-07-18",
+      "description": "あまり進展ないですがとんでもない目に遭ってしまいました。\n前回の動画→ https://nakrel-visquet.com/watch.html?id=eCofkVZCAes"
+    },
+    {
+      "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
+      "videoId": "CincZOLlzyg",
+      "publishedAt": "2026-07-18",
+      "description": "ソフトとのバグで鍵盤の光り方がおかしいですが許してください"
     }
   ]
 };
