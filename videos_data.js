@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/21/2026, 4:17:50 PM
+ * Generated: 7/22/2026, 11:05:05 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "videoId": "bGlhsRMh4bo",
+      "publishedAt": "2026-07-22",
+      "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
+    },
+    {
+      "title": "分からなすぎる　#5 狂い月 Richard実況プレイ　【ホラーゲーム】",
+      "videoId": "BrfFFT8JEhQ",
+      "publishedAt": "2026-07-22",
+      "description": "分からなすぎたので6年前の配信者さんの実況を参考にしました。\nこれはまじむずい。\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=qS5lq7sDQaI\n\n観光地巡りもやってます！\n\n高尾山→ https://nakrel-visquet.com/watch.html?id=e2ogHZ06pVw\n\n奥多摩湖→ https://nakrel-visquet.com/watch.html?id=6hLFdNz1k6Y"
+    },
     {
       "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
       "videoId": "CincZOLlzyg",
@@ -435,12 +447,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2026-02-10",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
-    },
-    {
-      "title": "るーぷるーぷるーぷ",
-      "videoId": "-f5VCNll3a8",
-      "publishedAt": "2026-05-16",
-      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     }
   ],
   "music": [
@@ -503,12 +509,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-16",
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
-    },
-    {
-      "title": "るーぷるーぷるーぷ",
-      "videoId": "-f5VCNll3a8",
-      "publishedAt": "2026-05-16",
-      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
     },
     {
       "title": "輝く針の小人族 ～ Little Princess - YUKOV BAND cover 【東方アレンジ】",
@@ -614,6 +614,18 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "videoId": "bGlhsRMh4bo",
+      "publishedAt": "2026-07-22",
+      "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
+    },
+    {
+      "title": "分からなすぎる　#5 狂い月 Richard実況プレイ　【ホラーゲーム】",
+      "videoId": "BrfFFT8JEhQ",
+      "publishedAt": "2026-07-22",
+      "description": "分からなすぎたので6年前の配信者さんの実況を参考にしました。\nこれはまじむずい。\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=qS5lq7sDQaI\n\n観光地巡りもやってます！\n\n高尾山→ https://nakrel-visquet.com/watch.html?id=e2ogHZ06pVw\n\n奥多摩湖→ https://nakrel-visquet.com/watch.html?id=6hLFdNz1k6Y"
+    },
     {
       "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
       "videoId": "Njcoa1X3R2E",
@@ -1175,12 +1187,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "本家：https://youtu.be/jOzfxpV15gg?si=1cLi4_TrnSHCIr5W"
     },
     {
-      "title": "るーぷるーぷるーぷ",
-      "videoId": "-f5VCNll3a8",
-      "publishedAt": "2026-05-16",
-      "description": "音割れしてる…\n\n高音質版→ https://youtu.be/q2NnozX8XlM?si=TSG2ggkED7ZXo2Fi\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W\n\nYUKOVインスト曲1st"
-    },
-    {
       "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
@@ -1305,6 +1311,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "CincZOLlzyg",
       "publishedAt": "2026-07-18",
       "description": "ソフトとのバグで鍵盤の光り方がおかしいですが許してください"
+    },
+    {
+      "title": "分からなすぎる　#5 狂い月 Richard実況プレイ　【ホラーゲーム】",
+      "videoId": "BrfFFT8JEhQ",
+      "publishedAt": "2026-07-22",
+      "description": "分からなすぎたので6年前の配信者さんの実況を参考にしました。\nこれはまじむずい。\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=qS5lq7sDQaI\n\n観光地巡りもやってます！\n\n高尾山→ https://nakrel-visquet.com/watch.html?id=e2ogHZ06pVw\n\n奥多摩湖→ https://nakrel-visquet.com/watch.html?id=6hLFdNz1k6Y"
+    },
+    {
+      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "videoId": "bGlhsRMh4bo",
+      "publishedAt": "2026-07-22",
+      "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
     }
   ]
 };
