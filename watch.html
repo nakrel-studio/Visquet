@@ -145,6 +145,20 @@
         let pendingFires = 0;
         let fireTimeoutTimer = null;
 
+        // テキスト内のURLを <a> タグに自動変換する関数（XSS対策込み）
+        function autoLink(text) {
+            if (!text) return "";
+            const escaped = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+            const urlPattern = /(https?:\/\/[^\s<]+)/g;
+            return escaped.replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">$1</a>');
+        }
+
       document.addEventListener("DOMContentLoaded", () => {
             // ページ読み込み時にグローバルなtheme同期を実行
             window.syncTheme(); 
@@ -183,7 +197,8 @@
                 document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
                 const descContainer = document.getElementById('video-description');
                 if (targetVideo.description && targetVideo.description.trim() !== "") {
-                    descContainer.innerText = targetVideo.description;
+                    // autoLink関数でURLをハイパーリンクに変換して出力
+                    descContainer.innerHTML = autoLink(targetVideo.description);
                 } else {
                     descContainer.innerHTML = `<span class="text-gray-400 dark:text-gray-600 font-mono text-xs">[ 未記入 ]</span>`;
                 }
@@ -276,7 +291,7 @@
                 localStorage.setItem(`l_user_${currentVideoId}`, "true");
             } catch (e) {
                 console.error("Like Error:", e);
-            }         
+            }          
         }
 
         function disableLikeButtonUI() {
@@ -390,12 +405,21 @@
             }
         }
 
-        function renderRecommendations(currentId) {
+     function renderRecommendations(currentId) {
             const recGrid = document.getElementById('rec-grid');
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
-            const allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
+            // 1. 自分自身の動画を除外
+            let allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
+
+            // 2. 配列をランダムにシャッフル（Fisher-Yatesアルゴリズム）
+            for (let i = allVideos.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allVideos[i], allVideos[j]] = [allVideos[j], allVideos[i]];
+            }
+
+            // 3. シャッフル後、上から最大30件を取り出す
             const chunk = allVideos.slice(0, 30);
             const timestamp = new Date().getTime();
 
@@ -404,6 +428,23 @@
                 recCountEl.innerText = `関連動画: 0`;
                 return;
             }
+
+            recGrid.innerHTML = chunk.map(v => `
+                <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
+                    <div class="relative group">
+                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
+                    </div>
+                    <div class="p-4 md:p-5">
+                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
+                        <div class="mt-3 md:mt-4 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
+                            <span>${v.publishedAt}</span>
+                            <span>ID: ${v.videoId}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            recCountEl.innerText = `関連動画: ${chunk.length}`;
+        }
 
             recGrid.innerHTML = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
