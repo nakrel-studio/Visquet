@@ -446,22 +446,6 @@
             recCountEl.innerText = `関連動画: ${chunk.length}`;
         }
 
-            recGrid.innerHTML = chunk.map(v => `
-                <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
-                    <div class="relative group">
-                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
-                    </div>
-                    <div class="p-4 md:p-5">
-                        <h3 class="text-[11px] font-bold line-clamp-2 text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
-                        <div class="mt-3 md:mt-4 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
-                            <span>${v.publishedAt}</span>
-                            <span>ID: ${v.videoId}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            recCountEl.innerText = `関連動画: ${chunk.length}`;
-        }
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
