@@ -126,7 +126,8 @@
             <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
-            <div id="rec-grid" class="grid grid-cols-1 gap-4"></div>
+            <!-- iPad縦表示時に2列、PC（lg）で1列に戻す設定 -->
+            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4"></div>
         </section>
     </main>
 
@@ -442,8 +443,8 @@ function autoLink(text) {
             const timestamp = new Date().getTime();
 
             if (chunk.length === 0) {
-                recGrid.innerHTML = `<div class="col-span-full text-center py-6 font-mono text-gray-400 dark:text-gray-700 text-xs uppercase">他に関連するデータがありません</div>`;
-                recCountEl.innerText = `関連動画: 0`;
+                recGrid.innerHTML = `<div class="col-span-full text-center py-6 font-mono text-gray-400 dark:text-gray-700 text-xs uppercase">データがありません</div>`;
+                recCountEl.innerText = `動画: 0`;
                 return;
             }
 
@@ -461,7 +462,7 @@ function autoLink(text) {
                     </div>
                 </div>
             `).join('');
-            recCountEl.innerText = `関連動画: ${chunk.length}`;
+            recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
         }
 
     </script>
