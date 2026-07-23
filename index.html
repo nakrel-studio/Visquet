@@ -126,8 +126,7 @@
 
         <div id="content-area" class="p-5 md:p-12 pt-2 md:pt-4 flex-grow">
             <!-- ⚡ 変更点1：カード間の余白を短縮 (gap-4 md:gap-8 -> gap-3 md:gap-5) -->
-          <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5"></div>
-        </div>
+          <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 md:gap-5"></div>
     </main>
 
     <script>
@@ -210,7 +209,7 @@
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
             
             // ⚡ 変更点2：カテゴリ切替時の余白設定も同期 (gap-3 md:gap-5)
-       　　 document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5"></div>';
+       　document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 md:gap-5"></div>';
             document.getElementById('search-input').value = '';
             
             loadVideosFromStaticFile(key);
