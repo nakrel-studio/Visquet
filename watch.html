@@ -111,6 +111,12 @@
                         <span class="font-semibold tracking-widest">FIRE</span>
                         <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
                     </button>
+
+                    <!-- 🔽 追加：SHARE（共有）ボタン -->
+                    <button id="share-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
+                        <span class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🔗</span>
+                        <span class="font-semibold">SHARE</span>
+                    </button>
                 </div>
             </div>
             
@@ -230,8 +236,11 @@ function autoLink(text) {
 
             const likeBtn = document.getElementById('like-btn');
             const fireBtn = document.getElementById('fire-btn');
+            const shareBtn = document.getElementById('share-btn');
+
             if (likeBtn) likeBtn.addEventListener('click', handleLike);
             if (fireBtn) fireBtn.addEventListener('click', handleFire);
+            if (shareBtn) shareBtn.addEventListener('click', handleShare);
 
             initLocalCounters();
             renderRecommendations(currentVideoId);
@@ -365,6 +374,37 @@ function autoLink(text) {
                     console.error("Fire Debounce Sync Error:", e);
                 }
             }, 400); 
+        }
+
+        // 共有シート（Web Share API）呼び出し処理
+        async function handleShare(event) {
+            const videoTitle = document.getElementById('video-title')?.innerText || "Visquet Video";
+            
+            const shareData = {
+                title: videoTitle,
+                text: videoTitle,
+                url: window.location.href
+            };
+
+            // Web Share API（スマホやMacなどの共有シート機能）が開ける場合
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    // ユーザーが共有シートをキャンセルした場合はエラーにしない
+                    if (err.name !== 'AbortError') {
+                        console.error("Share failed:", err);
+                    }
+                }
+            } else {
+                // Web Share API非対応（一部PC環境等）の場合：URLをクリップボードにコピー
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    createPopupText(event, "URL COPIED!", "text-emerald-500 font-bold");
+                } catch (err) {
+                    console.error("Clipboard copy failed:", err);
+                }
+            }
         }
 
         function createFireParticles(e) {
