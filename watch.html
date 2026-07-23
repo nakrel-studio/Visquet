@@ -145,33 +145,26 @@
         let pendingFires = 0;
         let fireTimeoutTimer = null;
    
-    // エスケープ関数を定義
-function escapeHtml(str) {
-  if (!str) return '';
-  return str
+function autoLink(text) {
+  if (!text) return '';
+
+  // HTMLエスケープ処理（&, <, >, ", ' を安全な文字列に変換）
+  const escaped = text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
-}
 
-        // テキスト内のURLを <a> タグに自動変換する関数（XSS対策込み）
-   function autoLink(text) {
-  if (!text) return '';
-  const escaped = escapeHtml(text);
   const urlPattern = /(https?:\/\/[^\s<]+)/g;
 
   return escaped.replace(urlPattern, (url) => {
-    // URLから末尾の句読点などを簡易的に除去（必要に応じて）
-    // nakrel-visquet.com/watch.html から始まるかチェック
+    // https://nakrel-visquet.com/watch.html で始まるURLだけ同じタブで開く
     const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
 
     if (isWatchPage) {
-      // 指定のパスまで一致する場合は同じタブで開く
       return `<a href="${url}" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
     } else {
-      // それ以外（外部サイトや別ページなど）は新しいタブで開く
       return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
     }
   });
