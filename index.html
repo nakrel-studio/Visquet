@@ -73,7 +73,7 @@
                 <span class="text-[10px] opacity-0 group-hover:opacity-100 transition">↗</span>
             </div>
 
-            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">　</div>
+            <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8"> </div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="showInfo(this)">情報</div>
         </nav>
 
@@ -125,7 +125,8 @@
         </div>
 
         <div id="content-area" class="p-5 md:p-12 pt-2 md:pt-4 flex-grow">
-            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8"></div>
+            <!-- ⚡ 変更点1：カード間の余白を短縮 (gap-4 md:gap-8 -> gap-3 md:gap-5) -->
+            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>
         </div>
     </main>
 
@@ -207,7 +208,9 @@
             }
             
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
-            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8"></div>';
+            
+            // ⚡ 変更点2：カテゴリ切替時の余白設定も同期 (gap-3 md:gap-5)
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>';
             document.getElementById('search-input').value = '';
             
             loadVideosFromStaticFile(key);
@@ -253,6 +256,7 @@
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             const timestamp = new Date().getTime();
             
+            // ⚡ 変更点3：タイトルの大きさを14pxへ変更＆色を濃く修正 (text-[14px] text-gray-900 dark:text-white)
             const htmlString = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
@@ -260,7 +264,7 @@
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                     <div class="p-4 md:p-5">
-                        <h3 class="text-[14px] font-bold line-clamp-2 text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">${v.title}</h3>
+                        <h3 class="text-[14px] font-bold line-clamp-2 text-gray-900 dark:text-white leading-relaxed tracking-wide">${v.title}</h3>
                         <div class="mt-3 md:mt-4 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
                              <span>${v.publishedAt}</span>
                              <span>ID: ${v.videoId}</span>
@@ -329,7 +333,7 @@
                     <section class="info-card p-6 md:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
                         <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">情報</h3>
                         <div class="space-y-6 md:space-y-8">                  
-                        　<div>
+                         <div>
                                 <h4 class="text-gray-900 dark:text-white font-semibold mb-3">メンバー & 団体</h4>
                                 <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 font-medium">
                                     <li class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-600 dark:bg-blue-500"></span> Richard</li>
