@@ -49,11 +49,12 @@
         .dark .theme-select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
 </head>
-<body class="flex flex-col md:flex-row min-h-screen pb-20 md:pb-0 bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
+<body class="flex flex-col lg:flex-row min-h-screen pb-20 lg:pb-0 bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
 
-<aside class="w-[210px] min-w-[210px] max-w-[210px] shrink-0 sidebar hidden md:flex flex-col px-6 py-8 sticky top-0 h-screen bg-[#f0f2f5] border-r border-[#e2e8f0] dark:bg-[#0a0a0c] dark:border-r dark:border-[#222225]">
+<!-- PC・iPad横用 サイドバー (lg: 1024px以上で表示) -->
+<aside class="w-[210px] min-w-[210px] max-w-[210px] shrink-0 sidebar hidden lg:flex flex-col px-6 py-8 sticky top-0 h-screen bg-[#f0f2f5] border-r border-[#e2e8f0] dark:bg-[#0a0a0c] dark:border-r dark:border-[#222225]">
    <div class="flex items-center mb-10 cursor-pointer" onclick="scrollToTop()">
-    <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 md:h-12 w-auto object-contain block select-none dark:brightness-110">
+    <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 lg:h-12 w-auto object-contain block select-none dark:brightness-110">
 </div>
 
         <nav id="category-menu" class="space-y-1 flex-grow text-sm">
@@ -89,7 +90,8 @@
 
     </aside>
 
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-t border-gray-300 dark:border-[#222225] p-2 flex justify-around items-center z-50 text-xs">
+    <!-- スマホ・iPad縦用 ボトムバー (lg: 1024px未満で表示) -->
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-t border-gray-300 dark:border-[#222225] p-2 flex justify-around items-center z-50 text-xs">
         <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-blue-600 dark:text-blue-500 font-semibold" onclick="switchCategory('all', this)">最新</button>
         <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('music', this)">音楽</button>
         <button class="mobile-nav-item nav-item py-2 px-3 text-center flex-1 text-gray-500 dark:text-gray-400" onclick="switchCategory('games', this)">ゲーム</button>
@@ -99,23 +101,23 @@
 
     <main class="flex-grow flex flex-col min-w-0">
 
-        <div class="sticky top-0 z-30 bg-[#f8f9fa]/90 dark:bg-[#0d0d0f]/90 backdrop-blur-md p-5 md:p-12 pb-4 md:pb-6 border-b border-transparent">
-           <div class="md:hidden flex justify-center mb-4">
+        <div class="sticky top-0 z-30 bg-[#f8f9fa]/90 dark:bg-[#0d0d0f]/90 backdrop-blur-md p-4 lg:p-12 pb-4 lg:pb-6 border-b border-transparent">
+           <div class="lg:hidden flex justify-center mb-4">
     <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 w-auto object-contain block select-none cursor-pointer dark:brightness-110" onclick="scrollToTop()">
 </div>
 
-            <header id="main-header" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div class="flex justify-between items-end w-full md:w-auto">
+            <header id="main-header" class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                <div class="flex justify-between items-end w-full lg:w-auto">
                     <div>
-                        <h2 id="current-category-name" class="text-xl md:text-2xl font-semibold tracking-tight text-[#000] dark:text-white capitalize">All</h2>
-                        <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 md:mt-1" id="video-count">LOADING...</p>
+                        <h2 id="current-category-name" class="text-xl lg:text-2xl font-semibold tracking-tight text-[#000] dark:text-white capitalize">All</h2>
+                        <p class="text-[10px] lg:text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 lg:mt-1" id="video-count">LOADING...</p>
                     </div>
                 </div>
-                <div class="relative w-full md:w-80 flex gap-2">
+                <div class="relative w-full lg:w-80 flex gap-2">
                     <input type="text" id="search-input" placeholder="🔍検索" 
                         class="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-4 text-sm focus:outline-none focus:border-blue-500 transition text-[#000] dark:text-[#fff]">
 
-                    <select id="theme-select-mobile" onchange="applyTheme(this.value)" class="theme-select md:hidden bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-3 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none">
+                    <select id="theme-select-mobile" onchange="applyTheme(this.value)" class="theme-select lg:hidden bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-3 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none">
                         <option value="light">ライト</option>
                         <option value="dark">ダーク</option>
                         <option value="system">システムに従う</option>
@@ -124,8 +126,9 @@
             </header>
         </div>
 
-        <div id="content-area" class="p-5 md:p-12 pt-2 md:pt-4 flex-grow">
-           <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>
+        <div id="content-area" class="p-4 lg:p-12 pt-2 lg:pt-4 flex-grow">
+           <!-- ⚡ レスポンシブ列数設定: スマホ(1列) / iPad縦(2列) / iPad横・PC(3列) / テレビ(4列) -->
+           <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-5"></div>
         </div>
     </main>
 
@@ -138,12 +141,11 @@
 
         // 🌗 テーマ管理コアロジック
         function initTheme() {
-            const savedTheme = localStorage.getItem('visquet-theme') || 'light'; // 標準モードはライト
+            const savedTheme = localStorage.getItem('visquet-theme') || 'light'; 
             document.getElementById('theme-select-pc').value = savedTheme;
             document.getElementById('theme-select-mobile').value = savedTheme;
             applyTheme(savedTheme, false);
 
-            // システム設定変更時の動的リスナー
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
                 if (localStorage.getItem('visquet-theme') === 'system') {
                     applyTheme('system', false);
@@ -168,13 +170,12 @@
                 }
             }
 
-            // 同期用
             document.getElementById('theme-select-pc').value = theme;
             document.getElementById('theme-select-mobile').value = theme;
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            initTheme(); // ドキュメント展開時にテーマを適用
+            initTheme(); 
             loadVideosFromStaticFile('all');
             window.addEventListener('scroll', handleScroll);
             setupSearchEngine();
@@ -187,12 +188,10 @@
         function switchCategory(key, element) {
             currentKey = key;
 
-            // スタイルクラスのクリーンアップ（ライト/ダーク両対応）
             document.querySelectorAll('.nav-item').forEach(el => {
                 el.className = "nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5";
             });
 
-            // アクティブなアイテムへのハイライト処理
             document.querySelectorAll('.nav-item').forEach(el => {
                 if (el.getAttribute('onclick') && el.getAttribute('onclick').includes(`'${key}'`)) {
                     el.className = "nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold";
@@ -208,8 +207,8 @@
 
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
 
-            // ⚡ 変更点2：カテゴリ切替時の余白設定も同期 (gap-3 md:gap-5)
-            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>';
+            // ⚡ グリッド再生成時のレスポンシブ指定を更新
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-5"></div>';
             document.getElementById('search-input').value = '';
 
             loadVideosFromStaticFile(key);
@@ -220,9 +219,9 @@
 
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
-                    <div class="col-span-full text-center py-24 font-mono text-gray-400 dark:text-gray-700 text-2xl md:text-4xl uppercase tracking-widest">
+                    <div class="col-span-full text-center py-24 font-mono text-gray-400 dark:text-gray-700 text-2xl lg:text-4xl uppercase tracking-widest">
                         [ X_X ]<br><br>
-                        <span class="text-gray-500 text-sm md:text-[18px]">（エラー101）現在インターネットに接続されておりません</span>
+                        <span class="text-gray-500 text-sm lg:text-[18px]">（エラー101）現在インターネットに接続されておりません</span>
                     </div>`;
                 document.getElementById('video-count').innerText = `未接続`;
                 return;
@@ -255,16 +254,15 @@
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             const timestamp = new Date().getTime();
 
-            // ⚡ 変更点3：タイトルの大きさを14pxへ変更＆色を濃く修正 (text-[14px] text-gray-900 dark:text-white)
             const htmlString = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
                         <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
-                    <div class="p-4 md:p-5">
-                        <h3 class="text-[14px] font-bold line-clamp-2 text-gray-900 dark:text-white leading-relaxed tracking-wide">${v.title}</h3>
-                        <div class="mt-3 md:mt-4 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
+                    <div class="p-3 lg:p-4">
+                        <h3 class="text-[13px] lg:text-[14px] font-bold line-clamp-2 text-gray-900 dark:text-white leading-snug tracking-wide">${v.title}</h3>
+                        <div class="mt-2 lg:mt-3 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
                              <span>${v.publishedAt}</span>
                              <span>ID: ${v.videoId}</span>
                         </div>
@@ -328,10 +326,10 @@
             }
 
             document.getElementById('content-area').innerHTML = `
-                <div class="max-w-2xl mx-auto space-y-6 md:space-y-10 py-4 md:py-10 animate-fade-in pb-16">
-                    <section class="info-card p-6 md:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
+                <div class="max-w-2xl mx-auto space-y-6 lg:space-y-10 py-4 lg:py-10 animate-fade-in pb-16">
+                    <section class="info-card p-6 lg:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
                         <h3 class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6 font-mono">情報</h3>
-                        <div class="space-y-6 md:space-y-8">                  
+                        <div class="space-y-6 lg:space-y-8">                  
                          <div>
                                 <h4 class="text-gray-900 dark:text-white font-semibold mb-3">メンバー & 団体</h4>
                                 <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 font-medium">
@@ -343,14 +341,14 @@
                             </div>
                         </div>
                     </section>
-                    <section class="info-card p-6 md:p-8 flex items-center gap-6 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222] border-l-4 border-l-blue-600 dark:border-l-blue-500">
+                    <section class="info-card p-6 lg:p-8 flex items-center gap-6 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222] border-l-4 border-l-blue-600 dark:border-l-blue-500">
                         <svg viewBox="0 0 24 24" class="icon-nakrel-n" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 19L6 5M18 19L18 5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
                             <path d="M8.5 7.5L15.5 16.5" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                         <div>
                             <h4 class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] mb-1 font-mono">運営</h4>
-                            <div class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white tracking-tighter">NAKREL Studio</div>
+                            <div class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white tracking-tighter">NAKREL Studio</div>
                         </div>
                     </section>
                 </div>
