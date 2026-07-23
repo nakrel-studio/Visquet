@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visquet</title>
     <meta name="description" content="Visquet動画ポータルサイトではクリエイティブレーベルNAKREL Studioが発信するゲーム実況・音楽・同人系やその他の幅広いジャンルの動画を取り扱っております。最新動画やサークル公式チャンネルはこちらから。">
-    
+
     <link class="rounded-none" rel="icon" href="logo.jpg?v=1" type="image/jpeg">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Tailwindのダークモードをクラス制御（js側でhtmlタグに 'dark' を付与）に設定
@@ -18,28 +18,28 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+JP:wght@700&display=swap');
-        
+
         /* 🎨 テーマ変数定義 */
         body { 
             font-family: 'Inter', sans-serif; 
             overflow-x: hidden; 
             transition: background-color 0.25s ease, color 0.25s ease;
         }
-        
+
         /* ロゴテキスト */
         .brand-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; cursor: pointer; user-select: none; }
-        
+
         /* サイドバー */
         .sidebar { z-index: 40; transition: background-color 0.25s ease, border-color 0.25s ease; }
-        
+
         /* ナビゲーションアイテム */
         .nav-item { transition: 0.2s; cursor: pointer; }
-        
+
         /* 📐 カード・パーツの直角ソリッド仕様 */
         .video-card { border: 1px solid transparent; transition: all 0.25s ease; border-radius: 0px !important; }
         .video-card:hover { transform: translateY(-3px); }
         .info-card { border-radius: 0px !important; transition: all 0.25s ease; }
-        
+
         .icon-nakrel-n { width: 40px; height: 40px; flex-shrink: 0; }
         .animate-fade-in { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -55,14 +55,14 @@
    <div class="flex items-center mb-10 cursor-pointer" onclick="scrollToTop()">
     <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 md:h-12 w-auto object-contain block select-none dark:brightness-110">
 </div>
-        
+
         <nav id="category-menu" class="space-y-1 flex-grow text-sm">
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-2">ホーム</div>
             <div class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold" onclick="switchCategory('all', this)">🎥最新</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('music', this)">🎵音楽</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('games', this)">🎮ゲーム</div>
             <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="switchCategory('popular', this)">💛人気動画</div>
-            
+
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-3 mt-8">公式チャンネル</div>
             <div class="nav-item p-3 flex items-center justify-between group text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
                 <span>NAKREL Studio</span>
@@ -86,7 +86,7 @@
             </select>
         </div>
 
-        
+
     </aside>
 
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-t border-gray-300 dark:border-[#222225] p-2 flex justify-around items-center z-50 text-xs">
@@ -98,7 +98,7 @@
     </div>
 
     <main class="flex-grow flex flex-col min-w-0">
-        
+
         <div class="sticky top-0 z-30 bg-[#f8f9fa]/90 dark:bg-[#0d0d0f]/90 backdrop-blur-md p-5 md:p-12 pb-4 md:pb-6 border-b border-transparent">
            <div class="md:hidden flex justify-center mb-4">
     <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 w-auto object-contain block select-none cursor-pointer dark:brightness-110" onclick="scrollToTop()">
@@ -112,9 +112,10 @@
                     </div>
                 </div>
                 <div class="relative w-full md:w-80 flex gap-2">
+                    <input type="text" id="search-input" placeholder="検索" 
                     <input type="text" id="search-input" placeholder="🔍検索" 
                         class="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-4 text-sm focus:outline-none focus:border-blue-500 transition text-[#000] dark:text-[#fff]">
-                    
+
                     <select id="theme-select-mobile" onchange="applyTheme(this.value)" class="theme-select md:hidden bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-2 px-3 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none">
                         <option value="light">ライト</option>
                         <option value="dark">ダーク</option>
@@ -126,7 +127,7 @@
 
         <div id="content-area" class="p-5 md:p-12 pt-2 md:pt-4 flex-grow">
             <!-- ⚡ 変更点1：カード間の余白を短縮 (gap-4 md:gap-8 -> gap-3 md:gap-5) -->
-            <div id="grid" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5"></div>
+            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>
         </div>
     </main>
 
@@ -168,7 +169,7 @@
                     htmlEl.classList.remove('dark');
                 }
             }
-            
+
             // 同期用
             document.getElementById('theme-select-pc').value = theme;
             document.getElementById('theme-select-mobile').value = theme;
@@ -187,38 +188,38 @@
 
         function switchCategory(key, element) {
             currentKey = key;
-            
+
             // スタイルクラスのクリーンアップ（ライト/ダーク両対応）
             document.querySelectorAll('.nav-item').forEach(el => {
                 el.className = "nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5";
             });
-            
+
             // アクティブなアイテムへのハイライト処理
             document.querySelectorAll('.nav-item').forEach(el => {
                 if (el.getAttribute('onclick') && el.getAttribute('onclick').includes(`'${key}'`)) {
                     el.className = "nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold";
                 }
             });
-            
+
             const mainHeader = document.getElementById('main-header');
             if (mainHeader) {
                 mainHeader.style = '';
                 mainHeader.classList.remove('hidden');
                 mainHeader.classList.add('flex');
             }
-            
+
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
-            
+
             // ⚡ 変更点2：カテゴリ切替時の余白設定も同期 (gap-3 md:gap-5)
             document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-5"></div>';
             document.getElementById('search-input').value = '';
-            
+
             loadVideosFromStaticFile(key);
         }
 
         function loadVideosFromStaticFile(key) {
             const grid = document.getElementById('grid');
-            
+
             if (typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA[key]) {
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-24 font-mono text-gray-400 dark:text-gray-700 text-2xl md:text-4xl uppercase tracking-widest">
@@ -238,7 +239,7 @@
             displayedCount = 0;
             const grid = document.getElementById('grid');
             if (grid) grid.innerHTML = '';
-            
+
             if (filteredVideos.length === 0) {
                 if (grid) grid.innerHTML = `<div class="col-span-full text-center py-12 font-mono text-gray-400 dark:text-gray-700 text-sm uppercase">データが見つかりませんでした:(</div>`;
                 document.getElementById('video-count').innerText = `検索結果: 0 / 動画: ${currentRawVideos.length}`;
@@ -255,7 +256,7 @@
 
             const chunk = filteredVideos.slice(displayedCount, displayedCount + ITEMS_PER_PAGE);
             const timestamp = new Date().getTime();
-            
+
             // ⚡ 変更点3：タイトルの大きさを14pxへ変更＆色を濃く修正 (text-[14px] text-gray-900 dark:text-white)
             const htmlString = chunk.map(v => `
                 <div class="video-card overflow-hidden cursor-pointer shadow-xl bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
@@ -321,13 +322,13 @@
                 el.className = "nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5";
             });
             if(element) element.className = "nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold";
-            
+
             const mainHeader = document.getElementById('main-header');
             if (mainHeader) {
                 mainHeader.classList.remove('flex');
                 mainHeader.classList.add('hidden');
             }
-            
+
             document.getElementById('content-area').innerHTML = `
                 <div class="max-w-2xl mx-auto space-y-6 md:space-y-10 py-4 md:py-10 animate-fade-in pb-16">
                     <section class="info-card p-6 md:p-8 bg-white border border-gray-200 dark:bg-[#111114] dark:border-[#222]">
