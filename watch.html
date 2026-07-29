@@ -67,22 +67,35 @@
         }
 
         /* --------------------------------------------------
-           ▼ アスペクト比＆画面幅によるレイアウト制御
+           ▼ 画面アスペクト比に応じたレイアウト調整
            -------------------------------------------------- */
-        /* ① iPad横 & PC全般（標準・スクエア）: 右側1列 */
+        
+        /* ① PC・タブレット共通（横幅1024px以上）：デフォルトは右1列 */
         @media (min-width: 1024px) {
             .responsive-main {
-                grid-template-columns: 1fr 360px !important;
+                grid-template-columns: 1fr 300px !important; /* 標準幅 */
             }
             .responsive-rec-grid {
                 grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
             }
         }
 
-        /* ② 横幅が1280px以上かつ「16:9（約1.77）以上の横長画面」の時だけ右側2列 */
-        @media (min-width: 1280px) and (min-aspect-ratio: 16/9) {
+        /* ② Surfaceなどの3:2〜4:3画面 (1280px以上かつ アスペクト比16/10未満)
+           👉 右側の幅を280pxに引き締めて、動画プレイヤー側の面積を拡大 */
+        @media (min-width: 1280px) and (max-aspect-ratio: 16/10) {
             .responsive-main {
-                grid-template-columns: 1fr 680px !important;
+                grid-template-columns: 1fr 280px !important;
+            }
+            .responsive-rec-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            }
+        }
+
+        /* ③ 16:9以上のワイド画面 (1366px以上かつ アスペクト比16/9以上)
+           👉 右側を600px確保して「右2列」にする */
+        @media (min-width: 1366px) and (min-aspect-ratio: 16/9) {
+            .responsive-main {
+                grid-template-columns: 1fr 600px !important;
             }
             .responsive-rec-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -103,7 +116,7 @@
         </div>
     </header>
 
-    <main class="responsive-main max-w-[1920px] mx-auto pt-2 px-4 md:px-8 lg:px-12 md:pb-12 md:pt-2 grid grid-cols-1 gap-8">
+    <main class="responsive-main max-w-[1920px] mx-auto pt-2 px-4 md:px-6 lg:px-8 md:pb-12 md:pt-2 grid grid-cols-1 gap-6">
         
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
