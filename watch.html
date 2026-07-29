@@ -81,7 +81,8 @@
         </div>
     </header>
 
- <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-8">
+ <!-- 調整箇所: lg:grid-cols-[1fr,1.2fr] で右側の関連動画エリアを広げ、プレイヤー側を相対的に小さく収める -->
+ <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-8">
         
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
@@ -112,7 +113,7 @@
                         <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
                     </button>
 
-                    <!-- 🔽 追加：SHARE（共有）ボタン -->
+                    <!-- SHARE（共有）ボタン -->
                     <button id="share-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
                         <span class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🔗</span>
                         <span class="font-semibold">共有</span>
@@ -132,8 +133,8 @@
             <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
-            <!-- iPad縦表示時に2列、PC（lg）で1列に戻す設定 -->
-            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4"></div>
+            <!-- 調整箇所: md以上（横長画面含む）で常に2列を維持するよう設定 -->
+            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </section>
     </main>
 
