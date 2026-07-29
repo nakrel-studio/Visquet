@@ -81,8 +81,8 @@
         </div>
     </header>
 
- <!-- 調整箇所: lg:grid-cols-[1fr,1.2fr] で右側の関連動画エリアを広げ、プレイヤー側を相対的に小さく収める -->
- <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-8">
+ <!-- 調整箇所: xl:（横幅1280px以上）の時のみ右側に並べる設定。スクエアモニターやタブレットでは1列（上下配置）を維持 -->
+ <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 xl:grid-cols-[1fr,1.2fr] gap-8">
         
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
@@ -133,8 +133,8 @@
             <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
-            <!-- 調整箇所: md以上（横長画面含む）で常に2列を維持するよう設定 -->
-            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            <!-- 調整箇所: 中型（sm）〜大型（xl未満）では2列、右配置になるxlでのみ2列でコンパクトに表示 -->
+            <div id="rec-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4"></div>
         </section>
     </main>
 
