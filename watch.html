@@ -66,10 +66,10 @@
             animation: fireFly 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
 
-/* --------------------------------------------------
+        /* --------------------------------------------------
            ▼ アスペクト比＆画面幅によるレイアウト制御
            -------------------------------------------------- */
-        /* ① 従来通り：iPad横 & PC全般（標準・スクエア）: 右側1列 */
+        /* ① iPad横 & PC全般（標準・スクエア）: 右側1列 */
         @media (min-width: 1024px) {
             .responsive-main {
                 grid-template-columns: 1fr 360px !important;
@@ -79,14 +79,7 @@
             }
         }
 
-        /* ★ 追加：3:2ディスプレイ（Surface等）の時だけ左右1:1（真ん中境界）にする */
-        @media (min-width: 1024px) and (min-aspect-ratio: 14/10) and (max-aspect-ratio: 15/10) {
-            .responsive-main {
-                grid-template-columns: 1fr 1fr !important;
-            }
-        }
-
-        /* ③ 従来通り：横幅1280px以上かつ「16:9（約1.77）以上の横長画面」の時だけ右側2列 */
+        /* ② 横幅が1280px以上かつ「16:9（約1.77）以上の横長画面」の時だけ右側2列 */
         @media (min-width: 1280px) and (min-aspect-ratio: 16/9) {
             .responsive-main {
                 grid-template-columns: 1fr 680px !important;
