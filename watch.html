@@ -65,6 +65,29 @@
             border-radius: 50%; z-index: 50;
             animation: fireFly 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
+
+        /* --------------------------------------------------
+           ▼ アスペクト比＆画面幅によるレイアウト制御
+           -------------------------------------------------- */
+        /* ① iPad横 & PC全般（標準・スクエア）: 右側1列 */
+        @media (min-width: 1024px) {
+            .responsive-main {
+                grid-template-columns: 1fr 360px !important;
+            }
+            .responsive-rec-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            }
+        }
+
+        /* ② 横幅が1280px以上かつ「16:9（約1.77）以上の横長画面」の時だけ右側2列 */
+        @media (min-width: 1280px) and (min-aspect-ratio: 16/9) {
+            .responsive-main {
+                grid-template-columns: 1fr 680px !important;
+            }
+            .responsive-rec-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
@@ -80,12 +103,7 @@
         </div>
     </header>
 
-    <!-- レスポンシブグリッド指定: 
-         - スマホ / iPad縦: 1カラム (下部に配置)
-         - iPad横 / スクエアPC (lg): 右側 360px 幅 (右1列)
-         - 16:9ワイド・テレビ (xl): 右側 680px 幅 (右2列)
-    -->
-    <main class="max-w-[1920px] mx-auto pt-2 px-4 md:px-8 lg:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_680px] gap-8">
+    <main class="responsive-main max-w-[1920px] mx-auto pt-2 px-4 md:px-8 lg:px-12 md:pb-12 md:pt-2 grid grid-cols-1 gap-8">
         
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
@@ -135,14 +153,7 @@
             <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
-            <!-- 
-                動画カード列の制御:
-                - スマホ: 1列 (grid-cols-1)
-                - iPad縦 (md): 下部に2列 (md:grid-cols-2)
-                - iPad横 / スクエアPC (lg): 右側に1列 (lg:grid-cols-1)
-                - 16:9モニター / TV (xl): 右側に2列 (xl:grid-cols-2)
-            -->
-            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4"></div>
+            <div id="rec-grid" class="responsive-rec-grid grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </section>
     </main>
 
