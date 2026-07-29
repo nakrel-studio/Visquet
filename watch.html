@@ -11,9 +11,8 @@
     button, a, .no-zoom {
       touch-action: manipulation;
     }
-  </style>
-</head>
-    
+    </style>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -81,7 +80,12 @@
         </div>
     </header>
 
- <main class="max-w-7xl mx-auto pt-2 px-4 md:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-8">
+    <!-- レスポンシブグリッド指定: 
+         - スマホ / iPad縦: 1カラム (下部に配置)
+         - iPad横 / スクエアPC (lg): 右側 360px 幅 (右1列)
+         - 16:9ワイド・テレビ (xl): 右側 680px 幅 (右2列)
+    -->
+    <main class="max-w-[1920px] mx-auto pt-2 px-4 md:px-8 lg:px-12 md:pb-12 md:pt-2 grid grid-cols-1 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_680px] gap-8">
         
         <div class="w-full">
             <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-6">
@@ -112,7 +116,6 @@
                         <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
                     </button>
 
-                    <!-- 🔽 追加：SHARE（共有）ボタン -->
                     <button id="share-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
                         <span class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🔗</span>
                         <span class="font-semibold">共有</span>
@@ -132,8 +135,14 @@
             <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
-            <!-- iPad縦表示時に2列、PC（lg）で1列に戻す設定 -->
-            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4"></div>
+            <!-- 
+                動画カード列の制御:
+                - スマホ: 1列 (grid-cols-1)
+                - iPad縦 (md): 下部に2列 (md:grid-cols-2)
+                - iPad横 / スクエアPC (lg): 右側に1列 (lg:grid-cols-1)
+                - 16:9モニター / TV (xl): 右側に2列 (xl:grid-cols-2)
+            -->
+            <div id="rec-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4"></div>
         </section>
     </main>
 
@@ -155,14 +164,12 @@
 
         let currentVideoId = null;
         
-        // まとめ送り（バッファリング）用の管理変数
         let pendingFires = 0;
         let fireTimeoutTimer = null;
    
 function autoLink(text) {
   if (!text) return '';
 
-  // HTMLエスケープ処理（&, <, >, ", ' を安全な文字列に変換）
   const escaped = text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -173,7 +180,6 @@ function autoLink(text) {
   const urlPattern = /(https?:\/\/[^\s<]+)/g;
 
   return escaped.replace(urlPattern, (url) => {
-    // https://nakrel-visquet.com/watch.html で始まるURLだけ同じタブで開く
     const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
 
     if (isWatchPage) {
@@ -185,10 +191,8 @@ function autoLink(text) {
 }
 
       document.addEventListener("DOMContentLoaded", () => {
-            // ページ読み込み時にグローバルなtheme同期を実行
             window.syncTheme(); 
 
-            // システム設定変更時のリアルタイム追従リスナー
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
                 if (localStorage.getItem('visquet-theme') === 'system') {
                     window.syncTheme();
@@ -204,7 +208,6 @@ function autoLink(text) {
             }
 
             const player = document.getElementById('youtube-player');
-            // YouTubeプレイヤー自体のUIテーマもダークに変更
             player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&theme=dark`;
 
             let targetVideo = null;
@@ -222,7 +225,6 @@ function autoLink(text) {
                 document.title = `${targetVideo.title.replace(/&quot;/g, '"')} - Visquet`;
                 const descContainer = document.getElementById('video-description');
                 if (targetVideo.description && targetVideo.description.trim() !== "") {
-                    // autoLink関数でURLをハイパーリンクに変換して出力
                     descContainer.innerHTML = autoLink(targetVideo.description);
                 } else {
                     descContainer.innerHTML = `<span class="text-gray-400 dark:text-gray-600 font-mono text-xs">[ 未記入 ]</span>`;
@@ -330,7 +332,6 @@ function autoLink(text) {
             }
         }
 
-        // 最適化：まとめ送り（バッファリング）処理
         async function handleFire(event) {
             let userFireClicks = parseInt(localStorage.getItem(`f_user_click_${currentVideoId}`)) || 0;
             if (userFireClicks >= 50) return; 
@@ -338,10 +339,8 @@ function autoLink(text) {
             userFireClicks++;
             localStorage.setItem(`f_user_click_${currentVideoId}`, userFireClicks);
 
-            // 送信用のバッファに加算
             pendingFires++;
 
-            // 演出と手元の数字は「叩いた瞬間に1対1で超高速リアルタイム反映」
             createFireParticles(event);
             if (userFireClicks >= 50) {
                 createPopupText(event, `+${userFireClicks} LIMIT !`, "text-red-500 font-black");
@@ -355,20 +354,17 @@ function autoLink(text) {
 
             updateFireButtonUI();
 
-            // 連打している間はタイマーを何度もリセット（通信を発生させない）
             if (fireTimeoutTimer) clearTimeout(fireTimeoutTimer);
 
-            // 連打の手が止まってから「0.4秒後」に、溜まった分をまとめて一発送信
             fireTimeoutTimer = setTimeout(async () => {
                 const fireIncrementAmount = pendingFires;
-                pendingFires = 0; // 送信開始したらバッファは即ゼロに戻す
+                pendingFires = 0;
 
                 const docRef = doc(db, "video_metrics", currentVideoId);
                 try {
                     localStorage.removeItem(`vm_time_${currentVideoId}`);
                     localStorage.removeItem(`vm_cache_${currentVideoId}`);
 
-                    // まとめてドカンと加算（1通信で完結）
                     await setDoc(docRef, { fires: increment(fireIncrementAmount), lastUpdatedAt: serverTimestamp() }, { merge: true });
                 } catch (e) {
                     console.error("Fire Debounce Sync Error:", e);
@@ -376,7 +372,6 @@ function autoLink(text) {
             }, 400); 
         }
 
-        // 共有シート（Web Share API）呼び出し処理
         async function handleShare(event) {
             const videoTitle = document.getElementById('video-title')?.innerText || "Visquet Video";
             
@@ -386,18 +381,15 @@ function autoLink(text) {
                 url: window.location.href
             };
 
-            // Web Share API（スマホやMacなどの共有シート機能）が開ける場合
             if (navigator.share) {
                 try {
                     await navigator.share(shareData);
                 } catch (err) {
-                    // ユーザーが共有シートをキャンセルした場合はエラーにしない
                     if (err.name !== 'AbortError') {
                         console.error("Share failed:", err);
                     }
                 }
             } else {
-                // Web Share API非対応（一部PC環境等）の場合：URLをクリップボードにコピー
                 try {
                     await navigator.clipboard.writeText(window.location.href);
                     createPopupText(event, "URL COPIED!", "text-emerald-500 font-bold");
@@ -469,16 +461,13 @@ function autoLink(text) {
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
-            // 1. 自分自身の動画を除外
             let allVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => v.videoId !== currentId);
 
-            // 2. 配列をランダムにシャッフル（Fisher-Yatesアルゴリズム）
             for (let i = allVideos.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [allVideos[i], allVideos[j]] = [allVideos[j], allVideos[i]];
             }
 
-            // 3. シャッフル後、上から最大30件を取り出す
             const chunk = allVideos.slice(0, 30);
             const timestamp = new Date().getTime();
 
@@ -509,4 +498,3 @@ function autoLink(text) {
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
-
