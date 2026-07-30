@@ -549,10 +549,8 @@
             let currentIndex = 0;
             const timestamp = new Date().getTime();
 
-            // 背景にうっすらオレンジグラデーション（bg-gradient-to-r from-orange-500/5 to-transparent）を適用
-            // カード枠は overflow-hidden で横スライド領域を確保
             container.innerHTML = `
-                <div class="p-6 rounded-none bg-gradient-to-r from-orange-500/5 to-transparent bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] overflow-hidden">
+                <div class="p-4 sm:p-6 rounded-none bg-gradient-to-r from-orange-500/5 to-transparent bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] overflow-hidden">
                     <div class="flex items-center justify-between mb-3 border-b border-gray-200 dark:border-zinc-800 pb-2">
                         <h3 class="text-[12px] font-mono text-orange-600 dark:text-orange-400 font-bold uppercase tracking-widest flex items-center gap-1">
                             🔥 現在急上昇中！
@@ -574,42 +572,43 @@
                 const item = top5Videos[currentIndex];
                 if (!cardContent) return;
 
-                // 左方向へスライドアウト
-                cardContent.style.transform = 'translateX(-100%)';
+                // 上下スライド（縦積み感を演出）
+                cardContent.style.transform = 'translateY(-100%)';
                 
                 setTimeout(() => {
+                    // サムネイルとテキストは横並び（flex-row）のまま、スマホでもPCと同じ形を維持
                     cardContent.innerHTML = `
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                            <a href="./watch.html?id=${item.videoId}" class="relative w-full sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block">
+                        <div class="flex flex-row items-center gap-3 sm:gap-4">
+                            <a href="./watch.html?id=${item.videoId}" class="relative w-32 sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block">
                                 <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover">
                             </a>
-                            <div class="flex-grow min-w-0 w-full flex flex-col gap-2">
+                            <div class="flex-grow min-w-0 flex flex-col justify-between py-0.5 gap-1.5">
                                 <a href="./watch.html?id=${item.videoId}" class="group block">
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-base leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors">
-                                        <span class="inline-block font-mono font-black text-xs px-1.5 py-0.5 mr-2 bg-orange-500 text-white">
+                                    <h4 class="font-bold text-gray-900 dark:text-white text-xs sm:text-base leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors">
+                                        <span class="inline-block font-mono font-black text-[10px] sm:text-xs px-1 py-0.5 mr-1 sm:mr-2 bg-orange-500 text-white">
                                             #${currentIndex + 1}
                                         </span>
                                         ${item.title}
                                     </h4>
                                 </a>
-                                <div class="flex items-center justify-between gap-2 text-xs font-mono text-gray-400 dark:text-gray-500">
-                                    <span>${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
-                                    <a href="./watch.html?id=${item.videoId}" class="font-bold text-orange-600 dark:text-orange-400 hover:underline">
-                                        視聴する ▶
+                                <div class="flex items-center justify-between gap-1 text-[10px] sm:text-xs font-mono text-gray-400 dark:text-gray-500">
+                                    <span class="truncate">${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
+                                    <a href="./watch.html?id=${item.videoId}" class="font-bold text-orange-600 dark:text-orange-400 hover:underline flex-shrink-0">
+                                        視聴 ▶
                                     </a>
                                 </div>
                             </div>
                         </div>
                     `;
-                    // 右外側へ瞬時に移動（アニメーションを切る）
+                    // 下側外から準備
                     cardContent.style.transition = 'none';
-                    cardContent.style.transform = 'translateX(100%)';
+                    cardContent.style.transform = 'translateY(100%)';
 
-                    // 次のフレームで右から定位置へスライドイン
+                    // 下から定位置へスライドイン（縦積みの挙動）
                     requestAnimationFrame(() => {
                         requestAnimationFrame(() => {
                             cardContent.style.transition = 'transform 300ms ease-in-out';
-                            cardContent.style.transform = 'translateX(0)';
+                            cardContent.style.transform = 'translateY(0)';
                         });
                     });
 
