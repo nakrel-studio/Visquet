@@ -509,7 +509,7 @@
             recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
         }
 
-        async function renderTrendingAds() {
+async function renderTrendingAds() {
             const container = document.getElementById('trending-ad-container');
             if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
@@ -549,68 +549,69 @@
             let currentIndex = 0;
             const timestamp = new Date().getTime();
 
-            // シンプルかつ元のサイト構造を絶対に崩さないデザイン
+            // 1. 薄いオレンジグラデーション背景
+            // 2. スライド用の overflow-hidden コンテナと flex トラック構造
             container.innerHTML = `
-                <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225]">
-                    <div class="flex items-center justify-between mb-3 border-b border-gray-200 dark:border-zinc-800 pb-2">
-                        <h3 class="text-[12px] font-mono text-orange-600 dark:text-orange-400 font-bold uppercase tracking-widest flex items-center gap-1">
-                            🔥 現在急上昇中！
-                        </h3>
+                <div class="p-6 rounded-none bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent bg-white dark:bg-[#141417] border border-orange-500/30 dark:border-[#222225] relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 border-b border-gray-200 dark:border-zinc-800 pb-2 relative z-10">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-orange-500 text-white px-1.5 py-0.5">PR / PICKUP</span>
+                            <h3 class="text-[12px] font-mono text-orange-600 dark:text-orange-400 font-bold uppercase tracking-widest flex items-center gap-1">
+                                🔥 現在急上昇中！
+                            </h3>
+                        </div>
                         <div class="text-xs font-mono text-gray-400 dark:text-gray-500" id="trending-indicator">
                             1 / ${top5Videos.length}
                         </div>
                     </div>
-                    <div id="trending-card-content" class="transition-opacity duration-300"></div>
+                    
+                    <!-- スライド用ビューポート -->
+                    <div class="w-full overflow-hidden relative z-10">
+                        <div id="trending-track" class="flex transition-transform duration-500 ease-in-out w-full">
+                            ${top5Videos.map((item, idx) => `
+                                <div class="w-full flex-shrink-0 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                    <a href="./watch.html?id=${item.videoId}" class="relative w-full sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block group">
+                                        <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                                    </a>
+                                    <div class="flex-grow min-w-0 w-full flex flex-col gap-2">
+                                        <a href="./watch.html?id=${item.videoId}" class="group block">
+                                            <h4 class="font-bold text-gray-900 dark:text-white text-base leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors">
+                                                <span class="inline-block font-mono font-black text-xs px-1.5 py-0.5 mr-2 bg-orange-500 text-white">
+                                                    #${idx + 1}
+                                                </span>
+                                                ${item.title}
+                                            </h4>
+                                        </a>
+                                        <div class="flex items-center justify-between gap-2 text-xs font-mono text-gray-400 dark:text-gray-500">
+                                            <span>${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
+                                            <a href="./watch.html?id=${item.videoId}" class="font-bold text-orange-600 dark:text-orange-400 hover:underline">
+                                                視聴する ▶
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
                 </div>
             `;
 
-            const cardContent = document.getElementById('trending-card-content');
+            const track = document.getElementById('trending-track');
             const indicator = document.getElementById('trending-indicator');
 
-            function updateCard() {
-                const item = top5Videos[currentIndex];
-                if (!cardContent) return;
-
-                cardContent.style.opacity = '0';
-                
-                setTimeout(() => {
-                    cardContent.innerHTML = `
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                            <a href="./watch.html?id=${item.videoId}" class="relative w-full sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block">
-                                <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover">
-                            </a>
-                            <div class="flex-grow min-w-0 w-full flex flex-col gap-2">
-                                <a href="./watch.html?id=${item.videoId}" class="group block">
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-base leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors">
-                                        <span class="inline-block font-mono font-black text-xs px-1.5 py-0.5 mr-2 bg-orange-500 text-white">
-                                            #${currentIndex + 1}
-                                        </span>
-                                        ${item.title}
-                                    </h4>
-                                </a>
-                                <div class="flex items-center justify-between gap-2 text-xs font-mono text-gray-400 dark:text-gray-500">
-                                    <span>${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
-                                    <a href="./watch.html?id=${item.videoId}" class="font-bold text-orange-600 dark:text-orange-400 hover:underline">
-                                        視聴する ▶
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    cardContent.style.opacity = '1';
-                    if (indicator) {
-                        indicator.innerText = `${currentIndex + 1} / ${top5Videos.length}`;
-                    }
-                }, 200);
+            function moveToSlide(index) {
+                if (!track) return;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                if (indicator) {
+                    indicator.innerText = `${index + 1} / ${top5Videos.length}`;
+                }
             }
-
-            updateCard();
 
             if (trendingIntervalId) clearInterval(trendingIntervalId);
             if (top5Videos.length > 1) {
                 trendingIntervalId = setInterval(() => {
                     currentIndex = (currentIndex + 1) % top5Videos.length;
-                    updateCard();
+                    moveToSlide(currentIndex);
                 }, 5000);
             }
         }
