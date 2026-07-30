@@ -149,7 +149,10 @@
             </div>
 
             <!-- 急上昇エリア -->
-            <div id="trending-ad-container" class="mb-12"></div>
+            <div id="trending-ad-container" class="mb-8"></div>
+
+            <!-- 歴代人気動画ランキング TOP 10 エリア -->
+            <div id="popular-ranking-container" class="mb-12"></div>
         </div>
 
         <section class="w-full">
@@ -180,6 +183,7 @@
         let pendingFires = 0;
         let fireTimeoutTimer = null;
         let trendingIntervalId = null;
+        let popularIntervalId = null;
    
         function autoLink(text) {
           if (!text) return '';
@@ -261,6 +265,7 @@
             initLocalCounters();
             renderRecommendations(currentVideoId);
             renderTrendingAds();
+            renderPopularRanking();
         });
 
         async function initLocalCounters() {
@@ -572,11 +577,9 @@
                 const item = top5Videos[currentIndex];
                 if (!cardContent) return;
 
-                // 上下スライド（縦積み感を演出）
                 cardContent.style.transform = 'translateX(-100%)';
                 
                 setTimeout(() => {
-                    // サムネイルとテキストは横並び（flex-row）のまま、スマホでもPCと同じ形を維持
                     cardContent.innerHTML = `
                         <div class="flex flex-row items-center gap-3 sm:gap-4">
                             <a href="./watch.html?id=${item.videoId}" class="relative w-32 sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block">
@@ -600,11 +603,9 @@
                             </div>
                         </div>
                     `;
-                    // 下側外から準備
                     cardContent.style.transition = 'none';
                     cardContent.style.transform = 'translateX(100%)';
 
-                    // 下から定位置へスライドイン（縦積みの挙動）
                     requestAnimationFrame(() => {
                         requestAnimationFrame(() => {
                             cardContent.style.transition = 'transform 300ms ease-in-out';
@@ -624,6 +625,113 @@
             if (top5Videos.length > 1) {
                 trendingIntervalId = setInterval(() => {
                     currentIndex = (currentIndex + 1) % top5Videos.length;
+                    updateCard();
+                }, 5000);
+            }
+        }
+
+        async function renderPopularRanking() {
+            const container = document.getElementById('popular-ranking-container');
+            if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
+
+            const allVideos = VISQUET_ARCHIVE_DATA['all'];
+            if (allVideos.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            // 全動画のFirebase視聴回数を安全に取得
+            const videosWithViews = await Promise.all(allVideos.map(async (video) => {
+                let views = 0;
+                try {
+                    const docSnap = await getDoc(doc(db, "video_metrics", video.videoId));
+                    if (docSnap.exists()) {
+                        views = docSnap.data().views || 0;
+                    }
+                } catch (e) {
+                    console.error("Views fetch error:", e);
+                }
+                return { ...video, views };
+            }));
+
+            // 視聴回数の多い順にソートして上位10件を取得
+            videosWithViews.sort((a, b) => b.views - a.views);
+            const top10Videos = videosWithViews.slice(0, 10);
+
+            let currentIndex = 0;
+            const timestamp = new Date().getTime();
+
+            container.innerHTML = `
+                <div class="p-4 sm:p-6 rounded-none bg-gradient-to-r from-blue-500/5 to-transparent bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] overflow-hidden">
+                    <div class="flex items-center justify-between mb-3 border-b border-gray-200 dark:border-zinc-800 pb-2">
+                        <h3 class="text-[12px] font-mono text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest flex items-center gap-1">
+                            🏆 歴代人気動画 TOP 10
+                        </h3>
+                        <div class="text-xs font-mono text-gray-400 dark:text-gray-500" id="popular-indicator">
+                            1 / ${top10Videos.length}
+                        </div>
+                    </div>
+                    <div class="overflow-hidden relative w-full">
+                        <div id="popular-card-content" class="transition-transform duration-300 ease-in-out"></div>
+                    </div>
+                </div>
+            `;
+
+            const cardContent = document.getElementById('popular-card-content');
+            const indicator = document.getElementById('popular-indicator');
+
+            function updateCard() {
+                const item = top10Videos[currentIndex];
+                if (!cardContent) return;
+
+                cardContent.style.transform = 'translateX(-100%)';
+                
+                setTimeout(() => {
+                    cardContent.innerHTML = `
+                        <div class="flex flex-row items-center gap-3 sm:gap-4">
+                            <a href="./watch.html?id=${item.videoId}" class="relative w-32 sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block">
+                                <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover">
+                            </a>
+                            <div class="flex-grow min-w-0 flex flex-col justify-between py-0.5 gap-1.5">
+                                <a href="./watch.html?id=${item.videoId}" class="group block">
+                                    <h4 class="font-bold text-gray-900 dark:text-white text-xs sm:text-base leading-snug line-clamp-2 group-hover:text-blue-500 transition-colors">
+                                        <span class="inline-block font-mono font-black text-[10px] sm:text-xs px-1 py-0.5 mr-1 sm:mr-2 bg-blue-600 text-white">
+                                            #${currentIndex + 1}
+                                        </span>
+                                        ${item.title}
+                                    </h4>
+                                </a>
+                                <div class="flex items-center justify-between gap-1 text-[10px] sm:text-xs font-mono text-gray-400 dark:text-gray-500">
+                                    <span class="truncate">${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
+                                    <a href="./watch.html?id=${item.videoId}" class="font-bold text-blue-600 dark:text-blue-400 hover:underline flex-shrink-0">
+                                        視聴 ▶
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cardContent.style.transition = 'none';
+                    cardContent.style.transform = 'translateX(100%)';
+
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            cardContent.style.transition = 'transform 300ms ease-in-out';
+                            cardContent.style.transform = 'translateX(0)';
+                        });
+                    });
+
+                    if (indicator) {
+                        indicator.innerText = `${currentIndex + 1} / ${top10Videos.length}`;
+                    }
+                }, 300);
+            }
+
+            updateCard();
+
+            if (popularIntervalId) clearInterval(popularIntervalId);
+            if (top10Videos.length > 1) {
+                popularIntervalId = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % top10Videos.length;
                     updateCard();
                 }, 5000);
             }
