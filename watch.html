@@ -141,15 +141,12 @@
                 </div>
             </div>
             
-            <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] mb-8">
+            <div class="p-6 rounded-none bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222225] mb-12">
                 <h3 class="text-[12px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">概要欄</h3>
                 <div id="video-description" class="description-text text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
                     データを展開しています...
                 </div>
             </div>
-
-            <!-- 急上昇エリア -->
-            <div id="trending-ad-container" class="mb-12"></div>
         </div>
 
         <section class="w-full">
@@ -177,34 +174,34 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
+        
         let pendingFires = 0;
         let fireTimeoutTimer = null;
-        let trendingIntervalId = null;
    
-        function autoLink(text) {
-          if (!text) return '';
+function autoLink(text) {
+  if (!text) return '';
 
-          const escaped = text
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
+  const escaped = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 
-          const urlPattern = /(https?:\/\/[^\s<]+)/g;
+  const urlPattern = /(https?:\/\/[^\s<]+)/g;
 
-          return escaped.replace(urlPattern, (url) => {
-            const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
+  return escaped.replace(urlPattern, (url) => {
+    const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
 
-            if (isWatchPage) {
-              return `<a href="${url}" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
-            } else {
-              return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
-            }
-          });
-        }
+    if (isWatchPage) {
+      return `<a href="${url}" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
+    } else {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
+    }
+  });
+}
 
-        document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
             window.syncTheme(); 
 
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -260,7 +257,6 @@
 
             initLocalCounters();
             renderRecommendations(currentVideoId);
-            renderTrendingAds();
         });
 
         async function initLocalCounters() {
@@ -442,22 +438,34 @@
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const randomXOffset = (Math.random() - 0.5) * 30;
+
             const popup = document.createElement('div');
             popup.innerText = text;
-            popup.className = `absolute pointer-events-none font-mono font-black text-xs px-1.5 py-0.5 bg-white dark:bg-[#141417] border border-gray-300 dark:border-[#222225] shadow-md z-50 ${colorClass} rounded-none`;
+
+            // 薄いオレンジグラデーション背景と枠線を付与
+            popup.className = `absolute pointer-events-none font-mono font-black text-xs px-2 py-1 bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent border border-orange-500/20 shadow-md z-50 ${colorClass} rounded-none backdrop-blur-[1px]`;
             popup.style.left = `${x}px`;
             popup.style.top = `${y}px`;
-            popup.style.transform = 'translate(-50%, -100%)';
-            popup.style.transition = 'all 5.0s cubic-bezier(0.1, 0.8, 0.1, 1)';
+
+            // 左からスライドインして右へ流れる横移動アニメーションを設定
+            popup.style.transform = 'translate(-30px, -50%)';
+            popup.style.opacity = '0';
+            popup.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
+
             btn.appendChild(popup);
+
             requestAnimationFrame(() => {
-                popup.style.top = `${y - 75}px`;
-                popup.style.left = `${x + randomXOffset}px`;
-                popup.style.opacity = '0';
-                popup.style.transform = 'translate(-50%, -100%) scale(0.9)';
+                popup.style.transform = 'translate(0px, -50%)';
+                popup.style.opacity = '1';
             });
-            setTimeout(() => popup.remove(), 5000);
+
+            setTimeout(() => {
+                popup.style.transition = 'transform 0.25s cubic-bezier(0.7, 0, 0.84, 0), opacity 0.2s ease';
+                popup.style.transform = 'translate(30px, -50%)';
+                popup.style.opacity = '0';
+            }, 800);
+
+            setTimeout(() => popup.remove(), 1100);
         }
 
         function updateFireButtonUI() {
@@ -471,7 +479,7 @@
             }
         }
 
-        function renderRecommendations(currentId) {
+     function renderRecommendations(currentId) {
             const recGrid = document.getElementById('rec-grid');
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
@@ -507,113 +515,6 @@
                 </div>
             `).join('');
             recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
-        }
-
-async function renderTrendingAds() {
-            const container = document.getElementById('trending-ad-container');
-            if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
-
-            const now = new Date();
-            const threeWeeksAgo = new Date(now.getTime() - (21 * 24 * 60 * 60 * 1000));
-
-            // 3週間以内の動画を抽出
-            const recentVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => {
-                if (!v.publishedAt) return false;
-                const pubDate = new Date(v.publishedAt);
-                return pubDate >= threeWeeksAgo && pubDate <= now;
-            });
-
-            if (recentVideos.length === 0) {
-                container.innerHTML = '';
-                return;
-            }
-
-            // 視聴回数を安全に取得
-            const videosWithViews = await Promise.all(recentVideos.map(async (video) => {
-                let views = 0;
-                try {
-                    const docSnap = await getDoc(doc(db, "video_metrics", video.videoId));
-                    if (docSnap.exists()) {
-                        views = docSnap.data().views || 0;
-                    }
-                } catch (e) {
-                    console.error("Views fetch error:", e);
-                }
-                return { ...video, views };
-            }));
-
-            // 視聴回数の多い順にソートして上位5件を取得
-            videosWithViews.sort((a, b) => b.views - a.views);
-            const top5Videos = videosWithViews.slice(0, 5);
-
-            let currentIndex = 0;
-            const timestamp = new Date().getTime();
-
-            // 1. 薄いオレンジグラデーション背景
-            // 2. スライド用の overflow-hidden コンテナと flex トラック構造
-            container.innerHTML = `
-                <div class="p-6 rounded-none bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent bg-white dark:bg-[#141417] border border-orange-500/30 dark:border-[#222225] relative overflow-hidden">
-                    <div class="flex items-center justify-between mb-4 border-b border-gray-200 dark:border-zinc-800 pb-2 relative z-10">
-                        <div class="flex items-center gap-2">
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-orange-500 text-white px-1.5 py-0.5">PR / PICKUP</span>
-                            <h3 class="text-[12px] font-mono text-orange-600 dark:text-orange-400 font-bold uppercase tracking-widest flex items-center gap-1">
-                                🔥 現在急上昇中！
-                            </h3>
-                        </div>
-                        <div class="text-xs font-mono text-gray-400 dark:text-gray-500" id="trending-indicator">
-                            1 / ${top5Videos.length}
-                        </div>
-                    </div>
-                    
-                    <!-- スライド用ビューポート -->
-                    <div class="w-full overflow-hidden relative z-10">
-                        <div id="trending-track" class="flex transition-transform duration-500 ease-in-out w-full">
-                            ${top5Videos.map((item, idx) => `
-                                <div class="w-full flex-shrink-0 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                                    <a href="./watch.html?id=${item.videoId}" class="relative w-full sm:w-48 aspect-video overflow-hidden bg-black flex-shrink-0 border border-gray-200 dark:border-zinc-800 block group">
-                                        <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                                    </a>
-                                    <div class="flex-grow min-w-0 w-full flex flex-col gap-2">
-                                        <a href="./watch.html?id=${item.videoId}" class="group block">
-                                            <h4 class="font-bold text-gray-900 dark:text-white text-base leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors">
-                                                <span class="inline-block font-mono font-black text-xs px-1.5 py-0.5 mr-2 bg-orange-500 text-white">
-                                                    #${idx + 1}
-                                                </span>
-                                                ${item.title}
-                                            </h4>
-                                        </a>
-                                        <div class="flex items-center justify-between gap-2 text-xs font-mono text-gray-400 dark:text-gray-500">
-                                            <span>${item.publishedAt} · ${item.views.toLocaleString()} 回視聴</span>
-                                            <a href="./watch.html?id=${item.videoId}" class="font-bold text-orange-600 dark:text-orange-400 hover:underline">
-                                                視聴する ▶
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            const track = document.getElementById('trending-track');
-            const indicator = document.getElementById('trending-indicator');
-
-            function moveToSlide(index) {
-                if (!track) return;
-                track.style.transform = `translateX(-${index * 100}%)`;
-                if (indicator) {
-                    indicator.innerText = `${index + 1} / ${top5Videos.length}`;
-                }
-            }
-
-            if (trendingIntervalId) clearInterval(trendingIntervalId);
-            if (top5Videos.length > 1) {
-                trendingIntervalId = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % top5Videos.length;
-                    moveToSlide(currentIndex);
-                }, 5000);
-            }
         }
 
     </script>
