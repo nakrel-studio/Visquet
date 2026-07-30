@@ -147,6 +147,9 @@
                     データを展開しています...
                 </div>
             </div>
+
+            <!-- 急上昇広告エリア -->
+            <div id="trending-ad-container" class="mb-12"></div>
         </div>
 
         <section class="w-full">
@@ -177,31 +180,32 @@
         
         let pendingFires = 0;
         let fireTimeoutTimer = null;
+        let trendingIntervalId = null;
    
-function autoLink(text) {
-  if (!text) return '';
+        function autoLink(text) {
+          if (!text) return '';
 
-  const escaped = text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+          const escaped = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
 
-  const urlPattern = /(https?:\/\/[^\s<]+)/g;
+          const urlPattern = /(https?:\/\/[^\s<]+)/g;
 
-  return escaped.replace(urlPattern, (url) => {
-    const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
+          return escaped.replace(urlPattern, (url) => {
+            const isWatchPage = url.startsWith('https://nakrel-visquet.com/watch.html');
 
-    if (isWatchPage) {
-      return `<a href="${url}" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
-    } else {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
-    }
-  });
-}
+            if (isWatchPage) {
+              return `<a href="${url}" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
+            } else {
+              return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline break-all">${url}</a>`;
+            }
+          });
+        }
 
-      document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             window.syncTheme(); 
 
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -257,6 +261,7 @@ function autoLink(text) {
 
             initLocalCounters();
             renderRecommendations(currentVideoId);
+            renderTrendingAds();
         });
 
         async function initLocalCounters() {
@@ -467,7 +472,7 @@ function autoLink(text) {
             }
         }
 
-     function renderRecommendations(currentId) {
+        function renderRecommendations(currentId) {
             const recGrid = document.getElementById('rec-grid');
             const recCountEl = document.getElementById('rec-count');
             if (!recGrid || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
@@ -503,6 +508,86 @@ function autoLink(text) {
                 </div>
             `).join('');
             recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
+        }
+
+        function renderTrendingAds() {
+            const container = document.getElementById('trending-ad-container');
+            if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
+
+            const now = new Date();
+            const threeWeeksAgo = new Date(now.getTime() - (21 * 24 * 60 * 60 * 1000));
+
+            const recentVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => {
+                if (!v.publishedAt) return false;
+                const pubDate = new Date(v.publishedAt);
+                return pubDate >= threeWeeksAgo && pubDate <= now;
+            });
+
+            if (recentVideos.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            const top5Videos = recentVideos.slice(0, 5);
+            let currentIndex = 0;
+
+            container.innerHTML = `
+                <div id="trending-ad-rotator" class="relative overflow-hidden rounded-none border border-orange-500/30 dark:border-orange-500/20 bg-gradient-to-r from-red-500/10 via-orange-500/10 to-amber-500/10 dark:from-red-950/30 dark:via-orange-950/30 dark:to-amber-950/30 shadow-sm">
+                </div>
+            `;
+            const rotator = document.getElementById('trending-ad-rotator');
+
+            function updateAdCard() {
+                const item = top5Videos[currentIndex];
+                const timestamp = new Date().getTime();
+
+                rotator.innerHTML = `
+                    <div class="p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-opacity duration-500 ease-in-out" style="opacity: 0;" id="trending-content-inner">
+                        <div class="relative w-full sm:w-48 aspect-video rounded-none overflow-hidden bg-zinc-800 flex-shrink-0 border border-gray-200 dark:border-zinc-700">
+                            <img src="./thumbnails/${item.videoId}.jpg?v=${timestamp}" alt="${item.title}" class="w-full h-full object-cover">
+                            <div class="absolute top-1 right-1 flex items-center gap-1 bg-black/60 px-1.5 py-1 rounded-none backdrop-blur-sm">
+                                ${top5Videos.map((_, i) => `
+                                    <span class="w-1.5 h-1.5 transition-all duration-300 ${i === currentIndex ? 'bg-orange-500' : 'bg-gray-400'}"></span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="flex-grow min-w-0 w-full flex flex-col gap-1.5">
+                            <a href="./watch.html?id=${item.videoId}" class="group block">
+                                <h4 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg leading-tight break-words">
+                                    <span class="inline-flex items-center justify-center font-mono font-black text-xs px-2 py-0.5 mr-2 bg-orange-500 text-white shadow-sm">
+                                        #${currentIndex + 1}
+                                    </span>
+                                    <span class="group-hover:text-orange-500 transition-colors">
+                                        ${item.title}
+                                    </span>
+                                </h4>
+                            </a>
+                            <div class="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-gray-200 dark:border-zinc-800">
+                                <span class="text-xs text-gray-400 font-mono">${item.publishedAt}</span>
+                                <a href="./watch.html?id=${item.videoId}" class="text-xs font-mono font-bold text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1">
+                                    NOW TRENDING ▶
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                requestAnimationFrame(() => {
+                    const inner = document.getElementById('trending-content-inner');
+                    if (inner) inner.style.opacity = '1';
+                });
+            }
+
+            updateAdCard();
+
+            if (trendingIntervalId) clearInterval(trendingIntervalId);
+            if (top5Videos.length > 1) {
+                trendingIntervalId = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % top5Videos.length;
+                    updateAdCard();
+                }, 5000);
+            }
         }
 
     </script>
