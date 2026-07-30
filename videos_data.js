@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/29/2026, 4:16:33 PM
+ * Generated: 7/30/2026, 4:21:14 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "楽しいお寿司屋さん　藤村拓真/フジタク",
+      "videoId": "iElb3y63fSg",
+      "publishedAt": "2026-07-29",
+      "description": "もはや才能レベル"
+    },
     {
       "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
       "videoId": "bGlhsRMh4bo",
@@ -450,6 +456,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "楽しいお寿司屋さん　藤村拓真/フジタク",
+      "videoId": "iElb3y63fSg",
+      "publishedAt": "2026-07-29",
+      "description": "もはや才能レベル"
+    },
     {
       "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
       "videoId": "CincZOLlzyg",
@@ -1323,6 +1335,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "bGlhsRMh4bo",
       "publishedAt": "2026-07-22",
       "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
+    },
+    {
+      "title": "楽しいお寿司屋さん　藤村拓真/フジタク",
+      "videoId": "iElb3y63fSg",
+      "publishedAt": "2026-07-29",
+      "description": "もはや才能レベル"
     }
   ]
 };
