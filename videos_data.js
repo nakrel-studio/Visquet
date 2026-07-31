@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/30/2026, 4:21:14 PM
+ * Generated: 7/31/2026, 4:40:29 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -456,12 +456,6 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
-    {
-      "title": "楽しいお寿司屋さん　藤村拓真/フジタク",
-      "videoId": "iElb3y63fSg",
-      "publishedAt": "2026-07-29",
-      "description": "もはや才能レベル"
-    },
     {
       "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
       "videoId": "CincZOLlzyg",
