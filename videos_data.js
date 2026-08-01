@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 7/31/2026, 4:40:29 PM
+ * Generated: 8/1/2026, 3:55:07 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "MAYHEM- Freezing moon 【cover】",
+      "videoId": "bT4hNBI3MuI",
+      "publishedAt": "2026-08-01",
+      "description": "A cover of \"Freezing Moon\" by the former black metal band BrackHands (disbanded), which was affiliated with YUKOV circle music"
+    },
+    {
+      "title": "【ホラーゲーム】新種が現れた！？ #3 すーぱーうるとらうさぎらっしゅ /Riz(Riseca)実況プレイ",
+      "videoId": "t4J5R4UenKQ",
+      "publishedAt": "2026-08-01",
+      "description": "家の地下に病棟？医療施設？とても巨大になっていく。更に内容も深まるばかり。\n赤ちゃんみたいな声の新種の化け物出てきた。トラップのように出てくるからちょっと厄介\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=Njcoa1X3R2E"
+    },
     {
       "title": "楽しいお寿司屋さん　藤村拓真/フジタク",
       "videoId": "iElb3y63fSg",
@@ -457,6 +469,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "MAYHEM- Freezing moon 【cover】",
+      "videoId": "bT4hNBI3MuI",
+      "publishedAt": "2026-08-01",
+      "description": "A cover of \"Freezing Moon\" by the former black metal band BrackHands (disbanded), which was affiliated with YUKOV circle music"
+    },
+    {
       "title": "ナイト・オブ・ナイツ　ピアノver【楽譜・ピアノロール付き】",
       "videoId": "CincZOLlzyg",
       "publishedAt": "2026-07-18",
@@ -620,6 +638,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【ホラーゲーム】新種が現れた！？ #3 すーぱーうるとらうさぎらっしゅ /Riz(Riseca)実況プレイ",
+      "videoId": "t4J5R4UenKQ",
+      "publishedAt": "2026-08-01",
+      "description": "家の地下に病棟？医療施設？とても巨大になっていく。更に内容も深まるばかり。\n赤ちゃんみたいな声の新種の化け物出てきた。トラップのように出てくるからちょっと厄介\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=Njcoa1X3R2E"
+    },
     {
       "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
       "videoId": "bGlhsRMh4bo",
@@ -1335,6 +1359,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "iElb3y63fSg",
       "publishedAt": "2026-07-29",
       "description": "もはや才能レベル"
+    },
+    {
+      "title": "【ホラーゲーム】新種が現れた！？ #3 すーぱーうるとらうさぎらっしゅ /Riz(Riseca)実況プレイ",
+      "videoId": "t4J5R4UenKQ",
+      "publishedAt": "2026-08-01",
+      "description": "家の地下に病棟？医療施設？とても巨大になっていく。更に内容も深まるばかり。\n赤ちゃんみたいな声の新種の化け物出てきた。トラップのように出てくるからちょっと厄介\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=Njcoa1X3R2E"
+    },
+    {
+      "title": "MAYHEM- Freezing moon 【cover】",
+      "videoId": "bT4hNBI3MuI",
+      "publishedAt": "2026-08-01",
+      "description": "A cover of \"Freezing Moon\" by the former black metal band BrackHands (disbanded), which was affiliated with YUKOV circle music"
     }
   ]
 };
