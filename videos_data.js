@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/2/2026, 3:55:09 PM
+ * Generated: 8/3/2026, 5:04:58 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
+      "videoId": "jWjMKufZG0E",
+      "publishedAt": "2026-08-03",
+      "description": "私はゲームにのめり込むとイタくなってしまうんですよ。\nあーあ、まーた黒歴史作っちゃった。\n\nそんな事よりも、今回は内容がえげつないので見る方は注意してね。特に食事中の方や精神的に弱い方は見ない事をおすすめします。ちゃんと警告したよ！？　これで何があっても自己責任だからね！？\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=t4J5R4UenKQ"
+    },
     {
       "title": "MAYHEM- Freezing moon 【cover】",
       "videoId": "bT4hNBI3MuI",
@@ -638,6 +644,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
+      "videoId": "jWjMKufZG0E",
+      "publishedAt": "2026-08-03",
+      "description": "私はゲームにのめり込むとイタくなってしまうんですよ。\nあーあ、まーた黒歴史作っちゃった。\n\nそんな事よりも、今回は内容がえげつないので見る方は注意してね。特に食事中の方や精神的に弱い方は見ない事をおすすめします。ちゃんと警告したよ！？　これで何があっても自己責任だからね！？\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=t4J5R4UenKQ"
+    },
     {
       "title": "【ホラーゲーム】新種が現れた！？ #3 すーぱーうるとらうさぎらっしゅ /Riz(Riseca)実況プレイ",
       "videoId": "t4J5R4UenKQ",
@@ -1371,6 +1383,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "bT4hNBI3MuI",
       "publishedAt": "2026-08-01",
       "description": "A cover of \"Freezing Moon\" by the former black metal band BrackHands (disbanded), which was affiliated with YUKOV circle music"
+    },
+    {
+      "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
+      "videoId": "jWjMKufZG0E",
+      "publishedAt": "2026-08-03",
+      "description": "私はゲームにのめり込むとイタくなってしまうんですよ。\nあーあ、まーた黒歴史作っちゃった。\n\nそんな事よりも、今回は内容がえげつないので見る方は注意してね。特に食事中の方や精神的に弱い方は見ない事をおすすめします。ちゃんと警告したよ！？　これで何があっても自己責任だからね！？\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=t4J5R4UenKQ"
     }
   ]
 };
