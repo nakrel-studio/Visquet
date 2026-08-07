@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/5/2026, 4:27:19 PM
+ * Generated: 8/7/2026, 3:47:35 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
+      "videoId": "ZKDnkxi83Lk",
+      "publishedAt": "2026-08-07",
+      "description": "超絶久しぶりに狂い月をプレイしました。\n実は初見プレイの方では真エンドが回収できていなかったので、全エンド回収も兼ねて一からリプレイしています。\nこの動画では最初から最後まで分割なしの総合配信となります。\n\nところでなぜか今回めっちゃ呂律が回らない。吃音も出てるそうなのでどうかご理解お願いします。\n\n昔の実況　part１→ https://nakrel-visquet.com/watch.html?id=ADuE7y3hNAk\n　　　　　\n　　　　　part２→ https://nakrel-visquet.com/watch.html?id=nc8VjEIndLY\n\nその他最新のホラゲ実況もしてます！→ https://nakrel-visquet.com/watch.html?id=jWjMKufZG0E"
+    },
+    {
+      "title": "最終鬼畜兄オイクメーネ・R 【音MAD】",
+      "videoId": "1h32EeH5zFg",
+      "publishedAt": "2026-08-06",
+      "description": "今じゃねぇーー！！！！！"
+    },
     {
       "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
       "videoId": "jWjMKufZG0E",
@@ -475,6 +487,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "最終鬼畜兄オイクメーネ・R 【音MAD】",
+      "videoId": "1h32EeH5zFg",
+      "publishedAt": "2026-08-06",
+      "description": "今じゃねぇーー！！！！！"
+    },
+    {
       "title": "MAYHEM- Freezing moon 【cover】",
       "videoId": "bT4hNBI3MuI",
       "publishedAt": "2026-08-01",
@@ -644,6 +662,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
+      "videoId": "ZKDnkxi83Lk",
+      "publishedAt": "2026-08-07",
+      "description": "超絶久しぶりに狂い月をプレイしました。\n実は初見プレイの方では真エンドが回収できていなかったので、全エンド回収も兼ねて一からリプレイしています。\nこの動画では最初から最後まで分割なしの総合配信となります。\n\nところでなぜか今回めっちゃ呂律が回らない。吃音も出てるそうなのでどうかご理解お願いします。\n\n昔の実況　part１→ https://nakrel-visquet.com/watch.html?id=ADuE7y3hNAk\n　　　　　\n　　　　　part２→ https://nakrel-visquet.com/watch.html?id=nc8VjEIndLY\n\nその他最新のホラゲ実況もしてます！→ https://nakrel-visquet.com/watch.html?id=jWjMKufZG0E"
+    },
     {
       "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
       "videoId": "jWjMKufZG0E",
@@ -1389,6 +1413,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "jWjMKufZG0E",
       "publishedAt": "2026-08-03",
       "description": "私はゲームにのめり込むとイタくなってしまうんですよ。\nあーあ、まーた黒歴史作っちゃった。\n\nそんな事よりも、今回は内容がえげつないので見る方は注意してね。特に食事中の方や精神的に弱い方は見ない事をおすすめします。ちゃんと警告したよ！？　これで何があっても自己責任だからね！？\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=t4J5R4UenKQ"
+    },
+    {
+      "title": "最終鬼畜兄オイクメーネ・R 【音MAD】",
+      "videoId": "1h32EeH5zFg",
+      "publishedAt": "2026-08-06",
+      "description": "今じゃねぇーー！！！！！"
+    },
+    {
+      "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
+      "videoId": "ZKDnkxi83Lk",
+      "publishedAt": "2026-08-07",
+      "description": "超絶久しぶりに狂い月をプレイしました。\n実は初見プレイの方では真エンドが回収できていなかったので、全エンド回収も兼ねて一からリプレイしています。\nこの動画では最初から最後まで分割なしの総合配信となります。\n\nところでなぜか今回めっちゃ呂律が回らない。吃音も出てるそうなのでどうかご理解お願いします。\n\n昔の実況　part１→ https://nakrel-visquet.com/watch.html?id=ADuE7y3hNAk\n　　　　　\n　　　　　part２→ https://nakrel-visquet.com/watch.html?id=nc8VjEIndLY\n\nその他最新のホラゲ実況もしてます！→ https://nakrel-visquet.com/watch.html?id=jWjMKufZG0E"
     }
   ]
 };
