@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/8/2026, 3:21:36 PM
+ * Generated: 8/9/2026, 3:23:00 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "UNオーエンは彼女なのか×最終鬼畜妹フランドール Sをヤケクソになって弾いてみた",
+      "videoId": "YOZUvfmN6wg",
+      "publishedAt": "2026-08-09",
+      "description": "ノリとその場の勢いで"
+    },
     {
       "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
       "videoId": "ZKDnkxi83Lk",
@@ -486,6 +492,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "UNオーエンは彼女なのか×最終鬼畜妹フランドール Sをヤケクソになって弾いてみた",
+      "videoId": "YOZUvfmN6wg",
+      "publishedAt": "2026-08-09",
+      "description": "ノリとその場の勢いで"
+    },
     {
       "title": "最終鬼畜兄オイクメーネ・R 【音MAD】",
       "videoId": "1h32EeH5zFg",
@@ -1425,6 +1437,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "ZKDnkxi83Lk",
       "publishedAt": "2026-08-07",
       "description": "超絶久しぶりに狂い月をプレイしました。\n実は初見プレイの方では真エンドが回収できていなかったので、全エンド回収も兼ねて一からリプレイしています。\nこの動画では最初から最後まで分割なしの総合配信となります。\n\nところでなぜか今回めっちゃ呂律が回らない。吃音も出てるそうなのでどうかご理解お願いします。\n\n昔の実況　part１→ https://nakrel-visquet.com/watch.html?id=ADuE7y3hNAk\n　　　　　\n　　　　　part２→ https://nakrel-visquet.com/watch.html?id=nc8VjEIndLY\n\nその他最新のホラゲ実況もしてます！→ https://nakrel-visquet.com/watch.html?id=jWjMKufZG0E"
+    },
+    {
+      "title": "UNオーエンは彼女なのか×最終鬼畜妹フランドール Sをヤケクソになって弾いてみた",
+      "videoId": "YOZUvfmN6wg",
+      "publishedAt": "2026-08-09",
+      "description": "ノリとその場の勢いで"
     }
   ]
 };
