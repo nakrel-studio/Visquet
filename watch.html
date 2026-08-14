@@ -882,6 +882,29 @@
                 document.body.classList.remove('mode-16-9');         
             }
         }
+    // --- 数値フォーマット関数 ---
+function formatCount(num) {
+    if (num >= 1000000) {
+        let val = num / 1000000;
+        return formatWithRule(val, 'M');
+    } else if (num >= 1000) {
+        let val = num / 1000;
+        return formatWithRule(val, 'K');
+    } else if (num >= 100) {
+        let val = num / 100;
+        return formatWithRule(val, 'h');
+    }
+    return num.toString();
+}
+
+function formatWithRule(val, suffix) {
+    let formatted = val >= 10 ? val.toFixed(1) : val.toFixed(1);
+    let str = formatted.toString();
+    if (str.includes('.') && str.split('.')[1][0] === '0') {
+        return Math.floor(val) + suffix;
+    }
+    return parseFloat(formatted) + suffix;
+}
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
