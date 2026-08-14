@@ -128,7 +128,7 @@
 
         <div id="content-area" class="p-4 lg:p-12 pt-2 lg:pt-4 flex-grow">
            <!-- ⚡ レスポンシブ列数設定: スマホ(1列) / iPad縦(2列) / iPad横・PC(3列) / テレビ(4列) -->
-           <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-5"></div>
+           <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-4"></div>
         </div>
     </main>
 
@@ -208,7 +208,7 @@
             document.getElementById('current-category-name').innerText = key === 'all' ? 'All' : key.replace(/([A-Z])/g, ' $1').trim();
 
             // ⚡ グリッド再生成時のレスポンシブ指定を更新
-            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-5"></div>';
+            document.getElementById('content-area').innerHTML = '<div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-4"></div>';
             document.getElementById('search-input').value = '';
 
             loadVideosFromStaticFile(key);
