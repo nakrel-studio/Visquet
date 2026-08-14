@@ -872,14 +872,13 @@
                 aspectIcon.innerText = '16:9';
                 localStorage.setItem('visquet_player_aspect', '16/9');
                 document.body.classList.add('mode-16-9');
-                createPopupText(event, "16:9 MODE", "text-blue-500 font-bold");
-            } else {
+            } 
+            else {
                 playerContainer.classList.remove('aspect-[16/9]');
                 playerContainer.classList.add('aspect-[4/3]');
                 aspectIcon.innerText = '4:3';
                 localStorage.setItem('visquet_player_aspect', '4/3');
-                document.body.classList.remove('mode-16-9');
-                createPopupText(event, "4:3 MODE", "text-gray-500 font-bold");
+                document.body.classList.remove('mode-16-9');         
             }
         }
   </script>
