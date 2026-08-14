@@ -85,12 +85,22 @@
             }
         }
         
-        body.mode-16-9 .responsive-main {
-            grid-template-columns: 1fr 360px !important;
-        }
+    /* 16:9モードの時は、右側サイドバーではなく「上下の積み上げレイアウト」にする */
+    body.mode-16-9 .responsive-main {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 16:9モード時の関連動画グリッドの初期設定（スマホ：1列） */
+    body.mode-16-9 .responsive-rec-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+
+    /* iPad Pro縦サイズ（幅768px以上）以上の時は、下に「2列」にする */
+    @media (min-width: 768px) {
         body.mode-16-9 .responsive-rec-grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         }
+    }
     </style>
 </head>
 <body class="min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
