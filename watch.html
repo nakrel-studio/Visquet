@@ -21,7 +21,6 @@
         document.write('<script src="videos_data.js?v=' + new Date().getTime() + '"><\/script>');
     </script>
     <script>
-        // 🌗 ページのレンダリングが始まる前に、グローバルスコープで最速でテーマを判定・適用する
         window.syncTheme = function() {
             const theme = localStorage.getItem('visquet-theme') || 'light';
             const htmlEl = document.documentElement;
@@ -38,7 +37,7 @@
                 }
             }
         };
-        // 即座に実行して、読み込みの一瞬だけ白く光る「フラッシュ現象」を防ぐ
+    
         window.syncTheme();
     </script>
     <style>
@@ -66,9 +65,6 @@
             animation: fireFly 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
 
-        /* --------------------------------------------------
-           ▼ アスペクト比＆画面幅によるレイアウト制御
-           -------------------------------------------------- */
         /* ① iPad横 & PC全般（標準・スクエア）: 右側1列 */
         @media (min-width: 1024px) {
             .responsive-main {
@@ -87,6 +83,13 @@
             .responsive-rec-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             }
+        }
+        
+        body.mode-16-9 .responsive-main {
+            grid-template-columns: 1fr 360px !important;
+        }
+        body.mode-16-9 .responsive-rec-grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
         }
     </style>
 </head>
@@ -138,6 +141,11 @@
                         <span class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🔗</span>
                         <span class="font-semibold">共有</span>
                     </button>
+                   
+                    <button id="aspect-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
+            <span id="aspect-icon" class="text-xs font-mono font-bold bg-gray-200 dark:bg-zinc-800 px-1 py-0.5 text-gray-800 dark:text-gray-200">4:3</span>
+            <span class="font-semibold">比率切替</span>
+        </button>
                 </div>
             </div>
             
@@ -147,11 +155,8 @@
                     データを展開しています...
                 </div>
             </div>
-
-            <!-- 急上昇エリア -->
+      
             <div id="trending-ad-container" class="mb-8"></div>
-
-            <!-- 歴代人気動画ランキング TOP 10 エリア -->
             <div id="popular-ranking-container" class="mb-12"></div>
         </div>
 
@@ -262,7 +267,15 @@
             if (fireBtn) fireBtn.addEventListener('click', handleFire);
             if (shareBtn) shareBtn.addEventListener('click', handleShare);
 
+            const aspectBtn = document.getElementById('aspect-btn');
+            if (aspectBtn) aspectBtn.addEventListener('click', toggleAspectRation);
+
+            if (likeBtn) likeBtn.addEventListener('click', handleLike);
+            if (fireBtn) fireBtn.addEventListener('click', handleFire);
+            if (shareBtn) shareBtn.addEventListener('click', handleShare);
+            
             initLocalCounters();
+            initPlayerAspect();
             renderRecommendations(currentVideoId);
             renderTrendingAds();
             renderPopularRanking();
@@ -571,7 +584,6 @@
         videosWithViews.sort((a, b) => b.views - a.views);
         top5Videos = videosWithViews.slice(0, 5);
 
-        // キャッシュへ保存
         try {
             localStorage.setItem(CACHE_KEY, JSON.stringify(top5Videos));
             localStorage.setItem(CACHE_TIME_KEY, now.toString());
@@ -585,7 +597,6 @@
         return;
     }
 
-    // ③ カード描画＆スライド処理（デザインやスライドタイマーはそのまま）
     let currentIndex = 0;
     const timestamp = new Date().getTime();
 
@@ -697,7 +708,6 @@
             return;
         }
 
-        // 全動画のFirestore視聴回数を安全に取得
         const videosWithViews = await Promise.all(allVideos.map(async (video) => {
             let views = 0;
             try {
@@ -729,7 +739,6 @@
         return;
     }
 
-    // ③ カード描画＆スライド処理（デザインやスライドタイマーはそのまま）
     let currentIndex = 0;
     const timestamp = new Date().getTime();
 
@@ -808,8 +817,52 @@
         }, 5000);
     }
 }
+    // プレイヤーのアスペクト比を初期化・復元する関数
+        function initPlayerAspect() {
+            const playerContainer = document.querySelector('.player-container');
+            const aspectIcon = document.getElementById('aspect-icon');
+            if (!playerContainer || !aspectIcon) return;
 
-    </script>
+            const savedAspect = localStorage.getItem('visquet_player_aspect') || '4/3';
+
+            if (savedAspect === '16/9') {
+                playerContainer.classList.remove('aspect-[4/3]');
+                playerContainer.classList.add('aspect-[16/9]');
+                aspectIcon.innerText = '16:9';
+                document.body.classList.add('mode-16-9');
+            } else {
+                playerContainer.classList.remove('aspect-[16/9]');
+                playerContainer.classList.add('aspect-[4/3]');
+                aspectIcon.innerText = '4:3';
+                document.body.classList.remove('mode-16-9');
+            }
+        }
+
+        // 比率を切り替える関数
+        function toggleAspectRation(event) {
+            const playerContainer = document.querySelector('.player-container');
+            const aspectIcon = document.getElementById('aspect-icon');
+            if (!playerContainer || !aspectIcon) return;
+
+            const currentAspect = localStorage.getItem('visquet_player_aspect') || '4/3';
+
+            if (currentAspect === '4/3') {
+                playerContainer.classList.remove('aspect-[4/3]');
+                playerContainer.classList.add('aspect-[16/9]');
+                aspectIcon.innerText = '16:9';
+                localStorage.setItem('visquet_player_aspect', '16/9');
+                document.body.classList.add('mode-16-9');
+                createPopupText(event, "16:9 MODE", "text-blue-500 font-bold");
+            } else {
+                playerContainer.classList.remove('aspect-[16/9]');
+                playerContainer.classList.add('aspect-[4/3]');
+                aspectIcon.innerText = '4:3';
+                localStorage.setItem('visquet_player_aspect', '4/3');
+                document.body.classList.remove('mode-16-9');
+                createPopupText(event, "4:3 MODE", "text-gray-500 font-bold");
+            }
+        }
+  </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
