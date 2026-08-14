@@ -206,6 +206,9 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
+    　　let rawViews = 0;
+        let rawLikes = 0;
+        let rawFires = 0;
         let pendingFires = 0;
         let fireTimeoutTimer = null;
         let trendingIntervalId = null;
@@ -341,10 +344,15 @@
             }
 
           if (data) {
-                document.getElementById('view-count').innerText = formatCount(data.views || 0);
-                document.getElementById('like-count').innerText = formatCount(data.likes || 0);
-                document.getElementById('fire-count').innerText = formatCount(data.fires || 0);
+    rawViews = data.views || 0;
+    rawLikes = data.likes || 0;
+    rawFires = data.fires || 0;
+
+    document.getElementById('view-count').innerText = formatCount(rawViews);
+    document.getElementById('like-count').innerText = formatCount(rawLikes);
+    document.getElementById('fire-count').innerText = formatCount(rawFires);
             } 
+          
           else {
                 document.getElementById('view-count').innerText = "0";
                 document.getElementById('like-count').innerText = "0";
@@ -367,8 +375,8 @@
                 localStorage.removeItem(`vm_time_${currentVideoId}`); 
                 localStorage.removeItem(`vm_cache_${currentVideoId}`);
 
-               const currentLikes = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
-                countEl.innerText = formatCount(currentLikes + 1);
+             rawLikes++;
+             countEl.innerText = formatCount(rawLikes);
 
                 disableLikeButtonUI();
 
@@ -404,8 +412,8 @@
             }
 
             const countEl = document.getElementById('fire-count');
-          　const currentFires = parseInt(countEl.innerText.replace(/,/g, '')) || 0;
-            countEl.innerText = formatCount(currentFires + 1);
+            rawFires++;
+            countEl.innerText = formatCount(rawFires);
             updateFireButtonUI();
 
             if (fireTimeoutTimer) clearTimeout(fireTimeoutTimer);
