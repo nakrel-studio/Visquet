@@ -85,20 +85,30 @@
             }
         }
         
-    /* 16:9モードの時は、右側サイドバーではなく「上下の積み上げレイアウト」にする */
+/* --- 16:9モード時のレスポンシブ制御 --- */
+
+    /* 1. スマホ（デフォルト）：上下積み上げ ＆ 関連動画は「下1列」 */
     body.mode-16-9 .responsive-main {
         grid-template-columns: 1fr !important;
     }
-
-    /* 16:9モード時の関連動画グリッドの初期設定（スマホ：1列） */
     body.mode-16-9 .responsive-rec-grid {
         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
     }
 
-    /* iPad Pro縦サイズ（幅768px以上）以上の時は、下に「2列」にする */
+    /* 2. タブレット縦（幅768px以上）：上下積み上げのまま、関連動画を「下2列」にする */
     @media (min-width: 768px) {
         body.mode-16-9 .responsive-rec-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+
+    /* 3. タブレット横（幅1024px以上）〜PC：右側にサイドバーとして「右1列」にする */
+    @media (min-width: 1024px) {
+        body.mode-16-9 .responsive-main {
+            grid-template-columns: 1fr 360px !important;
+        }
+        body.mode-16-9 .responsive-rec-grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
         }
     }
     </style>
