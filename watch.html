@@ -120,9 +120,6 @@
           <div class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
             <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 w-auto object-contain dark:brightness-110">
           </div>
-            <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                ← 戻る
-            </button>
         </div>
     </header>
 
@@ -180,7 +177,12 @@
         </div>
 
         <section class="w-full">
-            <div class="flex justify-end mb-6">
+            <div class="mb-4">
+        <button onclick="location.href='./index.html'" class="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+            ← 戻る
+        </button>
+    </div>
+        　 <div class="flex justify-end mb-6">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
             <div id="rec-grid" class="responsive-rec-grid grid grid-cols-1 md:grid-cols-2 gap-4"></div>
