@@ -1,0 +1,27 @@
+name: Update Popular Video Ranking
+
+on:
+  schedule:
+    # 毎月1日の UTC 0:00 (日本時間 午前9:00) に自動実行
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # GitHubの画面から手動でテスト実行できるようにする
+
+jobs:
+  update-ranking:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install firebase-admin
+
+      - name: Run ranking update script
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node scripts/update-ranking.js
