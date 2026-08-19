@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/18/2026, 3:23:29 PM
+ * Generated: 8/19/2026, 10:28:38 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "videoId": "EejbEv9Dxe4",
+      "publishedAt": "2026-08-19",
+      "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
+    },
     {
       "title": "UNオーエンは彼女なのか×最終鬼畜妹フランドール Sをヤケクソになって弾いてみた",
       "videoId": "YOZUvfmN6wg",
@@ -674,6 +680,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "videoId": "EejbEv9Dxe4",
+      "publishedAt": "2026-08-19",
+      "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
+    },
     {
       "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
       "videoId": "ZKDnkxi83Lk",
@@ -1443,6 +1455,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "YOZUvfmN6wg",
       "publishedAt": "2026-08-09",
       "description": "ノリとその場の勢いで"
+    },
+    {
+      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "videoId": "EejbEv9Dxe4",
+      "publishedAt": "2026-08-19",
+      "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
     }
   ]
 };
