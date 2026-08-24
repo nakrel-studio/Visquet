@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/23/2026, 3:14:35 PM
+ * Generated: 8/24/2026, 3:31:18 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
+      "videoId": "9HPmUFU6-DY",
+      "publishedAt": "2026-08-24",
+      "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
+    },
     {
       "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
       "videoId": "EejbEv9Dxe4",
@@ -680,6 +686,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
+      "videoId": "9HPmUFU6-DY",
+      "publishedAt": "2026-08-24",
+      "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
+    },
     {
       "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
       "videoId": "EejbEv9Dxe4",
@@ -1461,6 +1473,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "EejbEv9Dxe4",
       "publishedAt": "2026-08-19",
       "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
+    },
+    {
+      "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
+      "videoId": "9HPmUFU6-DY",
+      "publishedAt": "2026-08-24",
+      "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
     }
   ]
 };
