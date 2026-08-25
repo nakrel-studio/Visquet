@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/24/2026, 3:31:18 PM
+ * Generated: 8/25/2026, 3:34:39 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "One Ray of Light をやくけくそになって弾いてみた",
+      "videoId": "fAk0NKtaDhY",
+      "publishedAt": "2026-08-24",
+      "description": ""
+    },
+    {
+      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "videoId": "fhYldLubO1U",
+      "publishedAt": "2026-08-24",
+      "description": "どうもますはる46です。これからも邁進していきます"
+    },
     {
       "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
       "videoId": "9HPmUFU6-DY",
@@ -505,6 +517,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "One Ray of Light をやくけくそになって弾いてみた",
+      "videoId": "fAk0NKtaDhY",
+      "publishedAt": "2026-08-24",
+      "description": ""
+    },
+    {
       "title": "UNオーエンは彼女なのか×最終鬼畜妹フランドール Sをヤケクソになって弾いてみた",
       "videoId": "YOZUvfmN6wg",
       "publishedAt": "2026-08-09",
@@ -686,6 +704,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "videoId": "fhYldLubO1U",
+      "publishedAt": "2026-08-24",
+      "description": "どうもますはる46です。これからも邁進していきます"
+    },
     {
       "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
       "videoId": "9HPmUFU6-DY",
@@ -1479,6 +1503,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "9HPmUFU6-DY",
       "publishedAt": "2026-08-24",
       "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
+    },
+    {
+      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "videoId": "fhYldLubO1U",
+      "publishedAt": "2026-08-24",
+      "description": "どうもますはる46です。これからも邁進していきます"
+    },
+    {
+      "title": "One Ray of Light をやくけくそになって弾いてみた",
+      "videoId": "fAk0NKtaDhY",
+      "publishedAt": "2026-08-24",
+      "description": ""
     }
   ]
 };
