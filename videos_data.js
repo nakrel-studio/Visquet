@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/28/2026, 11:47:45 PM
+ * Generated: 8/29/2026, 6:04:48 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "videoId": "o1_569zpIZQ",
+      "publishedAt": "2026-08-29",
+      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+    },
     {
       "title": "One Ray of Light をやくけくそになって弾いてみた",
       "videoId": "fAk0NKtaDhY",
@@ -704,6 +710,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "videoId": "o1_569zpIZQ",
+      "publishedAt": "2026-08-29",
+      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+    },
     {
       "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
       "videoId": "fhYldLubO1U",
@@ -1515,6 +1527,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "fAk0NKtaDhY",
       "publishedAt": "2026-08-24",
       "description": ""
+    },
+    {
+      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "videoId": "o1_569zpIZQ",
+      "publishedAt": "2026-08-29",
+      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
     }
   ]
 };
