@@ -883,6 +883,30 @@ function formatWithRule(val, suffix) {
     }
     return parseFloat(formatted) + suffix;
 }
+    const currentUrl = window.location.href;
+    const thumbnailUrl = `https://nakrel-visquet.com/${videoData.thumbnail}`;
+
+    const metaOgImage = document.createElement('meta');
+    metaOgImage.setAttribute('property', 'og:image');
+    metaOgImage.content = thumbnailUrl;
+    document.head.appendChild(metaOgImage);
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": videoData.title || "Visquet Video",
+      "description": videoData.description || videoData.title || "Visquet 限定公開動画",
+      "thumbnailUrl": [thumbnailUrl],
+      "uploadDate": videoData.uploadDate || "2026-01-01T00:00:00+09:00",
+      "contentUrl": currentUrl
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(jsonLd);
+    document.head.appendChild(scriptTag);
+    // ────────────────────────────────────
+  }
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
