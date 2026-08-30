@@ -1,14 +1,26 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/29/2026, 6:04:48 PM
+ * Generated: 8/30/2026, 6:19:34 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
     {
-      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "videoId": "gxm4JdYCdwI",
+      "publishedAt": "2026-08-30",
+      "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
+    },
+    {
+      "title": "過去一沼りました。#5 すーぱーうるとらうさぎらっしゅ/Riz（Riseca）実況プレイ　ホラーゲーム",
+      "videoId": "g7wCypihC_8",
+      "publishedAt": "2026-08-30",
+      "description": "この謎解きは難しいですね。\n早送りですが実は2時間以上プレイしても分かりませんでした。"
+    },
+    {
+      "title": "最終回 梢にダブルキルされたwwwwww #7 狂い月Richard実況プレイ　ホラーゲーム",
       "videoId": "o1_569zpIZQ",
       "publishedAt": "2026-08-29",
-      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+      "description": "コンピューターがチートすんなや\n\nとうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
     },
     {
       "title": "One Ray of Light をやくけくそになって弾いてみた",
@@ -711,10 +723,22 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "games": [
     {
-      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "videoId": "gxm4JdYCdwI",
+      "publishedAt": "2026-08-30",
+      "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
+    },
+    {
+      "title": "過去一沼りました。#5 すーぱーうるとらうさぎらっしゅ/Riz（Riseca）実況プレイ　ホラーゲーム",
+      "videoId": "g7wCypihC_8",
+      "publishedAt": "2026-08-30",
+      "description": "この謎解きは難しいですね。\n早送りですが実は2時間以上プレイしても分かりませんでした。"
+    },
+    {
+      "title": "最終回 梢にダブルキルされたwwwwww #7 狂い月Richard実況プレイ　ホラーゲーム",
       "videoId": "o1_569zpIZQ",
       "publishedAt": "2026-08-29",
-      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+      "description": "コンピューターがチートすんなや\n\nとうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
     },
     {
       "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
@@ -1529,10 +1553,22 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "最終回 梢vs Richard ！#7 狂い月実況プレイ",
+      "title": "最終回 梢にダブルキルされたwwwwww #7 狂い月Richard実況プレイ　ホラーゲーム",
       "videoId": "o1_569zpIZQ",
       "publishedAt": "2026-08-29",
-      "description": "とうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+      "description": "コンピューターがチートすんなや\n\nとうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+    },
+    {
+      "title": "過去一沼りました。#5 すーぱーうるとらうさぎらっしゅ/Riz（Riseca）実況プレイ　ホラーゲーム",
+      "videoId": "g7wCypihC_8",
+      "publishedAt": "2026-08-30",
+      "description": "この謎解きは難しいですね。\n早送りですが実は2時間以上プレイしても分かりませんでした。"
+    },
+    {
+      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "videoId": "gxm4JdYCdwI",
+      "publishedAt": "2026-08-30",
+      "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
     }
   ]
 };
