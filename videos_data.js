@@ -1,11 +1,17 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/30/2026, 6:19:34 PM
+ * Generated: 8/31/2026, 11:59:48 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
     {
-      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "title": "NAKREL Studioからのお知らせ",
+      "videoId": "cM31uZhTySE",
+      "publishedAt": "2026-08-31",
+      "description": ""
+    },
+    {
+      "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
       "videoId": "gxm4JdYCdwI",
       "publishedAt": "2026-08-30",
       "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
@@ -535,6 +541,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "NAKREL Studioからのお知らせ",
+      "videoId": "cM31uZhTySE",
+      "publishedAt": "2026-08-31",
+      "description": ""
+    },
+    {
       "title": "One Ray of Light をやくけくそになって弾いてみた",
       "videoId": "fAk0NKtaDhY",
       "publishedAt": "2026-08-24",
@@ -723,7 +735,7 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "games": [
     {
-      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
       "videoId": "gxm4JdYCdwI",
       "publishedAt": "2026-08-30",
       "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
@@ -1565,10 +1577,16 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "この謎解きは難しいですね。\n早送りですが実は2時間以上プレイしても分かりませんでした。"
     },
     {
-      "title": "【大絶叫注意】the house2 /Riseca実況プレイ　ホラーゲーム　【ビックリ要素満載】",
+      "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
       "videoId": "gxm4JdYCdwI",
       "publishedAt": "2026-08-30",
       "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
+    },
+    {
+      "title": "NAKREL Studioからのお知らせ",
+      "videoId": "cM31uZhTySE",
+      "publishedAt": "2026-08-31",
+      "description": ""
     }
   ]
 };
