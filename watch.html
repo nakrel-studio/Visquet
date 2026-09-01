@@ -160,8 +160,8 @@
                     </button>
                    
                     <button id="aspect-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
-                        <span id="aspect-icon" class="text-xs font-mono font-bold bg-gray-200 dark:bg-zinc-800 px-1 py-0.5 text-gray-800 dark:text-gray-200">4:3</span>          
-                    </button>
+            <span id="aspect-icon" class="text-xs font-mono font-bold bg-gray-200 dark:bg-zinc-800 px-1 py-0.5 text-gray-800 dark:text-gray-200">4:3</span>          
+        </button>
                 </div>
             </div>
             
@@ -178,11 +178,11 @@
 
         <section class="w-full">
             <div class="mb-2">
-                <button onclick="location.href='./index.html'" class="w-full text-center text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                    ← 戻る
-                </button>
-            </div>
-            <div class="flex justify-end mb-2">
+       <button onclick="location.href='./index.html'" class="w-full text-center text-xs text-gray-500 dark:text-gray-400 font-mono uppercase bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 px-4 py-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+            ← 戻る
+        </button>
+    </div>
+        　 <div class="flex justify-end mb-2">
                <p id="rec-count" class="text-[12px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">関連動画: 0</p>
             </div>
             <div id="rec-grid" class="responsive-rec-grid grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -206,8 +206,7 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
-        let currentVideoObj = null;
-        let rawViews = 0;
+    　　let rawViews = 0;
         let rawLikes = 0;
         let rawFires = 0;
         let pendingFires = 0;
@@ -265,7 +264,6 @@
                     if (found) { targetVideo = found; break; }
                 }
             }
-            currentVideoObj = targetVideo;
 
             if (targetVideo) {
                 document.getElementById('video-title').innerHTML = targetVideo.title;
@@ -295,6 +293,10 @@
 
             const aspectBtn = document.getElementById('aspect-btn');
             if (aspectBtn) aspectBtn.addEventListener('click', toggleAspectRation);
+
+            if (likeBtn) likeBtn.addEventListener('click', handleLike);
+            if (fireBtn) fireBtn.addEventListener('click', handleFire);
+            if (shareBtn) shareBtn.addEventListener('click', handleShare);
             
             initLocalCounters();
             initPlayerAspect();
@@ -341,15 +343,17 @@
                 }
             }
 
-            if (data) {
-                rawViews = data.views || 0;
-                rawLikes = data.likes || 0;
-                rawFires = data.fires || 0;
+          if (data) {
+    rawViews = data.views || 0;
+    rawLikes = data.likes || 0;
+    rawFires = data.fires || 0;
 
-                document.getElementById('view-count').innerText = formatCount(rawViews);
-                document.getElementById('like-count').innerText = formatCount(rawLikes);
-                document.getElementById('fire-count').innerText = formatCount(rawFires);
-            } else {
+    document.getElementById('view-count').innerText = formatCount(rawViews);
+    document.getElementById('like-count').innerText = formatCount(rawLikes);
+    document.getElementById('fire-count').innerText = formatCount(rawFires);
+            } 
+          
+          else {
                 document.getElementById('view-count').innerText = "0";
                 document.getElementById('like-count').innerText = "0";
                 document.getElementById('fire-count').innerText = "0";
@@ -371,8 +375,8 @@
                 localStorage.removeItem(`vm_time_${currentVideoId}`); 
                 localStorage.removeItem(`vm_cache_${currentVideoId}`);
 
-                rawLikes++;
-                countEl.innerText = formatCount(rawLikes);
+             rawLikes++;
+             countEl.innerText = formatCount(rawLikes);
 
                 disableLikeButtonUI();
 
@@ -429,30 +433,28 @@
                 }
             }, 400); 
            
-            const currentUrl = window.location.href;
-            const thumbnailUrl = `https://nakrel-visquet.com/thumbnails/${currentVideoId}.jpg`;
-            const titleText = currentVideoObj ? currentVideoObj.title : "Visquet Video";
-            const descText = currentVideoObj ? currentVideoObj.description : "Visquet 限定公開動画";
+    const currentUrl = window.location.href;
+    const thumbnailUrl = `https://nakrel-visquet.com/${videoData.thumbnail}`;
 
-            const metaOgImage = document.createElement('meta');
-            metaOgImage.setAttribute('property', 'og:image');
-            metaOgImage.content = thumbnailUrl;
-            document.head.appendChild(metaOgImage);
+    const metaOgImage = document.createElement('meta');
+    metaOgImage.setAttribute('property', 'og:image');
+    metaOgImage.content = thumbnailUrl;
+    document.head.appendChild(metaOgImage);
 
-            const jsonLd = {
-              "@context": "https://schema.org",
-              "@type": "VideoObject",
-              "name": titleText,
-              "description": descText || titleText,
-              "thumbnailUrl": [thumbnailUrl],
-              "uploadDate": currentVideoObj ? currentVideoObj.publishedAt : "2026-01-01T00:00:00+09:00",
-              "contentUrl": currentUrl
-            };
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": videoData.title || "Visquet Video",
+      "description": videoData.description || videoData.title || "Visquet 限定公開動画",
+      "thumbnailUrl": [thumbnailUrl],
+      "uploadDate": videoData.uploadDate || "2026-01-01T00:00:00+09:00",
+      "contentUrl": currentUrl
+    };
 
-            const scriptTag = document.createElement('script');
-            scriptTag.type = 'application/ld+json';
-            scriptTag.text = JSON.stringify(jsonLd);
-            document.head.appendChild(scriptTag);
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(jsonLd);
+    document.head.appendChild(scriptTag);
         }
 
         async function handleShare(event) {
@@ -577,30 +579,69 @@
             recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
         }
 
-async function renderTrendingAds() {
+       async function renderTrendingAds() {
     const container = document.getElementById('trending-ad-container');
     if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
+    const CACHE_KEY = 'trending_ads_cache';
+    const CACHE_TIME_KEY = 'trending_ads_cache_time';
+    
+    // ⏰ 2日間（48時間）をミリ秒で指定 (2日 × 24時間 × 60分 × 60秒 × 1000ミリ秒)
+    const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
+
+    const now = Date.now();
+    const lastFetch = localStorage.getItem(CACHE_TIME_KEY);
+    const cachedData = localStorage.getItem(CACHE_KEY);
+
     let top5Videos = [];
 
-    try {
-        const docSnap = await getDoc(doc(db, "rankings", "trending"));
-        
-        if (docSnap.exists() && docSnap.data().list) {
-            const rawList = docSnap.data().list;
-
-            top5Videos = rawList.map(item => {
-                const archiveInfo = VISQUET_ARCHIVE_DATA['all'].find(v => v.videoId === item.videoId);
-                return {
-                    videoId: item.videoId,
-                    views: item.views || 0,
-                    title: archiveInfo ? archiveInfo.title : (item.title || "Untitled"),
-                    publishedAt: archiveInfo ? archiveInfo.publishedAt : ""
-                };
-            });
+    // ① 2日以内ならキャッシュを利用（Firestore通信ゼロ）
+    if (cachedData && lastFetch && (now - Number(lastFetch) < TWO_DAYS)) {
+        try {
+            top5Videos = JSON.parse(cachedData);
+        } catch (e) {
+            console.warn("急上昇キャッシュの読み込み失敗:", e);
         }
-    } catch (e) {
-        console.error("Trending ranking fetch error:", e);
+    }
+
+    // ② キャッシュがない/2日以上経過している場合は Firestore から最新を取得
+    if (top5Videos.length === 0) {
+        const nowDate = new Date();
+        const threeWeeksAgo = new Date(nowDate.getTime() - (21 * 24 * 60 * 60 * 1000));
+
+        const recentVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => {
+            if (!v.publishedAt) return false;
+            const pubDate = new Date(v.publishedAt);
+            return pubDate >= threeWeeksAgo && pubDate <= nowDate;
+        });
+
+        if (recentVideos.length === 0) {
+            container.innerHTML = '';
+            return;
+        }
+
+        const videosWithViews = await Promise.all(recentVideos.map(async (video) => {
+            let views = 0;
+            try {
+                const docSnap = await getDoc(doc(db, "video_metrics", video.videoId));
+                if (docSnap.exists()) {
+                    views = docSnap.data().views || 0;
+                }
+            } catch (e) {
+                console.error("Views fetch error:", e);
+            }
+            return { ...video, views };
+        }));
+
+        videosWithViews.sort((a, b) => b.views - a.views);
+        top5Videos = videosWithViews.slice(0, 5);
+
+        try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(top5Videos));
+            localStorage.setItem(CACHE_TIME_KEY, now.toString());
+        } catch (e) {
+            console.warn("localStorage保存失敗:", e);
+        }
     }
 
     if (top5Videos.length === 0) {
@@ -686,19 +727,20 @@ async function renderTrendingAds() {
         }, 5000);
     }
 }
-
-async function renderPopularRanking() {
+    async function renderPopularRanking() {
     const container = document.getElementById('popular-ranking-container');
     if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
     let top10Videos = [];
 
+    // ① Firestore の rankings/popular ドキュメントを1件だけ取得（消費: 1 Read）
     try {
         const docSnap = await getDoc(doc(db, "rankings", "popular"));
         
         if (docSnap.exists() && docSnap.data().list) {
             const rawList = docSnap.data().list;
 
+            // VISQUET_ARCHIVE_DATA からタイトル・投稿日などの静的情報をマッチング
             top10Videos = rawList.map(item => {
                 const archiveInfo = VISQUET_ARCHIVE_DATA['all'].find(v => v.videoId === item.videoId);
                 return {
@@ -718,6 +760,7 @@ async function renderPopularRanking() {
         return;
     }
 
+    // --- 以下、見た目・アニメーション・HTML構造はすべて完全に保持 ---
     let currentIndex = 0;
     const timestamp = new Date().getTime();
 
@@ -796,7 +839,7 @@ async function renderPopularRanking() {
         }, 5000);
     }
 }
-
+    // プレイヤーのアスペクト比を初期化・復元する関数
         function initPlayerAspect() {
             const playerContainer = document.querySelector('.player-container');
             const aspectIcon = document.getElementById('aspect-icon');
@@ -817,6 +860,7 @@ async function renderPopularRanking() {
             }
         }
 
+        // 比率を切り替える関数
         function toggleAspectRation(event) {
             const playerContainer = document.querySelector('.player-container');
             const aspectIcon = document.getElementById('aspect-icon');
@@ -839,7 +883,7 @@ async function renderPopularRanking() {
                 document.body.classList.remove('mode-16-9');         
             }
         }
-
+    // --- 数値フォーマット関数 ---
 function formatCount(num) {
     if (num >= 1000000) {
         let val = num / 1000000;
@@ -862,6 +906,7 @@ function formatWithRule(val, suffix) {
     }
     return parseFloat(formatted) + suffix;
 }
+ 
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
