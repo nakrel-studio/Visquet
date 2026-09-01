@@ -1,0 +1,27 @@
+name: Update Trending Ranking
+
+on:
+  schedule:
+    # 2時間ごとに自動実行（例: 0, 2, 4, 6, 8, ...時）
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Actions画面からの手動実行ボタン
+
+jobs:
+  update-trending:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 依存パッケージのインストール
+        run: npm install firebase-admin
+
+      - name: 急上昇集計スクリプトを実行
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node scripts/update-trending.js
