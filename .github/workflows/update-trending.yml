@@ -2,8 +2,8 @@ name: Update Trending Ranking
 
 on:
   schedule:
-    # 2時間ごとに自動実行（例: 0, 2, 4, 6, 8, ...時）
-    - cron: '0 */9 * * *'
+    # 2時間ごとに自動実行（例: 0, 2, 4, 6...時）
+    - cron: '0 */2 * * *'
   workflow_dispatch: # Actions画面からの手動実行ボタン
 
 jobs:
