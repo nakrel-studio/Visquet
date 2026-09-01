@@ -579,69 +579,32 @@
             recCountEl.innerText = `おすすめ動画: ${chunk.length}`;
         }
 
-       async function renderTrendingAds() {
+async function renderTrendingAds() {
     const container = document.getElementById('trending-ad-container');
     if (!container || typeof VISQUET_ARCHIVE_DATA === 'undefined' || !VISQUET_ARCHIVE_DATA['all']) return;
 
-    const CACHE_KEY = 'trending_ads_cache';
-    const CACHE_TIME_KEY = 'trending_ads_cache_time';
-    
-    // ⏰ 2日間（48時間）をミリ秒で指定 (2日 × 24時間 × 60分 × 60秒 × 1000ミリ秒)
-    const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
-
-    const now = Date.now();
-    const lastFetch = localStorage.getItem(CACHE_TIME_KEY);
-    const cachedData = localStorage.getItem(CACHE_KEY);
-
     let top5Videos = [];
 
-    // ① 2日以内ならキャッシュを利用（Firestore通信ゼロ）
-    if (cachedData && lastFetch && (now - Number(lastFetch) < TWO_DAYS)) {
-        try {
-            top5Videos = JSON.parse(cachedData);
-        } catch (e) {
-            console.warn("急上昇キャッシュの読み込み失敗:", e);
+    // Firestore から rankings/trending ドキュメントを 1 件だけ取得（消費: 1 Read）
+    try {
+        const docSnap = await getDoc(doc(db, "rankings", "trending"));
+        
+        if (docSnap.exists() && docSnap.data().list) {
+            const rawList = docSnap.data().list;
+
+            // VISQUET_ARCHIVE_DATA からタイトル・投稿日などの情報をマッチング
+            top5Videos = rawList.map(item => {
+                const archiveInfo = VISQUET_ARCHIVE_DATA['all'].find(v => v.videoId === item.videoId);
+                return {
+                    videoId: item.videoId,
+                    views: item.views || 0,
+                    title: archiveInfo ? archiveInfo.title : (item.title || "Untitled"),
+                    publishedAt: archiveInfo ? archiveInfo.publishedAt : ""
+                };
+            });
         }
-    }
-
-    // ② キャッシュがない/2日以上経過している場合は Firestore から最新を取得
-    if (top5Videos.length === 0) {
-        const nowDate = new Date();
-        const threeWeeksAgo = new Date(nowDate.getTime() - (21 * 24 * 60 * 60 * 1000));
-
-        const recentVideos = VISQUET_ARCHIVE_DATA['all'].filter(v => {
-            if (!v.publishedAt) return false;
-            const pubDate = new Date(v.publishedAt);
-            return pubDate >= threeWeeksAgo && pubDate <= nowDate;
-        });
-
-        if (recentVideos.length === 0) {
-            container.innerHTML = '';
-            return;
-        }
-
-        const videosWithViews = await Promise.all(recentVideos.map(async (video) => {
-            let views = 0;
-            try {
-                const docSnap = await getDoc(doc(db, "video_metrics", video.videoId));
-                if (docSnap.exists()) {
-                    views = docSnap.data().views || 0;
-                }
-            } catch (e) {
-                console.error("Views fetch error:", e);
-            }
-            return { ...video, views };
-        }));
-
-        videosWithViews.sort((a, b) => b.views - a.views);
-        top5Videos = videosWithViews.slice(0, 5);
-
-        try {
-            localStorage.setItem(CACHE_KEY, JSON.stringify(top5Videos));
-            localStorage.setItem(CACHE_TIME_KEY, now.toString());
-        } catch (e) {
-            console.warn("localStorage保存失敗:", e);
-        }
+    } catch (e) {
+        console.error("Trending ranking fetch error:", e);
     }
 
     if (top5Videos.length === 0) {
@@ -649,6 +612,7 @@
         return;
     }
 
+    // UI・表示アニメーション処理（既存デザインをそのまま保持）
     let currentIndex = 0;
     const timestamp = new Date().getTime();
 
