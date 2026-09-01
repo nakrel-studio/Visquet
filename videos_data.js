@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 8/31/2026, 8:32:56 PM
+ * Generated: 9/1/2026, 6:04:45 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
+      "videoId": "Bna3rTAyVCo",
+      "publishedAt": "2026-09-01",
+      "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
+    },
     {
       "title": "NAKREL Studioからのお知らせ",
       "videoId": "cM31uZhTySE",
@@ -734,6 +740,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
+      "videoId": "Bna3rTAyVCo",
+      "publishedAt": "2026-09-01",
+      "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
+    },
     {
       "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
       "videoId": "gxm4JdYCdwI",
@@ -1587,6 +1599,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "cM31uZhTySE",
       "publishedAt": "2026-08-31",
       "description": ""
+    },
+    {
+      "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
+      "videoId": "Bna3rTAyVCo",
+      "publishedAt": "2026-09-01",
+      "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
     }
   ]
 };
