@@ -1,49 +1,12 @@
-const admin = require('firebase-admin');
+// Firestore側での複合ソート（orderByの複数指定）をやめ、全件取得する
+const snapshot = await db.collectionGroup('video_metrics').get();
 
-// GitHub Secrets からサービスアカウント情報を取得
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
-
-const db = admin.firestore();
-
-async function updateTrendingRanking() {
-  try {
-    console.log('急上昇ランキングの集計を開始します...');
-
-    // 直近3週間（21日）前の日時を算出
-    const threeWeeksAgo = new Date();
-    threeWeeksAgo.setDate(threeWeeksAgo.getDate() - 21);
-
-    // 直近3週間以内に更新があり、再生数が多い上位5件を取得
-    const snapshot = await db.collection('video_metrics')
-      .where('lastUpdatedAt', '>=', threeWeeksAgo)
-      .orderBy('lastUpdatedAt', 'desc')
-      .orderBy('views', 'desc')
-      .limit(5)
-      .get();
-
-    const trendingList = [];
-    snapshot.forEach(doc => {
-      trendingList.push({
-        videoId: doc.id,
-        views: doc.data().views || 0
-      });
-    });
-
-    // rankings/trending ドキュメントへ保存
-    await db.collection('rankings').doc('trending').set({
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-      list: trendingList
-    });
-
-    console.log('rankings/trending の更新が完了しました！');
-  } catch (error) {
-    console.error('急上昇更新エラー:', error);
-    process.exit(1);
-  }
-}
-
-updateTrendingRanking();
+// JavaScript側でフィルタリングとソートを実行する
+const trendingVideos = snapshot.docs
+  .map(doc => ({ id: doc.id, ...doc.data() }))
+  // 日付の絞り込み（必要に応じて）
+  .filter(video => video.lastUpdatedAt && new Date(video.lastUpdatedAt) >= startDate)
+  // views（再生数）の降順でソート
+  .sort((a, b) => (b.views || 0) - (a.views || 0))
+  // 上位ランキング件数分を切り出し
+  .slice(0, 100);
