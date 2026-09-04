@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <!-- トップバーの下のキーワードタグ（クリックで自動入力＆検索） -->
+            <!-- トップバーの下のキーワードタグ -->
             <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 pb-0.5 text-[11px] font-mono text-gray-500 dark:text-gray-400">
                 <span class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-wider shrink-0 mr-1">クイック検索:</span>
                 <button onclick="triggerQuickSearch('ゲーム実況')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">ゲーム実況</button>
@@ -127,7 +127,7 @@
     </main>
 
     <script>
-        let currentMode = 'home'; // 'home', 'music', 'games', 'all', 'info', 'search'
+        let currentMode = 'home'; 
         let searchResults = null;
 
         function initTheme() {
@@ -254,10 +254,9 @@
             return diffDays <= 7;
         }
 
-        // 6時間キャッシュ機能つきのホームランダムデータ取得
         function getCachedHomeData(allVideos, musicVideos, gameVideos) {
-            const CACHE_KEY = 'visquet_home_cache_v2';
-            const TIME_KEY = 'visquet_home_time_v2';
+            const CACHE_KEY = 'visquet_home_cache_v3';
+            const TIME_KEY = 'visquet_home_time_v3';
             const now = new Date().getTime();
             const savedTime = localStorage.getItem(TIME_KEY);
             
@@ -338,7 +337,7 @@
 
                 const cachedHome = getCachedHomeData(allVideos, musicVideos, gameVideos);
 
-                // 1. 最新の投稿（7日以内、少し小さめのコンパクト表示）
+                // 1. 最新の投稿（7日以内なら通常カード、7日以降投稿がない場合は「近日公開」をオレンジで表示）
                 let latestHtml = '';
                 if (allVideos.length > 0) {
                     const latest = allVideos[0];
@@ -359,14 +358,24 @@
                                     </div>
                                 </div>
                             </section>`;
+                    } else {
+                        latestHtml = `
+                            <section class="mb-10">
+                                <h3 class="text-sm sm:text-base font-bold text-gray-900 dark:text-white mb-2.5 flex items-center gap-2">
+                                    <span class="text-orange-500">⏳</span> 最新の投稿！
+                                </h3>
+                                <div class="bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222] p-6 max-w-2xl shadow-md flex items-center justify-center rounded-none">
+                                    <span class="text-orange-500 font-bold text-base sm:text-lg tracking-widest">近日公開</span>
+                                </div>
+                            </section>`;
                     }
                 }
 
                 // 2. 今日の動画 (10件：5件×2段)
                 const todaysVideos = cachedHome.todays;
 
-                // 3. 歴代人気おすすめ動画 (Popularから最初順、無限ループスクロール対応)
-                const popularList = popularVideos.length > 0 ? popularVideos : allVideos.slice(0, 10);
+                // 3. 歴代人気おすすめ動画 (popularの再生リストから最初順で10件)
+                const popularList = popularVideos.slice(0, 10);
 
                 // 4. 新着順 (10件：5件×2段)
                 const newArrivals = allVideos.slice(0, 10);
@@ -389,7 +398,7 @@
                             </div>
                         </section>
 
-                        <!-- 歴代人気おすすめ動画 (青い枠・青テキスト・無限ループ) -->
+                        <!-- 歴代人気おすすめ動画 (青枠・青テキスト・1行ループ横スクロール) -->
                         <section class="border-2 border-blue-500/60 dark:border-blue-500/50 p-4 sm:p-6 bg-blue-50/20 dark:bg-blue-950/10">
                             <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">歴代人気おすすめ動画</h3>
                             <div id="auto-scroll-container" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 cursor-grab select-none" style="scroll-behavior: auto;">
@@ -449,13 +458,15 @@
             `;
         }
 
-        // 歴代人気おすすめ動画の完全シームレス・ループ横スクロール
+        // 歴代人気おすすめ動画の1行自動ループ横スクロール
         function initInfiniteLoopScroll() {
             const container = document.getElementById('auto-scroll-container');
             if (!container) return;
 
-            // 要素を複製して2セットにし、無限ループの土台を作る
-            container.innerHTML += container.innerHTML;
+            if (!container.dataset.looped) {
+                container.innerHTML += container.innerHTML;
+                container.dataset.looped = "true";
+            }
 
             let isPaused = false;
             let scrollSpeed = 1;
@@ -463,7 +474,6 @@
             let scrollInterval = setInterval(() => {
                 if (!isPaused && container) {
                     container.scrollLeft += scrollSpeed;
-                    // 半分（オリジナル分の幅）を超えたら一瞬で先頭に戻すことで引っかかりを解消
                     if (container.scrollLeft >= container.scrollWidth / 2) {
                         container.scrollLeft = 0;
                     }
