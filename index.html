@@ -43,29 +43,32 @@
 </head>
 <body class="flex flex-col min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
 
-    <!-- 🌐 上部固定ヘッダー（ロゴ・検索窓・テーマ・サイドバーボタン・クイック検索タグ） -->
-    <header class="sticky top-0 z-50 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-b border-gray-300 dark:border-[#222225] px-4 lg:px-8 py-3">
+    <!-- 🌐 上部固定ヘッダー（ロゴ・検索・ホームボタン・テーマ・サイドバーボタン） -->
+    <header class="sticky top-0 z-50 bg-[#f0f2f5]/95 dark:bg-[#0a0a0c]/95 backdrop-blur-md border-b border-gray-300 dark:border-[#222225] px-3 sm:px-6 lg:px-8 py-2.5">
         <div class="max-w-7xl mx-auto flex flex-col gap-2">
-            <div class="flex justify-between items-center gap-4">
+            <div class="flex justify-between items-center gap-2">
                 
-                <!-- 左側：サイドバー開閉ボタン & ロゴ（クリックで一番上にスクロール） -->
-                <div class="flex items-center gap-3">
+                <!-- 左側：サイドバー開閉ボタン & ロゴ（クリックで最上部へ） -->
+                <div class="flex items-center gap-2 sm:gap-3">
                     <button onclick="toggleSidebar()" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10 transition focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-                    <div class="flex items-center cursor-pointer" onclick="scrollToTop()">
-                        <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-9 lg:h-10 w-auto object-contain block select-none dark:brightness-110">
+                    <div class="flex items-center cursor-pointer" onclick="handleLogoClick()">
+                        <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-10 sm:h-11 lg:h-12 w-auto object-contain block select-none dark:brightness-110">
                     </div>
                 </div>
 
-                <!-- 右側：検索窓 & テーマセレクター -->
-                <div class="flex items-center gap-2 w-full max-w-md">
-                    <input type="text" id="search-input" placeholder="🔍 動画を検索..." 
-                        class="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-3 text-xs focus:outline-none focus:border-blue-500 transition text-[#000] dark:text-[#fff]">
+                <!-- 右側：ホームボタン、短めの検索窓、テーマセレクター -->
+                <div class="flex items-center gap-1.5 sm:gap-2">
+                    <button onclick="switchCategory('home', document.getElementById('menu-home')); window.scrollTo({top:0, behavior:'smooth'});" class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-2.5 sm:px-3 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition shrink-0">
+                        🏠 ホーム
+                    </button>
+                    <input type="text" id="search-input" placeholder="🔍 検索" 
+                        class="w-32 sm:w-48 lg:w-60 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-3 text-xs focus:outline-none focus:border-blue-500 transition text-[#000] dark:text-[#fff]">
                     
-                    <select id="theme-select" onchange="applyTheme(this.value)" class="theme-select bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-3 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none transition shrink-0">
+                    <select id="theme-select" onchange="applyTheme(this.value)" class="theme-select bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-none py-1.5 px-2 text-xs font-mono uppercase text-gray-600 dark:text-gray-400 focus:outline-none transition shrink-0">
                         <option value="light">ライト</option>
                         <option value="dark">ダーク</option>
                         <option value="system">システム</option>
@@ -73,15 +76,15 @@
                 </div>
             </div>
 
-            <!-- トップバー下部のクイック検索タグ -->
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar text-[11px] font-mono pt-1 text-gray-600 dark:text-gray-400">
-                <span class="text-gray-400 dark:text-gray-600 shrink-0">クイック検索:</span>
-                <button onclick="quickSearch('ゲーム実況')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">ゲーム実況</button>
-                <button onclick="quickSearch('配信')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">配信</button>
-                <button onclick="quickSearch('YUKOV')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">YUKOV</button>
-                <button onclick="quickSearch('Richard')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">Richard</button>
-                <button onclick="quickSearch('藤村拓真')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">藤村拓真</button>
-                <button onclick="quickSearch('NAKREL')" class="px-2.5 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition shrink-0">NAKREL</button>
+            <!-- トップバーの下のキーワードタグ（クリックで自動入力＆検索） -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 pb-0.5 text-[11px] font-mono text-gray-500 dark:text-gray-400">
+                <span class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-wider shrink-0 mr-1">クイック検索:</span>
+                <button onclick="triggerQuickSearch('ゲーム実況')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">ゲーム実況</button>
+                <button onclick="triggerQuickSearch('配信')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">配信</button>
+                <button onclick="triggerQuickSearch('YUKOV')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">YUKOV</button>
+                <button onclick="triggerQuickSearch('Richard')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">Richard</button>
+                <button onclick="triggerQuickSearch('藤村拓真')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">藤村拓真</button>
+                <button onclick="triggerQuickSearch('NAKREL')" class="px-2 py-0.5 bg-gray-200/70 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition whitespace-nowrap">NAKREL</button>
             </div>
         </div>
     </header>
@@ -90,7 +93,7 @@
     <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0"></div>
     <aside id="sidebar" class="fixed top-0 left-0 bottom-0 w-72 bg-[#f0f2f5] dark:bg-[#0a0a0c] border-r border-gray-300 dark:border-[#222225] z-50 transform -translate-x-full transition-transform duration-300 flex flex-col p-6 overflow-y-auto">
         <div class="flex items-center justify-between mb-8">
-            <div class="flex items-center cursor-pointer" onclick="toggleSidebar(); scrollToTop(); switchCategory('home', document.getElementById('menu-home'));">
+            <div class="flex items-center cursor-pointer" onclick="toggleSidebar(); handleLogoClick();">
                 <img src="Visquet 1.PNG" alt="Visquet Logo" class="h-8 w-auto object-contain block select-none dark:brightness-110">
             </div>
             <button onclick="toggleSidebar()" class="p-1 text-gray-500 hover:text-black dark:hover:text-white">✕</button>
@@ -98,10 +101,10 @@
 
         <nav id="category-menu" class="space-y-1 flex-grow text-sm">
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-2">メニュー</div>
-            <div id="menu-home" class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold cursor-pointer" onclick="toggleSidebar(); scrollToTop(); switchCategory('home', this)">🏠 ホーム</div>
-            <div id="menu-music" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); scrollToTop(); switchCategory('music', this)">🎵 音楽部門</div>
-            <div id="menu-games" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); scrollToTop(); switchCategory('games', this)">🎮 ゲーム部門</div>
-            <div id="menu-all" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); scrollToTop(); switchCategory('all', this)">🎥 動画</div>
+            <div id="menu-home" class="nav-item active p-3 text-blue-600 bg-blue-50 dark:text-blue-500 dark:bg-blue-500/10 border-l-3 border-blue-600 dark:border-blue-500 font-semibold cursor-pointer" onclick="toggleSidebar(); switchCategory('home', this)">🏠 ホーム</div>
+            <div id="menu-music" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('music', this)">🎵 音楽部門</div>
+            <div id="menu-games" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('games', this)">🎮 ゲーム部門</div>
+            <div id="menu-all" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('all', this)">🎥 動画</div>
 
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-2 mt-8">公式チャンネル</div>
             <div class="nav-item p-3 flex items-center justify-between group text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
@@ -114,17 +117,17 @@
             </div>
 
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-2 mt-8">その他</div>
-            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); scrollToTop(); showInfo(this)">📄 情報</div>
+            <div class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); showInfo(this)">📄 情報</div>
         </nav>
     </aside>
 
     <!-- 🖥️ メインコンテンツエリア -->
-    <main class="flex-grow max-w-7xl w-full mx-auto p-4 lg:p-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8">
         <div id="content-area"></div>
     </main>
 
     <script>
-        let currentMode = 'home'; 
+        let currentMode = 'home'; // 'home', 'music', 'games', 'all', 'info', 'search'
         let searchResults = null;
 
         function initTheme() {
@@ -177,7 +180,8 @@
             }
         }
 
-        function scrollToTop() {
+        function handleLogoClick() {
+            switchCategory('home', document.getElementById('menu-home'));
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -212,12 +216,11 @@
             });
         }
 
-        function quickSearch(keyword) {
+        function triggerQuickSearch(keyword) {
             const searchInput = document.getElementById('search-input');
             if (!searchInput) return;
             searchInput.value = keyword;
             executeSearch(keyword.toLowerCase().trim());
-            scrollToTop();
         }
 
         function executeSearch(query) {
@@ -235,38 +238,44 @@
             }
         }
 
-        // 6時間キャッシュ付きランダムセレクター
-        function getCachedRandomItems(storageKey, arr, count) {
+        function getRandomItems(arr, count) {
             if (!arr || arr.length === 0) return [];
-            const now = new Date().getTime();
-            const cachedData = localStorage.getItem(storageKey);
-            const cachedTime = localStorage.getItem(storageKey + '_time');
-
-            const SIX_HOURS = 6 * 60 * 60 * 1000;
-
-            if (cachedData && cachedTime && (now - parseInt(cachedTime) < SIX_HOURS)) {
-                try {
-                    const parsed = JSON.parse(cachedData);
-                    if (parsed.length > 0) return parsed;
-                } catch (e) {}
-            }
-
-            // 新しくランダム抽出して保存
             const shuffled = [...arr].sort(() => 0.5 - Math.random());
-            const selected = shuffled.slice(0, count);
-            localStorage.setItem(storageKey, JSON.stringify(selected));
-            localStorage.setItem(storageKey + '_time', now.toString());
-            return selected;
+            return shuffled.slice(0, count);
         }
 
         function isWithin7Days(publishedAt) {
             if (!publishedAt) return false;
             const dateStr = publishedAt.replace(/\./g, '/').replace(/-/g, '/');
             const pubDate = new Date(dateStr);
-            if (isNaN(pubDate.getTime())) return true; 
+            if (isNaN(pubDate.getTime())) return true;
             const diffTime = new Date() - pubDate;
             const diffDays = diffTime / (1000 * 60 * 60 * 24);
             return diffDays <= 7;
+        }
+
+        // 6時間キャッシュ機能つきのホームランダムデータ取得
+        function getCachedHomeData(allVideos, musicVideos, gameVideos) {
+            const CACHE_KEY = 'visquet_home_cache_v2';
+            const TIME_KEY = 'visquet_home_time_v2';
+            const now = new Date().getTime();
+            const savedTime = localStorage.getItem(TIME_KEY);
+            
+            if (savedTime && (now - savedTime < 6 * 60 * 60 * 1000)) {
+                const cached = localStorage.getItem(CACHE_KEY);
+                if (cached) {
+                    try { return JSON.parse(cached); } catch(e) {}
+                }
+            }
+            
+            const data = {
+                todays: getRandomItems(allVideos, 10),
+                randomMusic: getRandomItems(musicVideos, 10),
+                randomGame: getRandomItems(gameVideos, 10)
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+            localStorage.setItem(TIME_KEY, now);
+            return data;
         }
 
         function renderContent() {
@@ -285,7 +294,7 @@
             if (currentMode === 'search') {
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">検索結果 (${searchResults.length}件)</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         ${searchResults.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -295,7 +304,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['all'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">動画一覧 (All)</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -305,7 +314,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['music'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">音楽部門</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -315,7 +324,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['games'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">ゲーム部門</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -327,64 +336,66 @@
                 const gameVideos = VISQUET_ARCHIVE_DATA['games'] || [];
                 const popularVideos = VISQUET_ARCHIVE_DATA['popular'] || [];
 
-                // 1. 最新の投稿（7日以内チェック）
+                const cachedHome = getCachedHomeData(allVideos, musicVideos, gameVideos);
+
+                // 1. 最新の投稿（7日以内、少し小さめのコンパクト表示）
                 let latestHtml = '';
                 if (allVideos.length > 0) {
                     const latest = allVideos[0];
                     if (isWithin7Days(latest.publishedAt)) {
                         latestHtml = `
                             <section class="mb-10">
-                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <h3 class="text-sm sm:text-base font-bold text-gray-900 dark:text-white mb-2.5 flex items-center gap-2">
                                     <span class="text-red-500 animate-pulse">🔥</span> 最新の投稿！
                                 </h3>
-                                <div class="video-card bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222] overflow-hidden cursor-pointer shadow-lg flex flex-col md:flex-row" onclick="location.href='./watch.html?id=${latest.videoId}'">
-                                    <div class="md:w-1/2 relative">
+                                <div class="video-card bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222] overflow-hidden cursor-pointer shadow-md flex flex-col sm:flex-row max-w-2xl" onclick="location.href='./watch.html?id=${latest.videoId}'">
+                                    <div class="sm:w-5/12 relative">
                                         <img src="./thumbnails/${latest.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900">
                                     </div>
-                                    <div class="md:w-1/2 p-6 flex flex-col justify-center">
-                                        <span class="text-xs font-mono text-blue-600 dark:text-blue-400 mb-2">${latest.publishedAt}</span>
-                                        <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">${latest.title}</h4>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">ID: ${latest.videoId}</p>
+                                    <div class="sm:w-7/12 p-4 flex flex-col justify-center">
+                                        <span class="text-[10px] font-mono text-blue-600 dark:text-blue-400 mb-1">${latest.publishedAt}</span>
+                                        <h4 class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white line-clamp-2 mb-2">${latest.title}</h4>
+                                        <p class="text-[9px] text-gray-500 dark:text-gray-400 font-mono">ID: ${latest.videoId}</p>
                                     </div>
                                 </div>
                             </section>`;
                     }
                 }
 
-                // 2. 今日の動画 (6時間キャッシュのランダム5件、オレンジ枠・オレンジテキスト)
-                const todaysVideos = getCachedRandomItems('visquet_todays_videos', allVideos, 5);
+                // 2. 今日の動画 (10件：5件×2段)
+                const todaysVideos = cachedHome.todays;
 
-                // 3. 歴代人気おすすめ動画 (Popularから最初順10件、青枠・青テキスト、自動横スクロールループ)
-                const popularList = popularVideos.slice(0, 10);
+                // 3. 歴代人気おすすめ動画 (Popularから最初順、無限ループスクロール対応)
+                const popularList = popularVideos.length > 0 ? popularVideos : allVideos.slice(0, 10);
 
-                // 4. 新着順 (Allから新着順10件: 5件×2段)
+                // 4. 新着順 (10件：5件×2段)
                 const newArrivals = allVideos.slice(0, 10);
 
-                // 5. 音楽部門 (6時間キャッシュのランダム10件: 5件×2段)
-                const randomMusic = getCachedRandomItems('visquet_random_music', musicVideos, 10);
+                // 5. 音楽部門 (ランダム10件：5件×2段)
+                const randomMusic = cachedHome.randomMusic;
 
-                // 6. ゲーム部門 (6時間キャッシュのランダム10件: 5件×2段)
-                const randomGame = getCachedRandomItems('visquet_random_game', gameVideos, 10);
+                // 6. ゲーム部門 (ランダム10件：5件×2段)
+                const randomGame = cachedHome.randomGame;
 
                 contentArea.innerHTML = `
-                    <div class="space-y-12 pb-16 animate-fade-in">
+                    <div class="space-y-10 pb-16 animate-fade-in">
                         ${latestHtml}
 
-                        <!-- 今日の動画 (オレンジ枠・オレンジテキスト) -->
-                        <section class="p-4 sm:p-6 border-2 border-orange-500 bg-orange-50/20 dark:bg-orange-500/5">
-                            <h3 class="text-lg font-bold text-orange-600 dark:text-orange-400 mb-4">今日の動画</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                                ${todaysVideos.map(v => createOrangeVideoCard(v, timestamp)).join('')}
+                        <!-- 今日の動画 -->
+                        <section>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">今日の動画</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                ${todaysVideos.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
 
-                        <!-- 歴代人気おすすめ動画 (青枠・青テキスト・自動横スクロールループ) -->
-                        <section class="p-4 sm:p-6 border-2 border-blue-500 bg-blue-50/20 dark:bg-blue-500/5">
+                        <!-- 歴代人気おすすめ動画 (青い枠・青テキスト・無限ループ) -->
+                        <section class="border-2 border-blue-500/60 dark:border-blue-500/50 p-4 sm:p-6 bg-blue-50/20 dark:bg-blue-950/10">
                             <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">歴代人気おすすめ動画</h3>
                             <div id="auto-scroll-container" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 cursor-grab select-none" style="scroll-behavior: auto;">
                                 ${popularList.map(v => `
-                                    <div class="min-w-[240px] sm:min-w-[280px] max-w-[280px] shrink-0">
-                                        ${createBlueVideoCard(v, timestamp)}
+                                    <div class="min-w-[220px] sm:min-w-[260px] max-w-[260px] shrink-0">
+                                        ${createVideoCard(v, timestamp)}
                                     </div>
                                 `).join('')}
                             </div>
@@ -393,7 +404,7 @@
                         <!-- 新着順 -->
                         <section>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">新着順</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 ${newArrivals.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
@@ -401,7 +412,7 @@
                         <!-- 音楽部門 -->
                         <section>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">音楽部門</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 ${randomMusic.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
@@ -409,14 +420,14 @@
                         <!-- ゲーム部門 -->
                         <section>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">ゲーム部門</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 ${randomGame.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
                     </div>
                 `;
 
-                initSeamlessLoopScroll();
+                initInfiniteLoopScroll();
             }
         }
 
@@ -438,72 +449,32 @@
             `;
         }
 
-        // 今日の動画用（タイトルオレンジ）
-        function createOrangeVideoCard(v, timestamp) {
-            return `
-                <div class="video-card overflow-hidden cursor-pointer shadow-md bg-white border border-orange-200 dark:bg-[#141417] dark:border-orange-900/50" onclick="location.href='./watch.html?id=${v.videoId}'">
-                    <div class="relative group">
-                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
-                        <div class="absolute inset-0 bg-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    </div>
-                    <div class="p-3">
-                        <h4 class="text-[13px] font-bold line-clamp-2 text-orange-600 dark:text-orange-400 leading-snug tracking-wide">${v.title}</h4>
-                        <div class="mt-2 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
-                             <span>${v.publishedAt}</span>
-                             <span>ID: ${v.videoId}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // 歴代人気おすすめ動画用（タイトル青）
-        function createBlueVideoCard(v, timestamp) {
-            return `
-                <div class="video-card overflow-hidden cursor-pointer shadow-md bg-white border border-blue-200 dark:bg-[#141417] dark:border-blue-900/50" onclick="location.href='./watch.html?id=${v.videoId}'">
-                    <div class="relative group">
-                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
-                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    </div>
-                    <div class="p-3">
-                        <h4 class="text-[13px] font-bold line-clamp-2 text-blue-600 dark:text-blue-400 leading-snug tracking-wide">${v.title}</h4>
-                        <div class="mt-2 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
-                             <span>${v.publishedAt}</span>
-                             <span>ID: ${v.videoId}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // ループするシームレス横スクロール（タッチ端末対応：触ると一時停止、離すと再開）
-        function initSeamlessLoopScroll() {
+        // 歴代人気おすすめ動画の完全シームレス・ループ横スクロール
+        function initInfiniteLoopScroll() {
             const container = document.getElementById('auto-scroll-container');
             if (!container) return;
 
-            // 要素を複製して無限ループにする
+            // 要素を複製して2セットにし、無限ループの土台を作る
             container.innerHTML += container.innerHTML;
 
-            let scrollSpeed = 0.8;
             let isPaused = false;
+            let scrollSpeed = 1;
 
             let scrollInterval = setInterval(() => {
-                if (!isPaused) {
+                if (!isPaused && container) {
                     container.scrollLeft += scrollSpeed;
-                    // 半分まで来たら位置をシームレスに戻す
-                    if (container.scrollLeft >= (container.scrollWidth / 2)) {
+                    // 半分（オリジナル分の幅）を超えたら一瞬で先頭に戻すことで引っかかりを解消
+                    if (container.scrollLeft >= container.scrollWidth / 2) {
                         container.scrollLeft = 0;
                     }
                 }
-            }, 25);
+            }, 30);
 
             container.addEventListener('mouseenter', () => isPaused = true);
             container.addEventListener('mouseleave', () => isPaused = false);
-            
-            // タッチ端末用
             container.addEventListener('touchstart', () => isPaused = true, {passive: true});
             container.addEventListener('touchend', () => {
-                setTimeout(() => isPaused = false, 1500);
+                setTimeout(() => isPaused = false, 2000);
             }, {passive: true});
         }
 
