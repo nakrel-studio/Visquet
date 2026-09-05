@@ -862,10 +862,11 @@
         }
 
         function formatWithRule(val, suffix) {
-            let formatted = val >= 10 ? val.toFixed(1) : val.toFixed(1);
+            let formatted = val.toFixed(1);
             let str = formatted.toString();
+            // 小数第一位が '0' の場合（例: 2.0 のとき）
             if (str.includes('.') && str.split('.')[1][0] === '0') {
-                return Math.floor(val) + suffix;
+                return Math.round(val) + suffix; // Math.floor から修正
             }
             return parseFloat(formatted) + suffix;
         }
