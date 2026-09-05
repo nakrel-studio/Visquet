@@ -861,15 +861,18 @@
             return num.toString();
         }
 
-        function formatWithRule(val, suffix) {
-            let formatted = val.toFixed(1);
-            let str = formatted.toString();
-            // 小数第一位が '0' の場合（例: 2.0 のとき）
-            if (str.includes('.') && str.split('.')[1][0] === '0') {
-                return Math.round(val) + suffix; // Math.floor から修正
+      function formatWithRule(val, suffix) {
+            // 小数第1位で切り捨てる（例: 1.95 -> 1.9、2.09 -> 2.0）
+            let truncated = Math.floor(val * 10) / 10;
+            
+            // 整数になる場合（例: 2.0 など）は小数点を除いた整数として返す
+            if (Number.isInteger(truncated)) {
+                return truncated + suffix;
             }
-            return parseFloat(formatted) + suffix;
+            
+            return truncated.toFixed(1) + suffix;
         }
+
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
