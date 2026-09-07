@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 9/6/2026, 5:26:14 PM
+ * Generated: 9/7/2026, 6:56:26 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "もう恋なんてしない　【弾き語りカバー】　藤村拓真/フジタク",
+      "videoId": "cTizkM-cm3s",
+      "publishedAt": "2026-09-06",
+      "description": "楽曲:もう恋なんてしない\n\n作詞作曲:槇原敬之\n\nカバー:藤村拓真/フジタク"
+    },
     {
       "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
       "videoId": "Bna3rTAyVCo",
@@ -546,6 +552,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "もう恋なんてしない　【弾き語りカバー】　藤村拓真/フジタク",
+      "videoId": "cTizkM-cm3s",
+      "publishedAt": "2026-09-06",
+      "description": "楽曲:もう恋なんてしない\n\n作詞作曲:槇原敬之\n\nカバー:藤村拓真/フジタク"
+    },
     {
       "title": "NAKREL Studioからのお知らせ",
       "videoId": "cM31uZhTySE",
@@ -1605,6 +1617,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Bna3rTAyVCo",
       "publishedAt": "2026-09-01",
       "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
+    },
+    {
+      "title": "もう恋なんてしない　【弾き語りカバー】　藤村拓真/フジタク",
+      "videoId": "cTizkM-cm3s",
+      "publishedAt": "2026-09-06",
+      "description": "楽曲:もう恋なんてしない\n\n作詞作曲:槇原敬之\n\nカバー:藤村拓真/フジタク"
     }
   ]
 };
