@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 9/12/2026, 5:35:10 PM
+ * Generated: 9/13/2026, 5:48:41 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -15,12 +15,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Bna3rTAyVCo",
       "publishedAt": "2026-09-01",
       "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
-    },
-    {
-      "title": "NAKREL Studioからのお知らせ",
-      "videoId": "cM31uZhTySE",
-      "publishedAt": "2026-08-31",
-      "description": ""
     },
     {
       "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
@@ -557,12 +551,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "cTizkM-cm3s",
       "publishedAt": "2026-09-06",
       "description": "楽曲:もう恋なんてしない\n\n作詞作曲:槇原敬之\n\nカバー:藤村拓真/フジタク"
-    },
-    {
-      "title": "NAKREL Studioからのお知らせ",
-      "videoId": "cM31uZhTySE",
-      "publishedAt": "2026-08-31",
-      "description": ""
     },
     {
       "title": "One Ray of Light をやくけくそになって弾いてみた",
@@ -1605,12 +1593,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "gxm4JdYCdwI",
       "publishedAt": "2026-08-30",
       "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
-    },
-    {
-      "title": "NAKREL Studioからのお知らせ",
-      "videoId": "cM31uZhTySE",
-      "publishedAt": "2026-08-31",
-      "description": ""
     },
     {
       "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
