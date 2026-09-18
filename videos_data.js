@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 9/17/2026, 6:42:54 PM
+ * Generated: 9/18/2026, 5:59:07 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -8,7 +8,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
       "videoId": "NYLnCQdjgP8",
       "publishedAt": "2026-09-17",
-      "description": "曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+      "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
     },
     {
       "title": "もう恋なんてしない　【弾き語りカバー】　藤村拓真/フジタク",
@@ -556,7 +556,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
       "videoId": "NYLnCQdjgP8",
       "publishedAt": "2026-09-17",
-      "description": "曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+      "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
     },
     {
       "title": "もう恋なんてしない　【弾き語りカバー】　藤村拓真/フジタク",
@@ -1622,7 +1622,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
       "videoId": "NYLnCQdjgP8",
       "publishedAt": "2026-09-17",
-      "description": "曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+      "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
     }
   ]
 };
