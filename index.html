@@ -290,7 +290,7 @@
             if (currentMode === 'search') {
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">検索結果 (${searchResults.length}件)</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                         ${searchResults.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -300,7 +300,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['all'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">動画一覧 (All)</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -310,7 +310,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['music'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">音楽部門</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -320,7 +320,7 @@
                 const videos = VISQUET_ARCHIVE_DATA['games'] || [];
                 contentArea.innerHTML = `
                     <div class="mb-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">ゲーム部門</h2></div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                         ${videos.map(v => createVideoCard(v, timestamp)).join('')}
                     </div>`;
                 return;
@@ -334,7 +334,6 @@
 
                 const cachedHome = getCachedHomeData(allVideos, musicVideos, gameVideos);
 
-                // 1. 最新の投稿（7日以内なら通常カード、7日以降投稿がない場合は「近日公開」をオレンジで表示）
                 let latestHtml = '';
                 if (allVideos.length > 0) {
                     const latest = allVideos[0];
@@ -345,8 +344,12 @@
                                     <span class="text-red-500 animate-pulse">🔥</span> 最新の投稿！
                                 </h3>
                                 <div class="video-card bg-white border border-gray-200 dark:bg-[#141417] dark:border-[#222] overflow-hidden cursor-pointer shadow-md flex flex-col sm:flex-row max-w-2xl" onclick="location.href='./watch.html?id=${latest.videoId}'">
-                                    <div class="sm:w-5/12 relative">
+                                    <div class="sm:w-5/12 relative group">
                                         <img src="./thumbnails/${latest.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900">
+                                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                            <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-xs flex items-center justify-center text-white text-base shadow-lg">▶</div>
+                                        </div>
                                     </div>
                                     <div class="sm:w-7/12 p-4 flex flex-col justify-center">
                                         <span class="text-[10px] font-mono text-blue-600 dark:text-blue-400 mb-1">${latest.publishedAt}</span>
@@ -368,19 +371,10 @@
                     }
                 }
 
-                // 2. 今日の動画 (10件：5件×2段)
                 const todaysVideos = cachedHome.todays;
-
-                // 3. 歴代人気おすすめ動画 (popularの再生リストから最初順で10件)
                 const popularList = popularVideos.slice(0, 10);
-
-                // 4. 新着順 (10件：5件×2段)
                 const newArrivals = allVideos.slice(0, 10);
-
-                // 5. 音楽部門 (ランダム10件：5件×2段)
                 const randomMusic = cachedHome.randomMusic;
-
-                // 6. ゲーム部門 (ランダム10件：5件×2段)
                 const randomGame = cachedHome.randomGame;
 
                 contentArea.innerHTML = `
@@ -390,7 +384,7 @@
                         <!-- 今日の動画 -->
                         <section>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">今日の動画</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                                 ${todaysVideos.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
@@ -410,23 +404,23 @@
                         <!-- 新着順 -->
                         <section>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">新着順</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                                 ${newArrivals.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
 
-                        <!-- 音楽部門 -->
-                        <section>
+                        <!-- 音楽部門（薄い線を追加） -->
+                        <section class="border-t border-gray-200 dark:border-[#222225] pt-10">
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">音楽部門</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                                 ${randomMusic.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
 
-                        <!-- ゲーム部門 -->
-                        <section>
+                        <!-- ゲーム部門（薄い線を追加） -->
+                        <section class="border-t border-gray-200 dark:border-[#222225] pt-10">
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">ゲーム部門</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                                 ${randomGame.map(v => createVideoCard(v, timestamp)).join('')}
                             </div>
                         </section>
@@ -443,12 +437,15 @@
                     <div class="relative group">
                         <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-xs flex items-center justify-center text-white text-base shadow-lg">▶</div>
+                        </div>
                     </div>
                     <div class="p-3">
                         <h4 class="text-[13px] font-bold line-clamp-2 text-gray-900 dark:text-white leading-snug tracking-wide">${v.title}</h4>
                         <div class="mt-2 flex justify-between items-center text-[8px] text-gray-400 dark:text-gray-600 font-mono uppercase tracking-tighter">
-                             <span>${v.publishedAt}</span>
-                             <span>ID: ${v.videoId}</span>
+                            <span>${v.publishedAt}</span>
+                            <span>ID: ${v.videoId}</span>
                         </div>
                     </div>
                 </div>
