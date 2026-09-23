@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 9/22/2026, 6:26:12 PM
+ * Generated: 9/23/2026, 6:45:22 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
+      "videoId": "NSEPycJGo8o",
+      "publishedAt": "2026-09-23",
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+    },
     {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
       "videoId": "NYLnCQdjgP8",
@@ -197,7 +203,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
     },
     {
-      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
+      "title": "YUKOVBand - るーぷるーぷるーぷ　1stインスト曲",
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-16",
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
@@ -553,6 +559,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
+      "videoId": "NSEPycJGo8o",
+      "publishedAt": "2026-09-23",
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+    },
+    {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
       "videoId": "NYLnCQdjgP8",
       "publishedAt": "2026-09-17",
@@ -643,7 +655,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "東方風神録一面ボステーマアレンジ曲【幽閉サテライト】\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL\n\nvocal (cover)：Manya"
     },
     {
-      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
+      "title": "YUKOVBand - るーぷるーぷるーぷ　1stインスト曲",
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-16",
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
@@ -1097,7 +1109,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
     },
     {
-      "title": "るーぷるーぷるーぷ　【高音質版】インスト曲",
+      "title": "YUKOVBand - るーぷるーぷるーぷ　1stインスト曲",
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-21",
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
@@ -1623,6 +1635,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "NYLnCQdjgP8",
       "publishedAt": "2026-09-17",
       "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+    },
+    {
+      "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
+      "videoId": "NSEPycJGo8o",
+      "publishedAt": "2026-09-23",
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
     }
   ]
 };
