@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 9/26/2026, 6:11:52 PM
+ * Generated: 9/27/2026, 6:49:27 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
+      "videoId": "2k_1T47MvKM",
+      "publishedAt": "2026-09-27",
+      "description": "初めて3Dホラーゲームプレイしたけどめっちゃ新鮮な感じ。"
+    },
     {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
       "videoId": "NSEPycJGo8o",
@@ -764,6 +770,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
+      "videoId": "2k_1T47MvKM",
+      "publishedAt": "2026-09-27",
+      "description": "初めて3Dホラーゲームプレイしたけどめっちゃ新鮮な感じ。"
+    },
     {
       "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
       "videoId": "Bna3rTAyVCo",
@@ -1641,6 +1653,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "NSEPycJGo8o",
       "publishedAt": "2026-09-23",
       "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+    },
+    {
+      "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
+      "videoId": "2k_1T47MvKM",
+      "publishedAt": "2026-09-27",
+      "description": "初めて3Dホラーゲームプレイしたけどめっちゃ新鮮な感じ。"
     }
   ]
 };
