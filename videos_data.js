@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/2/2026, 7:41:53 PM
+ * Generated: 10/3/2026, 6:28:18 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
+      "videoId": "rv52Dx3BttY",
+      "publishedAt": "2026-10-03",
+      "description": ""
+    },
     {
       "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
       "videoId": "2k_1T47MvKM",
@@ -564,6 +570,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
+      "videoId": "rv52Dx3BttY",
+      "publishedAt": "2026-10-03",
+      "description": ""
+    },
     {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
       "videoId": "NSEPycJGo8o",
@@ -1659,6 +1671,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "2k_1T47MvKM",
       "publishedAt": "2026-09-27",
       "description": "初めて3Dホラーゲームプレイしたけどめっちゃ新鮮な感じ。"
+    },
+    {
+      "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
+      "videoId": "rv52Dx3BttY",
+      "publishedAt": "2026-10-03",
+      "description": ""
     }
   ]
 };
