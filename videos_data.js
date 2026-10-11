@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/10/2026, 7:04:36 PM
+ * Generated: 10/11/2026, 7:16:54 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
+      "videoId": "cAujtgi4Yo0",
+      "publishedAt": "2026-10-11",
+      "description": ""
+    },
     {
       "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
       "videoId": "rv52Dx3BttY",
@@ -782,6 +788,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
+      "videoId": "cAujtgi4Yo0",
+      "publishedAt": "2026-10-11",
+      "description": ""
+    },
     {
       "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
       "videoId": "2k_1T47MvKM",
@@ -1676,6 +1688,12 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
       "videoId": "rv52Dx3BttY",
       "publishedAt": "2026-10-03",
+      "description": ""
+    },
+    {
+      "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
+      "videoId": "cAujtgi4Yo0",
+      "publishedAt": "2026-10-11",
       "description": ""
     }
   ]
