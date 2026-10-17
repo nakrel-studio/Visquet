@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/16/2026, 6:32:47 PM
+ * Generated: 10/17/2026, 5:40:53 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
+      "videoId": "hl6H1TV3KkI",
+      "publishedAt": "2026-10-17",
+      "description": ""
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "YeDIY3fLynw",
+      "publishedAt": "2026-10-17",
+      "description": "This video is unavailable."
+    },
     {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
       "videoId": "cAujtgi4Yo0",
@@ -26,7 +38,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
       "videoId": "NSEPycJGo8o",
       "publishedAt": "2026-09-23",
-      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷの東方アレンジ曲"
     },
     {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
@@ -577,6 +589,18 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
+      "videoId": "hl6H1TV3KkI",
+      "publishedAt": "2026-10-17",
+      "description": ""
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "YeDIY3fLynw",
+      "publishedAt": "2026-10-17",
+      "description": "This video is unavailable."
+    },
+    {
       "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
       "videoId": "rv52Dx3BttY",
       "publishedAt": "2026-10-03",
@@ -586,7 +610,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
       "videoId": "NSEPycJGo8o",
       "publishedAt": "2026-09-23",
-      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷの東方アレンジ曲"
     },
     {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
@@ -1676,7 +1700,7 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
       "videoId": "NSEPycJGo8o",
       "publishedAt": "2026-09-23",
-      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷのアレンジ曲"
+      "description": "#ナイトオブナイツ　#るーぷるーぷるーぷ\n\nナイトオブナイツ✖️るーぷるーぷるーぷの東方アレンジ曲"
     },
     {
       "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
@@ -1694,6 +1718,18 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
       "videoId": "cAujtgi4Yo0",
       "publishedAt": "2026-10-11",
+      "description": ""
+    },
+    {
+      "title": "Deleted video",
+      "videoId": "YeDIY3fLynw",
+      "publishedAt": "2026-10-17",
+      "description": "This video is unavailable."
+    },
+    {
+      "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
+      "videoId": "hl6H1TV3KkI",
+      "publishedAt": "2026-10-17",
       "description": ""
     }
   ]
