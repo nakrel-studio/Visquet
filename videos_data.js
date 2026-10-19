@@ -1,20 +1,20 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/18/2026, 5:42:25 PM
+ * Generated: 10/19/2026, 8:18:12 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "【cover】かいりきベア ｰ 失敗作少女  /Vo. Riseca　",
+      "videoId": "phvVwt_QLtA",
+      "publishedAt": "2026-10-19",
+      "description": "#歌ってみた　#失敗作少女\n\n本家様：https://youtu.be/6mCmR2gGgho\nVo：Riseca"
+    },
     {
       "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
       "videoId": "hl6H1TV3KkI",
       "publishedAt": "2026-10-17",
       "description": ""
-    },
-    {
-      "title": "Deleted video",
-      "videoId": "YeDIY3fLynw",
-      "publishedAt": "2026-10-17",
-      "description": "This video is unavailable."
     },
     {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
@@ -83,7 +83,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "title": "連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
       "videoId": "fhYldLubO1U",
       "publishedAt": "2026-08-24",
       "description": "どうもますはる46です。これからも邁進していきます"
@@ -95,7 +95,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
     },
     {
-      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "title": "カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
       "videoId": "EejbEv9Dxe4",
       "publishedAt": "2026-08-19",
       "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
@@ -143,7 +143,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "もはや才能レベル"
     },
     {
-      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "title": "【初心者】初めてのマリオカートWii Riz実況プレイ",
       "videoId": "bGlhsRMh4bo",
       "publishedAt": "2026-07-22",
       "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
@@ -173,7 +173,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "Richardが訪問"
     },
     {
-      "title": "9715　スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "title": "スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
       "videoId": "5MatyznDydE",
       "publishedAt": "2026-07-15",
       "description": "ブチギレ注意"
@@ -197,7 +197,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "冗談抜きで怖いから閲覧注意で"
     },
     {
-      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "title": "は？チート？　マリオカートWii  Richard #ゲーム実況",
       "videoId": "iwQSzf0pGQU",
       "publishedAt": "2026-07-05",
       "description": "絶対おかしい"
@@ -281,7 +281,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "YUKOV (manya)氏によるオリジナル曲のデモ音源。後のYUKOV Circle Musicの一作目となった。"
     },
     {
-      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "初回　マリオカート Wii Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -317,7 +317,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
     },
     {
-      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS実況",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -335,13 +335,13 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
     },
     {
-      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "RIZのヘンゼルとグレーテルDS実況プレイ　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ(Riseca)"
@@ -377,7 +377,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "0419006スペアビート配 ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
+      "title": "スペアビート　ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
       "description": ""
@@ -389,7 +389,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
     },
     {
-      "title": "0414006スペアビート配信　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
+      "title": "スペアビート　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
       "videoId": "BKv-LUmXoF8",
       "publishedAt": "2026-04-14",
       "description": ""
@@ -589,16 +589,16 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
+      "title": "【cover】かいりきベア ｰ 失敗作少女  /Vo. Riseca　",
+      "videoId": "phvVwt_QLtA",
+      "publishedAt": "2026-10-19",
+      "description": "#歌ってみた　#失敗作少女\n\n本家様：https://youtu.be/6mCmR2gGgho\nVo：Riseca"
+    },
+    {
       "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
       "videoId": "hl6H1TV3KkI",
       "publishedAt": "2026-10-17",
       "description": ""
-    },
-    {
-      "title": "Deleted video",
-      "videoId": "YeDIY3fLynw",
-      "publishedAt": "2026-10-17",
-      "description": "This video is unavailable."
     },
     {
       "title": "One Ray of Light 歌ってみた　【藤村拓真/フジタク】",
@@ -813,6 +813,12 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "games": [
     {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-19",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
+    },
+    {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
       "videoId": "cAujtgi4Yo0",
       "publishedAt": "2026-10-11",
@@ -849,7 +855,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "コンピューターがチートすんなや\n\nとうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
     },
     {
-      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "title": "連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
       "videoId": "fhYldLubO1U",
       "publishedAt": "2026-08-24",
       "description": "どうもますはる46です。これからも邁進していきます"
@@ -861,7 +867,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
     },
     {
-      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "title": "カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
       "videoId": "EejbEv9Dxe4",
       "publishedAt": "2026-08-19",
       "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
@@ -885,7 +891,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "家の地下に病棟？医療施設？とても巨大になっていく。更に内容も深まるばかり。\n赤ちゃんみたいな声の新種の化け物出てきた。トラップのように出てくるからちょっと厄介\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=Njcoa1X3R2E"
     },
     {
-      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "title": "【初心者】初めてのマリオカートWii Riz実況プレイ",
       "videoId": "bGlhsRMh4bo",
       "publishedAt": "2026-07-22",
       "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
@@ -903,7 +909,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "あまり進展ないですがとんでもない目に遭ってしまいました。\n前回の動画→ https://nakrel-visquet.com/watch.html?id=eCofkVZCAes"
     },
     {
-      "title": "9715　スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "title": "スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
       "videoId": "5MatyznDydE",
       "publishedAt": "2026-07-15",
       "description": "ブチギレ注意"
@@ -921,7 +927,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "冗談抜きで怖いから閲覧注意で"
     },
     {
-      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "title": "は？チート？　マリオカートWii  Richard #ゲーム実況",
       "videoId": "iwQSzf0pGQU",
       "publishedAt": "2026-07-05",
       "description": "絶対おかしい"
@@ -933,7 +939,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "ホラゲじゃないから安心してね"
     },
     {
-      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "初回　マリオカート Wii Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -957,7 +963,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
     },
     {
-      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS実況",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -975,13 +981,13 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
     },
     {
-      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "RIZのヘンゼルとグレーテルDS実況プレイ　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ(Riseca)"
@@ -999,7 +1005,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "0419006スペアビート配 ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
+      "title": "スペアビート　ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
       "description": ""
@@ -1011,7 +1017,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "0414006スペアビート配信　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
+      "title": "スペアビート　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
       "videoId": "BKv-LUmXoF8",
       "publishedAt": "2026-04-14",
       "description": ""
@@ -1223,13 +1229,13 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "7511 Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
       "description": ""
     },
     {
-      "title": "0414006スペアビート配信　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
+      "title": "スペアビート　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
       "videoId": "BKv-LUmXoF8",
       "publishedAt": "2026-04-14",
       "description": ""
@@ -1247,7 +1253,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "本家様：https://youtu.be/fBO8T2PLrrY?si=46NGYUFnriO_uhyH\n\n楽曲名：零れずの願いゴト/幽閉サテライト\n原曲：砕月\n編曲：Iceon\n作詞：かませ虎\nギター：neiro\n\nVocal：Yukov\n\nお借りした音源\n零れずの願いゴト/幽閉サテライト公式off vocal：https://youtu.be/9BOASilr8jk?si=J-heUu2i_8QYyY58\n\n\n\n＃零れずの願いゴト＃幽閉サテライト＃東方歌ってみた"
     },
     {
-      "title": "0419006スペアビート配 ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
+      "title": "スペアビート　ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
       "description": ""
@@ -1259,7 +1265,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
     },
     {
-      "title": "7508　RIZのヘンゼルとグレーテルDS配信　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "title": "RIZのヘンゼルとグレーテルDS実況プレイ　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
       "videoId": "MTsGzmu2uXw",
       "publishedAt": "2026-05-07",
       "description": "配信：RIZ(Riseca)"
@@ -1457,7 +1463,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "本家：https://youtu.be/jOzfxpV15gg?si=1cLi4_TrnSHCIr5W"
     },
     {
-      "title": "7529チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS配信",
+      "title": "チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS実況",
       "videoId": "MECh_yesvoY",
       "publishedAt": "2026-05-31",
       "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
@@ -1493,7 +1499,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
     },
     {
-      "title": "8616マリオカート Wii配信Richard＃ゲーム実況",
+      "title": "初回　マリオカート Wii Richard＃ゲーム実況",
       "videoId": "17YNLbUsgY4",
       "publishedAt": "2026-06-17",
       "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
@@ -1535,7 +1541,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "歩きはマジで地獄"
     },
     {
-      "title": "9705 は？チート？　マリオカートWii 配信Richard #ゲーム実況",
+      "title": "は？チート？　マリオカートWii  Richard #ゲーム実況",
       "videoId": "iwQSzf0pGQU",
       "publishedAt": "2026-07-05",
       "description": "絶対おかしい"
@@ -1559,7 +1565,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "操作むずい"
     },
     {
-      "title": "9715　スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "title": "スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
       "videoId": "5MatyznDydE",
       "publishedAt": "2026-07-15",
       "description": "ブチギレ注意"
@@ -1589,7 +1595,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "分からなすぎたので6年前の配信者さんの実況を参考にしました。\nこれはまじむずい。\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=qS5lq7sDQaI\n\n観光地巡りもやってます！\n\n高尾山→ https://nakrel-visquet.com/watch.html?id=e2ogHZ06pVw\n\n奥多摩湖→ https://nakrel-visquet.com/watch.html?id=6hLFdNz1k6Y"
     },
     {
-      "title": "9722【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "title": "【初心者】初めてのマリオカートWii Riz実況プレイ",
       "videoId": "bGlhsRMh4bo",
       "publishedAt": "2026-07-22",
       "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
@@ -1637,7 +1643,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "ノリとその場の勢いで"
     },
     {
-      "title": "10819   カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "title": "カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
       "videoId": "EejbEv9Dxe4",
       "publishedAt": "2026-08-19",
       "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
@@ -1649,7 +1655,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
     },
     {
-      "title": "10825 連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "title": "連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
       "videoId": "fhYldLubO1U",
       "publishedAt": "2026-08-24",
       "description": "どうもますはる46です。これからも邁進していきます"
@@ -1731,6 +1737,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "hl6H1TV3KkI",
       "publishedAt": "2026-10-17",
       "description": ""
+    },
+    {
+      "title": "【cover】かいりきベア ｰ 失敗作少女  /Vo. Riseca　",
+      "videoId": "phvVwt_QLtA",
+      "publishedAt": "2026-10-19",
+      "description": "#歌ってみた　#失敗作少女\n\n本家様：https://youtu.be/6mCmR2gGgho\nVo：Riseca"
+    },
+    {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-19",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
     }
   ]
 };
