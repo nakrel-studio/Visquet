@@ -111,6 +111,20 @@ jobs:
               if (videoId) {
                 const imgUrl = snippet.thumbnails?.maxres?.url || snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
                 
+                // 1. 「削除された動画」や「非公開動画」のタイトルであればスキップ
+                if (title === "Deleted video" || title === "Private video") {
+                  console.log(`[SKIPPED] Deleted or Private video: ${videoId}`);
+                  continue;
+                }
+
+                const imgUrl = snippet.thumbnails?.maxres?.url || snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
+                
+                // 2. サムネイルURLが取得できない場合も念のためスキップ
+                if (!imgUrl) {
+                  console.log(`[SKIPPED] No thumbnail URL for: ${videoId}`);
+                  continue;
+                }
+               
                 // ここで新しい画像だけを thumbnails/ フォルダへ自動保存
                 await downloadThumbnailIfNeeded(videoId, imgUrl);
                 
