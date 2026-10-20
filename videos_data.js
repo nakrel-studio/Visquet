@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/19/2026, 8:18:12 PM
+ * Generated: 10/20/2026, 5:49:54 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -812,12 +812,6 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
-    {
-      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
-      "videoId": "gv1dE_lYPLo",
-      "publishedAt": "2026-10-19",
-      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
-    },
     {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
       "videoId": "cAujtgi4Yo0",
@@ -1727,12 +1721,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "Deleted video",
-      "videoId": "YeDIY3fLynw",
-      "publishedAt": "2026-10-17",
-      "description": "This video is unavailable."
-    },
-    {
       "title": "弱虫えすけーぷ　藤村拓真/フジタクギター練習",
       "videoId": "hl6H1TV3KkI",
       "publishedAt": "2026-10-17",
@@ -1743,12 +1731,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "phvVwt_QLtA",
       "publishedAt": "2026-10-19",
       "description": "#歌ってみた　#失敗作少女\n\n本家様：https://youtu.be/6mCmR2gGgho\nVo：Riseca"
-    },
-    {
-      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
-      "videoId": "gv1dE_lYPLo",
-      "publishedAt": "2026-10-19",
-      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
     }
   ]
 };
