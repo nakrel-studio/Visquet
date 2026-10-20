@@ -109,7 +109,7 @@ jobs:
               const videoId = contentDetails.videoId || snippet.resourceId?.videoId || "";
               
               if (videoId) {
-                const imgUrl = snippet.thumbnails?.maxres?.url || snippet.thumbnails?.high?.url || snippet.thumbnails?.medium?.url || snippet.thumbnails?.default?.url || "";
+                const title = snippet.title || "";
                 
                 // 1. 「削除された動画」や「非公開動画」のタイトルであればスキップ
                 if (title === "Deleted video" || title === "Private video") {
