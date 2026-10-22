@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/21/2026, 7:03:10 PM
+ * Generated: 10/22/2026, 6:59:03 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-22",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
+    },
     {
       "title": "【cover】かいりきベア ｰ 失敗作少女  /Vo. Riseca　",
       "videoId": "phvVwt_QLtA",
@@ -233,40 +239,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
     },
     {
-      "title": "YUKOVBand - るーぷるーぷるーぷ　1stインスト曲",
-      "videoId": "q2NnozX8XlM",
-      "publishedAt": "2026-05-16",
-      "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
-    },
-    {
-      "title": "どんなときも　藤村拓真/フジタクcover",
-      "videoId": "TQcL9rSwIp4",
-      "publishedAt": "2026-02-26",
-      "description": "お借りした楽曲：https://youtu.be/b88pxLpMZKk?si=iNp0fW6egV8eHmXx\n音源：https://youtu.be/nwi7sPwdPyU?si=Y-TOtafGWt97nvfP\nボーカル：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
-      "videoId": "jOzfxpV15gg",
-      "publishedAt": "2026-02-10",
-      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
-    },
-    {
       "title": "野山北公園　Richard",
       "videoId": "nvnbrpiPSsg",
       "publishedAt": "2026-06-22",
       "description": ""
-    },
-    {
-      "title": "奥多摩湖/Richard",
-      "videoId": "6hLFdNz1k6Y",
-      "publishedAt": "2026-03-09",
-      "description": ""
-    },
-    {
-      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
-      "videoId": "lM0B3R-wsaU",
-      "publishedAt": "2026-02-10",
-      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
     },
     {
       "title": "デリバリーキッド-TOKYO KOMACHI",
@@ -335,6 +311,12 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "YUKOVBand - るーぷるーぷるーぷ　1stインスト曲",
+      "videoId": "q2NnozX8XlM",
+      "publishedAt": "2026-05-16",
+      "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
+    },
+    {
       "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
       "videoId": "BZMguC5JC54",
       "publishedAt": "2026-05-11",
@@ -371,27 +353,27 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "【史上最難関ゲーム】#1 オイクメネ実況プレイ-藤村拓真/フジタク　＊乱入実況あり",
-      "videoId": "mogmkmRorEs",
-      "publishedAt": "2026-04-08",
-      "description": ""
-    },
-    {
       "title": "スペアビート　ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
       "videoId": "95vWb9RPPXI",
       "publishedAt": "2026-04-19",
       "description": ""
     },
     {
-      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
-      "videoId": "5zaB7-XsjVc",
-      "publishedAt": "2026-02-10",
-      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
+      "title": "むず過ぎてまじ頭おかしくなる。#2オイクメネ実況プレイ　藤村拓真/フジタク",
+      "videoId": "WPbgnCGnrJ4",
+      "publishedAt": "2026-04-18",
+      "description": ""
     },
     {
       "title": "スペアビート　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
       "videoId": "BKv-LUmXoF8",
       "publishedAt": "2026-04-14",
+      "description": ""
+    },
+    {
+      "title": "【史上最難関ゲーム】#1 オイクメネ実況プレイ-藤村拓真/フジタク　＊乱入実況あり",
+      "videoId": "mogmkmRorEs",
+      "publishedAt": "2026-04-08",
       "description": ""
     },
     {
@@ -401,16 +383,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
-      "videoId": "8v1tFPGE4pY",
-      "publishedAt": "2026-02-15",
-      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
-      "videoId": "tPCH6p9lemQ",
-      "publishedAt": "2026-03-23",
-      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
+      "title": "#5 オイクメネ実況プレイ/Richard",
+      "videoId": "ofwE8DKeqMM",
+      "publishedAt": "2026-04-04",
+      "description": ""
     },
     {
       "title": "【東方vocal】【cover】幽閉サテライト－紅に染まる恋の花/Vo.Riseca /YUKOV Circle Music",
@@ -419,21 +395,21 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "楽曲名：https://youtu.be/PWacpxkQQJg?si=otAL6ksq6DosQ38d\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=kU-b62Vm8CxDJMtL"
     },
     {
-      "title": "むず過ぎてまじ頭おかしくなる。#2オイクメネ実況プレイ　藤村拓真/フジタク",
-      "videoId": "WPbgnCGnrJ4",
-      "publishedAt": "2026-04-18",
-      "description": ""
-    },
-    {
-      "title": "#5 オイクメネ実況プレイ/Richard",
-      "videoId": "ofwE8DKeqMM",
-      "publishedAt": "2026-04-04",
-      "description": ""
+      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
+      "videoId": "tPCH6p9lemQ",
+      "publishedAt": "2026-03-23",
+      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
     },
     {
       "title": "#4 オイクメネ実況プレイ/Richard",
       "videoId": "ow7iu75y3f4",
       "publishedAt": "2026-03-23",
+      "description": ""
+    },
+    {
+      "title": "奥多摩湖/Richard",
+      "videoId": "6hLFdNz1k6Y",
+      "publishedAt": "2026-03-09",
       "description": ""
     },
     {
@@ -449,10 +425,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "零れずの願いゴト/幽閉サテライトCovered by Yukov",
-      "videoId": "0jLzONG8KzE",
-      "publishedAt": "2026-02-10",
-      "description": "本家様：https://youtu.be/fBO8T2PLrrY?si=46NGYUFnriO_uhyH\n\n楽曲名：零れずの願いゴト/幽閉サテライト\n原曲：砕月\n編曲：Iceon\n作詞：かませ虎\nギター：neiro\n\nVocal：Yukov\n\nお借りした音源\n零れずの願いゴト/幽閉サテライト公式off vocal：https://youtu.be/9BOASilr8jk?si=J-heUu2i_8QYyY58\n\n\n\n＃零れずの願いゴト＃幽閉サテライト＃東方歌ってみた"
+      "title": "どんなときも　藤村拓真/フジタクcover",
+      "videoId": "TQcL9rSwIp4",
+      "publishedAt": "2026-02-26",
+      "description": "お借りした楽曲：https://youtu.be/b88pxLpMZKk?si=iNp0fW6egV8eHmXx\n音源：https://youtu.be/nwi7sPwdPyU?si=Y-TOtafGWt97nvfP\nボーカル：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "メンヘラフレシア実況プレイ/藤村拓真",
@@ -473,12 +449,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：The house 実況プレイ/藤村拓真\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "【東方】幻想症候群歌ってみた",
-      "videoId": "UEMyATKWISg",
-      "publishedAt": "2026-02-10",
-      "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
-    },
-    {
       "title": "Ib体験実況プレイ/Richard【乱入実況】",
       "videoId": "9_XbsVzXxk8",
       "publishedAt": "2026-02-17",
@@ -491,10 +461,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
-      "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
-      "videoId": "KAjTwTBmN7s",
-      "publishedAt": "2026-02-10",
-      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
+      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
+      "videoId": "8v1tFPGE4pY",
+      "publishedAt": "2026-02-15",
+      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "#1 狂い月実況プレイ/Riz(Riseca)",
@@ -527,6 +497,18 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：赤ずきんDS 実況　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
+      "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
+      "videoId": "KAjTwTBmN7s",
+      "publishedAt": "2026-02-10",
+      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
+    },
+    {
+      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
+      "videoId": "5zaB7-XsjVc",
+      "publishedAt": "2026-02-10",
+      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
+    },
+    {
       "title": "ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard",
       "videoId": "t2qssbHPypc",
       "publishedAt": "2026-02-10",
@@ -537,6 +519,30 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "AeFiaO7Cac4",
       "publishedAt": "2026-02-10",
       "description": "タイトル：#3魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "#2 魔女の家 実況プレイ/Richard",
+      "videoId": "z9QUt29vrwQ",
+      "publishedAt": "2026-02-10",
+      "description": "タイトル：#2 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "#1 魔女の家 実況プレイ/Richard",
+      "videoId": "DplehyYcy1c",
+      "publishedAt": "2026-10-22",
+      "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
+      "videoId": "lMdYV7iRDN8",
+      "publishedAt": "2026-10-22",
+      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
+      "videoId": "lM0B3R-wsaU",
+      "publishedAt": "2026-02-10",
+      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
     },
     {
       "title": "【 東方vocal MV】YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜",
@@ -551,16 +557,22 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "歌詞\n\nかの国にかかる　闇波が全てを包む\n暗闇の中の霧裂いて　遥か彼方へ\n戦え　武器が有るなら    悴んだ手で握りしめて\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light \n\nかの民にかかる　闇波が心を包む\n暗闇の中の霧裂いて　今とき放つ\n戦え！意志があるなら　一筋の光駆け巡る\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り開け\n止まらず加速するこの光が\n\n戦え　武器が有るなら　悴んだ手で握りしめて\n\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light\n\n鳴り響く音波　秘めた力で\n今すぐdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り裂いて\n掴み取れ己の力で\n\nKa no kuni ni kakaru 　yami nami ga subete wo tsutsumu\nkurayami no naka no     kirisaite haruka kanata e\ntatakae  Buki ga aru nara 　Kajikanda te de nigirishimete\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka 　kakenukete\ntomarazu kasoku suru One ray of Light\n\nka no tami ni kakaru 　yami nami ga kokoro wo tsutsumu\nkurayami no naka no 　kirisaite ima toki hanatsu\ntatakae  Ishi ga aru nara 　hitosuji no hikari kakemeguru\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka      kirihirake\ntomarazu kasoku suru kono hikari ga\n\ntatakae  Buki ga aru nara     kajikanda te de nigirishimete\n\nnarihibiku otonami     homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka     kakenukete\ntomarazu kasoku suru One ray of Light\n\nnarihibiku otonami      himeta chikara de\nima sugu ”don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka     kirisaite\ntsukamitore onore no chikara de"
     },
     {
+      "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
+      "videoId": "jOzfxpV15gg",
+      "publishedAt": "2026-02-10",
+      "description": "楽曲名: One Ray of Light\n\n作詞作曲 : YUKOV Circle Music\n編曲 :YUKOV BAND\nvocal : Riseca\n\nサークル: YUKOV Circle Music\n—————————————————————————\nご視聴ありがとうございます!\n\nYUKOVは東方vocal、オリジナル曲の楽曲制作と歌ってみた動画で活動しています。\n配信先は主にYouTube、SoundCloud等で制作した楽曲を配信する予定です。\n\n⇓offvocal⇓\nhttps://youtu.be/Cyvbtt-QQe0?si=zfw1EW9SUPxgMQrL"
+    },
+    {
+      "title": "零れずの願いゴト/幽閉サテライトCovered by Yukov",
+      "videoId": "0jLzONG8KzE",
+      "publishedAt": "2026-02-10",
+      "description": "本家様：https://youtu.be/fBO8T2PLrrY?si=46NGYUFnriO_uhyH\n\n楽曲名：零れずの願いゴト/幽閉サテライト\n原曲：砕月\n編曲：Iceon\n作詞：かませ虎\nギター：neiro\n\nVocal：Yukov\n\nお借りした音源\n零れずの願いゴト/幽閉サテライト公式off vocal：https://youtu.be/9BOASilr8jk?si=J-heUu2i_8QYyY58\n\n\n\n＃零れずの願いゴト＃幽閉サテライト＃東方歌ってみた"
+    },
+    {
       "title": "【東方】紅に染まる恋の花歌ってみた （原曲：稲田姫様に叱られるから）",
       "videoId": "xJ9dW-vO9FU",
       "publishedAt": "2026-02-10",
       "description": "少し古いマイクを使ったので少しノイズが入ってるかもしれません。🙇\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=4X9dw9hdExbIT2UC\n\n本家様：https://youtu.be/PWacpxkQQJg?si=QwOBt0Wv5jbJUG3_\n\n楽曲名：紅に染まる恋の花/幽閉サテライト\n原曲：稲田姫様に叱られるから\n編曲：Iceon\nギター：neiro\n作詞：Marcia\n\ncover：Yukov"
-    },
-    {
-      "title": "#2 魔女の家 実況プレイ/Richard",
-      "videoId": "z9QUt29vrwQ",
-      "publishedAt": "2026-02-10",
-      "description": "タイトル：#2 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "『only my railgun』歌ってみた",
@@ -573,6 +585,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "-tSUwqkuZME",
       "publishedAt": "2026-02-10",
       "description": "お借りした音源　\nhttps://youtu.be/SkPD3TYDtuM?si=H-zxPo0YAHS56bms\n\n本家様\nhttps://youtu.be/EHBFKhLUVig?si=mc0CPkNlAqTfeNY3\n\ncover Юков\n\n＃神っぽいな歌ってみた"
+    },
+    {
+      "title": "【東方】幻想症候群歌ってみた",
+      "videoId": "UEMyATKWISg",
+      "publishedAt": "2026-02-10",
+      "description": "お借りした音源：https://youtu.be/AbOVw1fBcXA?si=DVQ3GZqMhwkMF6nf\n\n楽曲名：幻想症候群(げんそうシンドローム) 幽閉サテライト\n原曲：紅楼 ～ Eastern Dream / U.N.オーエンは彼女なのか?\n編曲：Iceon　\nギター：紅葉八朔\n作詞：Marcia\n\nCover：Юков\n\n本家様：https://youtu.be/0jEDUM3p9Ow?si=9oER7pvDXwWeohDv\n\n#幽閉サテライト #東方vocal  #歌ってみた"
     },
     {
       "title": "ひとつよがりの逃避行歌ってみた",
@@ -812,6 +830,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-22",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
+    },
     {
       "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
       "videoId": "cAujtgi4Yo0",
@@ -1731,6 +1755,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "phvVwt_QLtA",
       "publishedAt": "2026-10-19",
       "description": "#歌ってみた　#失敗作少女\n\n本家様：https://youtu.be/6mCmR2gGgho\nVo：Riseca"
+    },
+    {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-22",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
     }
   ]
 };
