@@ -7,7 +7,7 @@ const VISQUET_ARCHIVE_DATA = {
     {
       "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
       "videoId": "gv1dE_lYPLo",
-      "publishedAt": "2026-10-22",
+      "publishedAt": "2026-10-18",
       "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
     },
     {
