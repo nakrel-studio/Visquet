@@ -1,4 +1,4 @@
-Name: Automatically Update Visquet Video Data
+name: Automatically Update Visquet Video Data
 
 on:
   schedule:
