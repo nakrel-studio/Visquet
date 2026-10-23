@@ -1,4 +1,4 @@
-name: Automatically Update Visquet Video Data
+Name: Automatically Update Visquet Video Data
 
 on:
   schedule:
@@ -128,11 +128,14 @@ jobs:
                 // ここで新しい画像だけを thumbnails/ フォルダへ自動保存
                 await downloadThumbnailIfNeeded(videoId, imgUrl);
                 
+                // 動画の正確な投稿日（videoPublishedAt）を優先して取得
+                const actualPublishDate = contentDetails.videoPublishedAt || snippet.publishedAt || "";
+                
                 // タイトル、日付、概要欄（description）を取得
                 exportData[key].push({
                   title: snippet.title ? snippet.title.replace(/"/g, "&quot;") : "No Title",
                   videoId: videoId,
-                  publishedAt: snippet.publishedAt ? snippet.publishedAt.substring(0, 10) : "",
+                  publishedAt: actualPublishDate ? actualPublishDate.substring(0, 10) : "",
                   description: snippet.description ? snippet.description : ""
                 });
               }
