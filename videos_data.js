@@ -529,13 +529,13 @@ const VISQUET_ARCHIVE_DATA = {
     {
       "title": "#1 魔女の家 実況プレイ/Richard",
       "videoId": "DplehyYcy1c",
-      "publishedAt": "2026-10-22",
+      "publishedAt": "2026-2-10",
       "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "【Fortnite】Trust him？2実況プレイ/Richard",
       "videoId": "lMdYV7iRDN8",
-      "publishedAt": "2026-10-22",
+      "publishedAt": "2026-2-10",
       "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
