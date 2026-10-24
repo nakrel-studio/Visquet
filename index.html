@@ -102,6 +102,8 @@
             <div id="menu-music" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('music', this)">🎵 音楽部門</div>
             <div id="menu-games" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('games', this)">🎮 ゲーム部門</div>
             <div id="menu-all" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('all', this)">🎥 動画</div>
+            <div id="menu-saved" class="nav-item p-3 text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="toggleSidebar(); switchCategory('saved', this)">🩷 保存済み動画</div>
+
 
             <div class="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em] mb-2 mt-8">公式チャンネル</div>
             <div class="nav-item p-3 flex items-center justify-between group text-gray-500 hover:text-[#000] hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5 cursor-pointer" onclick="window.open('https://www.youtube.com/channel/UCNM9LH6S2dAOHvTAC97m-DA')">
@@ -325,6 +327,60 @@
                     </div>`;
                 return;
             }
+            
+            // renderContent() 内、または分岐の中に追加
+if (currentMode === 'saved') {
+    const savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    const allVideos = VISQUET_ARCHIVE_DATA['all'] || [];
+    
+    // 保存されている動画データだけを抽出
+    const savedVideos = allVideos.filter(v => savedList.includes(v.videoId));
+
+    if (savedVideos.length === 0) {
+        contentArea.innerHTML = `
+            <div class="text-center py-20 font-mono text-gray-400 dark:text-gray-600 text-sm uppercase">
+                保存された動画はありません
+            </div>`;
+        return;
+    }
+
+    contentArea.innerHTML = `
+        <div class="mb-6 flex justify-between items-center">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">保存済み動画 (${savedVideos.length}件)</h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+            ${savedVideos.map(v => `
+                <div class="video-card relative overflow-hidden shadow-md bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent">
+                    <div class="cursor-pointer" onclick="location.href='./watch.html?id=${v.videoId}'">
+                        <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
+                    </div>
+                    <div class="p-3">
+                        <h4 class="text-[13px] font-bold line-clamp-2 text-gray-900 dark:text-white leading-snug tracking-wide">${v.title}</h4>
+                        <div class="mt-2 flex justify-between items-center text-[10px] text-gray-400 font-mono">
+                            <span>${v.publishedAt}</span>
+                            <button onclick="removeSavedVideo('${v.videoId}')" class="text-red-500 hover:text-red-700 dark:hover:text-red-400 font-bold px-1.5 py-0.5 bg-red-50 dark:bg-red-950/30 transition">
+                                ✕ 削除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    return;
+}
+
+// 削除ボタンを押したときの処理
+function removeSavedVideo(videoId) {
+    let savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    // 該当のIDを除外して保存し直す
+    savedList = savedList.filter(id => id !== videoId);
+    localStorage.setItem('visquet_saved_videos', JSON.stringify(savedList));
+    
+    // 一覧画面を再描画して即座に反映させる
+    renderContent();
+}
+
 
             if (currentMode === 'home') {
                 const allVideos = VISQUET_ARCHIVE_DATA['all'] || [];
