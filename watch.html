@@ -144,13 +144,13 @@
 
                     <button id="like-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-blue-50/50 dark:hover:bg-blue-950/20 px-2 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
                         <span id="like-icon" class="text-xl transition-transform duration-200 group-hover:scale-110 inline-block">👍</span>
-                        <span class="font-semibold">高評価</span>
+                        <span class="font-semibold"></span>
                         <span id="like-count" class="text-blue-600 dark:text-blue-400 font-extrabold ml-1 transition-transform duration-200">0</span>
                     </button>
 
                     <button id="fire-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-orange-50/50 dark:hover:bg-orange-950/20 px-2 py-1 text-gray-600 dark:text-gray-300 transition-all duration-75 active:scale-95 flex items-center gap-2 rounded-none relative select-none overflow-visible">
                         <span id="fire-icon" class="text-xl inline-block transition-transform duration-75">🔥</span>
-                        <span class="font-semibold tracking-widest">声援</span>
+                        <span class="font-semibold tracking-widest"></span>
                         <span id="fire-count" class="text-orange-600 dark:text-orange-400 font-extrabold transition-transform duration-75">0</span>
                     </button>
 
@@ -158,6 +158,12 @@
                         <span class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🔗</span>
                         <span class="font-semibold">共有</span>
                     </button>
+                    
+                    <button id="save-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-yellow-50/50 dark:hover:bg-yellow-950/20 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
+                        <span id="save-icon" class="text-lg transition-transform duration-200 group-hover:scale-110 inline-block">🩷</span>
+                        <span id="save-text" class="font-semibold">保存</span>
+                    </button>
+
                    
                     <button id="aspect-btn" class="group border border-gray-300 dark:border-[#222225] bg-white dark:bg-[#141417] hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-1 text-gray-600 dark:text-gray-300 transition-all duration-200 active:scale-90 flex items-center gap-2 rounded-none relative">
                         <span id="aspect-icon" class="text-xs font-mono font-bold bg-gray-200 dark:bg-zinc-800 px-1 py-0.5 text-gray-800 dark:text-gray-200">4:3</span>          
@@ -299,6 +305,56 @@
             renderRecommendations(currentVideoId);
             renderTrendingAds();
             renderPopularRanking();
+        
+            // イベントリスナーの登録（DOMContentLoaded 内に追加）
+const saveBtn = document.getElementById('save-btn');
+if (saveBtn) {
+    saveBtn.addEventListener('click', handleSaveToggle);
+    updateSaveButtonUI(); // 初期表示チェック
+}
+
+// 保存ボタンのクリック処理
+function handleSaveToggle(event) {
+    if (!currentVideoId) return;
+
+    let savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    const isSaved = savedList.includes(currentVideoId);
+
+    if (isSaved) {
+        // 保存解除
+        savedList = savedList.filter(id => id !== currentVideoId);
+        createPopupText(event, "REMOVED", "text-gray-500 font-bold");
+    } else {
+        // 保存追加
+        savedList.push(currentVideoId);
+        createPopupText(event, "SAVED!", "text-yellow-500 font-bold");
+    }
+
+    localStorage.setItem('visquet_saved_videos', JSON.stringify(savedList));
+    updateSaveButtonUI();
+}
+
+// 保存状態に応じたボタンデザイン更新
+function updateSaveButtonUI() {
+    const saveBtn = document.getElementById('save-btn');
+    const saveIcon = document.getElementById('save-icon');
+    const saveText = document.getElementById('save-text');
+    if (!saveBtn || !currentVideoId) return;
+
+    const savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    const isSaved = savedList.includes(currentVideoId);
+
+    if (isSaved) {
+        saveIcon.innerText = '💚';
+        saveText.innerText = '保存済み';
+        saveBtn.classList.add('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
+    } else {
+        saveIcon.innerText = '🩷';
+        saveText.innerText = '保存';
+        saveBtn.classList.remove('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
+    }
+}
+
         });
 
         async function initLocalCounters() {
