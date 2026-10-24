@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/23/2026, 6:55:55 PM
+ * Generated: 10/24/2026, 5:57:26 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "YUKOV Circle Music - One Ray of Light 【audio】1st rerecording",
+      "videoId": "8SMME4tMA6Q",
+      "publishedAt": "2026-10-24",
+      "description": "作詞作曲：Riseca\n編曲：YUKOVBand\n歌：Riseca\n\nReleased on: 2026-07-27"
+    },
     {
       "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
       "videoId": "gv1dE_lYPLo",
@@ -606,6 +612,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "YUKOV Circle Music - One Ray of Light 【audio】1st rerecording",
+      "videoId": "8SMME4tMA6Q",
+      "publishedAt": "2026-10-24",
+      "description": "作詞作曲：Riseca\n編曲：YUKOVBand\n歌：Riseca\n\nReleased on: 2026-07-27"
+    },
     {
       "title": "【cover】かいりきベア ｰ 失敗作少女  /Vo. Riseca　",
       "videoId": "phvVwt_QLtA",
@@ -1761,6 +1773,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "gv1dE_lYPLo",
       "publishedAt": "2026-10-19",
       "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
+    },
+    {
+      "title": "YUKOV Circle Music - One Ray of Light 【audio】1st rerecording",
+      "videoId": "8SMME4tMA6Q",
+      "publishedAt": "2026-10-24",
+      "description": "作詞作曲：Riseca\n編曲：YUKOVBand\n歌：Riseca\n\nReleased on: 2026-07-27"
     }
   ]
 };
