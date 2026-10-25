@@ -891,13 +891,13 @@ function updateSaveButtonUI() {
             if (currentAspect === '4/3') {
                 playerContainer.classList.remove('aspect-[4/3]');
                 playerContainer.classList.add('aspect-[16/9]');
-                aspectIcon.innerText = 'ワイド';
+                aspectIcon.innerText = '16:9';
                 localStorage.setItem('visquet_player_aspect', '16/9');
                 document.body.classList.add('mode-16-9');
             } else {
                 playerContainer.classList.remove('aspect-[16/9]');
                 playerContainer.classList.add('aspect-[4/3]');
-                aspectIcon.innerText = 'スタンダード';
+                aspectIcon.innerText = '4:3';
                 localStorage.setItem('visquet_player_aspect', '4/3');
                 document.body.classList.remove('mode-16-9');         
             }
