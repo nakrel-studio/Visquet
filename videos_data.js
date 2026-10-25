@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/24/2026, 5:57:26 PM
+ * Generated: 10/25/2026, 6:14:38 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "YUKOV Circle Music - 弱虫えすけーぷ！【Audio】",
+      "videoId": "9ZUjzvpWznQ",
+      "publishedAt": "2026-10-24",
+      "description": "MV：https://youtu.be/NYLnCQdjgP8\n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+    },
     {
       "title": "YUKOV Circle Music - One Ray of Light 【audio】1st rerecording",
       "videoId": "8SMME4tMA6Q",
@@ -612,6 +618,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "music": [
+    {
+      "title": "YUKOV Circle Music - 弱虫えすけーぷ！【Audio】",
+      "videoId": "9ZUjzvpWznQ",
+      "publishedAt": "2026-10-24",
+      "description": "MV：https://youtu.be/NYLnCQdjgP8\n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+    },
     {
       "title": "YUKOV Circle Music - One Ray of Light 【audio】1st rerecording",
       "videoId": "8SMME4tMA6Q",
@@ -1779,6 +1791,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "8SMME4tMA6Q",
       "publishedAt": "2026-10-24",
       "description": "作詞作曲：Riseca\n編曲：YUKOVBand\n歌：Riseca\n\nReleased on: 2026-07-27"
+    },
+    {
+      "title": "YUKOV Circle Music - 弱虫えすけーぷ！【Audio】",
+      "videoId": "9ZUjzvpWznQ",
+      "publishedAt": "2026-10-24",
+      "description": "MV：https://youtu.be/NYLnCQdjgP8\n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
     }
   ]
 };
