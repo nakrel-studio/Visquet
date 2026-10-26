@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/25/2026, 6:14:38 PM
+ * Generated: 10/26/2026, 8:21:10 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -615,6 +615,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
+    },
+    {
+      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
+      "videoId": "LSjZu_KZkJY",
+      "publishedAt": "2026-10-26",
+      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
     }
   ],
   "music": [
@@ -854,6 +860,12 @@ const VISQUET_ARCHIVE_DATA = {
     }
   ],
   "games": [
+    {
+      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
+      "videoId": "LSjZu_KZkJY",
+      "publishedAt": "2026-10-26",
+      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
+    },
     {
       "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
       "videoId": "gv1dE_lYPLo",
@@ -1797,6 +1809,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "9ZUjzvpWznQ",
       "publishedAt": "2026-10-24",
       "description": "MV：https://youtu.be/NYLnCQdjgP8\n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+    },
+    {
+      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
+      "videoId": "LSjZu_KZkJY",
+      "publishedAt": "2026-10-26",
+      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
     }
   ]
 };
