@@ -1,9 +1,21 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/26/2026, 8:21:10 PM
+ * Generated: 10/27/2026, 7:55:55 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "videoId": "l5yI2tp2xq4",
+      "publishedAt": "2026-10-27",
+      "description": ""
+    },
+    {
+      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
+      "videoId": "LSjZu_KZkJY",
+      "publishedAt": "2026-10-26",
+      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
+    },
     {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【Audio】",
       "videoId": "9ZUjzvpWznQ",
@@ -615,15 +627,15 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
-    },
-    {
-      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
-      "videoId": "LSjZu_KZkJY",
-      "publishedAt": "2026-10-26",
-      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
     }
   ],
   "music": [
+    {
+      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "videoId": "l5yI2tp2xq4",
+      "publishedAt": "2026-10-27",
+      "description": ""
+    },
     {
       "title": "YUKOV Circle Music - 弱虫えすけーぷ！【Audio】",
       "videoId": "9ZUjzvpWznQ",
@@ -1815,6 +1827,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "LSjZu_KZkJY",
       "publishedAt": "2026-10-26",
       "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
+    },
+    {
+      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "videoId": "l5yI2tp2xq4",
+      "publishedAt": "2026-10-27",
+      "description": ""
     }
   ]
 };
