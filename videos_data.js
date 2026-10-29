@@ -1,11 +1,11 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/28/2026, 8:08:05 PM
+ * Generated: 10/29/2026, 8:55:06 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
     {
-      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "title": "るーぷるーぷるーぷ  A＝440正規チューニング化　【Audio】",
       "videoId": "l5yI2tp2xq4",
       "publishedAt": "2026-10-27",
       "description": ""
@@ -485,12 +485,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
-      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
-      "videoId": "8v1tFPGE4pY",
-      "publishedAt": "2026-02-15",
-      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
       "title": "#1 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
@@ -503,64 +497,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "【総集編】魔女の家実況プレイ　Richard",
-      "videoId": "HauzQ8dq8bg",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：【総集編】魔女の家実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
-      "videoId": "6Okmqo-KD4Y",
-      "publishedAt": "2026-02-08",
-      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "赤ずきんDS 実況　Richard 【乱入実況】",
-      "videoId": "pHvqACVL9Jo",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：赤ずきんDS 実況　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
       "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
       "videoId": "KAjTwTBmN7s",
       "publishedAt": "2026-02-08",
       "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
-    },
-    {
-      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
-      "videoId": "5zaB7-XsjVc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard",
-      "videoId": "t2qssbHPypc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#3魔女の家 実況プレイ/Richard",
-      "videoId": "AeFiaO7Cac4",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#3魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#2 魔女の家 実況プレイ/Richard",
-      "videoId": "z9QUt29vrwQ",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#2 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#1 魔女の家 実況プレイ/Richard",
-      "videoId": "DplehyYcy1c",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
-      "videoId": "lMdYV7iRDN8",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
@@ -631,7 +571,7 @@ const VISQUET_ARCHIVE_DATA = {
   ],
   "music": [
     {
-      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "title": "るーぷるーぷるーぷ  A＝440正規チューニング化　【Audio】",
       "videoId": "l5yI2tp2xq4",
       "publishedAt": "2026-10-27",
       "description": ""
@@ -1155,70 +1095,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
-      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
-      "videoId": "8v1tFPGE4pY",
-      "publishedAt": "2026-02-15",
-      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
       "title": "#1 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
       "description": "配信者：Riseca\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "【総集編】魔女の家実況プレイ　Richard",
-      "videoId": "HauzQ8dq8bg",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：【総集編】魔女の家実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
-      "videoId": "6Okmqo-KD4Y",
-      "publishedAt": "2026-02-08",
-      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "赤ずきんDS 実況　Richard 【乱入実況】",
-      "videoId": "pHvqACVL9Jo",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：赤ずきんDS 実況　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
-      "videoId": "5zaB7-XsjVc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard",
-      "videoId": "t2qssbHPypc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#3魔女の家 実況プレイ/Richard",
-      "videoId": "AeFiaO7Cac4",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#3魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#2 魔女の家 実況プレイ/Richard",
-      "videoId": "z9QUt29vrwQ",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#2 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#1 魔女の家 実況プレイ/Richard",
-      "videoId": "DplehyYcy1c",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
-      "videoId": "lMdYV7iRDN8",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     }
   ],
   "popular": [
@@ -1245,12 +1125,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "q2NnozX8XlM",
       "publishedAt": "2026-05-16",
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
-    },
-    {
-      "title": "プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】",
-      "videoId": "5zaB7-XsjVc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：プロセカ実況プレイ−”藤村拓真/フジタク”【2023年4月11日】\n配信者：藤村拓真/フジタク　\n発信元：NAKREL Studio"
     },
     {
       "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
@@ -1287,12 +1161,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "pmunDkD3gfQ",
       "publishedAt": "2026-05-29",
       "description": "実況：Richard\n発信：NAKREL studio"
-    },
-    {
-      "title": "dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】",
-      "videoId": "8v1tFPGE4pY",
-      "publishedAt": "2026-02-15",
-      "description": "タイトル：dancerail Ⅲをプレイ- 藤村拓真/フジタク【2023年5月15日】\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
       "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
@@ -1349,12 +1217,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
-      "title": "#3魔女の家 実況プレイ/Richard",
-      "videoId": "AeFiaO7Cac4",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#3魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
       "title": "#1 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
@@ -1385,28 +1247,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "配信者：Richard\n発信元：NAKREL Studio"
     },
     {
-      "title": "#2 魔女の家 実況プレイ/Richard",
-      "videoId": "z9QUt29vrwQ",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#2 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "【総集編】魔女の家実況プレイ　Richard",
-      "videoId": "HauzQ8dq8bg",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：【総集編】魔女の家実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
       "title": "#2 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
-    },
-    {
-      "title": "ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard",
-      "videoId": "t2qssbHPypc",
-      "publishedAt": "2026-01-29",
-      "description": "タイトル：ヴィオラ「しつこいな。」衝撃エンディング 魔女の家実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "Ib体験実況プレイ/Richard【乱入実況】",
@@ -1419,18 +1263,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "RRg5shb4JJY",
       "publishedAt": "2026-02-26",
       "description": "配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "#1 魔女の家 実況プレイ/Richard",
-      "videoId": "DplehyYcy1c",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：#1 魔女の家 実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "赤ずきんDS 実況　Richard 【乱入実況】",
-      "videoId": "pHvqACVL9Jo",
-      "publishedAt": "2026-02-08",
-      "description": "タイトル：赤ずきんDS 実況　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
@@ -1457,22 +1289,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "歌詞\n\nかの国にかかる　闇波が全てを包む\n暗闇の中の霧裂いて　遥か彼方へ\n戦え　武器が有るなら    悴んだ手で握りしめて\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light \n\nかの民にかかる　闇波が心を包む\n暗闇の中の霧裂いて　今とき放つ\n戦え！意志があるなら　一筋の光駆け巡る\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り開け\n止まらず加速するこの光が\n\n戦え　武器が有るなら　悴んだ手で握りしめて\n\n鳴り響く音波　炎が襲う\nそれでもdon’t stop Run ahead ずっと走り続けるよ\n迫り来る波の中駆け抜けて\n止まらず加速するOne ray of Light\n\n鳴り響く音波　秘めた力で\n今すぐdon’t stop Run ahead きっと守り続けるよ\n迫り来る闇の中切り裂いて\n掴み取れ己の力で\n\nKa no kuni ni kakaru 　yami nami ga subete wo tsutsumu\nkurayami no naka no     kirisaite haruka kanata e\ntatakae  Buki ga aru nara 　Kajikanda te de nigirishimete\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka 　kakenukete\ntomarazu kasoku suru One ray of Light\n\nka no tami ni kakaru 　yami nami ga kokoro wo tsutsumu\nkurayami no naka no 　kirisaite ima toki hanatsu\ntatakae  Ishi ga aru nara 　hitosuji no hikari kakemeguru\nnarihibiku otonami 　homura ga osou\nsoredemo “don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka      kirihirake\ntomarazu kasoku suru kono hikari ga\n\ntatakae  Buki ga aru nara     kajikanda te de nigirishimete\n\nnarihibiku otonami     homura ga osou\nsoredemo “don ’ t stop Run ahead” zutto hashiri tsuzukeru yo\nsemari kuru nami no naka     kakenukete\ntomarazu kasoku suru One ray of Light\n\nnarihibiku otonami      himeta chikara de\nima sugu ”don ’ t stop Run ahead” kitto mamori tsuzukeru yo\nsemari kuru yami no naka     kirisaite\ntsukamitore onore no chikara de"
     },
     {
-      "title": "【Fortnite】Trust him？2実況プレイ/Richard",
-      "videoId": "lMdYV7iRDN8",
-      "publishedAt": "2026-01-26",
-      "description": "タイトル：【Fortnite】Trust him？2実況プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
       "title": "【東方】紅に染まる恋の花歌ってみた （原曲：稲田姫様に叱られるから）",
       "videoId": "xJ9dW-vO9FU",
       "publishedAt": "2024-10-09",
       "description": "少し古いマイクを使ったので少しノイズが入ってるかもしれません。🙇\n\nお借りした音源：https://youtu.be/HiSRWeGI1Fs?si=4X9dw9hdExbIT2UC\n\n本家様：https://youtu.be/PWacpxkQQJg?si=QwOBt0Wv5jbJUG3_\n\n楽曲名：紅に染まる恋の花/幽閉サテライト\n原曲：稲田姫様に叱られるから\n編曲：Iceon\nギター：neiro\n作詞：Marcia\n\ncover：Yukov"
-    },
-    {
-      "title": "ヤンデレラ実況プレイ　Richard【乱入実況】",
-      "videoId": "6Okmqo-KD4Y",
-      "publishedAt": "2026-02-08",
-      "description": "めちゃキモ発言あるので閲覧注意\n\n\n\nタイトル：ヤンデレラ実況プレイ　Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "神っぽいな歌ってみた",
@@ -1829,7 +1649,7 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
     },
     {
-      "title": "るーぷるーぷるーぷ　正規音律化　【Audio】",
+      "title": "るーぷるーぷるーぷ  A＝440正規チューニング化　【Audio】",
       "videoId": "l5yI2tp2xq4",
       "publishedAt": "2026-10-27",
       "description": ""
