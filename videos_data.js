@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/29/2026, 9:00:48 AM
+ * Generated: 10/29/2026, 9:21:54 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -1385,16 +1385,16 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "オオカミと赤ずきん実況プレイ/Riz(Riseca) #ノベルゲーム#童話",
-      "videoId": "czN41bET-Z0",
-      "publishedAt": "2026-06-26",
-      "description": "ホラゲじゃないから安心してね"
-    },
-    {
       "title": "デリバリーキッド-West coast Twilight",
       "videoId": "9RqwcBR7ZH8",
       "publishedAt": "2026-06-27",
       "description": ""
+    },
+    {
+      "title": "オオカミと赤ずきん実況プレイ/Riz(Riseca) #ノベルゲーム#童話",
+      "videoId": "czN41bET-Z0",
+      "publishedAt": "2026-06-26",
+      "description": "ホラゲじゃないから安心してね"
     },
     {
       "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
