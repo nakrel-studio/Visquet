@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/29/2026, 9:21:54 AM
+ * Generated: 10/29/2026, 9:28:18 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -1103,6 +1103,12 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n歌 : Riseca\n\nサークル : YUKOV Circle Music\n\nhttps://youtu.be/lO0Xl7hKfXU?si=zLYmyvxPardP3yqo"
     },
     {
+      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
+      "videoId": "VZwUbnp0Vvg",
+      "publishedAt": "2026-06-23",
+      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
+    },
+    {
       "title": "YUKOV Circle Music - One Ray of Light 【オリジナル】Audio",
       "videoId": "jOzfxpV15gg",
       "publishedAt": "2025-05-04",
@@ -1115,10 +1121,10 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "前の動画が音割れしてました\n\nYUKOVインスト曲1st\n\nhttps://on.soundcloud.com/xWvMdNi8JurgOE2v5W"
     },
     {
-      "title": "「どんなときも」を藤村拓真／フジタクが弾き語ってみた【伴奏あり】",
-      "videoId": "VZwUbnp0Vvg",
-      "publishedAt": "2026-06-23",
-      "description": "実はトランスポーズしてるのでF# major なのに白鍵が多い。\n音源制作したYUKOV Circle Music 及びYUKOV Bandの皆さんありがとうございました。\n\n作詞作曲：槇原敬之\n編曲：YUKOV Band\nバックコーラス：Riseca\nボーカル：藤村拓真/フジタク"
+      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
+      "videoId": "tPCH6p9lemQ",
+      "publishedAt": "2026-03-23",
+      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
     },
     {
       "title": "奥多摩湖/Richard",
@@ -1127,16 +1133,28 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "藤村拓真/フジタクの作業現場を覗いてみた！",
+      "videoId": "sKHK5lk-Tro",
+      "publishedAt": "2026-07-17",
+      "description": "Richardが訪問"
+    },
+    {
+      "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
+      "videoId": "LnPuByVPfE0",
+      "publishedAt": "2026-07-02",
+      "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
+    },
+    {
+      "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
+      "videoId": "NYLnCQdjgP8",
+      "publishedAt": "2026-09-18",
+      "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
+    },
+    {
       "title": "野山北公園　Richard",
       "videoId": "nvnbrpiPSsg",
       "publishedAt": "2026-06-22",
       "description": ""
-    },
-    {
-      "title": "【東方vocal】【cover】少女フラクタル－彷徨いの冥~天/Vo.Riseca&Wiran /YUKOV Circle Music【ロシア語字幕付き】",
-      "videoId": "tPCH6p9lemQ",
-      "publishedAt": "2026-03-23",
-      "description": "本家様：https://youtu.be/mcF47j3_eBc?si=9FhapqphCthquPg1\n\n楽曲名：彷徨いの冥~天\nvocal：Riseca&Wiran\nカバーしたサークル：YUKOV Circle Music\n\nお借りした音源：https://youtu.be/8LF8tPd7TtI?si=aIPIC1em0tkPEePo"
     },
     {
       "title": "【東方vocal】【cover】幽閉サテライト－紅に染まる恋の花/Vo.Riseca /YUKOV Circle Music",
@@ -1397,12 +1415,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "ホラゲじゃないから安心してね"
     },
     {
-      "title": "YUKOV Circle Music - One Ray of Light  【1st rerecording】",
-      "videoId": "LnPuByVPfE0",
-      "publishedAt": "2026-07-02",
-      "description": "楽曲名/song name: One Ray of Light\n作詞作曲/Songwriter: Riseca\n編曲/arrange :YUKOV BAND\nvocal : Riseca\n\nサークル/circle: YUKOV Circle Music\n\n1stオリジナル曲"
-    },
-    {
       "title": "高尾山 Richard",
       "videoId": "e2ogHZ06pVw",
       "publishedAt": "2026-07-02",
@@ -1437,12 +1449,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "5MatyznDydE",
       "publishedAt": "2026-07-15",
       "description": "ブチギレ注意"
-    },
-    {
-      "title": "藤村拓真/フジタクの作業現場を覗いてみた！",
-      "videoId": "sKHK5lk-Tro",
-      "publishedAt": "2026-07-17",
-      "description": "Richardが訪問"
     },
     {
       "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
@@ -1563,12 +1569,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "cTizkM-cm3s",
       "publishedAt": "2026-09-06",
       "description": "楽曲:もう恋なんてしない\n\n作詞作曲:槇原敬之\n\nカバー:藤村拓真/フジタク"
-    },
-    {
-      "title": "YUKOV Circle Music - 弱虫えすけーぷ！【オリジナルMV】",
-      "videoId": "NYLnCQdjgP8",
-      "publishedAt": "2026-09-18",
-      "description": "#YUKOVCircleMusic #オリジナル曲 \n\n曲名：弱虫えすけーぷ！\n作詞作曲：Riseca\n編曲：YUKOV Band\nフレーズ：るーぷるーぷるーぷ\n歌：Riseca\nサークル：YUKOV Circle Music\nレーベル：NAKREL Studio\n\nSoundCloud：https://on.soundcloud.com/dtw9IyXiD5p8AYnCW4\n\nるーぷるーぷるーぷ：https://youtu.be/q2NnozX8XlM?si=HPJBBVf8oCZDSQvg"
     },
     {
       "title": "るーぷ・オブ・ナイツ　【アレンジ曲】",
