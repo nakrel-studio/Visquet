@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 10/29/2026, 8:55:06 AM
+ * Generated: 10/29/2026, 9:00:48 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -471,12 +471,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "wnxFXaLJ7fc",
       "publishedAt": "2026-02-17",
       "description": "タイトル：The house 実況プレイ/藤村拓真\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "Ib体験実況プレイ/Richard【乱入実況】",
-      "videoId": "9_XbsVzXxk8",
-      "publishedAt": "2026-02-17",
-      "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "#2 狂い月実況プレイ/Riz(Riseca)",
@@ -1083,12 +1077,6 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：The house 実況プレイ/藤村拓真\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
-      "title": "Ib体験実況プレイ/Richard【乱入実況】",
-      "videoId": "9_XbsVzXxk8",
-      "publishedAt": "2026-02-17",
-      "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
-    },
-    {
       "title": "#2 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
@@ -1251,12 +1239,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
-    },
-    {
-      "title": "Ib体験実況プレイ/Richard【乱入実況】",
-      "videoId": "9_XbsVzXxk8",
-      "publishedAt": "2026-02-17",
-      "description": "タイトル：Ib体験プレイ/Richard\n配信者：Richard\n発信元：NAKREL Studio"
     },
     {
       "title": "メンヘラフレシア実況プレイ/藤村拓真",
