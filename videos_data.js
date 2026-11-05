@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/4/2026, 9:06:36 PM
+ * Generated: 11/5/2026, 9:22:48 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "121030生配信アーカイブ　藤村拓真初の生配信",
+      "videoId": "j00Pb1DfVcI",
+      "publishedAt": "2026-11-05",
+      "description": ""
+    },
     {
       "title": "るーぷるーぷるーぷ  A＝440正規チューニング化　【Audio】",
       "videoId": "l5yI2tp2xq4",
@@ -1634,6 +1640,12 @@ const VISQUET_ARCHIVE_DATA = {
       "title": "るーぷるーぷるーぷ  A＝440正規チューニング化　【Audio】",
       "videoId": "l5yI2tp2xq4",
       "publishedAt": "2026-10-27",
+      "description": ""
+    },
+    {
+      "title": "121030生配信アーカイブ　藤村拓真初の生配信",
+      "videoId": "j00Pb1DfVcI",
+      "publishedAt": "2026-11-05",
       "description": ""
     }
   ]
