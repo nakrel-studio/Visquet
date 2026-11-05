@@ -184,13 +184,13 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // 💡 読み込んだ全動画データを自動で日付の新しい順にソートする設定
+            // 💡 修正: popular（歴代人気）を除外し、all, music, games のみ日付の新しい順に自動ソート
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
-                for (const key in VISQUET_ARCHIVE_DATA) {
-                    if (Array.isArray(VISQUET_ARCHIVE_DATA[key])) {
-                        VISQUET_ARCHIVE_DATA[key].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+                ['all', 'music', 'games'].forEach(category => {
+                    if (VISQUET_ARCHIVE_DATA[category]) {
+                        VISQUET_ARCHIVE_DATA[category].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
                     }
-                }
+                });
             }
 
             initTheme(); 
@@ -448,7 +448,7 @@
                             </div>
                         </section>
 
-                        <!-- 歴代人気おすすめ動画 -->
+                        <!-- 歴代人気おすすめ動画 (青枠・青テキスト・1行ループ横スクロール) -->
                         <section class="border-2 border-blue-500/60 dark:border-blue-500/50 p-4 sm:p-6 bg-blue-50/20 dark:bg-blue-950/10">
                             <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">歴代人気おすすめ動画</h3>
                             <div id="auto-scroll-container" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 cursor-grab select-none" style="scroll-behavior: auto;">
