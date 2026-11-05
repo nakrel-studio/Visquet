@@ -184,7 +184,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // popular（歴代人気）を除外し、all, music, games のみ日付の新しい順に自動ソート
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
                 ['all', 'music', 'games'].forEach(category => {
                     if (VISQUET_ARCHIVE_DATA[category]) {
@@ -448,15 +447,29 @@
                             </div>
                         </section>
 
-                        <!-- 歴代人気おすすめ動画 (順位バッジ付き：1〜3位は金銀銅、以降は通常) -->
+                        <!-- 歴代人気おすすめ動画 (金・銀・銅および通常の「○位」バッジ付き) -->
                         <section class="border-2 border-blue-500/60 dark:border-blue-500/50 p-4 sm:p-6 bg-blue-50/20 dark:bg-blue-950/10">
                             <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">歴代人気おすすめ動画</h3>
                             <div id="auto-scroll-container" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 cursor-grab select-none" style="scroll-behavior: auto;">
-                                ${popularList.map((v, index) => `
-                                    <div class="min-w-[220px] sm:min-w-[260px] max-w-[260px] shrink-0">
-                                        ${createVideoCard(v, timestamp, index + 1)}
-                                    </div>
-                                `).join('')}
+                                ${popularList.map((v, index) => {
+                                    const rank = index + 1;
+                                    let badgeStyle = "bg-gray-800/90 text-white font-bold";
+                                    if (rank === 1) {
+                                        badgeStyle = "bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 text-amber-950 font-black shadow-md border border-amber-200";
+                                    } else if (rank === 2) {
+                                        badgeStyle = "bg-gradient-to-r from-slate-200 via-slate-300 to-slate-400 text-slate-900 font-black shadow-md border border-slate-100";
+                                    } else if (rank === 3) {
+                                        badgeStyle = "bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-amber-100 font-black shadow-md border border-amber-500";
+                                    }
+                                    return `
+                                        <div class="min-w-[220px] sm:min-w-[260px] max-w-[260px] shrink-0 relative">
+                                            <div class="absolute top-2 left-2 z-10 px-2 py-0.5 text-[11px] font-mono tracking-wider shadow-sm ${badgeStyle}">
+                                                ${rank}位
+                                            </div>
+                                            ${createVideoCard(v, timestamp)}
+                                        </div>
+                                    `;
+                                }).join('')}
                             </div>
                         </section>
 
@@ -490,26 +503,11 @@
             }
         }
 
-        // 💡 順位（rank）を受け取って金銀銅などのバッジを表示するカード生成関数
-        function createVideoCard(v, timestamp, rank = null) {
-            let rankBadge = '';
-            if (rank !== null) {
-                let badgeClass = 'bg-black/70 text-white font-bold';
-                if (rank === 1) {
-                    badgeClass = 'bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-black shadow-lg border border-yellow-200';
-                } else if (rank === 2) {
-                    badgeClass = 'bg-gradient-to-r from-slate-300 to-slate-400 text-black font-black shadow-lg border border-slate-100';
-                } else if (rank === 3) {
-                    badgeClass = 'bg-gradient-to-r from-amber-600 to-amber-800 text-white font-black shadow-lg border border-amber-500';
-                }
-                rankBadge = `<div class="absolute top-2 left-2 px-2.5 py-1 text-xs font-mono rounded-none shadow-md ${badgeClass} z-10">#${rank}</div>`;
-            }
-
+        function createVideoCard(v, timestamp) {
             return `
                 <div class="video-card overflow-hidden cursor-pointer shadow-md bg-white border border-gray-200 dark:bg-[#141417] dark:border-transparent dark:hover:border-[#333336]" onclick="location.href='./watch.html?id=${v.videoId}'">
                     <div class="relative group">
                         <img src="./thumbnails/${v.videoId}.jpg?v=${timestamp}" class="w-full aspect-video object-cover bg-gray-200 dark:bg-gray-900" loading="lazy">
-                        ${rankBadge}
                         <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                             <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-xs flex items-center justify-center text-white text-base shadow-lg">▶</div>
