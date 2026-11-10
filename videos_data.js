@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/9/2026, 11:42:59 PM
+ * Generated: 11/10/2026, 9:13:32 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -567,6 +567,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
+    },
+    {
+      "title": "僕と迷子の猫耳少女/Richard実況プレイ【フリーゲーム】",
+      "videoId": "jndZThDQ8xY",
+      "publishedAt": "2026-11-10",
+      "description": "小さな町に住む[スヴェン]は、森の中で猫耳の生えた少女と出会った。\nそこから始まる小さな旅が、世界を徐々に変えていきます。\nーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\nどうもRichardです。珍しくホラーじゃない方のゲームを実況してみました。\n病み上がりなので咳が頻繁に入るのですがどうか許してください。\n\nふりーむ→https://www.freem.ne.jp/win/game/18011"
     }
   ],
   "music": [
@@ -1093,6 +1099,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
       "description": "配信者：Riseca\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "僕と迷子の猫耳少女/Richard実況プレイ【フリーゲーム】",
+      "videoId": "jndZThDQ8xY",
+      "publishedAt": "2026-11-10",
+      "description": "小さな町に住む[スヴェン]は、森の中で猫耳の生えた少女と出会った。\nそこから始まる小さな旅が、世界を徐々に変えていきます。\nーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\nどうもRichardです。珍しくホラーじゃない方のゲームを実況してみました。\n病み上がりなので咳が頻繁に入るのですがどうか許してください。\n\nふりーむ→https://www.freem.ne.jp/win/game/18011"
     }
   ],
   "popular": [
