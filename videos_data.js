@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/12/2026, 9:46:09 PM
+ * Generated: 11/13/2026, 9:16:40 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -573,6 +573,18 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
+    },
+    {
+      "title": "失敗作少女カバー制作の編集時の映像",
+      "videoId": "x2f60k3kICY",
+      "publishedAt": "2026-11-13",
+      "description": ""
+    },
+    {
+      "title": "131112生配信アーカイブ　東方輝針城を死に物狂いでプレイした。＠藤村拓真/フジタク ＃ゲーム実況　",
+      "videoId": "66hsHk7TGzE",
+      "publishedAt": "2026-11-13",
+      "description": ""
     }
   ],
   "music": [
@@ -815,6 +827,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
+    },
+    {
+      "title": "失敗作少女カバー制作の編集時の映像",
+      "videoId": "x2f60k3kICY",
+      "publishedAt": "2026-11-13",
+      "description": ""
     }
   ],
   "games": [
@@ -1105,6 +1123,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
       "description": "配信者：Riseca\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "131112生配信アーカイブ　東方輝針城を死に物狂いでプレイした。＠藤村拓真/フジタク ＃ゲーム実況　",
+      "videoId": "66hsHk7TGzE",
+      "publishedAt": "2026-11-13",
+      "description": ""
     }
   ],
   "popular": [
