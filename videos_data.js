@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/19/2026, 10:36:25 PM
+ * Generated: 11/20/2026, 10:10:03 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -843,15 +843,237 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "僕と迷子の猫耳少女/Richard実況プレイ【フリーゲーム】",
+      "videoId": "jndZThDQ8xY",
+      "publishedAt": "2026-11-10",
+      "description": "小さな町に住む[スヴェン]は、森の中で猫耳の生えた少女と出会った。\nそこから始まる小さな旅が、世界を徐々に変えていきます。\nーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\nどうもRichardです。珍しくホラーじゃない方のゲームを実況してみました。\n病み上がりなので咳が頻繁に入るのですがどうか許してください。\n\nふりーむ→https://www.freem.ne.jp/win/game/18011"
+    },
+    {
+      "title": "121027生配信アーカイブ　#最終回 魔女の家　Riseca実況　【ホラーゲーム】",
+      "videoId": "LSjZu_KZkJY",
+      "publishedAt": "2026-10-26",
+      "description": "今までホラーゲームやってきた私ですが流石にやられましたわ。\n\n前回の動画：https://nakrel-visquet.com/watch.html?id=gv1dE_lYPLo"
+    },
+    {
+      "title": "121018生配信アーカイブ ＃2魔女の家ーRiseca実況プレイ 【ホラーゲーム】　",
+      "videoId": "gv1dE_lYPLo",
+      "publishedAt": "2026-10-19",
+      "description": "生配信慣れないですがこれからも頑張ります\n前の動画：121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】 https://nakrel-visquet.com/watch.html?id=cAujtgi4Yo0"
+    },
+    {
+      "title": "121009生配信アーカイブ　魔女の家-Riseca実況プレイ　【ホラーゲーム】",
+      "videoId": "cAujtgi4Yo0",
+      "publishedAt": "2026-10-11",
+      "description": ""
+    },
+    {
+      "title": "監禁されてる地下室からどう脱出する？　Hang Up /Riseca 実況プレイ　#ホラーゲーム",
+      "videoId": "2k_1T47MvKM",
+      "publishedAt": "2026-09-27",
+      "description": "初めて3Dホラーゲームプレイしたけどめっちゃ新鮮な感じ。"
+    },
+    {
+      "title": "【超閲覧注意】グロいので苦手な方は見ないでください。 #6最終回 すーぱーうるとらうさぎらっしゅ/Riz(Riseca)実況プレイ",
+      "videoId": "Bna3rTAyVCo",
+      "publishedAt": "2026-09-01",
+      "description": "この動画で最終回です。\n内容があまりにも衝撃的過ぎるので一応閲覧注意を表記しておきました。\nおまけがあれば後日動画あげる予定です。"
+    },
+    {
       "title": "【大絶叫注意】the house2 /Riz(Riseca)実況プレイ　ホラーゲーム　【ビックリ要素満載】",
       "videoId": "gxm4JdYCdwI",
       "publishedAt": "2026-08-30",
       "description": "ちょうど2010年リリースのthe house 2をプレイしました！\nこんだけ絶叫したの史上初かもしれない"
     },
     {
+      "title": "過去一沼りました。#5 すーぱーうるとらうさぎらっしゅ/Riz（Riseca）実況プレイ　ホラーゲーム",
+      "videoId": "g7wCypihC_8",
+      "publishedAt": "2026-08-30",
+      "description": "この謎解きは難しいですね。\n早送りですが実は2時間以上プレイしても分かりませんでした。"
+    },
+    {
+      "title": "最終回 梢にダブルキルされたwwwwww #7 狂い月Richard実況プレイ　ホラーゲーム",
+      "videoId": "o1_569zpIZQ",
+      "publishedAt": "2026-08-29",
+      "description": "コンピューターがチートすんなや\n\nとうとうこの日がやってまいりました。いよいよノーマルエンド回収です！\n真エンディングはのちの番外編で回収する予定です。"
+    },
+    {
+      "title": "連続一位🥇獲得！ますはる46 マリオカートWii配信　#実況プレイ",
+      "videoId": "fhYldLubO1U",
+      "publishedAt": "2026-08-24",
+      "description": "どうもますはる46です。これからも邁進していきます"
+    },
+    {
+      "title": "＃６ 狂い月Richard実況プレイ　ホラーゲーム",
+      "videoId": "9HPmUFU6-DY",
+      "publishedAt": "2026-08-24",
+      "description": "お久しぶりです。しばらく投稿できてなかったのですがクリアにどんどん向かってるのでこれからもよろしくお願いします。"
+    },
+    {
+      "title": "カーブに失敗するますはる46のマリカー実況プレイ　#マリオカートWii ＃ゲーム実況",
+      "videoId": "EejbEv9Dxe4",
+      "publishedAt": "2026-08-19",
+      "description": "あまりにもダメだったので5分で終わりました。\n次回リベンジします。"
+    },
+    {
+      "title": "【総合配信】狂い月/Riz(Riseca)リプレイ実況　最初から全エンド回収まで　・ホラーゲーム",
+      "videoId": "ZKDnkxi83Lk",
+      "publishedAt": "2026-08-07",
+      "description": "超絶久しぶりに狂い月をプレイしました。\n実は初見プレイの方では真エンドが回収できていなかったので、全エンド回収も兼ねて一からリプレイしています。\nこの動画では最初から最後まで分割なしの総合配信となります。\n\nところでなぜか今回めっちゃ呂律が回らない。吃音も出てるそうなのでどうかご理解お願いします。\n\n昔の実況　part１→ https://nakrel-visquet.com/watch.html?id=ADuE7y3hNAk\n　　　　　\n　　　　　part２→ https://nakrel-visquet.com/watch.html?id=nc8VjEIndLY\n\nその他最新のホラゲ実況もしてます！→ https://nakrel-visquet.com/watch.html?id=jWjMKufZG0E"
+    },
+    {
+      "title": "【超閲覧注意】衝撃の事実が判明。 #4 すーぱーうるとらうさぎらっしゅ Riz(Riseca)実況プレイ 【ホラーゲーム】",
+      "videoId": "jWjMKufZG0E",
+      "publishedAt": "2026-08-03",
+      "description": "私はゲームにのめり込むとイタくなってしまうんですよ。\nあーあ、まーた黒歴史作っちゃった。\n\nそんな事よりも、今回は内容がえげつないので見る方は注意してね。特に食事中の方や精神的に弱い方は見ない事をおすすめします。ちゃんと警告したよ！？　これで何があっても自己責任だからね！？\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=t4J5R4UenKQ"
+    },
+    {
+      "title": "【ホラーゲーム】新種が現れた！？ #3 すーぱーうるとらうさぎらっしゅ /Riz(Riseca)実況プレイ",
+      "videoId": "t4J5R4UenKQ",
+      "publishedAt": "2026-08-01",
+      "description": "家の地下に病棟？医療施設？とても巨大になっていく。更に内容も深まるばかり。\n赤ちゃんみたいな声の新種の化け物出てきた。トラップのように出てくるからちょっと厄介\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=Njcoa1X3R2E"
+    },
+    {
+      "title": "【初心者】初めてのマリオカートWii Riz実況プレイ",
+      "videoId": "bGlhsRMh4bo",
+      "publishedAt": "2026-07-22",
+      "description": "初心者にしては出来た方でしょ？\nホラーゲームも頑張るのでよろしく🙏"
+    },
+    {
+      "title": "分からなすぎる　#5 狂い月 Richard実況プレイ　【ホラーゲーム】",
+      "videoId": "BrfFFT8JEhQ",
+      "publishedAt": "2026-07-22",
+      "description": "分からなすぎたので6年前の配信者さんの実況を参考にしました。\nこれはまじむずい。\n\n前回の動画→ https://nakrel-visquet.com/watch.html?id=qS5lq7sDQaI\n\n観光地巡りもやってます！\n\n高尾山→ https://nakrel-visquet.com/watch.html?id=e2ogHZ06pVw\n\n奥多摩湖→ https://nakrel-visquet.com/watch.html?id=6hLFdNz1k6Y"
+    },
+    {
+      "title": "【大絶叫注意】#2すーぱーうるとらうさぎらっしゅ/Riz 実況プレイ#ホラーゲーム",
+      "videoId": "Njcoa1X3R2E",
+      "publishedAt": "2026-07-18",
+      "description": "あまり進展ないですがとんでもない目に遭ってしまいました。\n前回の動画→ https://nakrel-visquet.com/watch.html?id=eCofkVZCAes"
+    },
+    {
+      "title": "スターで無双したまま奈落に堕ちるますはる46wwwwww #マリオカートWii#ゲーム実況",
+      "videoId": "5MatyznDydE",
+      "publishedAt": "2026-07-15",
+      "description": "ブチギレ注意"
+    },
+    {
+      "title": "ますはる46がマリオカートWiiを実況プレイしたwww",
+      "videoId": "MHB0yZ5Joi8",
+      "publishedAt": "2026-07-12",
+      "description": "操作むずい"
+    },
+    {
+      "title": "【ホラーゲーム】※超閲覧注意　食欲失せそう　#１ すーぱーうるとらうさぎらっしゅ！実況プレイ/Riz(Riseca)",
+      "videoId": "eCofkVZCAes",
+      "publishedAt": "2026-07-06",
+      "description": "冗談抜きで怖いから閲覧注意で"
+    },
+    {
+      "title": "は？チート？　マリオカートWii  Richard #ゲーム実況",
+      "videoId": "iwQSzf0pGQU",
+      "publishedAt": "2026-07-05",
+      "description": "絶対おかしい"
+    },
+    {
+      "title": "オオカミと赤ずきん実況プレイ/Riz(Riseca) #ノベルゲーム#童話",
+      "videoId": "czN41bET-Z0",
+      "publishedAt": "2026-06-26",
+      "description": "ホラゲじゃないから安心してね"
+    },
+    {
+      "title": "初回　マリオカート Wii Richard＃ゲーム実況",
+      "videoId": "17YNLbUsgY4",
+      "publishedAt": "2026-06-17",
+      "description": "616008マリオカート Wii配信\nRichard\n＃ゲーム実況"
+    },
+    {
+      "title": "またやった。＃4狂い月実況プレイ Richard #ホラーゲーム実況プレイ",
+      "videoId": "qS5lq7sDQaI",
+      "publishedAt": "2026-06-13",
+      "description": "最近調子いいね〜。けど次々と起こる悲劇には驚きを隠せない。\n\n前回：https://youtu.be/KA_ibRBpNWE?si=32rT2RqhSvXfw9to"
+    },
+    {
+      "title": "【衝撃】なかなかエグい内容。#3 狂い月 Richard実況プレイ　#ホラーゲーム",
+      "videoId": "KA_ibRBpNWE",
+      "publishedAt": "2026-06-09",
+      "description": "だいぶビビるシーンがあるから閲覧注意。あとなかなかエグい内容で他のホラーゲームよりだいぶ怖い。\n\n前回　https://youtu.be/ip6H6fJNPW0?si=G08IK1OVvIPMp2Jt"
+    },
+    {
+      "title": "#2狂い月 Richard実況プレイ　#ホラーゲーム　※乱入実況あり",
+      "videoId": "ip6H6fJNPW0",
+      "publishedAt": "2026-06-01",
+      "description": "実況：Richard\n発信：NAKREL studio\n\n前回：https://youtu.be/3RM3uDVusVo"
+    },
+    {
+      "title": "チートに見えるけどマジチートじゃない事を訴える藤村拓真/フジタクのFPS実況",
+      "videoId": "MECh_yesvoY",
+      "publishedAt": "2026-05-31",
+      "description": "信じてください。本当にチートじゃないんです。因みに録画のバグで音声が遅れたり聞こえますがどうか大目に見てください。"
+    },
+    {
+      "title": "デリバリーキッドという配達が暴走するゲームがやばすぎるw  / Richard実況プレイ　",
+      "videoId": "pmunDkD3gfQ",
+      "publishedAt": "2026-05-29",
+      "description": "実況：Richard\n発信：NAKREL studio"
+    },
+    {
+      "title": "序盤からにしてむず過ぎる。#1 狂い月/Richard 実況プレイ #ホラーゲーム　＊乱入実況あり",
+      "videoId": "3RM3uDVusVo",
+      "publishedAt": "2026-05-20",
+      "description": ""
+    },
+    {
+      "title": "Wiiの接続方法わからなくて悶絶する藤村拓真/フジタクの配信【スマッシュブラザーズX】＃実況プレイ＃スマブラX",
+      "videoId": "BZMguC5JC54",
+      "publishedAt": "2026-05-11",
+      "description": ""
+    },
+    {
+      "title": "RIZのヘンゼルとグレーテルDS実況プレイ　#ふりーむ  #フリーゲーム #ホラーゲーム #実況",
+      "videoId": "MTsGzmu2uXw",
+      "publishedAt": "2026-05-07",
+      "description": "配信：RIZ(Riseca)"
+    },
+    {
+      "title": "2005年リリースのThe houseというホラーゲームをRichardがプレイする！",
+      "videoId": "O-AQQLntXmw",
+      "publishedAt": "2026-05-01",
+      "description": ""
+    },
+    {
       "title": "Richard脱落。#6 オイクメネ実況プレイ/Richard",
       "videoId": "vjTALKaNJoM",
       "publishedAt": "2026-04-23",
+      "description": ""
+    },
+    {
+      "title": "スペアビート　ノーマルだけどニつフルコンできた。藤村拓真/フジタク＃音ゲー＃実況プレイ#リズムゲーム",
+      "videoId": "95vWb9RPPXI",
+      "publishedAt": "2026-04-19",
+      "description": ""
+    },
+    {
+      "title": "むず過ぎてまじ頭おかしくなる。#2オイクメネ実況プレイ　藤村拓真/フジタク",
+      "videoId": "WPbgnCGnrJ4",
+      "publishedAt": "2026-04-18",
+      "description": ""
+    },
+    {
+      "title": "スペアビート　藤村拓真/フジタク　#音ゲー　#リズムゲーム　【実況プレイ】",
+      "videoId": "BKv-LUmXoF8",
+      "publishedAt": "2026-04-14",
+      "description": ""
+    },
+    {
+      "title": "【史上最難関ゲーム】#1 オイクメネ実況プレイ-藤村拓真/フジタク　＊乱入実況あり",
+      "videoId": "mogmkmRorEs",
+      "publishedAt": "2026-04-08",
+      "description": ""
+    },
+    {
+      "title": "いろいろなフリー弾幕ゲームを実況プレイ/　藤村拓真/フジタク",
+      "videoId": "akYgToTzz38",
+      "publishedAt": "2026-04-04",
       "description": ""
     },
     {
@@ -861,16 +1083,52 @@ const VISQUET_ARCHIVE_DATA = {
       "description": ""
     },
     {
+      "title": "#4 オイクメネ実況プレイ/Richard",
+      "videoId": "ow7iu75y3f4",
+      "publishedAt": "2026-03-23",
+      "description": ""
+    },
+    {
+      "title": "#3 オイクメネ実況プレイ/Richard",
+      "videoId": "7Xx-te3HbqE",
+      "publishedAt": "2026-03-07",
+      "description": "配信：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "#2 オイクメネ実況プレイ/Richard【乱入実況】",
+      "videoId": "VtgyALVZdH8",
+      "publishedAt": "2026-03-02",
+      "description": "配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
       "title": "メンヘラフレシア実況プレイ/藤村拓真",
       "videoId": "RRg5shb4JJY",
       "publishedAt": "2026-02-26",
       "description": "配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
     },
     {
+      "title": "#1 オイクメネ実況プレイ/Richard",
+      "videoId": "ODC58J0hgaQ",
+      "publishedAt": "2026-02-26",
+      "description": "配信者：Richard\n発信元：NAKREL Studio"
+    },
+    {
+      "title": "The house 実況プレイ/藤村拓真",
+      "videoId": "wnxFXaLJ7fc",
+      "publishedAt": "2026-02-17",
+      "description": "タイトル：The house 実況プレイ/藤村拓真\n配信者：藤村拓真/フジタク\n発信元：NAKREL Studio"
+    },
+    {
       "title": "#2 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "nc8VjEIndLY",
       "publishedAt": "2026-02-15",
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
+    },
+    {
+      "title": "#1 狂い月実況プレイ/Riz(Riseca)",
+      "videoId": "ADuE7y3hNAk",
+      "publishedAt": "2026-02-08",
+      "description": "配信者：Riseca\n発信元：NAKREL Studio"
     }
   ],
   "popular": [
