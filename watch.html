@@ -113,7 +113,7 @@
     }
     </style>
 </head>
-<body class="min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
+<body class="mode-16-9 min-h-screen bg-[#f8f9fa] text-[#1e2022] dark:bg-[#0d0d0f] dark:text-[#e1e1e6]">
 
     <header class="w-full h-12 bg-[#f0f2f5] dark:bg-[#0a0a0c] border-b border-[#e2e8f0] dark:border-[#222225] flex items-center justify-between px-8 md:px-12 sticky top-0 z-50">
         <div class="flex items-center gap-8">
@@ -126,7 +126,7 @@
     <main class="responsive-main max-w-[1920px] mx-auto pt-2 px-4 md:px-4 lg:px-6 md:pb-12 md:pt-2 grid grid-cols-1 gap-4">
         
         <div class="w-full">
-            <div class="player-container w-full aspect-[4/3] overflow-hidden shadow-2xl mb-4">
+            <div class="player-container w-full aspect-[16/9] overflow-hidden shadow-2xl mb-4">
                 <iframe id="youtube-player" class="w-full h-full bg-black" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
@@ -164,8 +164,8 @@
                         <span id="save-text" class="font-semibold">保存</span>
                     </button>
 
-                    <button id="aspect-btn" title="アスペクト比を手動切替" class="ml-auto px-2 py-1 text-[10px] font-mono text-gray-400 dark:text-gray-600 hover:text-gray-700 dark:hover:text-gray-300 border border-transparent hover:border-gray-200 dark:hover:border-zinc-800 transition-colors rounded-none opacity-60 hover:opacity-100">
-                        <span id="aspect-icon">4:3</span>
+                    <button id="aspect-btn" class="group border border-gray-200/80 dark:border-[#1c1c20] bg-[#f8f9fa]/70 dark:bg-[#101013]/80 hover:bg-gray-100/80 dark:hover:bg-zinc-900 px-2.5 py-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200 active:scale-95 flex items-center rounded-none relative">
+                        <span id="aspect-icon" class="text-[11px] font-mono font-medium bg-gray-100/90 dark:bg-zinc-900 px-1 py-0.5 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">16:9</span>          
                     </button>
                 </div>
             </div>
@@ -211,7 +211,6 @@
         const db = getFirestore(app);
 
         let currentVideoId = null;
-        let currentAspectMode = '4/3';
         let rawViews = 0;
         let rawLikes = 0;
         let rawFires = 0;
@@ -292,125 +291,70 @@
             const likeBtn = document.getElementById('like-btn');
             const fireBtn = document.getElementById('fire-btn');
             const shareBtn = document.getElementById('share-btn');
-            const aspectBtn = document.getElementById('aspect-btn');
 
             if (likeBtn) likeBtn.addEventListener('click', handleLike);
             if (fireBtn) fireBtn.addEventListener('click', handleFire);
             if (shareBtn) shareBtn.addEventListener('click', handleShare);
-            if (aspectBtn) aspectBtn.addEventListener('click', toggleAspectRatio);
 
+            const aspectBtn = document.getElementById('aspect-btn');
+            if (aspectBtn) aspectBtn.addEventListener('click', toggleAspectRation);
+            
             initLocalCounters();
-            initAutoPlayerAspect(currentVideoId, targetVideo);
+            initPlayerAspect();
             renderRecommendations(currentVideoId);
             renderTrendingAds();
             renderPopularRanking();
         
-            const saveBtn = document.getElementById('save-btn');
-            if (saveBtn) {
-                saveBtn.addEventListener('click', handleSaveToggle);
-                updateSaveButtonUI();
-            }
+            // イベントリスナーの登録（DOMContentLoaded 内に追加）
+const saveBtn = document.getElementById('save-btn');
+if (saveBtn) {
+    saveBtn.addEventListener('click', handleSaveToggle);
+    updateSaveButtonUI(); // 初期表示チェック
+}
 
-            function handleSaveToggle(event) {
-                if (!currentVideoId) return;
+// 保存ボタンのクリック処理
+function handleSaveToggle(event) {
+    if (!currentVideoId) return;
 
-                let savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
-                const isSaved = savedList.includes(currentVideoId);
+    let savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    const isSaved = savedList.includes(currentVideoId);
 
-                if (isSaved) {
-                    savedList = savedList.filter(id => id !== currentVideoId);
-                    createPopupText(event, "REMOVED", "text-gray-500 font-bold");
-                } else {
-                    savedList.push(currentVideoId);
-                    createPopupText(event, "SAVED!", "text-yellow-500 font-bold");
-                }
+    if (isSaved) {
+        // 保存解除
+        savedList = savedList.filter(id => id !== currentVideoId);
+        createPopupText(event, "REMOVED", "text-gray-500 font-bold");
+    } else {
+        // 保存追加
+        savedList.push(currentVideoId);
+        createPopupText(event, "SAVED!", "text-yellow-500 font-bold");
+    }
 
-                localStorage.setItem('visquet_saved_videos', JSON.stringify(savedList));
-                updateSaveButtonUI();
-            }
+    localStorage.setItem('visquet_saved_videos', JSON.stringify(savedList));
+    updateSaveButtonUI();
+}
 
-            function updateSaveButtonUI() {
-                const saveBtn = document.getElementById('save-btn');
-                const saveIcon = document.getElementById('save-icon');
-                const saveText = document.getElementById('save-text');
-                if (!saveBtn || !currentVideoId) return;
+// 保存状態に応じたボタンデザイン更新
+function updateSaveButtonUI() {
+    const saveBtn = document.getElementById('save-btn');
+    const saveIcon = document.getElementById('save-icon');
+    const saveText = document.getElementById('save-text');
+    if (!saveBtn || !currentVideoId) return;
 
-                const savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
-                const isSaved = savedList.includes(currentVideoId);
+    const savedList = JSON.parse(localStorage.getItem('visquet_saved_videos') || '[]');
+    const isSaved = savedList.includes(currentVideoId);
 
-                if (isSaved) {
-                    saveIcon.innerText = '💚';
-                    saveText.innerText = '保存済み';
-                    saveBtn.classList.add('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
-                } else {
-                    saveIcon.innerText = '🩷';
-                    saveText.innerText = '保存';
-                    saveBtn.classList.remove('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
-                }
-            }
+    if (isSaved) {
+        saveIcon.innerText = '💚';
+        saveText.innerText = '保存済み';
+        saveBtn.classList.add('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
+    } else {
+        saveIcon.innerText = '🩷';
+        saveText.innerText = '保存';
+        saveBtn.classList.remove('text-yellow-600', 'dark:text-yellow-400', 'border-yellow-400');
+    }
+}
+
         });
-
-        // アスペクト比を反映（状態保存は行わない）
-        function applyPlayerAspectMode(mode) {
-            const playerContainer = document.querySelector('.player-container');
-            const aspectIcon = document.getElementById('aspect-icon');
-            if (!playerContainer) return;
-
-            currentAspectMode = mode;
-
-            if (mode === '16/9') {
-                playerContainer.classList.remove('aspect-[4/3]');
-                playerContainer.classList.add('aspect-[16/9]');
-                document.body.classList.add('mode-16-9');
-                if (aspectIcon) aspectIcon.innerText = '16:9';
-            } else {
-                playerContainer.classList.remove('aspect-[16/9]');
-                playerContainer.classList.add('aspect-[4/3]');
-                document.body.classList.remove('mode-16-9');
-                if (aspectIcon) aspectIcon.innerText = '4:3';
-            }
-        }
-
-        function toggleAspectRatio() {
-            applyPlayerAspectMode(currentAspectMode === '4/3' ? '16/9' : '4/3');
-        }
-
-        function detectModeFromRatio(ratio) {
-            if (!ratio || isNaN(ratio) || ratio <= 0) return '4/3';
-            return ratio > 1.45 ? '16/9' : '4/3';
-        }
-
-        function initAutoPlayerAspect(videoId, targetVideo) {
-            if (targetVideo) {
-                const explicit = (targetVideo.aspect || targetVideo.aspectRatio || '').toString().trim();
-                if (explicit === '16:9' || explicit === '16/9' || /cinema|scope|2\.35|2\.39|21:9/i.test(explicit)) {
-                    applyPlayerAspectMode('16/9');
-                    return;
-                }
-                if (explicit === '4:3' || explicit === '4/3' || explicit === '1:1' || explicit === '1/1' || /square/i.test(explicit)) {
-                    applyPlayerAspectMode('4/3');
-                    return;
-                }
-                if (targetVideo.width && targetVideo.height) {
-                    applyPlayerAspectMode(detectModeFromRatio(Number(targetVideo.width) / Number(targetVideo.height)));
-                    return;
-                }
-            }
-
-            const probeImg = new Image();
-            probeImg.onload = () => {
-                if (probeImg.naturalWidth > 0 && probeImg.naturalHeight > 0) {
-                    const ratio = probeImg.naturalWidth / probeImg.naturalHeight;
-                    applyPlayerAspectMode(detectModeFromRatio(ratio));
-                } else {
-                    applyPlayerAspectMode('4/3');
-                }
-            };
-            probeImg.onerror = () => {
-                applyPlayerAspectMode('4/3');
-            };
-            probeImg.src = `./thumbnails/${videoId}.jpg?v=${new Date().getTime()}`;
-        }
 
         async function initLocalCounters() {
             if (!currentVideoId) return;
@@ -916,6 +860,48 @@
             }
         }
 
+        function initPlayerAspect() {
+            const playerContainer = document.querySelector('.player-container');
+            const aspectIcon = document.getElementById('aspect-icon');
+            if (!playerContainer || !aspectIcon) return;
+
+            const savedAspect = localStorage.getItem('visquet_player_aspect') || '16/9';
+
+            if (savedAspect === '4/3') {
+                playerContainer.classList.remove('aspect-[16/9]');
+                playerContainer.classList.add('aspect-[4/3]');
+                aspectIcon.innerText = '4:3';
+                document.body.classList.remove('mode-16-9');
+            } else {
+                playerContainer.classList.remove('aspect-[4/3]');
+                playerContainer.classList.add('aspect-[16/9]');
+                aspectIcon.innerText = '16:9';
+                document.body.classList.add('mode-16-9');
+            }
+        }
+
+        function toggleAspectRation(event) {
+            const playerContainer = document.querySelector('.player-container');
+            const aspectIcon = document.getElementById('aspect-icon');
+            if (!playerContainer || !aspectIcon) return;
+
+            const currentAspect = localStorage.getItem('visquet_player_aspect') || '16/9';
+
+            if (currentAspect === '16/9') {
+                playerContainer.classList.remove('aspect-[16/9]');
+                playerContainer.classList.add('aspect-[4/3]');
+                aspectIcon.innerText = '4:3';
+                localStorage.setItem('visquet_player_aspect', '4/3');
+                document.body.classList.remove('mode-16-9');
+            } else {
+                playerContainer.classList.remove('aspect-[4/3]');
+                playerContainer.classList.add('aspect-[16/9]');
+                aspectIcon.innerText = '16:9';
+                localStorage.setItem('visquet_player_aspect', '16/9');
+                document.body.classList.add('mode-16-9');         
+            }
+        }
+
         function formatCount(num) {
             if (num >= 1000000) {
                 let val = num / 1000000;
@@ -930,16 +916,20 @@
             return num.toString();
         }
 
-        function formatWithRule(val, suffix) {
+      function formatWithRule(val, suffix) {
+            // 小数第1位で切り捨てる（例: 1.95 -> 1.9、2.09 -> 2.0）
             let truncated = Math.floor(val * 10) / 10;
             
+            // 整数になる場合（例: 2.0 など）は小数点を除いた整数として返す
             if (Number.isInteger(truncated)) {
                 return truncated + suffix;
             }
             
             return truncated.toFixed(1) + suffix;
         }
+
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fef89f25720f441b971c2ffe303cba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
+```[cite: 2]
