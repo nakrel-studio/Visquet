@@ -260,10 +260,7 @@
             }
 
             const player = document.getElementById('youtube-player');
-            player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&theme=dark`;
-
-            const player = document.getElementById('youtube-player');
-　　　　　　　player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&theme=dark&cc_load_policy=0`;
+            player.src = `https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&theme=dark&cc_load_policy=0`;
 
             let targetVideo = null;
             if (typeof VISQUET_ARCHIVE_DATA !== 'undefined') {
