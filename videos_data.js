@@ -1,6 +1,6 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/22/2026, 8:57:09 PM
+ * Generated: 11/24/2026, 2:02:12 AM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
@@ -585,6 +585,12 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
+    },
+    {
+      "title": "久しぶりに贅沢したいから寿司店きたわ　@藤村拓真/フジタク",
+      "videoId": "JQPgNRisPBc",
+      "publishedAt": "2026-11-23",
+      "description": ""
     }
   ],
   "music": [
