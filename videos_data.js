@@ -1,9 +1,15 @@
 /**
  * Visquet Static Archive Data Source
- * Generated: 11/24/2026, 11:47:37 PM
+ * Generated: 11/25/2026, 11:29:40 PM
  */
 const VISQUET_ARCHIVE_DATA = {
   "all": [
+    {
+      "title": "久しぶりに贅沢したいから寿司店きたわ　@藤村拓真/フジタク",
+      "videoId": "JQPgNRisPBc",
+      "publishedAt": "2026-11-23",
+      "description": ""
+    },
     {
       "title": "131112生配信アーカイブ　東方輝針城を死に物狂いでプレイした。＠藤村拓真/フジタク ＃ゲーム実況　",
       "videoId": "66hsHk7TGzE",
@@ -503,6 +509,12 @@ const VISQUET_ARCHIVE_DATA = {
       "description": "タイトル：#2 狂い月実況プレイ/Riz\n配信者：Riseca\n発信元：NAKRELStudio"
     },
     {
+      "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
+      "videoId": "KAjTwTBmN7s",
+      "publishedAt": "2026-02-08",
+      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
+    },
+    {
       "title": "#1 狂い月実況プレイ/Riz(Riseca)",
       "videoId": "ADuE7y3hNAk",
       "publishedAt": "2026-02-08",
@@ -513,12 +525,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "1P_2I6Iuf6E",
       "publishedAt": "2026-02-08",
       "description": "タイトル：キーボード壊れた\n配信者：藤原拓真フジタク\n発信元：NAKREL Studio"
-    },
-    {
-      "title": "墨染の櫻〜Sleeping memory〜 【off vocal】",
-      "videoId": "KAjTwTBmN7s",
-      "publishedAt": "2026-02-08",
-      "description": "曲名：墨染の櫻〜Sleeping memory〜 \n\n原曲 : 幽雅に咲かせ、墨染の桜〜Border of Life / ネクロファンタジア\n編曲 : YUKOV BAND\n作詞 : Riseca\n\nサークル : YUKOV Circle Music\n\nAudio： https://youtu.be/lM0B3R-wsaU?si=ZfvFtbkBN5FW2CuE\n\nMV：https://www.youtube.com/watch?v=lO0Xl7hKfXU  ￼"
     },
     {
       "title": "YUKOV Circle Music - 墨染の櫻〜Sleeping memory〜　【東方vocal】Audio",
@@ -585,12 +591,6 @@ const VISQUET_ARCHIVE_DATA = {
       "videoId": "Fnq6_wavwoI",
       "publishedAt": "2024-08-14",
       "description": "本家様http://www.nicovideo.jp/watch/sm15308214"
-    },
-    {
-      "title": "久しぶりに贅沢したいから寿司店きたわ　@藤村拓真/フジタク",
-      "videoId": "JQPgNRisPBc",
-      "publishedAt": "2026-11-23",
-      "description": ""
     }
   ],
   "music": [
